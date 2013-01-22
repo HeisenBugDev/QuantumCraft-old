@@ -10,8 +10,8 @@ public class TileEntityMachine extends TileEntity {
 	public int rotation = 0;
 	
 	public TileEntityMachine(World w,int rot) {
-		this.mtype = w.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord);
-		rotation = rot;
+		this.mtype = w.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord); // set machines type from metadata
+		rotation = rot; // the rotation is stored in TE variable.
 		
 	}
 	

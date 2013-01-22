@@ -11,6 +11,8 @@ import net.minecraftforge.common.ISidedInventory;
 public class TileEntityExtractor extends TileEntityMachine implements ISidedInventory {
 
 
+	//TODO: finish this
+	
 	public TileEntityExtractor(World w, int rot) {
 		super(w, rot);
 	}

@@ -1,6 +1,5 @@
 package sammko.quantumCraft.core;
 
-/*MINECRAFT IMPORTS*/
 /*CPW IMPORTS*/
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;

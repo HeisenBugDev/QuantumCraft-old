@@ -5,6 +5,8 @@ import net.minecraft.client.gui.GuiScreen;
 
 public class GuiGenerator extends GuiScreen {
 
+	//TODO: finish this.
+	
 	public GuiGenerator() {
 		
 	}
