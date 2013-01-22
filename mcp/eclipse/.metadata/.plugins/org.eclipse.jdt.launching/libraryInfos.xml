@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <libraryInfos>
-<libraryInfo home="C:\Program Files\Java\jre7" version="1.7.0_10">
+<libraryInfo home="C:\Program Files\Java\jre7" version="1.7.0_09">
 <bootpath>
 <entry path="C:\Program Files\Java\jre7\lib\resources.jar"/>
 <entry path="C:\Program Files\Java\jre7\lib\rt.jar"/>
@@ -22,32 +20,3 @@
 </endorsedDirs>
 </libraryInfo>
 </libraryInfos>
-=======
-=======
->>>>>>> c485329ac76977631306c066030c85efda61cb47
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<libraryInfos>
-<libraryInfo home="C:\Program Files\Java\jre7" version="1.7.0_10">
-<bootpath>
-<entry path="C:\Program Files\Java\jre7\lib\resources.jar"/>
-<entry path="C:\Program Files\Java\jre7\lib\rt.jar"/>
-<entry path="C:\Program Files\Java\jre7\lib\sunrsasign.jar"/>
-<entry path="C:\Program Files\Java\jre7\lib\jsse.jar"/>
-<entry path="C:\Program Files\Java\jre7\lib\jce.jar"/>
-<entry path="C:\Program Files\Java\jre7\lib\charsets.jar"/>
-<entry path="C:\Program Files\Java\jre7\lib\jfr.jar"/>
-<entry path="C:\Program Files\Java\jre7\classes"/>
-</bootpath>
-<extensionDirs>
-<entry path="C:\Program Files\Java\jre7\lib\ext"/>
-<entry path="C:\Windows\Sun\Java\lib\ext"/>
-</extensionDirs>
-<endorsedDirs>
-<entry path="C:\Program Files\Java\jre7\lib\endorsed"/>
-</endorsedDirs>
-</libraryInfo>
-</libraryInfos>
-<<<<<<< HEAD
->>>>>>> c485329ac76977631306c066030c85efda61cb47
-=======
->>>>>>> c485329ac76977631306c066030c85efda61cb47
