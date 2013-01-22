@@ -1,4 +1,4 @@
-package sammko.quantumCraft.machine;
+package sammko.quantumCraft.machine; //Comments are awsome ^^
 
 import sammko.quantumCraft.machine.gui.GuiGenerator;
 import net.minecraft.entity.player.EntityPlayer;
