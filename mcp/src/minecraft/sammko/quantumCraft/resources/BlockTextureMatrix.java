@@ -9,6 +9,8 @@ public class BlockTextureMatrix {
 	public static int OreGammatronium = 0xF1;
 	public static int OreNeutrinium = 0xF2;
 	
+	public static int Err = 0x14;
+	
 	public static int EBlockBackSingle = 0x00;
 	public static int EBlockBackTop = 0x01;
 	public static int EBlockBackMid = 0x02;

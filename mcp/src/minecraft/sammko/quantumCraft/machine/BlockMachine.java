@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -27,8 +28,6 @@ public class BlockMachine extends BlockContainer {
 		RenderID = rid;
 	}
 
-	public int[] tMap = new int[6];
-
 	@Override
 	public boolean renderAsNormalBlock()
 	{
@@ -48,9 +47,10 @@ public class BlockMachine extends BlockContainer {
     }
 	
 	@Override
-    public int getBlockTextureFromSide(int par1)
+	public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
     {
-        return tMap[par1];
+		return ((TileEntityMachine) par1IBlockAccess.getBlockTileEntity(par2, par3, par4)).tMap[par5];
+       
     }
 	
 	@Override
@@ -61,7 +61,7 @@ public class BlockMachine extends BlockContainer {
 	
 	@Override
 	public TileEntity createNewTileEntity(World var1) {
-		return new TileEntityExtractor(var1,0);
+		return new TileEntityExtractor(var1,2);
 		//TODO: change this based on the metadata of this block.
 	}
 

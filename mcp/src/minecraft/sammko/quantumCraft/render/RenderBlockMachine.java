@@ -16,39 +16,66 @@ public class RenderBlockMachine extends RendererBase {
 	
 	public RenderBlockMachine(int renderID) {
 		super(renderID);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID,
 			RenderBlocks renderer) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	void setStuff(RenderBlocks renderer, IBlockAccess world, Block block, int x, int y, int z)
 	{
 		//this sets the tMap in block class.
-		//TODO: add texture layouts for diff. rotations
+		//BUG: hmm the following code doesnt actually work. will need to debug it.
 		TileEntityMachine t =  (TileEntityMachine) world.getBlockTileEntity(x, y, z);
-		tMap[0] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
-		tMap[1] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
-		tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.PositronGenerator);
-		tMap[3] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
-		tMap[4] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
-		tMap[5] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+		switch(t.rotation)
+		{
+		case -1:
+			tMap[0] = BlockTextureMatrix.getIndex(BlockTextureMatrix.Err);
+			tMap[1] = BlockTextureMatrix.getIndex(BlockTextureMatrix.Err);
+			tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.Err);
+			tMap[3] = BlockTextureMatrix.getIndex(BlockTextureMatrix.Err);
+			tMap[4] = BlockTextureMatrix.getIndex(BlockTextureMatrix.Err);
+			tMap[5] = BlockTextureMatrix.getIndex(BlockTextureMatrix.Err);
+		case 0:
+			tMap[0] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
+			tMap[1] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
+			tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.PositronGenerator);
+			tMap[3] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+			tMap[4] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+			tMap[5] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+		case 1:
+			tMap[0] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
+			tMap[1] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
+			tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+			tMap[3] = BlockTextureMatrix.getIndex(BlockTextureMatrix.PositronGenerator);
+			tMap[4] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+			tMap[5] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+		case 2:
+			tMap[0] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
+			tMap[1] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
+			tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+			tMap[3] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+			tMap[4] = BlockTextureMatrix.getIndex(BlockTextureMatrix.PositronGenerator);
+			tMap[5] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+		case 3:
+			tMap[0] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
+			tMap[1] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
+			tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+			tMap[3] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+			tMap[4] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+			tMap[5] = BlockTextureMatrix.getIndex(BlockTextureMatrix.PositronGenerator);
+		}
+		t.tMap = this.tMap;
 	}
 	
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z,
 			Block block, int modelId, RenderBlocks renderer) {
-		
-		BlockMachine b = (BlockMachine) block;
-		
-		setStuff(renderer, world, b, x, y, z);
-		b.tMap = tMap;
 
-		
+		BlockMachine b = (BlockMachine) block;
+		setStuff(renderer, world, b, x, y, z);
 		renderer.renderStandardBlock(b, x, y, z);
 
 		renderer.uvRotateTop = 0;
