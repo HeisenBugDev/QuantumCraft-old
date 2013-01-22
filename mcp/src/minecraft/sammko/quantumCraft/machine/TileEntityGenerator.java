@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package sammko.quantumCraft.machine; //Comments are awsome ^^
 
 import sammko.quantumCraft.machine.gui.GuiGenerator;
@@ -106,6 +107,8 @@ public class TileEntityGenerator extends TileEntityMachine implements ISidedInve
 
 }
 =======
+=======
+>>>>>>> c485329ac76977631306c066030c85efda61cb47
 package sammko.quantumCraft.machine; //Comments are awsome ^^
 
 import sammko.quantumCraft.machine.gui.GuiGenerator;
@@ -212,4 +215,7 @@ public class TileEntityGenerator extends TileEntityMachine implements ISidedInve
 	}
 
 }
+<<<<<<< HEAD
+>>>>>>> c485329ac76977631306c066030c85efda61cb47
+=======
 >>>>>>> c485329ac76977631306c066030c85efda61cb47

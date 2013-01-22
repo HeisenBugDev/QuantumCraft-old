@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 MCP - Minecraft Coder Pack
 MCP is (c) Copyright by the MCP Team
 
@@ -21,6 +22,8 @@ You are NOT allowed to:
 - Use MCP to create clients that are used for griefing or exploiting server bugs.
 - Release the decompiled source code of Minecraft in any way.
 =======
+=======
+>>>>>>> c485329ac76977631306c066030c85efda61cb47
 MCP - Minecraft Coder Pack
 MCP is (c) Copyright by the MCP Team
 
@@ -42,4 +45,7 @@ You are NOT allowed to:
 - Make money with anything based on MCP (excluding Minecraft mods created by using MCP).
 - Use MCP to create clients that are used for griefing or exploiting server bugs.
 - Release the decompiled source code of Minecraft in any way.
+<<<<<<< HEAD
+>>>>>>> c485329ac76977631306c066030c85efda61cb47
+=======
 >>>>>>> c485329ac76977631306c066030c85efda61cb47

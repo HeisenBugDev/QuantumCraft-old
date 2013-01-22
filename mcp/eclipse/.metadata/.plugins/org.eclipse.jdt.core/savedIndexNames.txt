@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.126+Q:\Modding\QuantumCraft\mcp\eclipse\.metadata\.plugins\org.eclipse.jdt.core
 163172794.index
 1483300421.index
@@ -18,7 +19,15 @@ INDEX VERSION 1.126+Q:\Modding\QuantumCraft\mcp\eclipse\.metadata\.plugins\org.e
 3133528496.index
 4155206848.index
 1732807061.index
+=======
+INDEX VERSION 1.126+F:\mods\mod\QuantumCraft\mcp\eclipse\.metadata\.plugins\org.eclipse.jdt.core
+1460275499.index
+>>>>>>> c485329ac76977631306c066030c85efda61cb47
 3012018768.index
+626009755.index
 3726805247.index
+1732807061.index
+2255352983.index
 2362514756.index
-305854171.index
+286606776.index
+1483300421.index
