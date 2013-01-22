@@ -7,7 +7,12 @@ Quantum Craft ideas:
         4. Neutrinium = GREEN -> SIGNALS
         5. Gammatronium = YELLOW -> 
     Functions:
-        1. ParticleTubing
+        1. Energy Packets
+            - Energy transfered as items
+            - you can use Redpower, logi-pipes, or whatever
         2. QuantumField
+            - sort of a forcefield
         3. PositronBeams
+            - a deadly laser
         4. Signalling
+            - singal beams that can go thru walls

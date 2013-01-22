@@ -13,15 +13,13 @@ public class TileEntityExtractor extends TileEntityMachine implements ISidedInve
 
 	public TileEntityExtractor(World w, int rot) {
 		super(w, rot);
-		// TODO Auto-generated constructor stub
 	}
 
-	ItemStack[] items = new ItemStack[5];
+	ItemStack[] items = new ItemStack[5]; //Inventory
 	
 
 	@Override
 	public int getSizeInventory() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -70,7 +68,6 @@ public class TileEntityExtractor extends TileEntityMachine implements ISidedInve
 
 	@Override
 	public void closeChest() {
-		// TODO Auto-generated method stub
 		
 	}
 

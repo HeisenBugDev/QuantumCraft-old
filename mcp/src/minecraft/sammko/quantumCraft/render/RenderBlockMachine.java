@@ -28,6 +28,8 @@ public class RenderBlockMachine extends RendererBase {
 
 	void setStuff(RenderBlocks renderer, IBlockAccess world, Block block, int x, int y, int z)
 	{
+		//this sets the tMap in block class.
+		//TODO: add texture layouts for diff. rotations
 		TileEntityMachine t =  (TileEntityMachine) world.getBlockTileEntity(x, y, z);
 		tMap[0] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
 		tMap[1] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);

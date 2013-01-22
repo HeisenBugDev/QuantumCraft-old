@@ -1,6 +1,8 @@
 package sammko.quantumCraft.resources;
 
 public class BlockTextureMatrix {
+	
+	//texture layout in the file. 0x = Hex; 1st digit = Columns, 2nd digit = Rows. 0 - F (0 - 15)
 	public static int OrePositronium = 0xE0;
 	public static int OrePlutonium = 0xF0;
 	public static int OreRadium = 0xE1;
@@ -45,7 +47,7 @@ public class BlockTextureMatrix {
 	
 	public static int getIndex(int v)
 	{
-		return ((v >> 4) & 15) | ((v << 4) & 240);
+		return ((v >> 4) & 15) | ((v << 4) & 240); //equation to convert this to MC texture index.
 	
 	}
 }

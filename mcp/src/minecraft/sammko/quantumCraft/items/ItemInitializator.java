@@ -23,7 +23,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class ItemInitializator implements IGuiHandler{
 
 	public ItemInitializator() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 		//GUI IDs

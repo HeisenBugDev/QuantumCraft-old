@@ -11,7 +11,7 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class RenderBlockEmpty extends RendererBase {
 
-	public int tileRules = -1;
+	public int tileRules = -1; // a variable that will be mayb
 	
 	public RenderBlockEmpty(int renderID, int tRules) {
 		super(renderID);
@@ -20,7 +20,7 @@ public class RenderBlockEmpty extends RendererBase {
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
-		// TODO Auto-generated method stub
+		// TODO: do somthing here (no idea what)
 		
 	}
 
@@ -34,7 +34,7 @@ public class RenderBlockEmpty extends RendererBase {
 		
 		renderer.aoType = 1;
 		
-		if (tileRules == 0)
+		if (tileRules == 0) //based on tileRules, change the texture connection rules. 0 = UP-DOWN
 		{
 			if (world.getBlockId(x, y-1, z) == bid && world.getBlockId(x, y+1, z) == bid) { 
 				tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackMid);
@@ -64,7 +64,7 @@ public class RenderBlockEmpty extends RendererBase {
 			
 		}
 		
-		// TODO add tileRules 1 = horizontal tiling
+		// TODO: add tileRules 1 = horizontal tiling
 		
 		return true;
 	}

@@ -48,8 +48,7 @@ public class QuantumCraft {
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
-		QuantumCraftSettings.getConfig(new Configuration(event.getSuggestedConfigurationFile()));
-  
+		QuantumCraftSettings.getConfig(new Configuration(event.getSuggestedConfigurationFile())); // load all configurations
 	}
 	
 	@Init

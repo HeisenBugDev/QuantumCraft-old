@@ -16,9 +16,9 @@ import net.minecraft.world.*;
 
 public class BlockEmpty extends Block {
 
-	public int RenderID;
+	public int RenderID; // Renderer ID for the custom renderer
 	
-	public int[] tMap = new int[6];
+	public int[] tMap = new int[6]; // Texture array for all sides
 	
 	public BlockEmpty(int par1, int par2, int rid) {
 		
@@ -34,20 +34,20 @@ public class BlockEmpty extends Block {
 	@Override
 	public boolean renderAsNormalBlock()
 	{
-		return false;
+		return false; // To use custom renderer
 		
 	}
 	
 	@Override
     public int getBlockTextureFromSide(int par1)
     {
-        return tMap[par1];
+        return tMap[par1]; // return values from the tMap
     }
 	
 	@Override
 	public int getRenderType()
 	{
-		return RenderID;
+		return RenderID; // return the RendererID for the game engine
 	}
 	
 	

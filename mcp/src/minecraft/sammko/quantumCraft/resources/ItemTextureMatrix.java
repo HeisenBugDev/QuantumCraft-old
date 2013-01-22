@@ -2,6 +2,8 @@ package sammko.quantumCraft.resources;
 
 public class ItemTextureMatrix {
 
+	//same as block texture matrix
+	
 	public static int PlutoniumIngot = 0x00;
 	
 	public static int PositroniumCrystal = 0x10;

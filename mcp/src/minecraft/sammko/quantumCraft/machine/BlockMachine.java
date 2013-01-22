@@ -15,7 +15,7 @@ import sammko.quantumCraft.resources.BlockTextureMatrix;
 
 public class BlockMachine extends BlockContainer {
 
-	int RenderID;
+	int RenderID; // renderer id for custom renderer
 	
 	public BlockMachine(int par1, int rid) {
 		super(par1, Material.rock);
@@ -38,12 +38,12 @@ public class BlockMachine extends BlockContainer {
 	
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int idk, float what, float these, float are) {
-            TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+            TileEntity tileEntity = world.getBlockTileEntity(x, y, z); // for getting the TE and opening the GUI.
             if (tileEntity == null || player.isSneaking()) {
                     return false;
             } else { player.openGui(QuantumCraft.instance, ItemInitializator.GuiGeneratorID, world, x, y, z); }
-
-            
+            //TODO: register gui in ItemInitializator
+            //BUG: crash on rightclick
             return true;
     }
 	
@@ -62,6 +62,7 @@ public class BlockMachine extends BlockContainer {
 	@Override
 	public TileEntity createNewTileEntity(World var1) {
 		return new TileEntityExtractor(var1,0);
+		//TODO: change this based on the metadata of this block.
 	}
 
 }
