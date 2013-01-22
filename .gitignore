@@ -14,7 +14,6 @@
 /mcp/CHANGELOG
 /mcp/*.bat
 /mcp/*.sh
-/mcp/eclipse/
 /mcp/bin/
 /mcp/conf/
 /mcp/docs/

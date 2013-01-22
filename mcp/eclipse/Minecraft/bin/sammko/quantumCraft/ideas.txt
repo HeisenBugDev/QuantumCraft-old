@@ -1,0 +1,13 @@
+Quantum Craft ideas:
+
+    Ores:
+        1. Positronium = BLUE -> Beams
+        2. Neptunium
+        3. Radium = RED -> QUANTUM FIELDS
+        4. Neutrinium = GREEN -> SIGNALS
+        5. Gammatronium = YELLOW -> 
+    Functions:
+        1. ParticleTubing
+        2. QuantumField
+        3. PositronBeams
+        4. Signalling
