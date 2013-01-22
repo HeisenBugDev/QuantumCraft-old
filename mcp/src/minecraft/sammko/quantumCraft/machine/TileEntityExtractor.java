@@ -8,10 +8,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ISidedInventory;
 
-public class TileEntityGenerator extends TileEntityMachine implements ISidedInventory {
+public class TileEntityExtractor extends TileEntityMachine implements ISidedInventory {
 
 
-	public TileEntityGenerator(World w, int rot) {
+	public TileEntityExtractor(World w, int rot) {
 		super(w, rot);
 		// TODO Auto-generated constructor stub
 	}

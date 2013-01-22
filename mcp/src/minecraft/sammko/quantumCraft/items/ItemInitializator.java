@@ -8,7 +8,7 @@ import sammko.quantumCraft.core.QuantumCraftSettings;
 import sammko.quantumCraft.blocks.BlockEmpty;
 import sammko.quantumCraft.blocks.BlockQuantumOre;
 import sammko.quantumCraft.machine.BlockMachine;
-import sammko.quantumCraft.machine.TileEntityGenerator;
+import sammko.quantumCraft.machine.TileEntityExtractor;
 import sammko.quantumCraft.machine.TileEntityMachine;
 import sammko.quantumCraft.machine.gui.GuiGenerator;
 import sammko.quantumCraft.render.RenderBlockEmpty;
@@ -119,7 +119,7 @@ public class ItemInitializator implements IGuiHandler{
 		public static void initTEntities()
 		{
 			GameRegistry.registerTileEntity(TileEntityMachine.class, "MachineTE");
-			GameRegistry.registerTileEntity(TileEntityGenerator.class, "GeneratorTE");
+			GameRegistry.registerTileEntity(TileEntityExtractor.class, "ExtractorTE");
 		}
 		public static void initRenderers()
 		{

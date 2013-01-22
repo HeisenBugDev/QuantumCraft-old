@@ -61,7 +61,7 @@ public class BlockMachine extends BlockContainer {
 	
 	@Override
 	public TileEntity createNewTileEntity(World var1) {
-		return new TileEntityGenerator(var1,0);
+		return new TileEntityExtractor(var1,0);
 	}
 
 }
