@@ -1,5 +1,20 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c485329ac76977631306c066030c85efda61cb47
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1358800988851_0" label="Window Working Set" name="Aggregate for window 1358800988850"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1358872453290_1" label="Window Working Set" name="Aggregate for window 1358872453290"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1358877299612_2" label="Window Working Set" name="Aggregate for window 1358877299612"/>
+<<<<<<< HEAD
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1358800988851_0" label="Window Working Set" name="Aggregate for window 1358800988850"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1358872453290_1" label="Window Working Set" name="Aggregate for window 1358872453290"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1358877411819_2" label="Window Working Set" name="Aggregate for window 1358877411818"/>
+>>>>>>> Misc eclipse
+=======
+>>>>>>> c485329ac76977631306c066030c85efda61cb47
 </workingSetManager>

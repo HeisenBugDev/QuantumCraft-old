@@ -11,6 +11,7 @@
 *.zip
 *.lnk
 
+/mcp/eclipse/.metadata/
 /mcp/CHANGELOG
 /mcp/*.bat
 /mcp/*.sh
