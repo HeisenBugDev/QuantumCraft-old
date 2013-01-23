@@ -36,7 +36,7 @@ import sammko.quantumCraft.CommonProxy;
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 public class QuantumCraft {
 
-
+//MainClass 
 	
 	public WorldGenOres worldGen = new WorldGenOres();
 	
