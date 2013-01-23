@@ -8,6 +8,12 @@ public class QuantumCraftSettings {
 		public static String BLOCK_PNG = "/sammko/qc/block.png";
 		public static String ITEMS_PNG = "/sammko/qc/items.png";
 
+		//wgen
+		public static boolean WGenPlu;
+		public static boolean WGenPos;
+		public static boolean WGenRad;
+		public static boolean WGenGam;
+		public static boolean WGenNeu;
 		//config IDs
 		public static int MachineBlockID;
 		public static int CrystalPositroniumID;
@@ -52,6 +58,12 @@ public class QuantumCraftSettings {
 	        OreNeutriniumID = config.get("Blocks", "OreNeutrinium", 2504).getInt();
 	        EmptyBlockID = config.get("Blocks", "EmtyBlock", 2505).getInt();
 	        MachineBlockID = config.get("Blocks", "MachineBlock", 2506).getInt();
+	        
+	        WGenPlu = config.get("World Gen", "Plutonium", true).getBoolean(true);
+	        WGenPos = config.get("World Gen", "Positronium", true).getBoolean(true);
+	        WGenRad = config.get("World Gen", "Radium", true).getBoolean(true);
+	        WGenGam = config.get("World Gen", "Gammatronium", true).getBoolean(true);
+	        WGenNeu = config.get("World Gen", "Neutrinium", true).getBoolean(true);
 	        
 	        config.save();
 		}

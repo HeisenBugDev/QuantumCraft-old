@@ -10,19 +10,42 @@ import cpw.mods.fml.common.IWorldGenerator;
 
 public class WorldGenOres implements IWorldGenerator {
 
+	byte heightTreshold = 32;
+	int x,y,z = 0;
 	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		//TODO: check if blocks were Stone, replace only then.
-		//BUG: blocks spawn in midair
-		world.setBlock(chunkX*16 + random.nextInt(16), random.nextInt(32), chunkZ*16 + random.nextInt(16), QuantumCraftSettings.OrePositroniumID);
-		world.setBlock(chunkX*16 + random.nextInt(16), random.nextInt(32), chunkZ*16 + random.nextInt(16), QuantumCraftSettings.OrePlutoniumID);
-		world.setBlock(chunkX*16 + random.nextInt(16), random.nextInt(32), chunkZ*16 + random.nextInt(16), QuantumCraftSettings.OreRadiumID);
-		world.setBlock(chunkX*16 + random.nextInt(16), random.nextInt(32), chunkZ*16 + random.nextInt(16), QuantumCraftSettings.OreGammatroniumID);
-		world.setBlock(chunkX*16 + random.nextInt(16), random.nextInt(32), chunkZ*16 + random.nextInt(16), QuantumCraftSettings.OreNeutriniumID);
 		
+		if (QuantumCraftSettings.WGenPlu) {
+			randomize(chunkX, chunkZ, random);
+			if (world.getBlockId(x, y, z) == 1) world.setBlock(x, y, z, QuantumCraftSettings.OrePlutoniumID);
+		}
+		if (QuantumCraftSettings.WGenPos) {
+			randomize(chunkX, chunkZ, random);
+			if (world.getBlockId(x, y, z) == 1) world.setBlock(x, y, z, QuantumCraftSettings.OrePositroniumID);
+		}
+		if (QuantumCraftSettings.WGenRad) {
+			randomize(chunkX, chunkZ, random);
+			if (world.getBlockId(x, y, z) == 1) world.setBlock(x, y, z, QuantumCraftSettings.OreRadiumID);
+		}
+		if (QuantumCraftSettings.WGenGam) {
+			randomize(chunkX, chunkZ, random);
+			if (world.getBlockId(x, y, z) == 1) world.setBlock(x, y, z, QuantumCraftSettings.OreGammatroniumID);
+		}
+		if (QuantumCraftSettings.WGenNeu) {
+			randomize(chunkX, chunkZ, random);
+			if (world.getBlockId(x, y, z) == 1) world.setBlock(x, y, z, QuantumCraftSettings.OreNeutriniumID);
+		}
 	}
 
+	
+	void randomize(int cx, int cz, Random r)
+	{
+		x = cx*16 + r.nextInt(16);
+		y = r.nextInt(heightTreshold);
+		z = cz*16 + r.nextInt(16);
+	}
+	
 
 }
