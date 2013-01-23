@@ -11,7 +11,9 @@ public class CraftingManager {
 	{
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.EmptyBlock, 4), " x ", "xyx", " x ", 'y', new ItemStack(ItemInitializator.ItemIngotPlutonium), 'x', new ItemStack(Block.stone));
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemInitializator.ItemEmptyEnergyPacket,4), new ItemStack(ItemInitializator.ItemIngotPlutonium), new ItemStack(ItemInitializator.ItemIngotPlutonium) );
-	
+		//new ItemStack(ItemInitializator.EmptyBlock, 4) means the result are 4 EMpty Blocks
+		//" x ", "xyx", " x " is the crafting matrix
+		//'y', new ItemStack(ItemInitializator.ItemIngotPlutonium) means that y, in the crafting matrix should be Plutonium ingot
 	}
 
 	public static void addSmelting()
@@ -22,5 +24,7 @@ public class CraftingManager {
 		GameRegistry.addSmelting(QuantumCraftSettings.OreGammatroniumID, new ItemStack(ItemInitializator.ItemGammatroniumCrystal), 4F);
 		GameRegistry.addSmelting(QuantumCraftSettings.OreNeutriniumID, new ItemStack(ItemInitializator.ItemNeutriniumCrystal), 4F);
 	
+		//QuantumCraftSettings.OrePlutoniumID is the input item
+		//new ItemStack(ItemInitializator.ItemIngotPlutonium) is output
 	}
 }
