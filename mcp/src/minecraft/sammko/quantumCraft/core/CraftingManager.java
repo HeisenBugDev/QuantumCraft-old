@@ -9,7 +9,7 @@ public class CraftingManager {
 
 	public static void addCrafting()
 	{
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.EmptyBlock, 1), " x ", "xyx", " x ", 'x', new ItemStack(ItemInitializator.ItemIngotPlutonium), 'y', new ItemStack(Block.stone));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.EmptyBlock, 4), " x ", "xyx", " x ", 'y', new ItemStack(ItemInitializator.ItemIngotPlutonium), 'x', new ItemStack(Block.stone));
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemInitializator.ItemEmptyEnergyPacket,4), new ItemStack(ItemInitializator.ItemIngotPlutonium), new ItemStack(ItemInitializator.ItemIngotPlutonium) );
 	
 	}
