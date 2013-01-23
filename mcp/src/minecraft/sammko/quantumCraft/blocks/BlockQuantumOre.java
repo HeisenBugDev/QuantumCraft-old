@@ -9,7 +9,6 @@ public class BlockQuantumOre extends BlockOre {
 		super(par1, par2);
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
 		GameRegistry.registerBlock(this);
-		// TODO Auto-generated constructor stub
 	}
 
 

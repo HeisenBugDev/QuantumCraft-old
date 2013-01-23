@@ -16,10 +16,13 @@ public class WorldGenOres implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		
+		//TODO: improve to make this generate in veins
 		if (QuantumCraftSettings.WGenPlu) {
-			randomize(chunkX, chunkZ, random);
-			if (world.getBlockId(x, y, z) == 1) world.setBlock(x, y, z, QuantumCraftSettings.OrePlutoniumID);
+			for (int i = 0; i < 5; i++)
+			{
+				randomize(chunkX, chunkZ, random);
+				if (world.getBlockId(x, y, z) == 1) world.setBlock(x, y, z, QuantumCraftSettings.OrePlutoniumID);
+			}
 		}
 		if (QuantumCraftSettings.WGenPos) {
 			randomize(chunkX, chunkZ, random);
