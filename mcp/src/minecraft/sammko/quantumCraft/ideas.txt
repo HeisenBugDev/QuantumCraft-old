@@ -2,10 +2,9 @@ Quantum Craft ideas:
 
     Ores:
         1. Positronium = BLUE -> Beams
-        2. Neptunium
-        3. Radium = RED -> QUANTUM FIELDS
-        4. Neutrinium = GREEN -> SIGNALS
-        5. Gammatronium = YELLOW -> 
+        2. Radium = RED -> QUANTUM FIELDS
+        3. Neutrinium = GREEN -> SIGNALS
+        4. Gammatronium = YELLOW -> 
     Functions:
         1. Energy Packets
             - Energy transfered as items
