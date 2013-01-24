@@ -17,3 +17,6 @@ Quantum Craft ideas:
             - singal beams that can go thru walls
         5. GammaRay
             - A  block that emits rays of energy that can be harnessed to charge items.
+
+    Power System:
+        Gammatronium is an unspecalized power source that is very basic and cannot power complex items. However all other items can power the BASIC ones but in turn can only power their advanced items that require them.
