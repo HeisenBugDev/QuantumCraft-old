@@ -2,10 +2,9 @@ Quantum Craft ideas:
 
     Ores:
         1. Positronium = BLUE -> Beams
-        2. Neptunium
-        3. Radium = RED -> QUANTUM FIELDS
-        4. Neutrinium = GREEN -> SIGNALS
-        5. Gammatronium = YELLOW -> 
+        2. Radium = RED -> QUANTUM FIELDS
+        3. Neutrinium = GREEN -> SIGNALS
+        4. Gammatronium = YELLOW -> GAMMA RAY
     Functions:
         1. Energy Packets
             - Energy transfered as items
@@ -16,3 +15,8 @@ Quantum Craft ideas:
             - a deadly laser
         4. Signalling
             - singal beams that can go thru walls
+        5. GammaRay
+            - A  block that emits rays of energy that can be harnessed to charge items.
+
+    Power System:
+        Gammatronium is an unspecalized power source that is very basic and cannot power complex items. However all other items can power the BASIC ones but in turn can only power their advanced items that require them.
