@@ -20,7 +20,7 @@
  
    <!-- Update to point to your Python executable. Example: /usr/bin/python -->
    <!-- The following location is for Windows: -->
-   <property name="python" location="$/usr/bin/python" />
+   <property name="python" location="/usr/bin/python" />
  
    <target name="init" description="Initialize build environment">
       <echo message="Cleaning old build and dist, MCP reobf directories" />
