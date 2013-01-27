@@ -2,12 +2,14 @@ package sammko.quantumCraft.resources;
 
 public class BlockTextureMatrix {
 	
+
 	//texture layout in the file. 0x = Hex; 1st digit = Columns, 2nd digit = Rows. 0 - F (0 - 15)
 	public static int OrePositronium = 0xE0;
 	public static int OrePlutonium = 0xF0;
 	public static int OreRadium = 0xE1;
 	public static int OreGammatronium = 0xF1;
 	public static int OreNeutrinium = 0xF2;
+	public static int OreDepleted = 0xF3;
 	
 	public static int Err = 0x14;
 	

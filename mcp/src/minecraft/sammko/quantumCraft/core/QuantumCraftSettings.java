@@ -14,6 +14,7 @@ public class QuantumCraftSettings {
 		public static boolean WGenRad;
 		public static boolean WGenGam;
 		public static boolean WGenNeu;
+		public static boolean WGenDep;
 		//config IDs
 		public static int MachineBlockID;
 		public static int CrystalPositroniumID;
@@ -27,6 +28,7 @@ public class QuantumCraftSettings {
 		public static int OreRadiumID;
 		public static int OreGammatroniumID;
 		public static int OreNeutriniumID;
+		public static int OreDepletedID;
 		public static int EmptyBlockID;
 		public static int EmptyEnergyPacketID;
 		public static int PositroniumEnergyPacketID;
@@ -66,6 +68,7 @@ public class QuantumCraftSettings {
 	        WGenRad = config.get("World Gen", "Radium", true).getBoolean(true);
 	        WGenGam = config.get("World Gen", "Gammatronium", true).getBoolean(true);
 	        WGenNeu = config.get("World Gen", "Neutrinium", true).getBoolean(true);
+	        WGenDep = config.get("World Gen", "DepletedOre", true).getBoolean(true);
 	        
 	        config.save();
 		}

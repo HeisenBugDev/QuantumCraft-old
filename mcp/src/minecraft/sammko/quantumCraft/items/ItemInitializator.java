@@ -40,6 +40,8 @@ public class ItemInitializator implements IGuiHandler{
 		public static BlockQuantumOre OreRadium;
 		public static BlockQuantumOre OreGammatronium;
 		public static BlockQuantumOre OreNeutrinium;
+		public static BlockQuantumOre OreDepleted;
+		
 		//Blocks
 		public static BlockEmpty EmptyBlock;
 		//Machines
@@ -68,7 +70,8 @@ public class ItemInitializator implements IGuiHandler{
 			OreRadium = (BlockQuantumOre) new BlockQuantumOre(QuantumCraftSettings.OreRadiumID, BlockTextureMatrix.getIndex(BlockTextureMatrix.OreRadium)).setBlockName("oreRadium").setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep);
 			OreGammatronium = (BlockQuantumOre) new BlockQuantumOre(QuantumCraftSettings.OreGammatroniumID, BlockTextureMatrix.getIndex(BlockTextureMatrix.OreGammatronium)).setBlockName("oreGammatronium").setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep);
 			OreNeutrinium = (BlockQuantumOre) new BlockQuantumOre(QuantumCraftSettings.OreNeutriniumID, BlockTextureMatrix.getIndex(BlockTextureMatrix.OreNeutrinium)).setBlockName("oreNeutrinium").setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep);
-
+			OreDepleted = (BlockQuantumOre) new BlockQuantumOre(QuantumCraftSettings.OreDepletedID, BlockTextureMatrix.getIndex(BlockTextureMatrix.OreDepleted)).setBlockName("OreDepleted").setHardness(5.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep);
+			
 			LanguageRegistry.addName(OrePositronium, "Positronium Ore");
 			LanguageRegistry.addName(OrePlutonium, "Plutonium Ore");
 			LanguageRegistry.addName(OreRadium, "Radium Ore");
