@@ -34,14 +34,14 @@
    </target>
  
    <target name="recompile" description="MCP recompile" >
-      <exec executable="${python}" dir="${mcp.dir}">
+      <exec executable="sh" dir="${mcp.dir}">
           <arg value="runtime/recompile.py"/>
           <arg value="%*"/>
       </exec>
    </target>
  
    <target name="reobfuscate" description="MCP reobfuscate">
-      <exec executable="${python}" dir="${mcp.dir}">
+      <exec executable="sh" dir="${mcp.dir}">
           <arg value="runtime/reobfuscate.py"/>
           <arg value="%*"/>
       </exec>
