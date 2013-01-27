@@ -42,18 +42,18 @@ public class QuantumCraftSettings {
 			//config
 	        config.load();
 
-	        PlutoniumIngotID = config.get("Items", "IngotPlutonium", 7500).getInt();
-	        CrystalPositroniumID = config.get("Items", "CrystalPositronium", 7501).getInt();
-	        CrystalRadiumID = config.get("Items", "CrystalRadium", 7502).getInt();
-	        CrystalGammatroniumID = config.get("Items", "CrystalGammatronium", 7503).getInt();
-	        CrystalNeutriniumID = config.get("Items", "CrystalNeutrinium", 7504).getInt();
-	        CrystalDepletedID = config.get("Items", "CrystalDepleted", 7505).getInt();
-	        EmptyEnergyPacketID = config.get("Items", "EmptyEnergyPacketID", 7506).getInt();
-	        PositroniumEnergyPacketID = config.get("Items", "PositroniumEnergyPacketID", 7507).getInt();
-	        RadiumEnergyPacketID = config.get("Items", "RadiumEnergyPacketID", 7508).getInt();
-	        GammatroniumEnergyPacketID = config.get("Items", "GammatroniumEnergyPacketID", 7509).getInt();
-	        NeutriniumEnergyPacketID = config.get("Items", "NeutriniumEnergyPacketID", 7510).getInt();
-	        CrystalPickaxeID = config.get("Items", "CrystalPickaxeID", 7511).getInt();
+	        PlutoniumIngotID = config.get("Items", "IngotPlutonium", 4500).getInt();
+	        CrystalPositroniumID = config.get("Items", "CrystalPositronium", 4501).getInt();
+	        CrystalRadiumID = config.get("Items", "CrystalRadium", 4502).getInt();
+	        CrystalGammatroniumID = config.get("Items", "CrystalGammatronium", 4503).getInt();
+	        CrystalNeutriniumID = config.get("Items", "CrystalNeutrinium", 4504).getInt();
+	        CrystalDepletedID = config.get("Items", "CrystalDepleted", 4505).getInt();
+	        EmptyEnergyPacketID = config.get("Items", "EmptyEnergyPacketID", 4506).getInt();
+	        PositroniumEnergyPacketID = config.get("Items", "PositroniumEnergyPacketID", 4507).getInt();
+	        RadiumEnergyPacketID = config.get("Items", "RadiumEnergyPacketID", 4508).getInt();
+	        GammatroniumEnergyPacketID = config.get("Items", "GammatroniumEnergyPacketID", 4509).getInt();
+	        NeutriniumEnergyPacketID = config.get("Items", "NeutriniumEnergyPacketID", 4510).getInt();
+	        CrystalPickaxeID = config.get("Items", "CrystalPickaxeID", 4511).getInt();
 	        
 	      
 	        OrePositroniumID = config.get("Blocks", "OrePositronium", 2500).getInt();
