@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?><project name="QuantumCraft" basedir="." default="main">
-<<<<<<< HEAD
 <property name="build.dir"            value="build"/>
 <property name="download.dir"         value="download"/>
 <property name="mcp.dir"              value="${build.dir}/mcp"/>
