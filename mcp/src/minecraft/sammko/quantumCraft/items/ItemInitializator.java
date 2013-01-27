@@ -77,6 +77,7 @@ public class ItemInitializator implements IGuiHandler{
 			LanguageRegistry.addName(OreRadium, "Radium Ore");
 			LanguageRegistry.addName(OreGammatronium, "Gammatronium Ore");
 			LanguageRegistry.addName(OreNeutrinium, "Neutrinium Ore");
+			LanguageRegistry.addName(OreDepleted, "Depleted Crystal Ore");
 		}
 		public static void initBlocks()
 		{

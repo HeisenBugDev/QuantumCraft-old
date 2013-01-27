@@ -23,9 +23,11 @@ public class BlockQuantumOre extends BlockOre {
 		if (this.blockID == QuantumCraftSettings.OrePositroniumID) return QuantumCraftSettings.CrystalPositroniumID+256; else
 		if (this.blockID == QuantumCraftSettings.OreRadiumID) return QuantumCraftSettings.CrystalRadiumID+256; else
 		if (this.blockID == QuantumCraftSettings.OreGammatroniumID) return QuantumCraftSettings.CrystalGammatroniumID+256; else
+		if (this.blockID == QuantumCraftSettings.OreDepletedID) return QuantumCraftSettings.OreDepletedID+256; else
 		if (this.blockID == QuantumCraftSettings.OreNeutriniumID) return QuantumCraftSettings.CrystalNeutriniumID+256; else
 		if (this.blockID == QuantumCraftSettings.OrePlutoniumID) return QuantumCraftSettings.OrePlutoniumID+256; else
 			return -1;
+	
     }
 
 	public int quantityDropped(Random par1Random)

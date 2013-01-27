@@ -55,6 +55,7 @@ public class QuantumCraftSettings {
 	        NeutriniumEnergyPacketID = config.get("Items", "NeutriniumEnergyPacketID", 7510).getInt();
 	        CrystalPickaxeID = config.get("Items", "CrystalPickaxeID", 7511).getInt();
 	        
+	      
 	        OrePositroniumID = config.get("Blocks", "OrePositronium", 2500).getInt();
 	        OrePlutoniumID = config.get("Blocks", "OrePlutonium", 2501).getInt();
 	        OreRadiumID = config.get("Blocks", "OreRadium", 2502).getInt();
@@ -62,6 +63,7 @@ public class QuantumCraftSettings {
 	        OreNeutriniumID = config.get("Blocks", "OreNeutrinium", 2504).getInt();
 	        EmptyBlockID = config.get("Blocks", "EmtyBlock", 2505).getInt();
 	        MachineBlockID = config.get("Blocks", "MachineBlock", 2506).getInt();
+	        OreDepletedID = config.get("Blocks", "OreDepleted", 2507).getInt();
 	        
 	        WGenPlu = config.get("World Gen", "Plutonium", true).getBoolean(true);
 	        WGenPos = config.get("World Gen", "Positronium", true).getBoolean(true);
