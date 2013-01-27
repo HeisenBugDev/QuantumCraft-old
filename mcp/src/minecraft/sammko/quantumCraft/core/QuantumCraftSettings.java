@@ -14,6 +14,7 @@ public class QuantumCraftSettings {
 		public static boolean WGenRad;
 		public static boolean WGenGam;
 		public static boolean WGenNeu;
+		public static boolean WGenDep;
 		//config IDs
 		public static int MachineBlockID;
 		public static int CrystalPositroniumID;
@@ -27,12 +28,14 @@ public class QuantumCraftSettings {
 		public static int OreRadiumID;
 		public static int OreGammatroniumID;
 		public static int OreNeutriniumID;
+		public static int OreDepletedID;
 		public static int EmptyBlockID;
 		public static int EmptyEnergyPacketID;
 		public static int PositroniumEnergyPacketID;
 		public static int RadiumEnergyPacketID;
 		public static int GammatroniumEnergyPacketID;
 		public static int NeutriniumEnergyPacketID;
+		public static int CrystalPickaxeID;
 		
 		public static void getConfig(Configuration config)
 		{
@@ -50,7 +53,9 @@ public class QuantumCraftSettings {
 	        RadiumEnergyPacketID = config.get("Items", "RadiumEnergyPacketID", 7508).getInt();
 	        GammatroniumEnergyPacketID = config.get("Items", "GammatroniumEnergyPacketID", 7509).getInt();
 	        NeutriniumEnergyPacketID = config.get("Items", "NeutriniumEnergyPacketID", 7510).getInt();
+	        CrystalPickaxeID = config.get("Items", "CrystalPickaxeID", 7511).getInt();
 	        
+	      
 	        OrePositroniumID = config.get("Blocks", "OrePositronium", 2500).getInt();
 	        OrePlutoniumID = config.get("Blocks", "OrePlutonium", 2501).getInt();
 	        OreRadiumID = config.get("Blocks", "OreRadium", 2502).getInt();
@@ -58,12 +63,14 @@ public class QuantumCraftSettings {
 	        OreNeutriniumID = config.get("Blocks", "OreNeutrinium", 2504).getInt();
 	        EmptyBlockID = config.get("Blocks", "EmtyBlock", 2505).getInt();
 	        MachineBlockID = config.get("Blocks", "MachineBlock", 2506).getInt();
+	        OreDepletedID = config.get("Blocks", "OreDepleted", 2507).getInt();
 	        
 	        WGenPlu = config.get("World Gen", "Plutonium", true).getBoolean(true);
 	        WGenPos = config.get("World Gen", "Positronium", true).getBoolean(true);
 	        WGenRad = config.get("World Gen", "Radium", true).getBoolean(true);
 	        WGenGam = config.get("World Gen", "Gammatronium", true).getBoolean(true);
 	        WGenNeu = config.get("World Gen", "Neutrinium", true).getBoolean(true);
+	        WGenDep = config.get("World Gen", "DepletedOre", true).getBoolean(true);
 	        
 	        config.save();
 		}

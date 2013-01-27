@@ -15,9 +15,11 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraft.item.Item;
 /*FORGE IMPORTS*/
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.MinecraftForge;
 /*SAMMKO IMPORTS*/
 import sammko.quantumCraft.blocks.BlockEmpty;
 import sammko.quantumCraft.blocks.BlockQuantumOre;
@@ -57,6 +59,7 @@ public class QuantumCraft {
 		ItemInitializator.initAll();
 		CraftingManager.addCrafting();
 		CraftingManager.addSmelting();
+		MinecraftForge.setToolClass(ItemInitializator.ItemCrystalPickaxe, "CrystalPickaxe", 2);
 	}
 	
 	@PostInit

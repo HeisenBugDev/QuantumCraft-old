@@ -3,7 +3,10 @@ package sammko.quantumCraft.items;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.ItemPickaxe;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumHelper;
 import sammko.quantumCraft.core.QuantumCraftSettings;
 import sammko.quantumCraft.blocks.BlockEmpty;
 import sammko.quantumCraft.blocks.BlockQuantumOre;
@@ -37,6 +40,8 @@ public class ItemInitializator implements IGuiHandler{
 		public static BlockQuantumOre OreRadium;
 		public static BlockQuantumOre OreGammatronium;
 		public static BlockQuantumOre OreNeutrinium;
+		public static BlockQuantumOre OreDepleted;
+		
 		//Blocks
 		public static BlockEmpty EmptyBlock;
 		//Machines
@@ -48,6 +53,9 @@ public class ItemInitializator implements IGuiHandler{
 		public static ItemCrystal ItemGammatroniumCrystal;
 		public static ItemCrystal ItemNeutriniumCrystal;
 		public static ItemCrystal ItemDepletedCrystal;
+		
+		public static ItemPickaxe ItemCrystalPickaxe;
+		public static EnumToolMaterial DEPLETEDCRYSTAL = EnumHelper.addToolMaterial("DEPLETEDCRYSTAL", 2, 500, 7.0F, 6, 10);
 		
 		public static ItemEnergyPacket ItemEmptyEnergyPacket;
 		public static ItemEnergyPacket ItemPositroniumEnergyPacket;
@@ -62,12 +70,14 @@ public class ItemInitializator implements IGuiHandler{
 			OreRadium = (BlockQuantumOre) new BlockQuantumOre(QuantumCraftSettings.OreRadiumID, BlockTextureMatrix.getIndex(BlockTextureMatrix.OreRadium)).setBlockName("oreRadium").setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep);
 			OreGammatronium = (BlockQuantumOre) new BlockQuantumOre(QuantumCraftSettings.OreGammatroniumID, BlockTextureMatrix.getIndex(BlockTextureMatrix.OreGammatronium)).setBlockName("oreGammatronium").setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep);
 			OreNeutrinium = (BlockQuantumOre) new BlockQuantumOre(QuantumCraftSettings.OreNeutriniumID, BlockTextureMatrix.getIndex(BlockTextureMatrix.OreNeutrinium)).setBlockName("oreNeutrinium").setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep);
-
+			OreDepleted = (BlockQuantumOre) new BlockQuantumOre(QuantumCraftSettings.OreDepletedID, BlockTextureMatrix.getIndex(BlockTextureMatrix.OreDepleted)).setBlockName("OreDepleted").setHardness(5.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep);
+			
 			LanguageRegistry.addName(OrePositronium, "Positronium Ore");
 			LanguageRegistry.addName(OrePlutonium, "Plutonium Ore");
 			LanguageRegistry.addName(OreRadium, "Radium Ore");
 			LanguageRegistry.addName(OreGammatronium, "Gammatronium Ore");
 			LanguageRegistry.addName(OreNeutrinium, "Neutrinium Ore");
+			LanguageRegistry.addName(OreDepleted, "Depleted Crystal Ore");
 		}
 		public static void initBlocks()
 		{
@@ -89,6 +99,8 @@ public class ItemInitializator implements IGuiHandler{
 			ItemRadiumEnergyPacket = new ItemEnergyPacket(QuantumCraftSettings.RadiumEnergyPacketID);
 			ItemGammatroniumEnergyPacket = new ItemEnergyPacket(QuantumCraftSettings.GammatroniumEnergyPacketID);
 			ItemNeutriniumEnergyPacket = new ItemEnergyPacket(QuantumCraftSettings.NeutriniumEnergyPacketID);
+			
+			ItemCrystalPickaxe = (ItemPickaxe) new CrystalPickaxe(QuantumCraftSettings.CrystalPickaxeID, DEPLETEDCRYSTAL).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CrystalPickaxe)).setItemName("CrystalPickaxe");
 			
 			ItemIngotPlutonium.setMaxStackSize(64).setCreativeTab(CreativeTabs.tabMisc).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.PlutoniumIngot)).setItemName("plutoniumIngot");
 			ItemPositroniumCrystal.setMaxStackSize(64).setCreativeTab(CreativeTabs.tabMisc).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.PositroniumCrystal)).setItemName("positroniumCrystal");
@@ -115,6 +127,7 @@ public class ItemInitializator implements IGuiHandler{
 			LanguageRegistry.addName(ItemRadiumEnergyPacket, "Radium EPacket");
 			LanguageRegistry.addName(ItemGammatroniumEnergyPacket, "Gammatronium EPacket");
 			LanguageRegistry.addName(ItemNeutriniumEnergyPacket, "Neutrinium EPacket");
+			LanguageRegistry.addName(ItemCrystalPickaxe, "Crystal Pickaxe");
 		}
 		public static void initTEntities()
 		{
