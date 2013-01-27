@@ -1,104 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?><project name="QuantumCraft" basedir="." default="main">
-<property name="build.dir"            value="build"/>
-<property name="download.dir"         value="download"/>
-<property name="mcp.dir"              value="${build.dir}/mcp"/>
-<property name="forge.dir"            value="${mcp.dir}/forge"/>
-<!-- Your name here -->
-<property name="author" value="Sammko and hunterboerner" />
-
-<!-- Your release version here -->
-<property name="version" value="1.0.0" />
-
-<!-- Choose ".zip" or ".jar" as the dist file extension -->
-<property name="filetype" value="jar" />
-
-<!-- Update if mcp directory isn't in same location as this file -->
-<property name="mcp.dir" location="./mcp" />
-
-<!-- Update if dist directory isn't in same location as this file -->  
-<property name="dist.dir" location="./dist" />
-
-<!-- Update only if build directory isn't in same location as this file -->
-<property name="build.dir" location="./build" />
-
-<!-- Update to point to your Python executable. Example: /usr/bin/python -->
-<!-- The following location is for Windows: -->
-<property name="python" location="python" />
-
-<target name="init" description="Initialize build environment">
-
-  <echo message="Cleaning old build and dist, MCP reobf directories" />
-  <get src="${downloadserver.full}mcp${mcp.version}.zip" dest="${download.dir}" usetimestamp="True"/>
-  <get src="${downloadserver.full}minecraftforge-src-${mc.version}-${forge.version}.zip" dest="${download.dir}" usetimestamp="True"/>
-
-  <unzip dest="${mcp.dir}" failOnEmptyArchive="true">
-        <fileset dir="${download.dir}">
-                <include name="mcp${mcp.version}.zip"/>
-        </fileset>
-</unzip>
-
-<unzip dest="${mcp.dir}" failOnEmptyArchive="true">
-        <fileset dir="${download.dir}">
-                <include name="minecraftforge-src-${mc.version}-${forge.version}.zip"/>
-        </fileset>
-</unzip>
-
-<chmod file="${mcp.dir}/updatemd5.sh" perm="+x"/>
-<chmod file="${mcp.dir}/updatemcp.sh" perm="+x"/>
-<chmod file="${mcp.dir}/recompile.sh" perm="+x"/>
-<chmod file="${mcp.dir}/reobfuscate.sh" perm="+x"/>
-<chmod file="${forge.dir}/install.sh" perm="+x"/>
-
-<exec dir="${forge.dir}" executable="sh" osfamily="unix" failonerror="true">
-        <arg value="install.sh"/>
-</exec>
-<exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
-        <arg line="updatemd5.sh -f --client"/>
-</exec>
-<delete dir="${build.dir}" />
-<delete dir="${dist.dir}" />
-<delete dir="${mcp.dir}/reobf" />
-
-<echo message="Creating build and dist dirs" />
-<mkdir dir="${dist.dir}" />
-</target>
-
-<target name="recompile" description="MCP recompile" >
-  <exec executable="python" dir="${mcp.dir}">
-      <arg value="runtime/recompile.py"/>
-      <arg value="%*"/>
-</exec>
-</target>
-
-<target name="reobfuscate" description="MCP reobfuscate">
-  <exec executable="python" dir="${mcp.dir}">
-      <arg value="runtime/reobfuscate.py"/>
-      <arg value="%*"/>
-</exec>
-</target>
-
-<target name="stage" description="Stage resources into build directory">
-  <copy todir="${build.dir}">
-       <fileset dir="${mcp.dir}/reobf/minecraft" excludes=".svn/**, *.txt" />
-</copy>
-<!-- Copy other stuff specific to your project -->
-</target>
-
-<target name="main" description="Perform all tasks for a build" depends="init, recompile, reobfuscate, stage, jarzip">
-  <echo message="MCP Ant Build Completed!" />
-</target>
-
-<target name="jarzip" description="Jar (or zip) the project's dist output">
-  <mkdir dir="${dist.dir}" />
-  <jar destfile="${dist.dir}/${ant.project.name}${version}.${filetype}" duplicate="preserve" index="true" manifestencoding="UTF-8">
-       <manifest>
-=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Quantum Craft" basedir="." default="all">
  
    <!-- Your name here -->
    <property name="author" value="sammko, hunterboerner, DJRaffa" />
  
    <!-- Your release version here -->
-   <property name="version" value="1.0.0" />
+   <property name="version" value="0.7.8" />
  
    <!-- Choose ".zip" or ".jar" as the dist file extension -->
    <property name="filetype" value="jar" />
@@ -111,11 +18,15 @@
  
    <!-- Update only if build directory isn't in same location as this file -->
    <property name="build.dir" location="./build" />
- 
-   <!-- Update to point to your Python executable. Example: /usr/bin/python -->
-   <!-- The following location is for Windows: -->
-   <property name="python" location="python" />
- 
+  
+   <target name="forge" description="Install forge">
+	  <echo message="Installing forge" />
+	  <exec executable="python" dir=".">
+          <arg value="install.py"/>
+          <arg value="%*"/>
+      </exec>
+   </target>
+   
    <target name="init" description="Initialize build environment">
       <echo message="Cleaning old build and dist, MCP reobf directories" />
       <delete dir="${build.dir}" />
@@ -127,22 +38,30 @@
       <mkdir dir="${dist.dir}" />
    </target>
  
-  <exec dir="${mcp.dir}" executable="python" osfamily="unix" failonerror="true">
-                        <arg value="recompile.py"/>
-                </exec>
+   <target name="recompile" description="MCP recompile" >
+      <exec executable="python" dir="${mcp.dir}">
+          <arg value="runtime/recompile.py"/>
+          <arg value="%*"/>
+      </exec>
+   </target>
  
-   <exec dir="${mcp.dir}" executable="python" osfamily="unix" failonerror="true">
-                        <arg value="reobfuscate.py"/>
-                </exec>
+   <target name="reobfuscate" description="MCP reobfuscate">
+      <exec executable="python" dir="${mcp.dir}">
+          <arg value="runtime/reobfuscate.py"/>
+          <arg value="%*"/>
+      </exec>
+   </target>
  
    <target name="stage" description="Stage resources into build directory">
       <copy todir="${build.dir}">
          <fileset dir="${mcp.dir}/reobf/minecraft" excludes=".svn/**, *.txt" />
       </copy>
-      <!-- Copy other stuff specific to your project -->
+	  <copy todir="${build.dir}">
+         <fileset dir="${mcp.dir}/src/minecraft/sammko/qc" />
+      </copy>
    </target>
  
-   <target name="main" description="Perform all tasks for a build" depends="init, recompile, reobfuscate, stage, jarzip">
+   <target name="all" description="Perform all tasks for a build" depends="init, recompile, reobfuscate, stage, jarzip">
       <echo message="MCP Ant Build Completed!" />
    </target>
  
@@ -155,7 +74,8 @@
             <attribute name="Implementation-Title" value="${ant.project.name}"/>
             <attribute name="Implementation-Version" value="${version}"/>
          </manifest>
-    <fileset dir="${build.dir}" />
-</jar>
-</target>
+         <fileset dir="${build.dir}" />
+      </jar>
+   </target>
+ 
 </project>

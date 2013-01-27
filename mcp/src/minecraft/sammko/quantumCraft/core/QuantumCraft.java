@@ -34,7 +34,7 @@ import sammko.quantumCraft.resources.BlockTextureMatrix;
 import sammko.quantumCraft.resources.ItemTextureMatrix;
 import sammko.quantumCraft.CommonProxy;
 
-@Mod(modid="QuantumCraft", name="Quantum Craft", version="0.2.0")
+@Mod(modid="QuantumCraft", name="Quantum Craft", version="0.7.8")
 @NetworkMod(clientSideRequired=true, serverSideRequired=true)
 public class QuantumCraft {
 
