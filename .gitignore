@@ -12,6 +12,8 @@
 *.zip
 *.lnk
 
+!/mcp/compiled/
+
 /mcp/CHANGELOG
 /mcp/*.bat
 /mcp/*.sh
