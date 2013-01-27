@@ -33,12 +33,12 @@
       <mkdir dir="${dist.dir}" />
    </target>
  
-  <exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
-                        <arg value="recompile.sh"/>
+  <exec dir="${mcp.dir}" executable="python" osfamily="unix" failonerror="true">
+                        <arg value="recompile.py"/>
                 </exec>
  
-   <exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
-                        <arg value="reobfuscate.sh"/>
+   <exec dir="${mcp.dir}" executable="python" osfamily="unix" failonerror="true">
+                        <arg value="reobfuscate.py"/>
                 </exec>
  
    <target name="stage" description="Stage resources into build directory">
