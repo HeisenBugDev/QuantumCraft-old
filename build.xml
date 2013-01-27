@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" ?><project name="Sample" basedir="." default="all">
+<?xml version="1.0" encoding="UTF-8" ?><project name="QuantumCraft" basedir="." default="main">
  
    <!-- Your name here -->
-   <property name="author" value="Sammko and d hunterboerner" />
+   <property name="author" value="Sammko and hunterboerner" />
  
    <!-- Your release version here -->
    <property name="version" value="1.0.0" />
@@ -54,7 +54,7 @@
       <!-- Copy other stuff specific to your project -->
    </target>
  
-   <target name="all" description="Perform all tasks for a build" depends="init, recompile, reobfuscate, stage, jarzip">
+   <target name="main" description="Perform all tasks for a build" depends="init, recompile, reobfuscate, stage, jarzip">
       <echo message="MCP Ant Build Completed!" />
    </target>
  
