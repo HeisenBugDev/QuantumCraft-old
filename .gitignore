@@ -1,4 +1,4 @@
-
+!/mcp/compiled/
 /common/
 /client/
 /fml/
@@ -11,8 +11,6 @@
 *.jar
 *.zip
 *.lnk
-
-!/mcp/compiled/
 
 /mcp/CHANGELOG
 /mcp/*.bat
