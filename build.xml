@@ -33,19 +33,13 @@
       <mkdir dir="${dist.dir}" />
    </target>
  
-   <target name="recompile" description="MCP recompile" >
-      <exec executable="sh" dir="${mcp.dir}">
-          <arg value="runtime/recompile.py"/>
-          <arg value="%*"/>
-      </exec>
-   </target>
+  <exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
+                        <arg value="recompile.sh"/>
+                </exec>
  
-   <target name="reobfuscate" description="MCP reobfuscate">
-      <exec executable="sh" dir="${mcp.dir}">
-          <arg value="runtime/reobfuscate.py"/>
-          <arg value="%*"/>
-      </exec>
-   </target>
+   <exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
+                        <arg value="reobfuscate.sh"/>
+                </exec>
  
    <target name="stage" description="Stage resources into build directory">
       <copy todir="${build.dir}">
