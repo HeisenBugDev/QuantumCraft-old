@@ -1,222 +1,73 @@
-<project name="LogisticsPipes" basedir="../" default="main">
-        <property environment="env"/>
-
-        <!-- Properties -->
-
-        <property name="build.dir"            value="build"/>
-        <property name="src.dir"              value="src"/>
-        <property name="sign.dir"             value="/home/jenkins/.sign"/>
-
-        <property name="download.dir"         value="download"/>
-        <property name="files.minecraft.dir"  value="jars"/>
-
-        <property name="classes.dir"          value="${build.dir}/classes"/>
-        <property name="jar.dir"              value="${build.dir}/dist"/>
-        <property name="lib.dir"              value="${build.dir}/lib"/>
-
-        <property name="mcp.dir"              value="${build.dir}/mcp"/>
-        
-        <property name="clientsrc.dir"        value="${mcp.dir}/src/minecraft"/>
-        <property name="commonsrc.dir"        value="${clientsrc.dir}"/>
-
-        <property name="downloadserver"       value="http://www.theZorro266.com"/>
-        <property name="downloadserver.dir"   value="rs485/"/>
-        <property name="downloadserver.full"  value="${downloadserver}/${downloadserver.dir}"/>
-
-        <property name="antcont.version"      value="1.0b2"/>
-        <property name="mcp.version"          value="726"/>
-        <property name="mc.version"           value="1.4.7"/>
-        <property name="forge.version"        value="6.6.0.499"/>
-
-        <echo message="Starting build for ${lp.version.full} for MC ${mc.version} for BC ${bc.version}"/>
-
-        <!-- Targets -->
-
-        <target name="clean">
-                <delete dir="${build.dir}"/>
-        </target>
-
-        <target name="setup">
-                <mkdir dir="${download.dir}"/>
-
-                <get src="${downloadserver.full}mcp${mcp.version}.zip" dest="${download.dir}" usetimestamp="True"/>
-                <get src="http://files.minecraftforge.net/minecraftforge/minecraftforge-src-1.4.7-6.6.0.516.zip" dest="${download.dir}" usetimestamp="True"/>
-                <get src="${downloadserver.full}ant-contrib-${antcont.version}-bin.zip" dest="${download.dir}" usetimestamp="True"/>
-
-                <echo message="Download finished"/>
-
-
-                <unzip dest="${lib.dir}" failOnEmptyArchive="true">
-                        <fileset dir="${download.dir}">
-                                <include name="ant-contrib-${antcont.version}-bin.zip"/>
-                        </fileset>
-                </unzip>
-
-                <unzip dest="${mcp.dir}" failOnEmptyArchive="true">
-                        <fileset dir="${download.dir}">
-                                <include name="mcp${mcp.version}.zip"/>
-                        </fileset>
-                </unzip>
-
-                <unzip dest="${mcp.dir}" failOnEmptyArchive="true">
-                        <fileset dir="${download.dir}">
-                                <include name="minecraftforge-src-${mc.version}-${forge.version}.zip"/>
-                        </fileset>
-                </unzip>
-
-               
-
-                <echo message="Unpacking finished"/>
-
-                <chmod file="${mcp.dir}/updatemd5.sh" perm="+x"/>
-                <chmod file="${mcp.dir}/updatemcp.sh" perm="+x"/>
-                <chmod file="${mcp.dir}/recompile.sh" perm="+x"/>
-                <chmod file="${mcp.dir}/reobfuscate.sh" perm="+x"/>
-                <chmod file="${forge.dir}/install.sh" perm="+x"/>
-
-                <!-- if your building on OSX these 2 should be executable -->
-                <chmod file="${mcp.dir}/runtime/bin/astyle-osx" perm="+x"/>
-                <chmod file="${mcp.dir}/runtime/bin/jad-osx" perm="+x"/>
-
-                <!-- Install forge -->
-                <exec dir="${forge.dir}" executable="cmd" osfamily="windows" failonerror="true">
-                        <arg line="/c install.cmd"/>
-                </exec>
-
-                <exec dir="${forge.dir}" executable="sh" osfamily="unix" failonerror="true">
-                        <arg value="install.sh"/>
-                </exec>
-
-                <echo message="Decompile finished"/>
-
-                <!-- Copy Dummy classes source -->
-                <copy todir="${commonsrc.dir}">
-                        <fileset dir="${src.dir}/dummy"/>
-                </copy>
-
-                <echo message="Copied dummy files"/>
-
-                <!-- Refresh MD5 -->
-                <exec dir="${mcp.dir}" executable="cmd" osfamily="windows" failonerror="true">
-                        <arg line="/c updatemd5.bat -f --client"/>
-                </exec>
-
-                <exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
-                        <arg line="updatemd5.sh -f --client"/>
-                </exec>
-
-                <echo message="Regenerated MD5s"/>
-
-        </target>
-
-
-        <target name="copySRC" >
-                <!-- Pull in ant-contrib for if task -->
-                <taskdef resource="net/sf/antcontrib/antcontrib.properties">
-                        <classpath>
-                                <pathelement location="${lib.dir}/ant-contrib/lib/ant-contrib.jar"/>
-                        </classpath>
-                </taskdef>
-                <echo message="Loaded ant-contrib"/>
-
-                <!-- Delete QC source in build space -->
-                <delete dir="${commonsrc.dir}/sammko"/>
-
-                <!-- Copy QC source -->
-                <copy todir="${commonsrc.dir}">
-                        <fileset dir="${src.dir}/common"/>
-                </copy>
-            
-
-                <echo message="Loading FingerPrint"/>
-                <if>
-                        <available file="${sign.dir}/.fingerprint"/>
-                        <then>
-                                <loadfile property="fingerprint" srcFile="${sign.dir}/.fingerprint"/>
-                                <replace file="${commonsrc.dir}/logisticspipes/LogisticsPipes.java" token="%------------CERTIFICATE-SUM-----------%" value="${fingerprint}"/>
-                        </then>
-                </if>
-        </target>
-
-
-        <target name="compile" depends="copySRC">
-
-                <echo message="Compiling version ${lp.version.full}"/>
-
-                <!-- Recompile -->
-                <exec dir="${mcp.dir}" executable="cmd" osfamily="windows" failonerror="true">
-                        <arg line="/c recompile.bat --client"/>
-                </exec>
-
-                <exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
-                        <arg value="recompile.sh"/>
-                </exec>
-
-                <!-- Reobf -->
-                <exec dir="${mcp.dir}" executable="cmd" osfamily="windows" failonerror="true">
-                        <arg line="/c reobfuscate.bat --client"/>
-                </exec>
-
-                <exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
-                        <arg value="reobfuscate.sh"/>
-                </exec>
-
-                <!-- Copy LP classes -->
-                <copy todir="${classes.dir}/client">
-                        <fileset dir="${mcp.dir}/reobf/minecraft"/>
-                </copy>
-
-                <!-- Copy resoucres -->
-                <copy todir="${classes.dir}/client">
-                        <fileset dir="${src.dir}/resources"></fileset>
-                </copy>
-
-                <replace file="${classes.dir}/client/mcmod.info" token="%VERSION%" value="${lp.version.full}"/>
-
-                <echo message="Compiling finished"/>
-
-                <!-- Create resources zip for MC in mcp -->
-                <zip destfile="${mcp.dir}/jars/mods/LogisticsPipes_resources.zip" basedir="${src.dir}/resources" excludes="mcmod.info"/>
-
-        </target>
-
-        <target name="package-simple" depends="compile">
-                <echo message="Packing version ${lp.version.full}"/>
-
-                <jar destfile="${jar.dir}/QuantumCraft-MC${mc.version}-${lp.version.full}.jar" basedir="${classes.dir}/client"/>
-
-                <echo message="Packing finished"/>
-        </target>
-
-        <target name="package-sign" depends="compile">
-                <echo message="Loading SignSettings"/>
-                <loadfile property="key" srcFile="${sign.dir}/.key"/>
-
-                <echo message="Packing version ${lp.version.full}"/>
-
-                <jar destfile="${jar.dir}/LogisticsPipes-MC${mc.version}-${lp.version.full}.jar" basedir="${classes.dir}/client">
-                        <manifest>
-                                <attribute name="Built-By" value="RS485-Jenkins"/>
-                                <attribute name="Implementation-Vendor" value="RS485"/>
-                                <attribute name="Implementation-Title" value="LogisticsPipes"/>
-                                <attribute name="Implementation-Version" value="${lp.version.full}"/>
-                        </manifest>
-                </jar>
-                <signjar jar="${jar.dir}/LogisticsPipes-MC${mc.version}-${lp.version.full}.jar" alias="RS485" keystore="${sign.dir}/.keystore" storepass="${key}"/>
-
-                <echo message="Packing finished"/>
-
-        </target>
-
-        <target name="main" depends="clean, setup, package-simple"/>
-
-        <target name="ci" depends="clean, setup, package-sign"/>
-
-        <target name="vars-test">
-                <property name="lp.version.full" value="0.0.0.0"/>
-                <property name="DEBUG"           value="true"/>
-        </target>
-
-        <target name="test" depends="vars-test, clean, setup, compile"/>
-
-</project>
+<?xml version="1.0" encoding="UTF-8" ?><project name="Sample" basedir="." default="all">
+ 
+   <!-- Your name here -->
+   <property name="author" value="Sammko and d hunterboerner" />
+ 
+   <!-- Your release version here -->
+   <property name="version" value="1.0.0" />
+ 
+   <!-- Choose ".zip" or ".jar" as the dist file extension -->
+   <property name="filetype" value="jar" />
+ 
+   <!-- Update if mcp directory isn't in same location as this file -->
+   <property name="mcp.dir" location="./mcp" />
+ 
+   <!-- Update if dist directory isn't in same location as this file -->  
+   <property name="dist.dir" location="./dist" />
+ 
+   <!-- Update only if build directory isn't in same location as this file -->
+   <property name="build.dir" location="./build" />
+ 
+   <!-- Update to point to your Python executable. Example: /usr/bin/python -->
+   <!-- The following location is for Windows: -->
+   <property name="python" location="$/usr/bin/python" />
+ 
+   <target name="init" description="Initialize build environment">
+      <echo message="Cleaning old build and dist, MCP reobf directories" />
+      <delete dir="${build.dir}" />
+      <delete dir="${dist.dir}" />
+      <delete dir="${mcp.dir}/reobf" />
+ 
+      <echo message="Creating build and dist dirs" />
+      <mkdir dir="${build.dir}" />
+      <mkdir dir="${dist.dir}" />
+   </target>
+ 
+   <target name="recompile" description="MCP recompile" >
+      <exec executable="${python}" dir="${mcp.dir}">
+          <arg value="runtime/recompile.py"/>
+          <arg value="%*"/>
+      </exec>
+   </target>
+ 
+   <target name="reobfuscate" description="MCP reobfuscate">
+      <exec executable="${python}" dir="${mcp.dir}">
+          <arg value="runtime/reobfuscate.py"/>
+          <arg value="%*"/>
+      </exec>
+   </target>
+ 
+   <target name="stage" description="Stage resources into build directory">
+      <copy todir="${build.dir}">
+         <fileset dir="${mcp.dir}/reobf/minecraft" excludes=".svn/**, *.txt" />
+      </copy>
+      <!-- Copy other stuff specific to your project -->
+   </target>
+ 
+   <target name="all" description="Perform all tasks for a build" depends="init, recompile, reobfuscate, stage, jarzip">
+      <echo message="MCP Ant Build Completed!" />
+   </target>
+ 
+   <target name="jarzip" description="Jar (or zip) the project's dist output">
+      <mkdir dir="${dist.dir}" />
+      <jar destfile="${dist.dir}/${ant.project.name}${version}.${filetype}" duplicate="preserve" index="true" manifestencoding="UTF-8">
+         <manifest>
+            <attribute name="Built-By" value="MCP (http://mcp.ocean-labs.de)"/>
+            <attribute name="Implementation-Vendor" value="${author}"/>
+            <attribute name="Implementation-Title" value="${ant.project.name}"/>
+            <attribute name="Implementation-Version" value="${version}"/>
+         </manifest>
+         <fileset dir="${build.dir}" />
+      </jar>
+   </target>
+ </project>
