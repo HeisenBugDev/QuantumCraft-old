@@ -9,7 +9,7 @@ public class BlockTextureMatrix {
 	public static int OreRadium = 0xE1;
 	public static int OreGammatronium = 0xF1;
 	public static int OreNeutrinium = 0xF2;
-	public static int OreDepleted = 0xF3;
+	public static int OreDepleted = 0xE2;
 	
 	public static int Err = 0x14;
 	
