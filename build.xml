@@ -150,7 +150,7 @@
       <mkdir dir="${dist.dir}" />
       <jar destfile="${dist.dir}/${ant.project.name}${version}.${filetype}" duplicate="preserve" index="true" manifestencoding="UTF-8">
          <manifest>
->>>>>>> b2dc60d88d9da812bd60ab5b135a507570e22d47
+
             <attribute name="Built-By" value="MCP (http://mcp.ocean-labs.de)"/>
             <attribute name="Implementation-Vendor" value="${author}"/>
             <attribute name="Implementation-Title" value="${ant.project.name}"/>
