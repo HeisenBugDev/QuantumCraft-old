@@ -150,12 +150,11 @@
       <mkdir dir="${dist.dir}" />
       <jar destfile="${dist.dir}/${ant.project.name}${version}.${filetype}" duplicate="preserve" index="true" manifestencoding="UTF-8">
          <manifest>
-
             <attribute name="Built-By" value="MCP (http://mcp.ocean-labs.de)"/>
             <attribute name="Implementation-Vendor" value="${author}"/>
             <attribute name="Implementation-Title" value="${ant.project.name}"/>
             <attribute name="Implementation-Version" value="${version}"/>
-    </manifest>
+         </manifest>
     <fileset dir="${build.dir}" />
 </jar>
 </target>
