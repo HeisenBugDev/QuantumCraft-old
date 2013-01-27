@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?><project name="QuantumCraft" basedir="." default="main">
  
    <!-- Your name here -->
-   <property name="author" value="Sammko and hunterboerner" />
+   <property name="author" value="sammko, hunterboerner, DJRaffa" />
  
    <!-- Your release version here -->
    <property name="version" value="1.0.0" />
