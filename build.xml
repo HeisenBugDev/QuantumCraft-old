@@ -61,7 +61,7 @@
       </copy>
    </target>
  
-   <target name="all" description="Perform all tasks for a build" depends="init, recompile, reobfuscate, stage, jarzip">
+   <target name="main" description="Perform all tasks for a build" depends="init, recompile, reobfuscate, stage, jarzip">
       <echo message="MCP Ant Build Completed!" />
    </target>
  
