@@ -8,7 +8,6 @@
 *.cmd
 *.properties
 *.sh
-*.jar
 *.zip
 *.lnk
 
