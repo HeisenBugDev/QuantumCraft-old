@@ -1,5 +1,4 @@
 
-!/mcp/redostuff.bat
 /common/
 /client/
 /fml/
@@ -35,4 +34,7 @@
 /mcp/src/minecraft/paulscode/
 /mcp/src/minecraft/net/
 /mcp/src/minecraft/cpw/
+
+
+!/mcp/redostuff.bat
 
