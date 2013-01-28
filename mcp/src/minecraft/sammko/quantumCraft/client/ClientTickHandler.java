@@ -14,6 +14,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ClientTickHandler implements ITickHandler {
+	String currDamage = "";
 
 	public EnumSet ticks() {
 
@@ -32,11 +33,11 @@ public class ClientTickHandler implements ITickHandler {
 				final int damageLeft = 500 - damage;
 				String damageString = null;
 				if (damageLeft >= 300) {
-					damageString = "Â§a" + damageLeft + "/500";
+					damageString = "§a" + damageLeft + "/500";
 				} else if (damageLeft >= 100) {
-					damageString = "Â§e" + damageLeft + "/500";
+					damageString = "§e" + damageLeft + "/500";
 				} else if (damageLeft >= 50) {
-					damageString = "Â§5" + damageLeft + "/500";
+					damageString = "§5" + damageLeft + "/500";
 				}
 				return damageString;
 			} else {
@@ -59,8 +60,16 @@ public class ClientTickHandler implements ITickHandler {
 			if (mc.inGameHasFocus == true
 					&& FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
 				ItemStack itemstack = mc.thePlayer.inventory.getCurrentItem();
-				mc.fontRenderer.drawString(getItemDamage(itemstack), 1, 1, 1);
-				// mc.fontRenderer.drawString("test", 1, 1, 1);
+				if(getItemDamage(itemstack)!= currDamage){
+					mc.fontRenderer.drawString(currDamage, 1, 1, 1);
+					// mc.fontRenderer.drawString("test", 1, 1, 1);
+					currDamage = getItemDamage(itemstack);
+				
+				}else{
+					mc.fontRenderer.drawString(currDamage, 1, 1, 1);
+					// mc.fontRenderer.drawString("test", 1, 1, 1);
+				}
+				
 			}
 		}
 
