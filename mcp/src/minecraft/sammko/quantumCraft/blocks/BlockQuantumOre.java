@@ -25,7 +25,7 @@ public class BlockQuantumOre extends BlockOre {
 		if (this.blockID == QuantumCraftSettings.OreGammatroniumID) return QuantumCraftSettings.CrystalGammatroniumID+256; else
 		if (this.blockID == QuantumCraftSettings.OreDepletedID) return QuantumCraftSettings.CrystalDepletedID+256; else
 		if (this.blockID == QuantumCraftSettings.OreNeutriniumID) return QuantumCraftSettings.CrystalNeutriniumID+256; else
-		if (this.blockID == QuantumCraftSettings.OrePlutoniumID) return QuantumCraftSettings.OrePlutoniumID+256; else
+		if (this.blockID == QuantumCraftSettings.OrePlutoniumID) return QuantumCraftSettings.OrePlutoniumID; else
 			return -1;
 	
     }
