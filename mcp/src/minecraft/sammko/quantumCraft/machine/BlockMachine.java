@@ -20,8 +20,8 @@ public class BlockMachine extends BlockContainer {
 	
 	public BlockMachine(int par1, int rid) {
 		super(par1, Material.rock);
-		this.setCreativeTab(CreativeTabs.tabBlock);
 		this.setBlockName("machineBlock");
+		this.setCreativeTab(CreativeTabs.tabGems);
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
 		GameRegistry.registerBlock(this);
 		LanguageRegistry.addName(this, "Machine Block");

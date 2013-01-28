@@ -24,7 +24,7 @@ public class BlockEmpty extends Block {
 		
 		super(par1, par2, Material.rock);
 		this.setBlockName("emptyBlock");
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(CreativeTabs.tabGems);
 		this.RenderID = rid;
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
 		GameRegistry.registerBlock(this);

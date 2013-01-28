@@ -33,6 +33,7 @@ public class BlockQuantumOre extends BlockOre {
 	public int quantityDropped(Random par1Random)
     {
         if (this.blockID == QuantumCraftSettings.OrePlutoniumID) return 1; else
-        	return 3+par1Random.nextInt(3);
+        	return 3+par1Random.nextInt(3)+1; // Fixed the random drop, now it really drops 3-6
     }
 }
+

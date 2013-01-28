@@ -1,6 +1,7 @@
 package sammko.quantumCraft.core;
 
 /*CPW IMPORTS*/
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import sammko.quantumCraft.CommonProxy;
@@ -45,6 +46,7 @@ public class QuantumCraft {
 	@Init
 	public void load(FMLInitializationEvent event) {
 		proxy.registerRenderers();
+		//CreativeTabs tabQC = new TabGems(CreativeTabs.getNextID(), "gammatroniumCrystal");
 		GameRegistry.registerWorldGenerator(worldGen);
 		ItemInitializator.initAll();
 		CraftingManager.addCrafting();
