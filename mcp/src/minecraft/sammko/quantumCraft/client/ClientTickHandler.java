@@ -60,16 +60,11 @@ public class ClientTickHandler implements ITickHandler {
 			if (mc.inGameHasFocus == true
 					&& FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
 				ItemStack itemstack = mc.thePlayer.inventory.getCurrentItem();
-				if(getItemDamage(itemstack)!= currDamage){
-					mc.fontRenderer.drawString(currDamage, 1, 1, 1);
-					// mc.fontRenderer.drawString("test", 1, 1, 1);
-					currDamage = getItemDamage(itemstack);
-				
-				}else{
-					mc.fontRenderer.drawString(currDamage, 1, 1, 1);
-					// mc.fontRenderer.drawString("test", 1, 1, 1);
-				}
-				
+				mc.fontRenderer.drawString(currDamage, 1, 1, 1);
+				// mc.fontRenderer.drawString("test", 1, 1, 1);
+
+				currDamage = getItemDamage(itemstack);
+
 			}
 		}
 
