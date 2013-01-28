@@ -5,6 +5,8 @@ Quantum Craft ideas:
         2. Radium = RED -> QUANTUM FIELDS
         3. Neutrinium = GREEN -> SIGNALS
         4. Gammatronium = YELLOW -> GAMMA RAY
+        5. Depleted = GRAY -> CRYSTAL PICKAXE
+        6. Plutonium = ???? -> ????
     Functions:
         1. Energy Packets
             - Energy transfered as items
@@ -16,7 +18,23 @@ Quantum Craft ideas:
         4. Signalling
             - singal beams that can go thru walls
         5. GammaRay
-            - A  block that emits rays of energy that can be harnessed to charge items.
+            - A  block that emits rays of energy that can be harnessed to charge items wirelessly.
+
+    Blocks:
+
+        - Gamma Reactor
+            - Break down gamma and charge up tools so that they are gamma coated tools.
+            - Gamma Infused tools are much faster.
+            - When they Break, there is a 75% change you will get the depleted tool back
+            - Sword has a %25 percent chance to poison the mods for 5 seconds
+            - Armor has a slight negative effect but is very strong. 0.01% Change of poison for 5 seconds per tick
+            - If you touch a mob there is a change of poison (20%)
+
+    Items:
+
+
 
     Power System:
         Gammatronium is an unspecalized power source that is very basic and cannot power complex items. However all other items can power the BASIC ones but in turn can only power their advanced items that require them.
+
+
