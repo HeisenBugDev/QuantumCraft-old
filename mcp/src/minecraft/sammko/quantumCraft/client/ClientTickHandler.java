@@ -15,33 +15,35 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ClientTickHandler implements ITickHandler {
 
-	@SideOnly(Side.CLIENT)
-	Minecraft mc = FMLClientHandler.instance().getClient();
-
 	public EnumSet ticks() {
 
 		return EnumSet.of(TickType.CLIENT);
 	}
 
 	public String getItemDamage(ItemStack item) {
+		if (FMLCommonHandler.instance().getEffectiveSide().isClient() == true) {
+			Minecraft mc = FMLClientHandler.instance().getClient();
+			if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT
+					&& mc.inGameHasFocus == true
+					&& mc.thePlayer.inventory.getCurrentItem() != null
+					&& mc.thePlayer.inventory.getCurrentItem().itemID == QuantumCraftSettings.CrystalPickaxeID + 256) {
 
-		if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT && mc.inGameHasFocus == true
-				&& mc.thePlayer.inventory.getCurrentItem() != null
-				&& mc.thePlayer.inventory.getCurrentItem().itemID == QuantumCraftSettings.CrystalPickaxeID + 256) {
-			final int damage = item.getItemDamageForDisplay();
-			final int damageLeft = 500 - damage;
-			String damageString = null;
-			if (damageLeft >= 300) {
-				damageString = "Â§a" + damageLeft + "/500";
-			} else if (damageLeft >= 100) {
-				damageString = "Â§e" + damageLeft + "/500";
-			} else if (damageLeft >= 50) {
-				damageString = "Â§5" + damageLeft + "/500";
+				final int damage = item.getItemDamageForDisplay();
+				final int damageLeft = 500 - damage;
+				String damageString = null;
+				if (damageLeft >= 300) {
+					damageString = "Â§a" + damageLeft + "/500";
+				} else if (damageLeft >= 100) {
+					damageString = "Â§e" + damageLeft + "/500";
+				} else if (damageLeft >= 50) {
+					damageString = "Â§5" + damageLeft + "/500";
+				}
+				return damageString;
+			} else {
+				return "";
 			}
-			return damageString;
-		} else {
+		} else
 			return "";
-		}
 
 	}
 
@@ -52,11 +54,14 @@ public class ClientTickHandler implements ITickHandler {
 
 	@Override
 	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
-
-		if (mc.inGameHasFocus == true && FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
-			ItemStack itemstack = mc.thePlayer.inventory.getCurrentItem();
-			mc.fontRenderer.drawString(getItemDamage(itemstack), 1, 1, 1);
-			// mc.fontRenderer.drawString("test", 1, 1, 1);
+		if (FMLCommonHandler.instance().getEffectiveSide().isClient() == true) {
+			Minecraft mc = FMLClientHandler.instance().getClient();
+			if (mc.inGameHasFocus == true
+					&& FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
+				ItemStack itemstack = mc.thePlayer.inventory.getCurrentItem();
+				mc.fontRenderer.drawString(getItemDamage(itemstack), 1, 1, 1);
+				// mc.fontRenderer.drawString("test", 1, 1, 1);
+			}
 		}
 
 	}
