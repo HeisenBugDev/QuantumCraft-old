@@ -24,19 +24,25 @@ public class ClientTickHandler implements ITickHandler {
 	public static Minecraft mc = ModLoader.getMinecraftInstance();
 
 	public EnumSet ticks() {
-		if (mc.inGameHasFocus == true) {
-			ItemStack itemstack = mc.thePlayer.inventory.getCurrentItem();
-			mc.fontRenderer.drawString(getItemDamage(itemstack), 1, 1, 1);
-			mc.fontRenderer.drawString("test", 1, 1, 1);
-		}
+		
 		return EnumSet.of(TickType.WORLD, TickType.WORLDLOAD, TickType.CLIENT,
 				TickType.RENDER);
 	}
-
+	
 	public String getItemDamage(ItemStack item) {
-		if (mc.inGameHasFocus == true && mc.thePlayer.inventory.getCurrentItem().toString() == ItemInitializator.ItemCrystalPickaxe.toString() ) {
+		if (mc.inGameHasFocus == true && mc.thePlayer.inventory.getCurrentItem() != null && mc.thePlayer.inventory.getCurrentItem().itemID == QuantumCraftSettings.CrystalPickaxeID + 256 ) {
 			final int damage = item.getItemDamageForDisplay();
-			String damageString = damage + "";
+			final int damageLeft = 500-damage;
+			String damageString = null;
+			if (damageLeft >= 300){
+				damageString = "§a" + damageLeft + "/500";
+			}
+			else if (damageLeft >= 100){
+				damageString = "§e" + damageLeft + "/500";
+			}
+			else if (damageLeft >= 50){
+				damageString = "§5" + damageLeft + "/500";
+			}
 			return damageString;
 		}else{
 			return "error";
@@ -45,13 +51,17 @@ public class ClientTickHandler implements ITickHandler {
 
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
-		// TODO Auto-generated method stub
+	
 
 	}
 
 	@Override
 	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
-		// TODO Auto-generated method stub
+		if (mc.inGameHasFocus == true) {
+			ItemStack itemstack = mc.thePlayer.inventory.getCurrentItem();
+			mc.fontRenderer.drawString(getItemDamage(itemstack), 1, 1, 1);
+			//mc.fontRenderer.drawString("test", 1, 1, 1);
+		}
 
 	}
 
