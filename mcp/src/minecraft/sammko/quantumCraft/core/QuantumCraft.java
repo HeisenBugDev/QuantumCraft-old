@@ -46,7 +46,6 @@ public class QuantumCraft {
 	@Init
 	public void load(FMLInitializationEvent event) {
 		proxy.registerRenderers();
-		//CreativeTabs tabQC = new TabGems(CreativeTabs.getNextID(), "gammatroniumCrystal");
 		GameRegistry.registerWorldGenerator(worldGen);
 		ItemInitializator.initAll();
 		CraftingManager.addCrafting();
