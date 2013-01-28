@@ -35,13 +35,13 @@ public class ClientTickHandler implements ITickHandler {
 			final int damageLeft = 500-damage;
 			String damageString = null;
 			if (damageLeft >= 300){
-				damageString = "งa" + damageLeft + "/500";
+				damageString = "ยงa" + damageLeft + "/500";
 			}
 			else if (damageLeft >= 100){
-				damageString = "งe" + damageLeft + "/500";
+				damageString = "ยงe" + damageLeft + "/500";
 			}
 			else if (damageLeft >= 50){
-				damageString = "ง5" + damageLeft + "/500";
+				damageString = "ยง5" + damageLeft + "/500";
 			}
 			return damageString;
 		}else{
