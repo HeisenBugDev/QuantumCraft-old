@@ -45,7 +45,7 @@ public class ClientTickHandler implements ITickHandler {
 			}
 			return damageString;
 		}else{
-			return "error";
+			return "";
 		}
 	}
 
