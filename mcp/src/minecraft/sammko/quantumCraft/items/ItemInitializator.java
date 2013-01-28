@@ -148,7 +148,7 @@ public class ItemInitializator implements IGuiHandler{
 		}
 		public static void initCT()
 		{
-
+			
 			tabQC = new TabQuantumCraft();
 			
 		}
