@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.Side;
 /*SAMMKO IMPORTS*/
 
 @Mod(modid = "QuantumCraft", name = "Quantum Craft", version = "0.7.8")
-@NetworkMod(clientSideRequired = true, serverSideRequired = true)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class QuantumCraft {
 
 	// MainClass
@@ -35,7 +35,8 @@ public class QuantumCraft {
 	public static QuantumCraft instance;
 	@SidedProxy(clientSide = "sammko.quantumCraft.client.ClientProxy", serverSide = "sammko.quantumCraft.CommonProxy")
 	public static CommonProxy proxy;
-	public static ClientTickHandler clientTickHandler;
+	
+
 		
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
