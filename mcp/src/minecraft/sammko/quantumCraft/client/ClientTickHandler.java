@@ -18,7 +18,7 @@ public class ClientTickHandler implements ITickHandler {
 
 	public EnumSet ticks() {
 
-		return EnumSet.of(TickType.CLIENT);
+		return EnumSet.of(TickType.RENDER);
 	}
 
 	public String getItemDamage(ItemStack item) {
