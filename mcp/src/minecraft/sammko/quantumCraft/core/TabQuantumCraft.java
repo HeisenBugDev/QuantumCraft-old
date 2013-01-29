@@ -8,7 +8,10 @@ public class TabQuantumCraft extends CreativeTabs {
 
 	public TabQuantumCraft() {
 		super(CreativeTabs.getNextID(), "QuantumCraft");
-		//FIXME: tooltip in creative GUI is not correct.
+	}
+	
+	public String getTranslatedTabLabel(){
+		return "Quantum Craft"; 				// That fixes the ingame name on our tab ^^
 	}
 
 	@Override

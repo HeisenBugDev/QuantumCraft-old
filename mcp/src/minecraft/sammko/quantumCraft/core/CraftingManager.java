@@ -13,6 +13,7 @@ public class CraftingManager {
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.EmptyBlock, 4), " x ", "xyx", " x ", 'y', new ItemStack(ItemInitializator.ItemIngotPlutonium), 'x', new ItemStack(Block.stone));
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemInitializator.ItemEmptyEnergyPacket,4), new ItemStack(ItemInitializator.ItemIngotPlutonium), new ItemStack(ItemInitializator.ItemIngotPlutonium) );
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalPickaxe,1),"ddd"," s "," s ",'d', ItemInitializator.ItemDepletedCrystal, 's', Item.stick);
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalSword,1), " d "," d "," s ", 'd', new ItemStack(ItemInitializator.ItemDepletedCrystal), 's', Item.stick);
 		//new ItemStack(ItemInitializator.EmptyBlock, 4) means the result are 4 EMpty Blocks
 		//" x ", "xyx", " x " is the crafting matrix
 		//'y', new ItemStack(ItemInitializator.ItemIngotPlutonium) means that y, in the crafting matrix should be Plutonium ingot
