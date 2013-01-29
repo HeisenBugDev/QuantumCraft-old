@@ -27,17 +27,16 @@ public class ClientTickHandler implements ITickHandler {
 			if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT
 					&& mc.inGameHasFocus == true
 					&& mc.thePlayer.inventory.getCurrentItem() != null
-					&& mc.thePlayer.inventory.getCurrentItem().itemID == QuantumCraftSettings.CrystalPickaxeID + 256) {
-
+					&& mc.thePlayer.inventory.getCurrentItem().isItemStackDamageable()) {
 				final int damage = item.getItemDamageForDisplay();
-				final int damageLeft = 500 - damage;
+				final int damageLeft = mc.thePlayer.inventory.getCurrentItem().getMaxDamage() - damage;
 				String damageString = null;
 				if (damageLeft >= 300) {
-					damageString = "§a" + damageLeft + "/500";
+					damageString = "§a" + damageLeft + "/" + mc.thePlayer.inventory.getCurrentItem().getMaxDamage();
 				} else if (damageLeft >= 100) {
-					damageString = "§e" + damageLeft + "/500";
+					damageString = "§e" + damageLeft + "/" + mc.thePlayer.inventory.getCurrentItem().getMaxDamage();
 				} else if (damageLeft >= 50) {
-					damageString = "§5" + damageLeft + "/500";
+					damageString = "§5" + damageLeft + "/" + mc.thePlayer.inventory.getCurrentItem().getMaxDamage();
 				}
 				return damageString;
 			} else {
