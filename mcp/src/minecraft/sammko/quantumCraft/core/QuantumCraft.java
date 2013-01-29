@@ -23,7 +23,7 @@ import cpw.mods.fml.relauncher.Side;
 /*FORGE IMPORTS*/
 /*SAMMKO IMPORTS*/
 
-@Mod(modid = "QuantumCraft", name = "Quantum Craft", version = "0.8.0")
+@Mod(modid = "QuantumCraft", name = "Quantum Craft", version = "ALPHA")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class QuantumCraft {
 
