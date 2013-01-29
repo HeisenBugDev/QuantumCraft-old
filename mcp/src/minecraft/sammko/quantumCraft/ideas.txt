@@ -5,7 +5,7 @@ Quantum Craft ideas:
         2. Radium = RED -> QUANTUM FIELDS
         3. Neutrinium = GREEN -> SIGNALS
         4. Gammatronium = YELLOW -> GAMMA RAY
-        5. Depleted = GRAY -> CRYSTAL PICKAXE
+        5. Depleted = GRAY -> CRYSTAL TOOLS
         6. Plutonium = ???? -> ????
     Functions:
         1. Energy Packets
@@ -26,7 +26,7 @@ Quantum Craft ideas:
             - Break down gamma and charge up tools so that they are gamma coated tools.
             - Gamma Infused tools are much faster.
             - When they Break, there is a 75% change you will get the depleted tool back
-            - Sword has a %25 percent chance to poison the mods for 5 seconds
+            - Sword has a %25 percent chance to poison the mobs for 5 seconds
             - Armor has a slight negative effect but is very strong. 0.01% Change of poison for 5 seconds per tick
             - If you touch a mob there is a change of poison (20%)
 
