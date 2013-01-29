@@ -75,7 +75,7 @@ public class ItemInitializator implements IGuiHandler{
 		public static ItemAxe ItemCrystalAxe;
 		public static ItemSpade ItemCrystalShovel;
 		
-		public static EnumToolMaterial DEPLETEDCRYSTAL = EnumHelper.addToolMaterial("DEPLETEDCRYSTAL", 2, 500, 7.0F, 6, 25);
+		public static EnumToolMaterial DEPLETEDCRYSTAL = EnumHelper.addToolMaterial("DEPLETEDCRYSTAL", 2, 500, 7.0F, 2, 25);
 		// 2 = HarvestLvl; 500 = MaxUses; 7.0F = ToolSpeed; 6 = SwordDMG; 25 = Enchantabillity
 		
 		public static ItemEnergyPacket ItemEmptyEnergyPacket;

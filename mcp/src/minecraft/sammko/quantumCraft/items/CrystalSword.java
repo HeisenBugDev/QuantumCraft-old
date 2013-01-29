@@ -9,11 +9,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class CrystalSword extends ItemSword{
-
+	private int weaponDamage;
 
 	public CrystalSword(int i, EnumToolMaterial enumToolMaterial){
 		super(i, enumToolMaterial);
 		this.setTextureFile(QuantumCraftSettings.ITEMS_PNG);
+		this.weaponDamage = 4 + enumToolMaterial.getDamageVsEntity();
 	}
 	
 	
