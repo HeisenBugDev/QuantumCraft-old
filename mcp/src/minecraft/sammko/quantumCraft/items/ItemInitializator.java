@@ -63,7 +63,6 @@ public class ItemInitializator implements IGuiHandler{
 		public static ItemPickaxe ItemCrystalPickaxe;
 		public static ItemSword ItemCrystalSword;
 		public static EnumToolMaterial DEPLETEDCRYSTAL = EnumHelper.addToolMaterial("DEPLETEDCRYSTAL", 2, 500, 7.0F, 6, 10);
-		public static EnumToolMaterial DepletedCrystalSword = EnumHelper.addToolMaterial("DepletedCrystalSword", 4, 500, 15.0F, 500, 25);
 		
 		public static ItemEnergyPacket ItemEmptyEnergyPacket;
 		public static ItemEnergyPacket ItemPositroniumEnergyPacket;
@@ -107,9 +106,9 @@ public class ItemInitializator implements IGuiHandler{
 			ItemRadiumEnergyPacket = new ItemEnergyPacket(QuantumCraftSettings.RadiumEnergyPacketID);
 			ItemGammatroniumEnergyPacket = new ItemEnergyPacket(QuantumCraftSettings.GammatroniumEnergyPacketID);
 			ItemNeutriniumEnergyPacket = new ItemEnergyPacket(QuantumCraftSettings.NeutriniumEnergyPacketID);
-			// also moved to my Tab
+			
 			ItemCrystalPickaxe = (ItemPickaxe) new CrystalPickaxe(QuantumCraftSettings.CrystalPickaxeID, DEPLETEDCRYSTAL).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CrystalPickaxe)).setItemName("CrystalPickaxe").setCreativeTab(tabQC);
-			ItemCrystalSword = (ItemSword) new CrystalSword(QuantumCraftSettings.CrystalSwordID, DepletedCrystalSword).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CrystalSword)).setItemName("CrystalSword").setCreativeTab(tabQC);
+			ItemCrystalSword = (ItemSword) new CrystalSword(QuantumCraftSettings.CrystalSwordID, DEPLETEDCRYSTAL).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CrystalSword)).setItemName("CrystalSword").setCreativeTab(tabQC);
 			
 			ItemIngotPlutonium.setMaxStackSize(64).setCreativeTab(tabQC).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.PlutoniumIngot)).setItemName("plutoniumIngot");
 			ItemPositroniumCrystal.setMaxStackSize(64).setCreativeTab(tabQC).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.PositroniumCrystal)).setItemName("positroniumCrystal");
