@@ -150,11 +150,7 @@
 		<delete dir="${jar.dir}"/>
 		<mkdir dir="${jar.dir}"/>
 		<jar destfile="${jar.dir}/${ant.project.name}-${mc.version}-${project.version.full}.jar" basedir="${classes.dir}"/>
-		<copy todir="${jar.dir}/changelog">
-			<fileset dir="${resources.dir}/changelog">
-				<include name="*" />
-			</fileset>
-		</copy>
+		
 
 	</target>
 
