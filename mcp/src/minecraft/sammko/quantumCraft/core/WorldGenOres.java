@@ -16,7 +16,6 @@ public class WorldGenOres implements IWorldGenerator {
 
 	int x,y,z = 0;
 	
-	
 	int o = 0;
 	
 	@Override
