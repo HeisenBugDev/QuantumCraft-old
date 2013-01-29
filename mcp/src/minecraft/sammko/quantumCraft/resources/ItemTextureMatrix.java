@@ -19,6 +19,7 @@ public class ItemTextureMatrix {
 	public static int NeutriniumEPacket = 0x41;
 	
 	public static int CrystalPickaxe = 0x51;
+	public static int CrystalSword = 0x61;
 	
 	public static int getIndex(int v)
 	{
