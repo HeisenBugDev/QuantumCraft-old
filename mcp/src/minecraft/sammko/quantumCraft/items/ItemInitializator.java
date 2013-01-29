@@ -5,7 +5,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumHelper;
@@ -62,6 +64,9 @@ public class ItemInitializator implements IGuiHandler{
 		
 		public static ItemPickaxe ItemCrystalPickaxe;
 		public static ItemSword ItemCrystalSword;
+		public static ItemAxe ItemCrystalAxe;
+		public static ItemSpade ItemCrystalShovel;
+		
 		public static EnumToolMaterial DEPLETEDCRYSTAL = EnumHelper.addToolMaterial("DEPLETEDCRYSTAL", 2, 500, 7.0F, 6, 10);
 		
 		public static ItemEnergyPacket ItemEmptyEnergyPacket;
@@ -107,8 +112,10 @@ public class ItemInitializator implements IGuiHandler{
 			ItemGammatroniumEnergyPacket = new ItemEnergyPacket(QuantumCraftSettings.GammatroniumEnergyPacketID);
 			ItemNeutriniumEnergyPacket = new ItemEnergyPacket(QuantumCraftSettings.NeutriniumEnergyPacketID);
 			
-			ItemCrystalPickaxe = (ItemPickaxe) new CrystalPickaxe(QuantumCraftSettings.CrystalPickaxeID, DEPLETEDCRYSTAL).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CrystalPickaxe)).setItemName("CrystalPickaxe").setCreativeTab(tabQC);
-			ItemCrystalSword = (ItemSword) new CrystalSword(QuantumCraftSettings.CrystalSwordID, DEPLETEDCRYSTAL).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CrystalSword)).setItemName("CrystalSword").setCreativeTab(tabQC);
+			ItemCrystalPickaxe = (ItemPickaxe) new CrystalPickaxe(QuantumCraftSettings.CrystalPickaxeID, DEPLETEDCRYSTAL).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CPickaxe)).setItemName("CrystalPickaxe").setCreativeTab(tabQC);
+			ItemCrystalSword = (ItemSword) new CrystalSword(QuantumCraftSettings.CrystalSwordID, DEPLETEDCRYSTAL).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CSword)).setItemName("CrystalSword").setCreativeTab(tabQC);
+			ItemCrystalAxe = (ItemAxe) new CrystalAxe(QuantumCraftSettings.CrystalAxeID, DEPLETEDCRYSTAL).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CAxe)).setItemName("CrystalAxe").setCreativeTab(tabQC);
+			ItemCrystalShovel = (ItemSpade) new CrystalShovel(QuantumCraftSettings.CrystalShovelID, DEPLETEDCRYSTAL).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CShovel)).setItemName("CrystalShovel").setCreativeTab(tabQC);
 			
 			ItemIngotPlutonium.setMaxStackSize(64).setCreativeTab(tabQC).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.PlutoniumIngot)).setItemName("plutoniumIngot");
 			ItemPositroniumCrystal.setMaxStackSize(64).setCreativeTab(tabQC).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.PositroniumCrystal)).setItemName("positroniumCrystal");
@@ -135,8 +142,11 @@ public class ItemInitializator implements IGuiHandler{
 			LanguageRegistry.addName(ItemRadiumEnergyPacket, "Radium EPacket");
 			LanguageRegistry.addName(ItemGammatroniumEnergyPacket, "Gammatronium EPacket");
 			LanguageRegistry.addName(ItemNeutriniumEnergyPacket, "Neutrinium EPacket");
+			
 			LanguageRegistry.addName(ItemCrystalPickaxe, "Crystal Pickaxe");
 			LanguageRegistry.addName(ItemCrystalSword, "Crystal Sword");
+			LanguageRegistry.addName(ItemCrystalAxe, "Crystal Axe");
+			LanguageRegistry.addName(ItemCrystalShovel, "Crystal Shovel");
 		}
 		public static void initTEntities()
 		{
