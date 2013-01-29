@@ -3,7 +3,7 @@
 	<!-- Properties -->
 
 	<property name="build.dir" value="build"/>
-	<property name="src.dir" value="."/>
+	<property name="src.dir" value="./mcp/src/"/>
 	<property name="resources.dir" value="mcp/src/qc"/>
 
 	<property name="download.dir" value="download"/>
@@ -93,7 +93,7 @@
 
 		<!-- Copy sources -->
 		<copy todir="${mcpsrc.dir}/minecraft">
-			<fileset dir="${src.dir}/common"/>
+			<fileset dir="${src.dir}/sammko"/>
 			<filterset>
 				<filter token="VERSION" value="${project.version.full}" />
 				<filter token="BUILD_NUMBER" value="${build.number}" />
