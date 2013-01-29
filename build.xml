@@ -3,7 +3,7 @@
 	<!-- Properties -->
 
 	<property name="build.dir" value="build"/>
-	<property name="src.dir" value="./mcp/src/"/>
+	<property name="src.dir" value="./mcp/src/Minecraft"/>
 	<property name="resources.dir" value="mcp/src/qc"/>
 
 	<property name="download.dir" value="download"/>
