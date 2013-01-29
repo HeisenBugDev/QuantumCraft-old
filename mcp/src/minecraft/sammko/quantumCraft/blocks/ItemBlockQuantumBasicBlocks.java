@@ -1,0 +1,32 @@
+package sammko.quantumCraft.blocks;
+
+import sammko.quantumCraft.items.ItemInitializator;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+
+public class ItemBlockQuantumBasicBlocks extends ItemBlock {
+
+	public ItemBlockQuantumBasicBlocks(int par1) {
+		super(par1);
+		setHasSubtypes(true);
+		setItemName("iBlockQuantumBasicBlocks");
+		setCreativeTab(ItemInitializator.tabQC);
+	}
+
+	private final static String[] subNames = {
+		"PosFullBlock", "RadFullBlock",  "GamFullBlock", "NeuFullBlock", "DepFullBlock", "PosBrickBlock",
+		"RadBrickBlock", "GamBrickBlock", "NeuBrickBlock", "DepBrickBlock", "PosSBrickBlock", "RadSBrickBlock", "GamSBrickBlock",
+		"NeuSBrickBlock", "DepSBrickBlock", "PluBlock"
+	};
+	
+	@Override
+	public int getMetadata (int damageValue) {
+		return damageValue;
+	}
+	
+	@Override
+	public String getItemNameIS(ItemStack itemstack) {
+		return getItemName() + "." + subNames[itemstack.getItemDamage()];
+	}
+	
+}

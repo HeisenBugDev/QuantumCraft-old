@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumHelper;
@@ -15,6 +16,7 @@ import sammko.quantumCraft.core.QuantumCraft;
 import sammko.quantumCraft.core.QuantumCraftSettings;
 import sammko.quantumCraft.core.TabQuantumCraft;
 import sammko.quantumCraft.blocks.BlockEmpty;
+import sammko.quantumCraft.blocks.BlockQuantumBasicBlocks;
 import sammko.quantumCraft.blocks.BlockQuantumOre;
 import sammko.quantumCraft.machine.BlockMachine;
 import sammko.quantumCraft.machine.TileEntityExtractor;
@@ -34,7 +36,12 @@ public class ItemInitializator implements IGuiHandler{
 	public ItemInitializator() {
 		
 	}
-	
+		//MultiBlock names
+		private static final String[] multiBlockNames = { 
+		"Positronium Full Block", "Radium Full Block", "Gammatronium Full Block", "Neutrinium Full Block", "Depleted Full Block",
+		"Positronium Brick", "Radium Brick", "Gammatronium Brick", "Neutrinium Brick", "Depleted Brick",
+		"Positronium Small Brick", "Radium Small Brick", "Gammatronium Small Brick", "Neutrinium Small Brick", "Depleted Small Brick",
+		"Plutonium Block"};
 		//Creative tabs
 		public static CreativeTabs tabQC;
 		//GUI IDs
@@ -52,6 +59,7 @@ public class ItemInitializator implements IGuiHandler{
 		
 		//Blocks
 		public static BlockEmpty EmptyBlock;
+		public static BlockQuantumBasicBlocks DecoBlocks;
 		//Machines
 		public static BlockMachine MachineBlock;
 		//Items
@@ -96,6 +104,13 @@ public class ItemInitializator implements IGuiHandler{
 		{
 			EmptyBlock = new BlockEmpty(QuantumCraftSettings.EmptyBlockID, BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle), BlockEmptyRenderID);
 			MachineBlock = new BlockMachine(QuantumCraftSettings.MachineBlockID, BlockMachineRenderID);
+			DecoBlocks = new BlockQuantumBasicBlocks(QuantumCraftSettings.DecoBlocksID, BlockTextureMatrix.getIndex(BlockTextureMatrix.Err));
+			
+			for (int ix = 0; ix < 16; ix++) {
+				ItemStack iBlockQBB = new ItemStack(DecoBlocks, 1, ix);
+				LanguageRegistry.addName(iBlockQBB, multiBlockNames[iBlockQBB.getItemDamage()]);
+			}
+			
 		}
 
 		public static void initItems()

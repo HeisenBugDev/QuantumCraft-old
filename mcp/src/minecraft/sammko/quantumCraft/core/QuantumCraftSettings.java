@@ -16,6 +16,7 @@ public class QuantumCraftSettings {
 		public static boolean WGenNeu;
 		public static boolean WGenDep;
 		//config IDs
+		public static int DecoBlocksID;
 		public static int MachineBlockID;
 		public static int CrystalPositroniumID;
 		public static int CrystalRadiumID;
@@ -62,7 +63,6 @@ public class QuantumCraftSettings {
 	        CrystalSwordID = config.get("Items", "CrystalSwordID", 4512).getInt();
 	        CrystalAxeID = config.get("Items", "CrystalAxeID", 4513).getInt();
 	        CrystalShovelID = config.get("Items", "CrystalShovelID", 4514).getInt();
-	        
 	      
 	        OrePositroniumID = config.get("Blocks", "OrePositronium", 2500).getInt();
 	        OrePlutoniumID = config.get("Blocks", "OrePlutonium", 2501).getInt();
@@ -72,6 +72,7 @@ public class QuantumCraftSettings {
 	        EmptyBlockID = config.get("Blocks", "EmtyBlock", 2505).getInt();
 	        MachineBlockID = config.get("Blocks", "MachineBlock", 2506).getInt();
 	        OreDepletedID = config.get("Blocks", "OreDepleted", 2507).getInt();
+	        DecoBlocksID = config.get("Blocks", "DecoBlocks", 2508).getInt();
 	        
 	        WGenPlu = config.get("World Gen", "Plutonium", true).getBoolean(true);
 	        WGenPos = config.get("World Gen", "Positronium", true).getBoolean(true);

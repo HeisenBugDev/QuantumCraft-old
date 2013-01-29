@@ -21,6 +21,7 @@ public class CraftingManager {
 		//new ItemStack(ItemInitializator.EmptyBlock, 4) means the result are 4 EMpty Blocks
 		//" x ", "xyx", " x " is the crafting matrix
 		//'y', new ItemStack(ItemInitializator.ItemIngotPlutonium) means that y, in the crafting matrix should be Plutonium ingot
+		//TODO: ADD CRAFTINGS FOR DECO BLOCKS :D
 	}
 
 	public static void addSmelting()
