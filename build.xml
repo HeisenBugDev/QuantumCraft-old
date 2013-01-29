@@ -1,81 +1,164 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project name="Quantum Craft" basedir="." default="all">
- 
-   <!-- Your name here -->
-   <property name="author" value="sammko, hunterboerner, DJRaffa" />
- 
-   <!-- Your release version here -->
-   <property name="version" value="0.7.8" />
- 
-   <!-- Choose ".zip" or ".jar" as the dist file extension -->
-   <property name="filetype" value="jar" />
- 
-   <!-- Update if mcp directory isn't in same location as this file -->
-   <property name="mcp.dir" location="./mcp" />
- 
-   <!-- Update if dist directory isn't in same location as this file -->  
-   <property name="dist.dir" location="./dist" />
- 
-   <!-- Update only if build directory isn't in same location as this file -->
-   <property name="build.dir" location="./build" />
-  
-   <target name="forge" description="Install forge">
-	  <echo message="Installing forge" />
-	  <exec executable="python" dir=".">
-          <arg value="install.py"/>
-          <arg value="%*"/>
-      </exec>
-   </target>
-   
-   <target name="init" description="Initialize build environment">
-      <echo message="Cleaning old build and dist, MCP reobf directories" />
-      <delete dir="${build.dir}" />
-      <delete dir="${dist.dir}" />
-      <delete dir="${mcp.dir}/reobf" />
- 
-      <echo message="Creating build and dist dirs" />
-      <mkdir dir="${build.dir}" />
-      <mkdir dir="${dist.dir}" />
-   </target>
- 
-   <target name="recompile" description="MCP recompile" >
-      <exec executable="python" dir="${mcp.dir}">
-          <arg value="runtime/recompile.py"/>
-          <arg value="%*"/>
-      </exec>
-   </target>
- 
-   <target name="reobfuscate" description="MCP reobfuscate">
-      <exec executable="python" dir="${mcp.dir}">
-          <arg value="runtime/reobfuscate.py"/>
-          <arg value="%*"/>
-      </exec>
-   </target>
- 
-   <target name="stage" description="Stage resources into build directory">
-      <copy todir="${build.dir}">
-         <fileset dir="${mcp.dir}/reobf/minecraft" excludes=".svn/**, *.txt" />
-      </copy>
-	  <copy todir="${build.dir}">
-         <fileset dir="${mcp.dir}/src/minecraft/sammko/qc" />
-      </copy>
-   </target>
- 
-   <target name="main" description="Perform all tasks for a build" depends="init, recompile, reobfuscate, stage, jarzip">
-      <echo message="MCP Ant Build Completed!" />
-   </target>
- 
-   <target name="jarzip" description="Jar (or zip) the project's dist output">
-      <mkdir dir="${dist.dir}" />
-      <jar destfile="${dist.dir}/${ant.project.name}${version}.${filetype}" duplicate="preserve" index="true" manifestencoding="UTF-8">
-         <manifest>
-            <attribute name="Built-By" value="MCP (http://mcp.ocean-labs.de)"/>
-            <attribute name="Implementation-Vendor" value="${author}"/>
-            <attribute name="Implementation-Title" value="${ant.project.name}"/>
-            <attribute name="Implementation-Version" value="${version}"/>
-         </manifest>
-         <fileset dir="${build.dir}" />
-      </jar>
-   </target>
- 
+<project name="QuantumCraft" default="main">
+	<property environment="env"/>
+	<!-- Properties -->
+
+	<property name="build.dir" value="build"/>
+	<property name="src.dir" value="."/>
+	<property name="resources.dir" value="mcp/src/qc"/>
+
+	<property name="download.dir" value="download"/>
+
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="jar.dir" value="bin"/>
+
+	<property name="forge.dir" value="${build.dir}/forge"/>
+	<property name="mcp.dir" value="${forge.dir}/mcp"/>
+
+	<property name="mcpsrc.dir" value="${mcp.dir}/src"/>
+
+	<property name="mc.version" value="1.4.7"/>
+	<property name="forge.version" value="6.6.0.515"/>
+	<property name="project.version" value="3.4.1"/>
+
+	<property name="forge.name" value="minecraftforge-src-${mc.version}-${forge.version}.zip"/>
+
+	<available property="forge-exists" file="${download.dir}/${forge.name}"/>
+
+	<condition property="out-of-date">
+		<not>
+			<and>
+				<available file="${download.dir}/${forge.name}"/>
+				<available file="${mcpsrc.dir}"/>
+			</and>
+		</not>
+	</condition>
+
+	<mkdir dir="${download.dir}"/>
+
+	<!-- Targets -->
+
+	<!-- Clear build directory -->
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+
+	<!-- Set full version -->
+	<target name="initialize-version" depends="version-provided,version-not-provided">
+		<property name="project.version.full" value="${project.version}.${build.number}"/>
+	</target>
+
+	<!-- Set unknown build number -->
+	<target name="version-not-provided" unless="env.BUILD_NUMBER">
+		<property name="build.number" value="unknown"/>
+	</target>
+
+	<!-- Set build number from environment -->
+	<target name="version-provided" if="env.BUILD_NUMBER">
+		<property name="build.number" value="${env.BUILD_NUMBER}"/>
+	</target>
+
+	<!-- Download necessary files -->
+	<target name="download-files" depends="download-forge"/>
+
+	<!-- Download forge (if it doesn't exist) -->
+	<target name="download-forge" unless="forge-exists">
+		<get src="http://files.minecraftforge.net/${forge.name}" dest="${download.dir}" usetimestamp="True"/>
+	</target>
+
+	<!-- Setup mcp and forge -->
+	<target name="setup" depends="download-files" if="out-of-date">
+
+		<delete dir="${forge.dir}" failonerror="false"/>
+
+		<unzip dest="${forge.dir}/.." src="${download.dir}/${forge.name}"/>
+
+		<!-- Fix executable permissions -->
+		<chmod dir="${forge.dir}" perm="ugo+rx" includes="**.sh"/>
+
+		<!-- Install forge -->
+		<exec dir="${forge.dir}" executable="cmd" osfamily="windows">
+			<arg line="/c install.cmd"/>
+		</exec>
+
+		<exec dir="${forge.dir}" executable="sh" osfamily="unix">
+			<arg value="install.sh"/>
+		</exec>
+
+	</target>
+
+	<target name="compile" depends="initialize-version,setup">
+
+		<delete dir="${classes.dir}"/>
+		<mkdir dir="${classes.dir}"/>
+
+		<!-- Copy sources -->
+		<copy todir="${mcpsrc.dir}/minecraft">
+			<fileset dir="${src.dir}/common"/>
+			<filterset>
+				<filter token="VERSION" value="${project.version.full}" />
+				<filter token="BUILD_NUMBER" value="${build.number}" />
+			</filterset>
+		</copy>
+
+		<!-- Recompile -->
+		<exec dir="${mcp.dir}" executable="cmd" osfamily="windows">
+			<arg line="/c recompile.bat"/>
+		</exec>
+
+		<exec dir="${mcp.dir}" executable="sh" osfamily="unix">
+			<arg value="recompile.sh"/>
+		</exec>
+
+		<!-- Check for failure -->
+		<fail message="MCP failed to build">
+			<condition>
+				<resourcecontains resource="${mcp.dir}/logs/client_compile.log" substring="error:"/>
+			</condition>
+		</fail>
+
+		<!-- Reobfuscate -->
+		<exec dir="${mcp.dir}" executable="cmd" osfamily="windows">
+			<arg line="/c reobfuscate.bat"/>
+		</exec>
+
+		<exec dir="${mcp.dir}" executable="sh" osfamily="unix">
+			<arg value="reobfuscate.sh"/>
+		</exec>
+
+		<!-- Copy classes -->
+		<copy todir="${classes.dir}">
+			<fileset dir="${mcp.dir}/reobf/minecraft"/>
+		</copy>
+
+		<!-- Copy resources -->
+		<copy todir="${classes.dir}">
+			<fileset dir="${resources.dir}">
+				<exclude name="build.xml"/>
+			</fileset>
+		</copy>
+
+		
+
+		<!-- Reset src dir to post-forge-install state -->
+		<delete dir="${mcpsrc.dir}/minecraft/buildcraft"/>
+
+	</target>
+
+	<!-- Package the compiled files -->
+	<target name="package" depends="compile">
+
+		<delete dir="${jar.dir}"/>
+		<mkdir dir="${jar.dir}"/>
+		<jar destfile="${jar.dir}/${ant.project.name}-${mc.version}-${project.version.full}.jar" basedir="${classes.dir}"/>
+		<copy todir="${jar.dir}/changelog">
+			<fileset dir="${resources.dir}/changelog">
+				<include name="*" />
+			</fileset>
+		</copy>
+
+	</target>
+
+	<!-- Default target to run -->
+	<target name="main" depends="package"/>
+
 </project>
