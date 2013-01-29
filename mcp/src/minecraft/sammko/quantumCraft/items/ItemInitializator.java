@@ -137,6 +137,7 @@ public class ItemInitializator implements IGuiHandler{
 			LanguageRegistry.addName(ItemGammatroniumEnergyPacket, "Gammatronium EPacket");
 			LanguageRegistry.addName(ItemNeutriniumEnergyPacket, "Neutrinium EPacket");
 			LanguageRegistry.addName(ItemCrystalPickaxe, "Crystal Pickaxe");
+			LanguageRegistry.addName(ItemCrystalSword, "Crystal Sword");
 		}
 		public static void initTEntities()
 		{
