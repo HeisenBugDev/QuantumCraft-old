@@ -131,7 +131,7 @@
 		</copy>
 
 		<!-- Copy resources -->
-		<copy todir="${classes.dir}">
+		<copy todir="${classes.dir}/sammko/qc/">
 			<fileset dir="${resources.dir}">
 				<exclude name="build.xml"/>
 			</fileset>
