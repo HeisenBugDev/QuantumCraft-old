@@ -15,6 +15,8 @@ public class WorldGenOres implements IWorldGenerator {
 	byte heightTreshold = 45;
 
 	int x,y,z = 0;
+	
+	
 	int o = 0;
 	
 	@Override
