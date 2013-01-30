@@ -18,6 +18,15 @@ public class CraftingManager {
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalAxe,1),"dd ","ds "," s ",'d', ItemInitializator.ItemDepletedCrystal, 's', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalAxe,1)," dd"," sd"," s ",'d', ItemInitializator.ItemDepletedCrystal, 's', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalShovel,1), " d "," s "," s ", 'd', new ItemStack(ItemInitializator.ItemDepletedCrystal), 's', Item.stick);
+		
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,0), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemPositroniumCrystal), 'x', new ItemStack(Block.stoneBrick));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,1), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemRadiumCrystal),'x', new ItemStack(Block.stoneBrick));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,2), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemGammatroniumCrystal),'x', new ItemStack(Block.stoneBrick));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,3), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemNeutriniumCrystal),'x', new ItemStack(Block.stoneBrick));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,4), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemDepletedCrystal),'x', new ItemStack(Block.stoneBrick));
+		
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,1), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1));
+		
 		//new ItemStack(ItemInitializator.EmptyBlock, 4) means the result are 4 EMpty Blocks
 		//" x ", "xyx", " x " is the crafting matrix
 		//'y', new ItemStack(ItemInitializator.ItemIngotPlutonium) means that y, in the crafting matrix should be Plutonium ingot

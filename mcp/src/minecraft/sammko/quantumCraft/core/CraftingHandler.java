@@ -12,10 +12,10 @@ public class CraftingHandler implements ICraftingHandler {
 	@Override
 	public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix) {
 		
-		if(item.itemID == ItemInitializator.ItemCrystalSword.itemID) {
+		if(item.itemID == QuantumCraftSettings.CrystalSwordID) {
 			player.addStat(OwnAchievement.Danger, 1);
 		}
-		if(item.itemID == ItemInitializator.ItemCrystalPickaxe.itemID) {
+		if(item.itemID == QuantumCraftSettings.CrystalPickaxeID) {
 			player.addStat(OwnAchievement.Hurry, 1);
 		}
 		
