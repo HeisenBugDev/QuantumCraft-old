@@ -27,10 +27,9 @@ public class BlockMachine extends BlockContainer {
 	
 	public BlockMachine(int par1, int rid) {
 		super(par1, Material.rock);
-		this.setBlockName("machineBlock");
 		this.setCreativeTab(ItemInitializator.tabQC);
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
-		GameRegistry.registerBlock(this);
+		GameRegistry.registerBlock(this, "machineBlock");
 		LanguageRegistry.addName(this, "Machine Block");
 		RenderID = rid;
 	}

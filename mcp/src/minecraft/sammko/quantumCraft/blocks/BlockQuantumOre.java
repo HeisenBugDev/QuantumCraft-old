@@ -12,7 +12,7 @@ public class BlockQuantumOre extends BlockOre {
 	public BlockQuantumOre(int par1, int par2) {
 		super(par1, par2);
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
-		GameRegistry.registerBlock(this, "oreQuantum");
+		GameRegistry.registerBlock(this);
 	}
 	
 	//Yay, crystal now drop 3 - 6 crystals of the type
