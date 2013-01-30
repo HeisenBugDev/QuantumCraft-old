@@ -14,7 +14,7 @@ public class CraftingManager {
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemInitializator.ItemEmptyEnergyPacket,4), new ItemStack(ItemInitializator.ItemIngotPlutonium), new ItemStack(ItemInitializator.ItemIngotPlutonium) );
 		
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalPickaxe,1),"ddd"," s "," s ",'d', ItemInitializator.ItemDepletedCrystal, 's', Item.stick);
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalSword,1), " d "," d "," s ", 'd', new ItemStack(ItemInitializator.ItemDepletedCrystal), 's', Item.stick);
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalSword,1), " d "," d "," s ", 'd', ItemInitializator.ItemDepletedCrystal, 's', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalAxe,1),"dd ","ds "," s ",'d', ItemInitializator.ItemDepletedCrystal, 's', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalAxe,1)," dd"," sd"," s ",'d', ItemInitializator.ItemDepletedCrystal, 's', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalShovel,1), " d "," s "," s ", 'd', new ItemStack(ItemInitializator.ItemDepletedCrystal), 's', Item.stick);

@@ -2,6 +2,7 @@ package sammko.quantumCraft.core;
 
 /*CPW IMPORTS*/
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import sammko.quantumCraft.CommonProxy;
@@ -30,6 +31,8 @@ public class QuantumCraft {
 	// MainClass
 
 	public WorldGenOres worldGen = new WorldGenOres();
+	public static AchievementPage page1;
+	public static CraftingHandler craftHandler = new CraftingHandler();
 	
 	@Instance("QuantumCraft")
 	public static QuantumCraft instance;
@@ -54,6 +57,10 @@ public class QuantumCraft {
 		MinecraftForge.setToolClass(ItemInitializator.ItemCrystalPickaxe,
 				"CrystalPickaxe", 2);
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
+		GameRegistry.registerCraftingHandler(craftHandler);
+		page1 = new AchievementPage("Quantum Craft", OwnAchievement.Danger, OwnAchievement.Hurry); 	//placed here for correct initialization
+		AchievementPage.registerAchievementPage(page1);
+		OwnAchievement.addAchievementLocalization();
 	}
 
 	@PostInit
