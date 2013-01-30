@@ -25,7 +25,19 @@ public class CraftingManager {
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,3), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemNeutriniumCrystal),'x', new ItemStack(Block.stoneBrick));
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,4), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemDepletedCrystal),'x', new ItemStack(Block.stoneBrick));
 		
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,1), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,5), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,0));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,6), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,7), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,2));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,8), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,3));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,9), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,4));
+		
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,9), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,5));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,10), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,6));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,11), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,7));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,12), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,8));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,13), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,9));
+		
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,1,14), "xxx","xxx","xxx", 'x', new ItemStack(ItemInitializator.ItemIngotPlutonium));
 		
 		//new ItemStack(ItemInitializator.EmptyBlock, 4) means the result are 4 EMpty Blocks
 		//" x ", "xyx", " x " is the crafting matrix
