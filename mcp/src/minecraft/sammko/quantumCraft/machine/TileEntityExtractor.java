@@ -16,7 +16,7 @@ public class TileEntityExtractor extends TileEntityMachine implements ISidedInve
 	
 	public TileEntityExtractor(World w, int rot) {
 		super(w, rot);
-		inv = new ItemStack[5];
+		inv = new ItemStack[9];
 	}
 
 	private ItemStack[] inv;

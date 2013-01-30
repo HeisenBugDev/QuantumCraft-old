@@ -18,6 +18,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -61,6 +62,7 @@ public class QuantumCraft {
 		page1 = new AchievementPage("Quantum Craft", OwnAchievement.Danger, OwnAchievement.Hurry); 	//placed here for correct initialization
 		AchievementPage.registerAchievementPage(page1);
 		OwnAchievement.addAchievementLocalization();
+		NetworkRegistry.instance().registerGuiHandler(this, new ItemInitializator());
 	}
 
 	@PostInit

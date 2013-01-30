@@ -10,14 +10,19 @@ public class ExtractorContainer extends Container {
 
     protected TileEntityExtractor tileEntity;
 
+    int xo = 125;
+    int yo = 37;
+    
     public ExtractorContainer (InventoryPlayer inventoryPlayer, TileEntityExtractor te){
             tileEntity = te;
 
+            
+            
             //the Slot constructor takes the IInventory and the slot number in that it binds to
             //and the x-y coordinates it resides on-screen
             for (int i = 0; i < 3; i++) {
                     for (int j = 0; j < 3; j++) {
-                            addSlotToContainer(new Slot(tileEntity, j + i * 3, 62 + j * 18, 17 + i * 18));
+                            addSlotToContainer(new Slot(tileEntity, j + i * 3, (62 + j * 18 )+ xo, (17 + i * 18 )+yo));
                     }
             }
 
@@ -35,12 +40,12 @@ public class ExtractorContainer extends Container {
             for (int i = 0; i < 3; i++) {
                     for (int j = 0; j < 9; j++) {
                             addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9,
-                                            8 + j * 18, 84 + i * 18));
+                                            (8 + j * 18 )+xo, (84 + i * 18 )+yo));
                     }
             }
 
             for (int i = 0; i < 9; i++) {
-                    addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+                    addSlotToContainer(new Slot(inventoryPlayer, i, (8 + i * 18 )+xo, 142+yo));
             }
     }
 

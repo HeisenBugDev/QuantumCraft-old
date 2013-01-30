@@ -67,7 +67,7 @@ public class BlockMachine extends BlockContainer {
 	
 	@Override
 	public TileEntity createNewTileEntity(World var1) {
-		return new TileEntityExtractor(var1,2);
+		return new TileEntityExtractor(var1,0);
 		//TODO: change this based on the metadata of this block.
 	}
 

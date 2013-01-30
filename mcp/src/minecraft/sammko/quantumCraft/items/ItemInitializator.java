@@ -208,7 +208,7 @@ public class ItemInitializator implements IGuiHandler{
             if(tileEntity instanceof TileEntityExtractor){
                     return new GuiExtractor(player.inventory, (TileEntityExtractor) tileEntity);
             }
-            return null;
+            else return null;
 			
 		}
 
