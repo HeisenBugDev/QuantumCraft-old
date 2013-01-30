@@ -24,11 +24,10 @@ public class BlockEmpty extends Block {
 	public BlockEmpty(int par1, int par2, int rid) {
 		
 		super(par1, par2, Material.rock);
-		this.setBlockName("emptyBlock");
 		this.setCreativeTab(ItemInitializator.tabQC);
 		this.RenderID = rid;
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
-		GameRegistry.registerBlock(this);
+		GameRegistry.registerBlock(this, "emptyBlock");
 		LanguageRegistry.addName(this, "Empty Block");
 	}
 
