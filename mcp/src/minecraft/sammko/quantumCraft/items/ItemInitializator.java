@@ -10,6 +10,7 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumHelper;
 import sammko.quantumCraft.core.QuantumCraft;
@@ -19,9 +20,10 @@ import sammko.quantumCraft.blocks.BlockEmpty;
 import sammko.quantumCraft.blocks.BlockQuantumBasicBlocks;
 import sammko.quantumCraft.blocks.BlockQuantumOre;
 import sammko.quantumCraft.machine.BlockMachine;
+import sammko.quantumCraft.machine.ExtractorContainer;
 import sammko.quantumCraft.machine.TileEntityExtractor;
 import sammko.quantumCraft.machine.TileEntityMachine;
-import sammko.quantumCraft.machine.gui.GuiGenerator;
+import sammko.quantumCraft.machine.gui.GuiExtractor;
 import sammko.quantumCraft.render.RenderBlockEmpty;
 import sammko.quantumCraft.render.RenderBlockMachine;
 import sammko.quantumCraft.resources.BlockTextureMatrix;
@@ -45,7 +47,7 @@ public class ItemInitializator implements IGuiHandler{
 		//Creative tabs
 		public static CreativeTabs tabQC;
 		//GUI IDs
-		public static int GuiGeneratorID = 1;
+		public static int GuiExtractorID = 0;
 		//Render IDs
 		public static int BlockEmptyRenderID;
 		public static int BlockMachineRenderID;
@@ -193,16 +195,21 @@ public class ItemInitializator implements IGuiHandler{
 		
 		}
 		@Override
-		public Object getServerGuiElement(int ID, EntityPlayer player,
-				World world, int x, int y, int z) {
-			
-			return null;
+		public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+			TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+            if(tileEntity instanceof TileEntityExtractor){
+                    return new ExtractorContainer(player.inventory, (TileEntityExtractor) tileEntity);
+            }
+            return null;
 		}
 		@Override
-		public Object getClientGuiElement(int ID, EntityPlayer player,
-				World world, int x, int y, int z) {
+		public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+			TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+            if(tileEntity instanceof TileEntityExtractor){
+                    return new GuiExtractor(player.inventory, (TileEntityExtractor) tileEntity);
+            }
+            return null;
 			
-			return null;
 		}
 
 }
