@@ -128,9 +128,6 @@
 				<filter token="BUILD_NUMBER" value="${build.number}" />
 			</filterset>
 		</copy>
-		<copy todir="${mcpsrc.dir}/minecraft">
-			<fileset dir="${src.dir}/buildcraft"/>
-		</copy>
 
 		<!-- Recompile -->
 		<exec dir="${mcp.dir}" executable="cmd" osfamily="windows">
