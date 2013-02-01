@@ -124,6 +124,24 @@
 		<delete dir="${classes.dir}"/>
 		<mkdir dir="${classes.dir}"/>
 
+		<unzip dest="${buildcraft.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+				<include name="buildcraft-src-${bc.version}.zip"/>
+			</fileset>
+		</unzip>
+
+		<unzip dest="${forestry.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+				<include name="forestry-api-${forestry.version}.zip"/>
+			</fileset>
+		</unzip>
+
+		<unzip dest="${ic2.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+				<include name="industrialcraft-2-api_${ic2.version}.zip"/>
+			</fileset>
+		</unzip>
+		
 		<!-- Copy sources -->
 		<copy todir="${mcpsrc.dir}/minecraft">
 			<fileset dir="${src.dir}/sammko"/>
