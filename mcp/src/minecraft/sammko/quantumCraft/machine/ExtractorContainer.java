@@ -16,7 +16,6 @@ public class ExtractorContainer extends QuantumContainer {
         	super(te.getSizeInventory());
             tileEntity = te;
 
-            //TODO: add the slots
             addSlotToContainer(new Slot(te, 0, 18, 11));
             addSlotToContainer(new Slot(te, 1, 18, 55));
             addSlotToContainer(new Slot(te, 2, 62, 55));
