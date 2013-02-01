@@ -1,4 +1,3 @@
-!/mcp/compiled/
 /common/
 /client/
 /fml/
@@ -33,6 +32,7 @@
 /mcp/src/minecraft/paulscode/
 /mcp/src/minecraft/net/
 /mcp/src/minecraft/cpw/
+/mcp/src/minecraft/buildcraft/
 
 
 !/mcp/redostuff.bat
