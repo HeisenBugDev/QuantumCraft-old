@@ -14,9 +14,9 @@ public class TileEntityExtractor extends TileEntityMachine implements ISidedInve
 
 	//TODO: finish this
 	
-	public TileEntityExtractor(World w, int rot) {
+	public TileEntityExtractor(World w, ForgeDirection rot) {
 		super(w, rot);
-		inv = new ItemStack[9];
+		inv = new ItemStack[5];
 	}
 
 	private ItemStack[] inv;
@@ -24,7 +24,7 @@ public class TileEntityExtractor extends TileEntityMachine implements ISidedInve
 
 	@Override
 	public int getSizeInventory() {
-		return 0;
+		return 5;
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class TileEntityExtractor extends TileEntityMachine implements ISidedInve
 
 	@Override
 	public String getInvName() {
-		return "Generator";
+		return "Extractor";
 	}
 
 	@Override
@@ -79,32 +79,12 @@ public class TileEntityExtractor extends TileEntityMachine implements ISidedInve
 
 	@Override
 	public int getStartInventorySide(ForgeDirection side) {
-		if (side == side.UP) { return 0; }
-		if (side == side.DOWN) { return 1; }
-		if (side == side.SOUTH && rotation == 0) { return 3; }
-		if (side == side.NORTH && rotation == 0) { return 4; }
-		if (side == side.WEST && rotation == 1) { return 3; }
-		if (side == side.EAST && rotation == 1) { return 4; }
-		if (side == side.NORTH && rotation == 2) { return 3; }
-		if (side == side.SOUTH && rotation == 2) { return 4; }
-		if (side == side.EAST && rotation == 3) { return 3; }
-		if (side == side.WEST && rotation == 3) { return 4; }
-		else { return -1; }
+		return 0;
 	}
 
 	@Override
 	public int getSizeInventorySide(ForgeDirection side) {
-		if (side == side.UP) { return 2; }
-		if (side == side.DOWN) { return 1; }
-		if (side == side.SOUTH && rotation == 0) { return 1; }
-		if (side == side.NORTH && rotation == 0) { return 1; }
-		if (side == side.WEST && rotation == 1) { return 1; }
-		if (side == side.EAST && rotation == 1) { return 1; }
-		if (side == side.NORTH && rotation == 2) { return 1; }
-		if (side == side.SOUTH && rotation == 2) { return 1; }
-		if (side == side.EAST && rotation == 3) { return 1; }
-		if (side == side.WEST && rotation == 3) { return 1; }
-		else { return -1; }
+		return 0;
 	}
 	
 	@Override
