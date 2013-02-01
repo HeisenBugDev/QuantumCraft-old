@@ -128,7 +128,32 @@
 				<filter token="BUILD_NUMBER" value="${build.number}" />
 			</filterset>
 		</copy>
+		<!-- Copy BC source -->
+		<copy todir="${commonsrc.dir}">
+			<fileset dir="${buildcraft.dir}/common">
+				<exclude name="**/buildcraft/devel"/>
+			</fileset>
+		</copy>
+		<copy todir="${commonsrc.dir}">
+			<fileset dir="${buildcraft.dir}/buildcraft_resources">
+			</fileset>
+		</copy>
 
+		<echo message="Copied BC files"/>
+
+		<!-- Copy Forestry API source -->
+		<copy todir="${commonsrc.dir}">
+			<fileset dir="${forestry.dir}"/>
+		</copy>
+
+		<echo message="Copied Forestry API"/>
+
+		<!-- Copy IC2 API source -->
+		<copy todir="${commonsrc.dir}">
+			<fileset dir="${ic2.dir}"/>
+		</copy>
+
+		<echo message="Copied IC2 API"/>
 		<!-- Recompile -->
 		<exec dir="${mcp.dir}" executable="cmd" osfamily="windows">
 			<arg line="/c recompile.bat"/>
