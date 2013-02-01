@@ -61,7 +61,7 @@ public class ItemInitializator implements IGuiHandler{
 		
 		//Blocks
 		public static BlockEmpty EmptyBlock;
-		public static BlockQuantumBasicBlocks DecoBlocks;
+		public static Block DecoBlocks;
 		//Machines
 		public static BlockMachine MachineBlock;
 		//Items
@@ -106,7 +106,7 @@ public class ItemInitializator implements IGuiHandler{
 		{
 			EmptyBlock = new BlockEmpty(QuantumCraftSettings.EmptyBlockID, BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle), BlockEmptyRenderID);
 			MachineBlock = new BlockMachine(QuantumCraftSettings.MachineBlockID, BlockMachineRenderID);
-			DecoBlocks = new BlockQuantumBasicBlocks(QuantumCraftSettings.DecoBlocksID, BlockTextureMatrix.getIndex(BlockTextureMatrix.Err));
+			DecoBlocks = new BlockQuantumBasicBlocks(QuantumCraftSettings.DecoBlocksID, BlockTextureMatrix.getIndex(BlockTextureMatrix.Err)).setHardness(2.0F).setResistance(10.0F);
 			
 			for (int ix = 0; ix < 16; ix++) {
 				ItemStack iBlockQBB = new ItemStack(DecoBlocks, 1, ix);
