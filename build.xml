@@ -14,6 +14,9 @@
 	<property name="forge.dir" value="${build.dir}/forge"/>
 	<property name="mcp.dir" value="${forge.dir}/mcp"/>
 
+	<property name="buildcraft.dir" value="${mcp.dir}/buildcraft"/>
+	<property name="forestry.dir" value="${mcp.dir}/forestry"/>
+	<property name="ic2.dir" value="${mcp.dir}/ic2"/>
 	<property name="mcpsrc.dir" value="${mcp.dir}/src"/>
 
 	<property name="mc.version" value="1.4.7"/>
