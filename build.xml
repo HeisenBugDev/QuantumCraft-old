@@ -127,7 +127,9 @@
 
 		<delete dir="${classes.dir}"/>
 		<mkdir dir="${classes.dir}"/>
-		<delete dir="${mcpmc.dir}/api"/>
+		<delete dir="${mcpmc.dir}/buildcraft"/>
+		<delete dir="${mcpmc.dir}/ic2"/>
+		<delete dir="${mcpmc.dir}/forestry"/>
 		
 		
 		<unzip dest="${buildcraft.dir}" failOnEmptyArchive="true">
