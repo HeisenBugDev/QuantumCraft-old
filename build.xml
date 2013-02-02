@@ -183,10 +183,6 @@
 		</exec>
 
 		<exec dir="${mcp.dir}" executable="sh" osfamily="unix">
-			<arg value="updatemcp.sh"/>
-		</exec>
-		
-		<exec dir="${mcp.dir}" executable="sh" osfamily="unix">
 			<arg value="recompile.sh"/>
 		</exec>
 
