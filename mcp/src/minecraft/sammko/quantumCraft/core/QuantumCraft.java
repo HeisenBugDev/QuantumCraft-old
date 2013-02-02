@@ -55,6 +55,7 @@ public class QuantumCraft {
 		ItemInitializator.initAll();
 		CraftingManager.addCrafting();
 		CraftingManager.addSmelting();
+		if (exists("ic2.core.IC2")) CraftingManager.addOther();
 		MinecraftForge.setToolClass(ItemInitializator.ItemCrystalPickaxe,
 				"CrystalPickaxe", 2);
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
@@ -69,4 +70,16 @@ public class QuantumCraft {
 	public void postInit(FMLPostInitializationEvent event) {
 		// Stub Method
 	}
+	
+	public boolean exists (String className)
+	{
+		try {
+			Class.forName(className);
+			return true;
+		}
+		catch (ClassNotFoundException exception) {
+			return false;
+		}
+	}
+
 }

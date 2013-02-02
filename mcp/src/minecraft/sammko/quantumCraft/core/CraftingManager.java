@@ -41,10 +41,6 @@ public class CraftingManager {
 		
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,1,15), "xxx","xxx","xxx", 'x', new ItemStack(ItemInitializator.ItemIngotPlutonium));
 		
-		//TODO:
-		//IF YOU WANT TO TEST THE MOD IN ECLIPSE COMMENT THIS. DO NOT FORGET TO UNCOMMENT IT!!!!
-		Ic2Recipes.addMaceratorRecipe(new ItemStack(ItemInitializator.ItemDepletedCrystal), new ItemStack(ItemInitializator.ItemDepletedShard));
-		
 		//new ItemStack(ItemInitializator.EmptyBlock, 4) means the result are 4 EMpty Blocks
 		//" x ", "xyx", " x " is the crafting matrix
 		//'y', new ItemStack(ItemInitializator.ItemIngotPlutonium) means that y, in the crafting matrix should be Plutonium ingot
@@ -57,10 +53,16 @@ public class CraftingManager {
 		GameRegistry.addSmelting(QuantumCraftSettings.OreRadiumID, new ItemStack(ItemInitializator.ItemRadiumCrystal), 4F);
 		GameRegistry.addSmelting(QuantumCraftSettings.OreGammatroniumID, new ItemStack(ItemInitializator.ItemGammatroniumCrystal), 4F);
 		GameRegistry.addSmelting(QuantumCraftSettings.OreNeutriniumID, new ItemStack(ItemInitializator.ItemNeutriniumCrystal), 4F);
-	
-		
-		
+			
 		//QuantumCraftSettings.OrePlutoniumID is the input item
 		//new ItemStack(ItemInitializator.ItemIngotPlutonium) is output
+	}
+	
+	public static void addOther()
+	{
+		//TODO:
+		//IF YOU WANT TO TEST THE MOD IN ECLIPSE COMMENT THIS. DO NOT FORGET TO UNCOMMENT IT!!!!
+		Ic2Recipes.addMaceratorRecipe(new ItemStack(ItemInitializator.ItemDepletedCrystal), new ItemStack(ItemInitializator.ItemDepletedShard));
+				
 	}
 }
