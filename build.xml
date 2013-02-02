@@ -154,27 +154,20 @@
 			</filterset>
 		</copy>
 		<!-- Copy BC API -->
-		<copy todir="${commonsrc.dir}">
-			<fileset dir="${buildcraft.dir}/common">
-				<exclude name="**/buildcraft/devel"/>
-			</fileset>
+		<copy todir="${mcpsrc.dir}/minecraft/buildcraft">
+			<fileset dir="${buildcraft.dir}/common/buildcraft/api"/>
 		</copy>
-		<copy todir="${commonsrc.dir}">
-			<fileset dir="${buildcraft.dir}/buildcraft_resources">
-			</fileset>
-		</copy>
-
 		<echo message="Copied BC files"/>
 
 		<!-- Copy Forestry API source -->
-		<copy todir="${commonsrc.dir}">
+		<copy todir="${mcpsrc.dir}/minecraft">
 			<fileset dir="${forestry.dir}"/>
 		</copy>
 
 		<echo message="Copied Forestry API"/>
 
 		<!-- Copy IC2 API source -->
-		<copy todir="${commonsrc.dir}">
+		<copy todir="${mcpsrc.dir}/minecraft">
 			<fileset dir="${ic2.dir}"/>
 		</copy>
 
