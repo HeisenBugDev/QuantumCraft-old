@@ -22,6 +22,7 @@
 	<property name="ic2.dir" value="${src.dir}/ic2"/>
 	
 	<property name="mcpsrc.dir" value="${mcp.dir}/src"/>
+	<property name="mcpmc.dir" value="${mcpsrc.dir}/minecraft"/>
 
 	<property name="mc.version" value="1.4.7"/>
 	<property name="forge.version" value="6.6.0.515"/>
@@ -146,7 +147,7 @@
 		</unzip>
 		
 		<!-- Copy sources -->
-		<copy todir="${mcpsrc.dir}/minecraft">
+		<copy todir="${mcpmc.dir}">
 			<fileset dir="${src.dir}/sammko"/>
 			<filterset>
 				<filter token="VERSION" value="${project.version.full}" />
@@ -154,20 +155,20 @@
 			</filterset>
 		</copy>
 		<!-- Copy BC API -->
-		<copy todir="${mcpsrc.dir}/minecraft/buildcraft">
+		<copy todir="${mcpmc.dir}/buildcraft">
 			<fileset dir="${buildcraft.dir}/common/buildcraft/api"/>
 		</copy>
 		<echo message="Copied BC files"/>
 
 		<!-- Copy Forestry API source -->
-		<copy todir="${mcpsrc.dir}/minecraft">
+		<copy todir="${mcpmc.dir}">
 			<fileset dir="${forestry.dir}"/>
 		</copy>
 
 		<echo message="Copied Forestry API"/>
 
 		<!-- Copy IC2 API source -->
-		<copy todir="${mcpsrc.dir}/minecraft">
+		<copy todir="${mcpmc.dir}">
 			<fileset dir="${ic2.dir}"/>
 		</copy>
 
