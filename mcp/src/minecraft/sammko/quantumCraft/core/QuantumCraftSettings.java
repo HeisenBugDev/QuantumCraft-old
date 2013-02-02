@@ -4,7 +4,9 @@ import net.minecraftforge.common.Configuration;
 
 public class QuantumCraftSettings {
 
-
+		//mods
+		public static boolean gotIC2 = false;
+		//files
 		public static String BLOCK_PNG = "/sammko/qc/block.png";
 		public static String ITEMS_PNG = "/sammko/qc/items.png";
 		public static String BGextractorGUI = "/sammko/qc/gui/Extractor.png";
@@ -84,6 +86,19 @@ public class QuantumCraftSettings {
 	        WGenDep = config.get("World Gen", "DepletedOre", true).getBoolean(true);
 	        
 	        config.save();
+	        
+
+			gotIC2 = exists("ic2.core.IC2");
 		}
 		
+		public static boolean exists (String className)
+		{
+			try {
+				Class.forName(className);
+				return true;
+			}
+			catch (ClassNotFoundException exception) {
+				return false;
+			}
+		}
 }

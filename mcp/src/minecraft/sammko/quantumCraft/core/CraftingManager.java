@@ -58,6 +58,11 @@ public class CraftingManager {
 		//new ItemStack(ItemInitializator.ItemIngotPlutonium) is output
 	}
 	
+	public static void addMod()
+	{
+		if (QuantumCraftSettings.gotIC2) addIC2();
+	}
+	
 	public static void addIC2()
 	{
 		//TODO:
