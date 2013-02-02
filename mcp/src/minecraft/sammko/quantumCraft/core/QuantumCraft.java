@@ -55,9 +55,8 @@ public class QuantumCraft {
 		ItemInitializator.initAll();
 		CraftingManager.addCrafting();
 		CraftingManager.addSmelting();
-		if (exists("ic2.core.IC2")) CraftingManager.addOther();
-		MinecraftForge.setToolClass(ItemInitializator.ItemCrystalPickaxe,
-				"CrystalPickaxe", 2);
+		if (exists("ic2.core.IC2")) CraftingManager.addIC2();
+		MinecraftForge.setToolClass(ItemInitializator.ItemCrystalPickaxe, "CrystalPickaxe", 2);// Do we need this here? cause we already set the harvest level in material enum.
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		GameRegistry.registerCraftingHandler(craftHandler);
 		page1 = new AchievementPage("Quantum Craft", OwnAchievement.Danger, OwnAchievement.Hurry); 	//placed here for correct initialization

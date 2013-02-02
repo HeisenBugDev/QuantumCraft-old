@@ -58,7 +58,7 @@ public class CraftingManager {
 		//new ItemStack(ItemInitializator.ItemIngotPlutonium) is output
 	}
 	
-	public static void addOther()
+	public static void addIC2()
 	{
 		//TODO:
 		//IF YOU WANT TO TEST THE MOD IN ECLIPSE COMMENT THIS. DO NOT FORGET TO UNCOMMENT IT!!!!
