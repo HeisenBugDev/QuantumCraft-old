@@ -127,7 +127,9 @@
 
 		<delete dir="${classes.dir}"/>
 		<mkdir dir="${classes.dir}"/>
-
+		<delete dir="${mcpmc.dir}/api"/>
+		
+		
 		<unzip dest="${buildcraft.dir}" failOnEmptyArchive="true">
 			<fileset dir="${download.dir}">
 				<include name="buildcraft-src-${bc.version}.zip"/>
