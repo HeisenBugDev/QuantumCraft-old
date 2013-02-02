@@ -61,49 +61,7 @@ public class BlockMachine extends BlockContainer {
 	@Override
 	public void breakBlock (World par1World, int x, int y, int z, int par5, int par6)
 	{
-		TileEntityMachine te = (TileEntityMachine) par1World.getBlockTileEntity(x, y, z);
-		Random r = new Random();
-		
-		if (te != null)
-		{
-			for (int iter = 0; iter < te.getSizeInventory(); ++iter)
-			{
-				ItemStack stack = te.getStackInSlot(iter);
-
-				if (stack != null && te.canDropInventorySlot(iter))
-				{
-					float jumpX = r.nextFloat() * 0.8F + 0.1F;
-					float jumpY = r.nextFloat() * 0.8F + 0.1F;
-					float jumpZ = r.nextFloat() * 0.8F + 0.1F;
-
-					while (stack.stackSize > 0)
-					{
-						int itemSize = r.nextInt(21) + 10;
-						
-						if (itemSize > stack.stackSize)
-						{
-							itemSize = stack.stackSize;
-						}
-
-						stack.stackSize -= itemSize;
-						EntityItem entityitem = new EntityItem(par1World, (double) ((float) x + jumpX), (double) ((float) y + jumpY), (double) ((float) z + jumpZ),
-								new ItemStack(stack.itemID, itemSize, stack.getItemDamage()));
-
-						if (stack.hasTagCompound())
-						{
-							entityitem.func_92014_d().setTagCompound((NBTTagCompound) stack.getTagCompound().copy());
-						}
-
-						float offset = 0.05F;
-						entityitem.motionX = (double) ((float) r.nextGaussian() * offset);
-						entityitem.motionY = (double) ((float) r.nextGaussian() * offset + 0.2F);
-						entityitem.motionZ = (double) ((float) r.nextGaussian() * offset);
-						par1World.spawnEntityInWorld(entityitem);
-					}
-				}
-			}
-		}
-
+		Utils.preDestroyBlock(par1World, x, y, z);
 		super.breakBlock(par1World, x, y, z, par5, par6);
 	}
 
