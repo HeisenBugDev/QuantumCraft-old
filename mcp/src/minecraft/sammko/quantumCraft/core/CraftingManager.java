@@ -1,5 +1,6 @@
 package sammko.quantumCraft.core;
 
+import ic2.api.Ic2Recipes;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -38,6 +39,8 @@ public class CraftingManager {
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,4,14), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1,9));
 		
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,1,15), "xxx","xxx","xxx", 'x', new ItemStack(ItemInitializator.ItemIngotPlutonium));
+		
+		Ic2Recipes.addMaceratorRecipe(new ItemStack(ItemInitializator.ItemDepletedCrystal), new ItemStack(ItemInitializator.ItemCrystalShovel));
 		
 		//new ItemStack(ItemInitializator.EmptyBlock, 4) means the result are 4 EMpty Blocks
 		//" x ", "xyx", " x " is the crafting matrix
