@@ -14,34 +14,82 @@ public class WorldGenOres implements IWorldGenerator {
 
 	byte heightTreshold = 45;
 
-	int x,y,z = 0;
-	int o = 0;
+	private QWorldGenMinable PosGen;
+	private QWorldGenMinable RadGen;
+	private QWorldGenMinable GamGen;
+	private QWorldGenMinable NeuGen;
+	private QWorldGenMinable DepGen;
+	private QWorldGenMinable PluGen;
 	
 	@Override
 	public void generate(Random random, int xo, int zo, World w,
 			IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		
-		for(int i=0;i<1;i++){
-			ranomize(xo, zo, random);
-			if (o == 0) new WorldGenMinable(QuantumCraftSettings.OrePositroniumID, 4 + random.nextInt(2)).generate(w, random, x, y, z); else
-			if (o == 1) new WorldGenMinable(QuantumCraftSettings.OreRadiumID, 4 + random.nextInt(2)).generate(w, random, x, y, z); else
-			if (o == 2) new WorldGenMinable(QuantumCraftSettings.OreGammatroniumID, 4 + random.nextInt(2)).generate(w, random, x, y, z); else
-			if (o == 3) new WorldGenMinable(QuantumCraftSettings.OreNeutriniumID, 4 + random.nextInt(2)).generate(w, random, x, y, z); else
-			if (o == 4) new WorldGenMinable(QuantumCraftSettings.OreDepletedID, 4 + random.nextInt(2)).generate(w, random, x, y, z); else
-			if (o == 5) new WorldGenMinable(QuantumCraftSettings.OrePlutoniumID, 0 + random.nextInt(2)).generate(w, random, x, y, z);
-			
-			System.out.println("[QuantumCraft] Generated vein of "+o+". Its at " + x + ", " + z);
-			
+		this.PosGen = new QWorldGenMinable(ItemInitializator.OrePositronium.blockID, 6);
+		this.RadGen = new QWorldGenMinable(ItemInitializator.OreRadium.blockID, 6);
+		this.GamGen = new QWorldGenMinable(ItemInitializator.OreGammatronium.blockID, 6);
+		this.NeuGen = new QWorldGenMinable(ItemInitializator.OreNeutrinium.blockID, 6);
+		this.DepGen = new QWorldGenMinable(ItemInitializator.OreDepleted.blockID, 6);
+		this.PluGen = new QWorldGenMinable(ItemInitializator.OrePlutonium.blockID, 6);
+		
+		xo <<= 4;
+		zo <<= 4;
+		
+		if (QuantumCraftSettings.WGenPos) {
+		      for (int i = 0; i < 10; i++) {
+		        int randPosX = xo + random.nextInt(16);
+		        int randPosY = random.nextInt(heightTreshold);
+		        int randPosZ = zo + random.nextInt(16);
+		        this.PosGen.generate(w, random, randPosX, randPosY, randPosZ);
+		        if (QuantumCraftSettings.debug)System.out.println("[QuantumCraft][WGEN]POS@x="+randPosX+";y="+randPosY+";z="+randPosZ);
+		      }
+		}
+	    if (QuantumCraftSettings.WGenRad) {
+		      for (int i = 0; i < 10; i++) {
+		        int randPosX = xo + random.nextInt(16);
+		        int randPosY = random.nextInt(heightTreshold);
+		        int randPosZ = zo + random.nextInt(16);
+		        this.RadGen.generate(w, random, randPosX, randPosY, randPosZ);
+		        if (QuantumCraftSettings.debug)System.out.println("[QuantumCraft][WGEN]RAD@ x="+randPosX+";y="+randPosY+";z="+randPosZ);
+		      }
+		}
+		if (QuantumCraftSettings.WGenGam) {
+		      for (int i = 0; i < 10; i++) {
+		        int randPosX = xo + random.nextInt(16);
+		        int randPosY = random.nextInt(heightTreshold);
+		        int randPosZ = zo + random.nextInt(16);
+		        this.GamGen.generate(w, random, randPosX, randPosY, randPosZ);
+		        if (QuantumCraftSettings.debug)System.out.println("[QuantumCraft][WGEN]GAM@ x="+randPosX+";y="+randPosY+";z="+randPosZ);
+		      }
+		}
+		if (QuantumCraftSettings.WGenNeu) {
+		      for (int i = 0; i < 10; i++) {
+		        int randPosX = xo + random.nextInt(16);
+		        int randPosY = random.nextInt(heightTreshold);
+		        int randPosZ = zo + random.nextInt(16);
+		        this.NeuGen.generate(w, random, randPosX, randPosY, randPosZ);
+		        if (QuantumCraftSettings.debug)System.out.println("[QuantumCraft][WGEN]NEU@ x="+randPosX+";y="+randPosY+";z="+randPosZ);
+		      }
+		}
+		if (QuantumCraftSettings.WGenDep) {
+		      for (int i = 0; i < 2; i++) {
+		        int randPosX = xo + random.nextInt(16);
+		        int randPosY = random.nextInt(heightTreshold);
+		        int randPosZ = zo + random.nextInt(16);
+		        this.DepGen.generate(w, random, randPosX, randPosY, randPosZ);
+		        if (QuantumCraftSettings.debug)System.out.println("[QuantumCraft][WGEN]DEP@ x="+randPosX+";y="+randPosY+";z="+randPosZ);
+		      }
+		}
+		if (QuantumCraftSettings.WGenPlu) {
+		      for (int i = 0; i < 10; i++) {
+		        int randPosX = xo + random.nextInt(16);
+		        int randPosY = random.nextInt(heightTreshold);
+		        int randPosZ = zo + random.nextInt(16);
+		        this.PluGen.generate(w, random, randPosX, randPosY, randPosZ);
+		        if (QuantumCraftSettings.debug)System.out.println("[QuantumCraft][WGEN]PLU@ x="+randPosX+";y="+randPosY+";z="+randPosZ);
+		      }
 		}
 		
-	}
-	
-	public void ranomize(int xo, int zo, Random random)
-	{
 		
-		x = xo + random.nextInt(16);
-		y = random.nextInt(heightTreshold);
-		z = zo + random.nextInt(16);
-		o = random.nextInt(6);
 	}
 }

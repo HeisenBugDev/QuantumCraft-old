@@ -4,6 +4,8 @@ import net.minecraftforge.common.Configuration;
 
 public class QuantumCraftSettings {
 
+		//other
+		public static boolean debug;
 		//mods
 		public static boolean gotIC2 = false;
 		//files
@@ -78,12 +80,14 @@ public class QuantumCraftSettings {
 	        OreDepletedID = config.get("Blocks", "OreDepleted", 2507).getInt();
 	        DecoBlocksID = config.get("Blocks", "DecoBlocks", 2508).getInt();
 	        
-	        WGenPlu = config.get("World Gen", "Plutonium", true).getBoolean(true);
-	        WGenPos = config.get("World Gen", "Positronium", true).getBoolean(true);
-	        WGenRad = config.get("World Gen", "Radium", true).getBoolean(true);
-	        WGenGam = config.get("World Gen", "Gammatronium", true).getBoolean(true);
-	        WGenNeu = config.get("World Gen", "Neutrinium", true).getBoolean(true);
-	        WGenDep = config.get("World Gen", "DepletedOre", true).getBoolean(true);
+	        debug = config.get("Other", "Debug", false).getBoolean(false);
+	        
+	        WGenPlu = config.get("WorldGen", "Plutonium", true).getBoolean(true);
+	        WGenPos = config.get("WorldGen", "Positronium", true).getBoolean(true);
+	        WGenRad = config.get("WorldGen", "Radium", true).getBoolean(true);
+	        WGenGam = config.get("WorldGen", "Gammatronium", true).getBoolean(true);
+	        WGenNeu = config.get("WorldGen", "Neutrinium", true).getBoolean(true);
+	        WGenDep = config.get("WorldGen", "DepletedOre", true).getBoolean(true);
 	        
 	        config.save();
 	        
