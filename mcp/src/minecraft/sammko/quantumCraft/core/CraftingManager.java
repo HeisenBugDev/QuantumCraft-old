@@ -43,7 +43,7 @@ public class CraftingManager {
 		
 		//TODO:
 		//IF YOU WANT TO TEST THE MOD IN ECLIPSE COMMENT THIS. DO NOT FORGET TO UNCOMMENT IT!!!!
-		Ic2Recipes.addMaceratorRecipe(new ItemStack(ItemInitializator.ItemDepletedCrystal), new ItemStack(ItemInitializator.ItemCrystalShovel));
+		Ic2Recipes.addMaceratorRecipe(new ItemStack(ItemInitializator.ItemDepletedCrystal), new ItemStack(ItemInitializator.ItemDepletedShard));
 		
 		//new ItemStack(ItemInitializator.EmptyBlock, 4) means the result are 4 EMpty Blocks
 		//" x ", "xyx", " x " is the crafting matrix
