@@ -75,9 +75,9 @@
 
 	<!-- Download necessary files -->
 	<target name="download-files" depends="download-forge">
-		<get src="${downloadserver.full}buildcraft-src-${bc.version}.zip" dest="${download.dir}" usetimestamp="True"/>
-		<get src="${downloadserver.full}forestry-api-${forestry.version}.zip" dest="${download.dir}" usetimestamp="True"/>
-		<get src="${downloadserver.full}industrialcraft-2-api_${ic2.version}.zip" dest="${download.dir}" usetimestamp="True"/>
+		<get src="https://github.com/BuildCraft/BuildCraft/archive/master.zip" dest="${download.dir}" usetimestamp="True"/>
+		<get src="https://dl.dropbox.com/u/44760587/forestry/releases/2.0.0.0/forestry-api-2.0.0.0.zip" dest="${download.dir}" usetimestamp="True"/>
+		<get src="https://dl.dropbox.com/u/861751/IC2/1.113/industrialcraft-2-api_1.113.205-lf.zip" dest="${download.dir}" usetimestamp="True"/>
 	</target>
 	<!-- Download forge (if it doesn't exist) -->
 	<target name="download-forge" unless="forge-exists">
