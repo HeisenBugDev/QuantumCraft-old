@@ -136,7 +136,7 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory {
         tags.setTag("Items", nbttaglist);
     }
     
-	/* Default implementations of hardly used methods */
+	/* I dont think i will ever use this */
 	public ItemStack getStackInSlotOnClosing (int slot) { return null; }
 	public void openChest () {}
 	public void closeChest () {}

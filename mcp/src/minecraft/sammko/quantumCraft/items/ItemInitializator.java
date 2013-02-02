@@ -172,7 +172,6 @@ public class ItemInitializator implements IGuiHandler{
 		}
 		public static void initTEntities()
 		{
-			GameRegistry.registerTileEntity(TileEntityMachine.class, "MachineTE");
 			GameRegistry.registerTileEntity(TileEntityExtractor.class, "ExtractorTE");
 		}
 		public static void initRenderers()

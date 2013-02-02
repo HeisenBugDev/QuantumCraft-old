@@ -15,11 +15,11 @@ import net.minecraft.util.StatCollector;
 
 public class GuiExtractor extends GuiContainer {
 
-	//TODO: finish this.
+	TileEntityExtractor te;
 
-	public GuiExtractor(InventoryPlayer ip, TileEntityExtractor te) {
-		super(new ExtractorContainer(ip, te));
-		
+	public GuiExtractor(InventoryPlayer ip, TileEntityExtractor tee) {
+		super(new ExtractorContainer(ip, tee));
+		this.te = tee;
 	}
 
 	public void initGui()
@@ -32,12 +32,10 @@ public class GuiExtractor extends GuiContainer {
 	@Override
     protected void drawGuiContainerForegroundLayer(int param1, int param2) {
             //the parameters for drawString are: string, x, y, color
-		
             fontRenderer.drawString("Quantum Extractor", 45, 6, 4210752);
             fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
-    }
+	}
 	
-  
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
         int texture = mc.renderEngine.getTexture(QuantumCraftSettings.BGextractorGUI);
@@ -46,7 +44,17 @@ public class GuiExtractor extends GuiContainer {
         int x = (width - xSize) / 2;
         int y = (height - ySize) / 2;
         this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-		
+		int t;
+        
+        if (te.isBurning())
+        {
+            t = this.te.getBurnTimeRemainingScaled(14);
+            this.drawTexturedModalRect(x + 63, y + 52 - t, 176, 14 - t, 14, t);
+        }
+        
+        t = this.te.getCookProgressScaled(24);
+        this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t, 15);
+        
 	}
 
 }
