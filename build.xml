@@ -14,6 +14,9 @@
 	<property name="forge.dir" value="${build.dir}/forge"/>
 	<property name="mcp.dir" value="${forge.dir}/mcp"/>
 
+	<property name="clientsrc.dir" value="${mcp.dir}/src/minecraft"/>
+	<property name="commonsrc.dir" value="${clientsrc.dir}"/>
+	
 	<property name="buildcraft.dir" value="${src.dir}/buildcraft"/>
 	<property name="forestry.dir" value="${src.dir}/forestry"/>
 	<property name="ic2.dir" value="${src.dir}/ic2"/>
@@ -150,7 +153,7 @@
 				<filter token="BUILD_NUMBER" value="${build.number}" />
 			</filterset>
 		</copy>
-		<!-- Copy BC source -->
+		<!-- Copy BC API -->
 		<copy todir="${commonsrc.dir}">
 			<fileset dir="${buildcraft.dir}/common">
 				<exclude name="**/buildcraft/devel"/>
