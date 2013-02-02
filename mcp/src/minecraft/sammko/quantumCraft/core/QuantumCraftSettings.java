@@ -37,6 +37,7 @@ public class QuantumCraftSettings {
 		public static int GammatroniumEnergyPacketID;
 		public static int NeutriniumEnergyPacketID;
 		
+		public static int DCrystalShardID;
 		public static int CrystalPickaxeID;
 		public static int CrystalSwordID;
 		public static int CrystalAxeID;
@@ -63,6 +64,7 @@ public class QuantumCraftSettings {
 	        CrystalSwordID = config.get("Items", "CrystalSwordID", 4512).getInt();
 	        CrystalAxeID = config.get("Items", "CrystalAxeID", 4513).getInt();
 	        CrystalShovelID = config.get("Items", "CrystalShovelID", 4514).getInt();
+	        DCrystalShardID = config.get("Items", "DepletedShardID", 4515).getInt();
 	      
 	        OrePositroniumID = config.get("Blocks", "OrePositronium", 2500).getInt();
 	        OrePlutoniumID = config.get("Blocks", "OrePlutonium", 2501).getInt();

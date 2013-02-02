@@ -71,6 +71,7 @@ public class ItemInitializator implements IGuiHandler{
 		public static ItemCrystal ItemGammatroniumCrystal;
 		public static ItemCrystal ItemNeutriniumCrystal;
 		public static ItemCrystal ItemDepletedCrystal;
+		public static ItemCrystal ItemDepletedShard;
 		
 		public static ItemPickaxe ItemCrystalPickaxe;
 		public static ItemSword ItemCrystalSword;
@@ -123,6 +124,7 @@ public class ItemInitializator implements IGuiHandler{
 			ItemGammatroniumCrystal = new ItemCrystal(QuantumCraftSettings.CrystalGammatroniumID);
 			ItemNeutriniumCrystal = new ItemCrystal(QuantumCraftSettings.CrystalNeutriniumID);
 			ItemDepletedCrystal = new ItemCrystal(QuantumCraftSettings.CrystalDepletedID);
+			ItemDepletedShard = new ItemCrystal(QuantumCraftSettings.DCrystalShardID);
 			
 			ItemEmptyEnergyPacket = new ItemEnergyPacket(QuantumCraftSettings.EmptyEnergyPacketID);
 			ItemPositroniumEnergyPacket = new ItemEnergyPacket(QuantumCraftSettings.PositroniumEnergyPacketID);
@@ -141,6 +143,7 @@ public class ItemInitializator implements IGuiHandler{
 			ItemGammatroniumCrystal.setMaxStackSize(64).setCreativeTab(tabQC) .setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.GammatroniumCrystal)).setItemName("gammatroniumCrystal");
 			ItemNeutriniumCrystal.setMaxStackSize(64).setCreativeTab(tabQC).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.NeutriniumCrystal)).setItemName("neutriniumCrystal");
 			ItemDepletedCrystal.setMaxStackSize(64).setCreativeTab(tabQC).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.DepletedCrystal)).setItemName("depletedCrystal");
+			ItemDepletedShard.setMaxStackSize(64).setCreativeTab(tabQC).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.DCrystalShard)).setItemName("depletedCrystalShard");
 			
 			ItemEmptyEnergyPacket.setMaxStackSize(64).setCreativeTab(tabQC).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.EmptyEPacket)).setItemName("emptyEP");
 			ItemPositroniumEnergyPacket.setMaxStackSize(64).setCreativeTab(tabQC).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.PositroniumEPacket)).setItemName("positroniumEP");
@@ -161,6 +164,7 @@ public class ItemInitializator implements IGuiHandler{
 			LanguageRegistry.addName(ItemGammatroniumEnergyPacket, "Gammatronium EPacket");
 			LanguageRegistry.addName(ItemNeutriniumEnergyPacket, "Neutrinium EPacket");
 			
+			LanguageRegistry.addName(ItemDepletedShard, "Depleted Crystal Shard");
 			LanguageRegistry.addName(ItemCrystalPickaxe, "Crystal Pickaxe");
 			LanguageRegistry.addName(ItemCrystalSword, "Crystal Sword");
 			LanguageRegistry.addName(ItemCrystalAxe, "Crystal Axe");

@@ -18,6 +18,7 @@ public class ItemTextureMatrix {
 	public static int NeutriniumEPacket = 0x31;
 	public static int GammatroniumEPacket = 0x41;
 	
+	public static int DCrystalShard = 0x51;
 	
 	public static int CPickaxe = 0x02;
 	public static int CSword = 0x12;
