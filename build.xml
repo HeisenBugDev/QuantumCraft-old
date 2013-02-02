@@ -160,7 +160,7 @@
 		</copy>
 		<!-- Copy BC API -->
 		<copy todir="${mcpmc.dir}/buildcraft">
-			<fileset dir="${buildcraft.dir}/common/buildcraft/api"/>
+			<fileset dir="${buildcraft.dir}/BuildCraft-master/common/buildcraft/api"/>
 		</copy>
 		<echo message="Copied BC files"/>
 
