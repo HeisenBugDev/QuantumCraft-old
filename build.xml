@@ -1,0 +1,237 @@
+<project name="QuantumCraft" default="main">
+	<property environment="env"/>
+	<!-- Properties -->
+
+	<property name="build.dir" value="build"/>
+	<property name="src.dir" value="./mcp/src/minecraft"/>
+	<property name="resources.dir" value="mcp/src/minecraft/sammko/qc"/>
+
+	<property name="download.dir" value="download"/>
+
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="jar.dir" value="bin"/>
+
+	<property name="forge.dir" value="${build.dir}/forge"/>
+	<property name="mcp.dir" value="${forge.dir}/mcp"/>
+
+	<property name="clientsrc.dir" value="${mcp.dir}/src/minecraft"/>
+	<property name="commonsrc.dir" value="${clientsrc.dir}"/>
+	
+	<property name="buildcraft.dir" value="${src.dir}/buildcraft"/>
+	<property name="forestry.dir" value="${src.dir}/forestry"/>
+	<property name="ic2.dir" value="${src.dir}/ic2"/>
+	
+	<property name="mcpsrc.dir" value="${mcp.dir}/src"/>
+	<property name="mcpmc.dir" value="${mcpsrc.dir}/minecraft"/>
+
+	<property name="mc.version" value="1.4.7"/>
+	<property name="forge.version" value="6.6.0.515"/>
+	<property name="project.version" value="0.5"/>
+
+	<property name="downloadserver" value="http://www.theZorro266.com"/>
+	<property name="downloadserver.dir" value="rs485/"/>
+	<property name="downloadserver.full" value="${downloadserver}/${downloadserver.dir}"/>
+	
+	<property name="forge.name" value="minecraftforge-src-${mc.version}-${forge.version}.zip"/>
+
+	<property name="bc.version" value="3.4.1"/>
+	<property name="forestry.version" value="2.0.0.0"/>
+	<property name="ic2.version" value="1.113.205-lf"/>	
+	
+	<available property="forge-exists" file="${download.dir}/${forge.name}"/>
+
+	<condition property="out-of-date">
+		<not>
+			<and>
+				<available file="${download.dir}/${forge.name}"/>
+				<available file="${mcpsrc.dir}"/>
+			</and>
+		</not>
+	</condition>
+
+	<mkdir dir="${download.dir}"/>
+
+	<!-- Targets -->
+
+	<!-- Clear build directory -->
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+
+	<!-- Set full version -->
+	<target name="initialize-version" depends="version-provided,version-not-provided">
+		<property name="project.version.full" value="${project.version}.${build.number}"/>
+	</target>
+
+	<!-- Set unknown build number -->
+	<target name="version-not-provided" unless="env.BUILD_NUMBER">
+		<property name="build.number" value="unknown"/>
+	</target>
+
+	<!-- Set build number from environment -->
+	<target name="version-provided" if="env.BUILD_NUMBER">
+		<property name="build.number" value="${env.BUILD_NUMBER}"/>
+	</target>
+
+	<!-- Download necessary files -->
+	<target name="download-files" depends="download-forge">
+		<get src="https://github.com/BuildCraft/BuildCraft/archive/master.zip" dest="${download.dir}" usetimestamp="True"/>
+		<get src="https://dl.dropbox.com/u/44760587/forestry/releases/2.0.0.0/forestry-api-2.0.0.0.zip" dest="${download.dir}" usetimestamp="True"/>
+		<get src="https://dl.dropbox.com/u/861751/IC2/1.113/industrialcraft-2-api_1.113.205-lf.zip" dest="${download.dir}" usetimestamp="True"/>
+	</target>
+	<!-- Download forge (if it doesn't exist) -->
+	<target name="download-forge" unless="forge-exists">
+		<get src="http://files.minecraftforge.net/${forge.name}" dest="${download.dir}" usetimestamp="True"/>
+	</target>
+
+	<!-- Setup mcp and forge -->
+	<target name="setup" depends="download-files" if="out-of-date">
+
+		<delete dir="${forge.dir}" failonerror="false"/>
+
+		<unzip dest="${forge.dir}/.." src="${download.dir}/${forge.name}"/>
+
+		<unzip dest="${buildcraft.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+				<include name="buildcraft-src-${bc.version}.zip"/>
+			</fileset>
+		</unzip>
+
+		<unzip dest="${forestry.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+			<include name="forestry-api-${forestry.version}.zip"/>
+			</fileset>
+		</unzip>
+
+		<unzip dest="${ic2.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+			<include name="industrialcraft-2-api_${ic2.version}.zip"/>
+			</fileset>
+		</unzip>
+		
+		<!-- Fix executable permissions -->
+		<chmod dir="${forge.dir}" perm="ugo+rx" includes="**.sh"/>
+
+		<!-- Install forge -->
+		<exec dir="${forge.dir}" executable="cmd" osfamily="windows">
+			<arg line="/c install.cmd"/>
+		</exec>
+
+		<exec dir="${forge.dir}" executable="sh" osfamily="unix">
+			<arg value="install.sh"/>
+		</exec>
+
+	</target>
+
+	<target name="compile" depends="initialize-version,setup">
+
+		<delete dir="${classes.dir}"/>
+		<mkdir dir="${classes.dir}"/>
+		<delete dir="${mcpmc.dir}/buildcraft"/>
+		<delete dir="${mcpmc.dir}/ic2"/>
+		<delete dir="${mcpmc.dir}/forestry"/>
+		
+		
+		<unzip dest="${buildcraft.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+				<include name="master.zip"/>
+			</fileset>
+		</unzip>
+
+		<unzip dest="${forestry.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+				<include name="forestry-api-${forestry.version}.zip"/>
+			</fileset>
+		</unzip>
+
+		<unzip dest="${ic2.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+				<include name="industrialcraft-2-api_${ic2.version}.zip"/>
+			</fileset>
+		</unzip>
+		
+		<!-- Copy sources -->
+		<copy todir="${mcpmc.dir}">
+			<fileset dir="${src.dir}/sammko"/>
+			<filterset>
+				<filter token="VERSION" value="${project.version.full}" />
+				<filter token="BUILD_NUMBER" value="${build.number}" />
+			</filterset>
+		</copy>
+		<!-- Copy BC API -->
+		<copy todir="${mcpmc.dir}/buildcraft">
+			<fileset dir="${buildcraft.dir}/BuildCraft-master/common/buildcraft/api"/>
+		</copy>
+		<echo message="Copied BC files"/>
+
+		<!-- Copy Forestry API source -->
+		<copy todir="${mcpmc.dir}">
+			<fileset dir="${forestry.dir}"/>
+		</copy>
+
+		<echo message="Copied Forestry API"/>
+
+		<!-- Copy IC2 API source -->
+		<copy todir="${mcpmc.dir}">
+			<fileset dir="${ic2.dir}"/>
+		</copy>
+
+		<echo message="Copied IC2 API"/>
+		<!-- Recompile -->
+		<exec dir="${mcp.dir}" executable="cmd" osfamily="windows">
+			<arg line="/c recompile.bat"/>
+		</exec>
+
+		<exec dir="${mcp.dir}" executable="sh" osfamily="unix">
+			<arg value="recompile.sh"/>
+		</exec>
+
+		<!-- Check for failure -->
+		<fail message="MCP failed to build">
+			<condition>
+				<resourcecontains resource="${mcp.dir}/logs/client_compile.log" substring="error:"/>
+			</condition>
+		</fail>
+
+		<!-- Reobfuscate -->
+		<exec dir="${mcp.dir}" executable="cmd" osfamily="windows">
+			<arg line="/c reobfuscate.bat"/>
+		</exec>
+
+		<exec dir="${mcp.dir}" executable="sh" osfamily="unix">
+			<arg value="reobfuscate.sh"/>
+		</exec>
+
+		<!-- Copy classes -->
+		<copy todir="${classes.dir}">
+			<fileset dir="${mcp.dir}/reobf/minecraft"/>
+		</copy>
+
+		<!-- Copy resources -->
+		<copy todir="${classes.dir}/sammko/qc/">
+			<fileset dir="${resources.dir}">
+				<exclude name="build.xml"/>
+			</fileset>
+		</copy>
+
+		
+
+		<!-- Reset src dir to post-forge-install state -->
+		<delete dir="${mcpsrc.dir}/minecraft/buildcraft"/>
+
+	</target>
+
+	<!-- Package the compiled files -->
+	<target name="package" depends="compile">
+
+		<delete dir="${jar.dir}"/>
+		<mkdir dir="${jar.dir}"/>
+		<jar destfile="${jar.dir}/${ant.project.name}-${mc.version}-${project.version.full}.jar" basedir="${classes.dir}"/>
+		
+
+	</target>
+
+	<!-- Default target to run -->
+	<target name="main" depends="package"/>
+
+</project>

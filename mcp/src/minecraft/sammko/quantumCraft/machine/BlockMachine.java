@@ -58,6 +58,15 @@ public class BlockMachine extends BlockContainer {
 		t.rotation = orientation.getOpposite();
 	}
 
+	@Override
+	public void breakBlock (World par1World, int x, int y, int z, int par5, int par6)
+	{
+		Utils.preDestroyBlock(par1World, x, y, z);
+		super.breakBlock(par1World, x, y, z, par5, par6);
+	}
+
+
+	
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int idk, float what, float these, float are) {
     	 TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
