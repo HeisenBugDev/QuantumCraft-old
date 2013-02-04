@@ -78,10 +78,7 @@ public class ItemInitializator implements IGuiHandler{
 		public static ItemAxe ItemCrystalAxe;
 		public static ItemSpade ItemCrystalShovel;
 		
-		public static ItemPickaxe ShardPick;
-		
 		public static EnumToolMaterial DEPLETEDCRYSTAL = EnumHelper.addToolMaterial("DEPLETEDCRYSTAL", 2, 500, 7.0F, 2, 25);
-		public static EnumToolMaterial CRYSTALSHARD = EnumHelper.addToolMaterial("CRYSTALSHARD", 2, 500, 9.0F, 2, 25);
 		// 2 = HarvestLvl; 500 = MaxUses; 7.0F = ToolSpeed; 6 = SwordDMG; 25 = Enchantabillity
 		
 		public static ItemEnergyPacket ItemEmptyEnergyPacket;
@@ -140,10 +137,6 @@ public class ItemInitializator implements IGuiHandler{
 			ItemCrystalAxe = (ItemAxe) new CrystalAxe(QuantumCraftSettings.CrystalAxeID, DEPLETEDCRYSTAL).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CAxe)).setItemName("CrystalAxe").setCreativeTab(tabQC);
 			ItemCrystalShovel = (ItemSpade) new CrystalShovel(QuantumCraftSettings.CrystalShovelID, DEPLETEDCRYSTAL).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CShovel)).setItemName("CrystalShovel").setCreativeTab(tabQC);
 			
-			ShardPick = (ItemPickaxe) new CrystalPickaxe(QuantumCraftSettings.ShardPickaxeID, CRYSTALSHARD).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.CPickaxe)).setItemName("ShardPick").setCreativeTab(tabQC);
-			
-			
-			
 			ItemIngotPlutonium.setMaxStackSize(64).setCreativeTab(tabQC).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.PlutoniumIngot)).setItemName("plutoniumIngot");
 			ItemPositroniumCrystal.setMaxStackSize(64).setCreativeTab(tabQC).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.PositroniumCrystal)).setItemName("positroniumCrystal");
 			ItemRadiumCrystal.setMaxStackSize(64).setCreativeTab(tabQC).setIconIndex(ItemTextureMatrix.getIndex(ItemTextureMatrix.RadiumCrystal)).setItemName("radiumCrystal");
@@ -176,8 +169,6 @@ public class ItemInitializator implements IGuiHandler{
 			LanguageRegistry.addName(ItemCrystalSword, "Crystal Sword");
 			LanguageRegistry.addName(ItemCrystalAxe, "Crystal Axe");
 			LanguageRegistry.addName(ItemCrystalShovel, "Crystal Shovel");
-			
-			LanguageRegistry.addName(ShardPick,"Shard Pickaxe");
 		}
 		public static void initTEntities()
 		{

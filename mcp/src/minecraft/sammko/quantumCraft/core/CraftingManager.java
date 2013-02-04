@@ -20,8 +20,6 @@ public class CraftingManager {
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalAxe,1),"dd ","ds "," s ",'d', ItemInitializator.ItemDepletedShard, 's', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalAxe,1)," dd"," sd"," s ",'d', ItemInitializator.ItemDepletedShard, 's', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalShovel,1), " d "," s "," s ", 'd', new ItemStack(ItemInitializator.ItemDepletedShard), 's', Item.stick);
-		
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ShardPick,1),"ddd"," s "," s ",'d', ItemInitializator.ItemDepletedShard, 's', Item.stick);
 		//DecoBlocks
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,0), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemPositroniumCrystal), 'x', new ItemStack(Block.stoneBrick));
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,1), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemRadiumCrystal),'x', new ItemStack(Block.stoneBrick));

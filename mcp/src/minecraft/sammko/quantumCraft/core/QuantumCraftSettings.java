@@ -47,8 +47,6 @@ public class QuantumCraftSettings {
 		public static int CrystalAxeID;
 		public static int CrystalShovelID;
 		
-		public static int ShardPickaxeID;
-		
 		public static void getConfig(Configuration config)
 		{
 			//config
@@ -71,7 +69,6 @@ public class QuantumCraftSettings {
 	        CrystalAxeID = config.get("Items", "CrystalAxeID", 4513).getInt();
 	        CrystalShovelID = config.get("Items", "CrystalShovelID", 4514).getInt();
 	        DCrystalShardID = config.get("Items", "DepletedShardID", 4515).getInt();
-	        ShardPickaxeID = config.get("Items", "ShardPickaxeID", 4516).getInt();
 	      
 	        OrePositroniumID = config.get("Blocks", "OrePositronium", 2500).getInt();
 	        OrePlutoniumID = config.get("Blocks", "OrePlutonium", 2501).getInt();
