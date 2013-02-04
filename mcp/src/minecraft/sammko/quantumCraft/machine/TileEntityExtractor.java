@@ -2,6 +2,7 @@
 package sammko.quantumCraft.machine; //Comments are awsome ^^
 
 import sammko.quantumCraft.items.ItemInitializator;
+import sammko.quantumCraft.resources.NBTTags;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,10 +30,16 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
 	public int itemFuel;
 	public int progress;
 	
-	public TileEntityExtractor(World w, ForgeDirection rot) {
-		super(w, rot, 5, "Extractor");
+	public TileEntityExtractor(ForgeDirection rot) {
+		super(rot, 5, "Extractor");
+	}
+	public TileEntityExtractor() {
+		super(ForgeDirection.NORTH, 5, "Extractor");
+	}
+	
+	private void init()
+	{
 		fuel = 0;
-		itemFuel = 0;
 		progress = 0;
 	}
 	
@@ -43,37 +50,26 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
     }
 
     @SideOnly(Side.CLIENT)
-    public int getBurnTimeRemainingScaled(int par1)
+    public int getFuelScaled(int par1)
     {
-    	if (itemFuel == 0) {return par1;}
-        return this.fuel * par1 / this.itemFuel;
+        return this.fuel * par1 / 16000;
     }
 
-    public boolean isBurning()
+    public void updateEntity() //This works
     {
-        return this.fuel > 0;
-    }
-
-    public void updateEntity()
-    {
-    	System.out.println("[QUANTUMCRAFT][TEE] MBT:" + fuel + " CIBT:" + itemFuel + " MCT:" + progress);
-        boolean var1 = this.fuel > 0;
-        boolean var2 = false;
-
-        if (this.fuel > 0) //Fuel level goes down
-        {
-            --this.fuel;
-        }
+        boolean gf = this.fuel > 0;
+        boolean nu = false;
 
         if (!this.worldObj.isRemote)
         {
-            if (this.fuel == 0 && this.canSmelt()) //Use up a fuel item
+            if (inventory[2] !=null && fuel <= 16000 - getItemBurnTime(this.inventory[2]) ) //Use up a fuel item
             {
-                this.itemFuel = this.fuel = getItemBurnTime(this.inventory[2]);
+                this.itemFuel = getItemBurnTime(this.inventory[2]);
+                this.fuel += itemFuel;
 
                 if (this.fuel > 0) //If we got fuel get rid of the item
                 {
-                    var2 = true;
+                    nu = true;
 
                     if (this.inventory[2] != null)
                     {
@@ -87,7 +83,7 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
                 }
             }
 
-            if (this.isBurning() && this.canSmelt()) //Smelt stuff
+            if (fuel >= 100 && this.canSmelt()) //Smelt stuff
             {
                 ++this.progress;
 
@@ -95,7 +91,7 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
                 {
                     this.progress = 0;
                     this.smeltItem();
-                    var2 = true;
+                    nu = true;
                 }
             }
             else
@@ -103,22 +99,33 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
                 this.progress = 0;
             }
 
-            if (var1 != this.fuel > 0)
+            if (gf != this.fuel > 0)
             {
-                var2 = true;
+                nu = true;
             }
         }
 
-        if (var2)
+        if (nu)
         {
             this.onInventoryChanged();
         }
     }
 
-    /**
-     * Returns true if the machine can smelt an item, i.e. has a source item, destination stack isn't full, etc.
-     */
-    private boolean canSmelt()
+	@Override
+    public void readFromNBT(NBTTagCompound tags)
+    {
+        super.readFromNBT(tags);
+        fuel = tags.getInteger("MFuel");
+    }
+
+	@Override
+    public void writeToNBT(NBTTagCompound tags)
+    {
+        super.writeToNBT(tags);
+        tags.setInteger(NBTTags.MachineFuelLevel, fuel);
+    }
+    
+    private boolean canSmelt() //This works.
     {
         if (this.inventory[0] == null)
         {
@@ -153,6 +160,9 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
     {
         if (this.canSmelt())
         {
+        	
+        	fuel -= 100;
+        	
             ItemStack var1 = this.getResult(this.inventory[0]);
 
             if (this.inventory[4] == null)
@@ -216,9 +226,6 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
                 }
             }
 
-            /*if (var2 instanceof ItemTool && ((ItemTool) var2).getToolMaterialName().equals("WOOD")) return 200;
-            if (var2 instanceof ItemSword && ((ItemSword) var2).func_77825_f().equals("WOOD")) return 200;
-            if (var2 instanceof ItemHoe && ((ItemHoe) var2).func_77842_f().equals("WOOD")) return 200;*/ //Sorry, no wooden tools for you sir :(
             if (var1 == Item.stick.itemID) return 100;
             if (var1 == Item.coal.itemID) return 1600;
             if (var1 == Item.bucketLava.itemID) return 20000;

@@ -92,7 +92,7 @@ public class BlockMachine extends BlockContainer {
 	
 	@Override
 	public TileEntity createNewTileEntity(World var1) {
-		return new TileEntityExtractor(var1,ForgeDirection.NORTH);
+		return new TileEntityExtractor(ForgeDirection.NORTH);
 		//TODO: change this based on the metadata of this block.
 	}
 	

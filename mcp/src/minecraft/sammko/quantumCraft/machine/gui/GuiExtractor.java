@@ -46,11 +46,8 @@ public class GuiExtractor extends GuiContainer {
         this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 		int t;
         
-        if (te.isBurning())
-        {
-            t = this.te.getBurnTimeRemainingScaled(14);
-            this.drawTexturedModalRect(x + 63, y + 52 - t, 176, 14 - t, 14, t);
-        }
+        t = this.te.getFuelScaled(14);
+        this.drawTexturedModalRect(x + 63, y + 62 - t, 176, 14 - t, 14, t);
         
         t = this.te.getCookProgressScaled(24);
         this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t, 15);

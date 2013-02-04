@@ -20,11 +20,15 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory {
 	public ItemStack[] inventory;
 	public String name;
 	
-	public TileEntityMachine(World w, ForgeDirection rot, int slotCnt, String n) {
-		mtype = w.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord); // set machines type from metadata
-		rotation = rot; // the rotation is stored in TE variable.
+	public TileEntityMachine(ForgeDirection rot, int slotCnt, String n) {
+		rotation = rot;
 		inventory = new ItemStack[slotCnt];
 		name = n;
+	}
+	
+	public void setMType()
+	{
+		mtype = this.worldObj.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord);
 	}
 	
 	@Override
