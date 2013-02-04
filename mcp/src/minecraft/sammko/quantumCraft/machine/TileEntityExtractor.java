@@ -43,19 +43,7 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
 		progress = 0;
 	}
 	
-	@SideOnly(Side.CLIENT)
-    public int getCookProgressScaled(int par1)
-    {
-        return this.progress * par1 / 2;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public int getFuelScaled(int par1)
-    {
-        return this.fuel * par1 / 16000;
-    }
-
-    public void updateEntity() //This works
+    public void updateEntity()
     {
         boolean gf = this.fuel > 0;
         boolean nu = false;
@@ -125,7 +113,7 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
         tags.setInteger(NBTTags.MachineFuelLevel, fuel);
     }
     
-    private boolean canSmelt() //This works.
+    private boolean canSmelt()
     {
         if (this.inventory[0] == null)
         {

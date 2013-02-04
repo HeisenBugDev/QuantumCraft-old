@@ -10,6 +10,11 @@ import net.minecraftforge.common.ForgeDirection;
 
 public class Utils { //Thank you buildcraft :)
 
+	public static int Scale(int pixels, int val, int maxval)
+	{
+		return val / maxval * pixels;
+	}
+	
 	public static ForgeDirection get2dOrientation(Position pos1, Position pos2) {
 			double Dx = pos1.x - pos2.x;
 			double Dz = pos1.z - pos2.z;

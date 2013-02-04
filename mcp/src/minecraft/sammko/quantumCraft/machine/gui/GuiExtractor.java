@@ -3,6 +3,7 @@ package sammko.quantumCraft.machine.gui;
 import org.lwjgl.opengl.GL11;
 
 import sammko.quantumCraft.core.QuantumCraftSettings;
+import sammko.quantumCraft.core.Utils;
 import sammko.quantumCraft.machine.ExtractorContainer;
 import sammko.quantumCraft.machine.TileEntityExtractor;
 
@@ -32,8 +33,8 @@ public class GuiExtractor extends GuiContainer {
 	@Override
     protected void drawGuiContainerForegroundLayer(int param1, int param2) {
             //the parameters for drawString are: string, x, y, color
-            fontRenderer.drawString("Quantum Extractor", 45, 6, 4210752);
-            fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
+            fontRenderer.drawString("Quantum Extractor", 45, 6, 0x5D92FF);
+            fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 0x5D92FF);
 	}
 	
 	@Override
@@ -46,10 +47,10 @@ public class GuiExtractor extends GuiContainer {
         this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 		int t;
         
-        t = this.te.getFuelScaled(14);
+        t = Utils.Scale(14, te.fuel, 16000);
         this.drawTexturedModalRect(x + 63, y + 62 - t, 176, 14 - t, 14, t);
         
-        t = this.te.getCookProgressScaled(24);
+        t = Utils.Scale(24, te.progress, 20);
         this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t, 15);
         
 	}
