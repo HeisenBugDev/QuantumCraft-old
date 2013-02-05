@@ -65,8 +65,6 @@ public class CraftingManager {
 	
 	public static void addIC2()
 	{
-		//TODO:
-		//IF YOU WANT TO TEST THE MOD IN ECLIPSE COMMENT THIS. DO NOT FORGET TO UNCOMMENT IT!!!!
 		Ic2Recipes.addMaceratorRecipe(new ItemStack(ItemInitializator.ItemDepletedCrystal), new ItemStack(ItemInitializator.ItemDepletedShard));
 				
 	}
