@@ -71,14 +71,14 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
                 }
             }
 
-            if (fuel >= 100 && this.canSmelt()) //Smelt stuff
+            if (fuel >= 100 && this.canExtract()) //Smelt stuff
             {
                 ++this.progress;
 
                 if (this.progress == 20)
                 {
                     this.progress = 0;
-                    this.smeltItem();
+                    this.extractItem();
                     nu = true;
                 }
             }
@@ -113,7 +113,7 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
         tags.setInteger(NBTTags.MachineFuelLevel, fuel);
     }
     
-    private boolean canSmelt()
+    private boolean canExtract()
     {
         if (this.inventory[0] == null)
         {
@@ -144,9 +144,9 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
     	
     }
     
-    public void smeltItem()
+    public void extractItem()
     {
-        if (this.canSmelt())
+        if (this.canExtract())
         {
         	
         	fuel -= 100;
@@ -213,7 +213,7 @@ public class TileEntityExtractor extends TileEntityMachine implements IInventory
                     return 300;
                 }
             }
-
+            
             if (var1 == Item.stick.itemID) return 100;
             if (var1 == Item.coal.itemID) return 1600;
             if (var1 == Item.bucketLava.itemID) return 20000;
