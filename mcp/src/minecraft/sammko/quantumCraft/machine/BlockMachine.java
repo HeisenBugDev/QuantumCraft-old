@@ -1,5 +1,6 @@
 package sammko.quantumCraft.machine;
 
+import java.util.List;
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -22,6 +23,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import sammko.quantumCraft.blocks.ItemBlockMachine;
 import sammko.quantumCraft.core.Utils;
 import sammko.quantumCraft.core.QuantumCraft;
 import sammko.quantumCraft.core.QuantumCraftSettings;
@@ -35,10 +39,9 @@ public class BlockMachine extends BlockContainer {
 	
 	public BlockMachine(int par1, int rid) {
 		super(par1, Material.rock);
-		this.setCreativeTab(ItemInitializator.tabQC);
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
-		GameRegistry.registerBlock(this, "machineBlock");
-		LanguageRegistry.addName(this, "Machine Block");
+		GameRegistry.registerBlock(this, ItemBlockMachine.class, "machineBlock");
+		setCreativeTab(ItemInitializator.tabQC);
 		RenderID = rid;
 	}
 
@@ -47,6 +50,18 @@ public class BlockMachine extends BlockContainer {
 	{
 		return false;
 		
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(int par1, CreativeTabs tab, List subItems) {
+		for (int ix = 0; ix < ItemInitializator.GuiExtractorID; ix++) {
+			subItems.add(new ItemStack(this, 1, ix));
+		}
+	}
+	
+	@Override
+	public int damageDropped(int metadata) {
+		return metadata;
 	}
 	
 	@Override

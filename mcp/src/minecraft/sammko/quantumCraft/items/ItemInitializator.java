@@ -28,6 +28,7 @@ import sammko.quantumCraft.render.RenderBlockEmpty;
 import sammko.quantumCraft.render.RenderBlockMachine;
 import sammko.quantumCraft.resources.BlockTextureMatrix;
 import sammko.quantumCraft.resources.ItemTextureMatrix;
+import sammko.quantumCraft.resources.OtherResx;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -39,11 +40,16 @@ public class ItemInitializator implements IGuiHandler{
 		
 	}
 		//MultiBlock names
-		private static final String[] multiBlockNames = { 
+		private static final String[] decoBlockNames = { 
 		"Positronium Full Block", "Radium Full Block", "Gammatronium Full Block", "Neutrinium Full Block", "Depleted Full Block",
 		"Positronium Brick", "Radium Brick", "Gammatronium Brick", "Neutrinium Brick", "Depleted Brick",
 		"Positronium Small Brick", "Radium Small Brick", "Gammatronium Small Brick", "Neutrinium Small Brick", "Depleted Small Brick",
 		"Plutonium Block"};
+		
+
+		private static final String[] machineBlockNames = {"Quantum Extractor"};
+		public static int MachineCount = machineBlockNames.length;
+		
 		//Creative tabs
 		public static CreativeTabs tabQC;
 		//GUI IDs
@@ -63,7 +69,7 @@ public class ItemInitializator implements IGuiHandler{
 		public static BlockEmpty EmptyBlock;
 		public static Block DecoBlocks;
 		//Machines
-		public static BlockMachine MachineBlock;
+		public static Block MachineBlock;
 		//Items
 		public static ItemPlutoniumIngot ItemIngotPlutonium;
 		public static ItemCrystal ItemPositroniumCrystal;
@@ -88,7 +94,7 @@ public class ItemInitializator implements IGuiHandler{
 		public static ItemEnergyPacket ItemNeutriniumEnergyPacket;
 		//InitCode
 		public static void initOres()
-		{ //implemented my Creative Tab
+		{
 			OrePositronium = (BlockQuantumOre) new BlockQuantumOre(QuantumCraftSettings.OrePositroniumID, BlockTextureMatrix.getIndex(BlockTextureMatrix.OrePositronium)).setBlockName("orePositronium").setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(tabQC);
 			OrePlutonium = (BlockQuantumOre) new BlockQuantumOre(QuantumCraftSettings.OrePlutoniumID, BlockTextureMatrix.getIndex(BlockTextureMatrix.OrePlutonium)).setBlockName("orePlutonium").setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(tabQC);
 			OreRadium = (BlockQuantumOre) new BlockQuantumOre(QuantumCraftSettings.OreRadiumID, BlockTextureMatrix.getIndex(BlockTextureMatrix.OreRadium)).setBlockName("oreRadium").setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(tabQC);
@@ -111,7 +117,11 @@ public class ItemInitializator implements IGuiHandler{
 			
 			for (int ix = 0; ix < 16; ix++) {
 				ItemStack iBlockQBB = new ItemStack(DecoBlocks, 1, ix);
-				LanguageRegistry.addName(iBlockQBB, multiBlockNames[iBlockQBB.getItemDamage()]);
+				LanguageRegistry.addName(iBlockQBB, decoBlockNames[iBlockQBB.getItemDamage()]);
+			}
+			for (int ix = 0; ix < MachineCount; ix++) {
+				ItemStack iBlockM = new ItemStack(MachineBlock, 1, ix);
+				LanguageRegistry.addName(iBlockM, machineBlockNames[iBlockM.getItemDamage()]);
 			}
 			
 		}
@@ -165,6 +175,7 @@ public class ItemInitializator implements IGuiHandler{
 			LanguageRegistry.addName(ItemNeutriniumEnergyPacket, "Neutrinium EPacket");
 			
 			LanguageRegistry.addName(ItemDepletedShard, "Depleted Crystal Shard");
+			
 			LanguageRegistry.addName(ItemCrystalPickaxe, "Crystal Pickaxe");
 			LanguageRegistry.addName(ItemCrystalSword, "Crystal Sword");
 			LanguageRegistry.addName(ItemCrystalAxe, "Crystal Axe");

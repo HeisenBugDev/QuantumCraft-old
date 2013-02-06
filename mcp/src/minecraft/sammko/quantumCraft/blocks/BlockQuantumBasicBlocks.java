@@ -28,9 +28,8 @@ public class BlockQuantumBasicBlocks extends Block {
 		
 	}
 
-	
 	@Override
-	public int damageDropped (int metadata) {
+	public int damageDropped(int metadata) {
 		return metadata;
 	}
 	
