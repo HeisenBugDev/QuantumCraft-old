@@ -4,10 +4,14 @@ import net.minecraftforge.common.Configuration;
 
 public class QuantumCraftSettings {
 
-
+		//other
+		public static boolean debug;
+		//mods
+		public static boolean gotIC2 = false;
+		//files
 		public static String BLOCK_PNG = "/sammko/qc/block.png";
 		public static String ITEMS_PNG = "/sammko/qc/items.png";
-
+		public static String BGextractorGUI = "/sammko/qc/gui/Extractor.png";
 		//wgen
 		public static boolean WGenPlu;
 		public static boolean WGenPos;
@@ -37,6 +41,7 @@ public class QuantumCraftSettings {
 		public static int GammatroniumEnergyPacketID;
 		public static int NeutriniumEnergyPacketID;
 		
+		public static int DCrystalShardID;
 		public static int CrystalPickaxeID;
 		public static int CrystalSwordID;
 		public static int CrystalAxeID;
@@ -63,6 +68,7 @@ public class QuantumCraftSettings {
 	        CrystalSwordID = config.get("Items", "CrystalSwordID", 4512).getInt();
 	        CrystalAxeID = config.get("Items", "CrystalAxeID", 4513).getInt();
 	        CrystalShovelID = config.get("Items", "CrystalShovelID", 4514).getInt();
+	        DCrystalShardID = config.get("Items", "DepletedShardID", 4515).getInt();
 	      
 	        OrePositroniumID = config.get("Blocks", "OrePositronium", 2500).getInt();
 	        OrePlutoniumID = config.get("Blocks", "OrePlutonium", 2501).getInt();
@@ -74,14 +80,29 @@ public class QuantumCraftSettings {
 	        OreDepletedID = config.get("Blocks", "OreDepleted", 2507).getInt();
 	        DecoBlocksID = config.get("Blocks", "DecoBlocks", 2508).getInt();
 	        
-	        WGenPlu = config.get("World Gen", "Plutonium", true).getBoolean(true);
-	        WGenPos = config.get("World Gen", "Positronium", true).getBoolean(true);
-	        WGenRad = config.get("World Gen", "Radium", true).getBoolean(true);
-	        WGenGam = config.get("World Gen", "Gammatronium", true).getBoolean(true);
-	        WGenNeu = config.get("World Gen", "Neutrinium", true).getBoolean(true);
-	        WGenDep = config.get("World Gen", "DepletedOre", true).getBoolean(true);
+	        debug = config.get("Other", "Debug", false).getBoolean(false);
+	        
+	        WGenPlu = config.get("WorldGen", "Plutonium", true).getBoolean(true);
+	        WGenPos = config.get("WorldGen", "Positronium", true).getBoolean(true);
+	        WGenRad = config.get("WorldGen", "Radium", true).getBoolean(true);
+	        WGenGam = config.get("WorldGen", "Gammatronium", true).getBoolean(true);
+	        WGenNeu = config.get("WorldGen", "Neutrinium", true).getBoolean(true);
+	        WGenDep = config.get("WorldGen", "DepletedOre", true).getBoolean(true);
 	        
 	        config.save();
+	        
+
+			gotIC2 = exists("ic2.core.IC2");
 		}
 		
+		public static boolean exists (String className)
+		{
+			try {
+				Class.forName(className);
+				return true;
+			}
+			catch (ClassNotFoundException exception) {
+				return false;
+			}
+		}
 }

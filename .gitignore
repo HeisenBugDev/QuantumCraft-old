@@ -1,4 +1,3 @@
-!/mcp/compiled/
 /common/
 /client/
 /fml/
@@ -11,6 +10,7 @@
 *.zip
 *.lnk
 
+/mcp/BON.jar
 /mcp/CHANGELOG
 /mcp/*.bat
 /mcp/*.sh
@@ -33,7 +33,9 @@
 /mcp/src/minecraft/paulscode/
 /mcp/src/minecraft/net/
 /mcp/src/minecraft/cpw/
+/mcp/src/minecraft/buildcraft/
+/mcp/src/minecraft/ic2/
+/mcp/src/minecraft/forestry/
 
 
 !/mcp/redostuff.bat
-

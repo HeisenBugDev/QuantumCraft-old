@@ -8,15 +8,17 @@ public class ItemTextureMatrix {
 	
 	public static int PositroniumCrystal = 0x10;
 	public static int RadiumCrystal = 0x20;
-	public static int GammatroniumCrystal = 0x30;
-	public static int NeutriniumCrystal = 0x40;
+	public static int NeutriniumCrystal = 0x30;
+	public static int GammatroniumCrystal = 0x40;
 	public static int DepletedCrystal = 0x50;
 	
 	public static int EmptyEPacket = 0x01;
 	public static int PositroniumEPacket = 0x11;
 	public static int RadiumEPacket = 0x21;
-	public static int GammatroniumEPacket = 0x31;
-	public static int NeutriniumEPacket = 0x41;
+	public static int NeutriniumEPacket = 0x31;
+	public static int GammatroniumEPacket = 0x41;
+	
+	public static int DCrystalShard = 0x51;
 	
 	public static int CPickaxe = 0x02;
 	public static int CSword = 0x12;

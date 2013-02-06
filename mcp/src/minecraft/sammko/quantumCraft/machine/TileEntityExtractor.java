@@ -1,142 +1,281 @@
-
 package sammko.quantumCraft.machine; //Comments are awsome ^^
 
+import ic2.api.Direction;
+import ic2.api.energy.tile.IEnergySink;
+import sammko.quantumCraft.items.ItemInitializator;
+import sammko.quantumCraft.resources.NBTTags;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ISidedInventory;
 
-public class TileEntityExtractor extends TileEntityMachine implements ISidedInventory {
+public class TileEntityExtractor extends TileEntityMachine implements
+		IInventory, ISidedInventory, IEnergySink {
 
+	// TODO: finish this
 
-	//TODO: finish this
-	
-	public TileEntityExtractor(World w, int rot) {
-		super(w, rot);
-		inv = new ItemStack[9];
+	public int fuel;
+	public int itemFuel;
+	public int progress;
+
+	public TileEntityExtractor(ForgeDirection rot) {
+		super(rot, 5, "Extractor");
 	}
 
-	private ItemStack[] inv;
-	
+	public TileEntityExtractor() {
+		super(ForgeDirection.NORTH, 5, "Extractor");
+	}
 
-	@Override
-	public int getSizeInventory() {
-		return 0;
+	private void init() {
+		fuel = 0;
+		progress = 0;
+	}
+
+	public void updateEntity() {
+		boolean gf = this.fuel > 0;
+		boolean nu = false;
+
+		if (!this.worldObj.isRemote) {
+			if (inventory[2] != null
+					&& fuel <= 16000 - getItemBurnTime(this.inventory[2])) // Use
+																			// up
+																			// a
+																			// fuel
+																			// item
+			{
+				this.itemFuel = getItemBurnTime(this.inventory[2]);
+				this.fuel += itemFuel;
+
+				if (this.fuel > 0) // If we got fuel get rid of the item
+				{
+					nu = true;
+
+					if (this.inventory[2] != null) {
+						--this.inventory[2].stackSize;
+
+						if (this.inventory[2].stackSize == 0) {
+							this.inventory[2] = this.inventory[2].getItem()
+									.getContainerItemStack(inventory[2]);
+						}
+					}
+				}
+			}
+
+			if (fuel >= 100 && this.canExtract()) // Smelt stuff
+			{
+				++this.progress;
+
+				if (this.progress == 20) {
+					this.progress = 0;
+					this.extractItem();
+					nu = true;
+				}
+			} else {
+				this.progress = 0;
+			}
+
+			if (gf != this.fuel > 0) {
+				nu = true;
+			}
+		}
+
+		if (nu) {
+			this.onInventoryChanged();
+		}
 	}
 
 	@Override
-	public ItemStack getStackInSlot(int var1) {
-		return inv[var1];
+	public void readFromNBT(NBTTagCompound tags) {
+		super.readFromNBT(tags);
+		fuel = tags.getInteger("MFuel");
 	}
 
 	@Override
-	public ItemStack decrStackSize(int var1, int var2) {
-		inv[var1].stackSize -= var2;
-		return inv[var1];
+	public void writeToNBT(NBTTagCompound tags) {
+		super.writeToNBT(tags);
+		tags.setInteger(NBTTags.MachineFuelLevel, fuel);
+	}
+
+	private boolean canExtract() {
+		if (this.inventory[0] == null) {
+			return false;
+		}
+		if (this.inventory[1] == null) {
+			return false;
+		} else {
+			if (inventory[1].itemID != ItemInitializator.ItemEmptyEnergyPacket.itemID)
+				return false;
+			if (inventory[0].itemID == ItemInitializator.ItemPositroniumCrystal.itemID
+					|| inventory[0].itemID == ItemInitializator.ItemRadiumCrystal.itemID
+					|| inventory[0].itemID == ItemInitializator.ItemGammatroniumCrystal.itemID
+					|| inventory[0].itemID == ItemInitializator.ItemNeutriniumCrystal.itemID) {
+				return true;
+			}
+			return false;
+		}
+	}
+
+	public ItemStack getResult(ItemStack inp) {
+		if (inp.itemID == ItemInitializator.ItemPositroniumCrystal.itemID) {
+			return new ItemStack(ItemInitializator.ItemPositroniumEnergyPacket,
+					1);
+		}
+		if (inp.itemID == ItemInitializator.ItemRadiumCrystal.itemID) {
+			return new ItemStack(ItemInitializator.ItemRadiumEnergyPacket, 1);
+		}
+		if (inp.itemID == ItemInitializator.ItemGammatroniumCrystal.itemID) {
+			return new ItemStack(
+					ItemInitializator.ItemGammatroniumEnergyPacket, 1);
+		}
+		if (inp.itemID == ItemInitializator.ItemNeutriniumCrystal.itemID) {
+			return new ItemStack(ItemInitializator.ItemNeutriniumEnergyPacket,
+					1);
+		}
+		return null;
+
+	}
+
+	public void extractItem() {
+		if (this.canExtract()) {
+
+			fuel -= 100;
+
+			ItemStack var1 = this.getResult(this.inventory[0]);
+
+			if (this.inventory[4] == null) {
+				this.inventory[4] = var1.copy();
+			} else if (this.inventory[4].isItemEqual(var1)) {
+				inventory[4].stackSize += var1.stackSize;
+			}
+			if (this.inventory[3] == null) {
+				this.inventory[3] = new ItemStack(
+						ItemInitializator.ItemDepletedCrystal, 1);
+			} else if (this.inventory[3].isItemEqual(new ItemStack(
+					ItemInitializator.ItemDepletedCrystal, 1))) {
+				inventory[3].stackSize += var1.stackSize;
+			}
+
+			--this.inventory[0].stackSize;
+
+			if (this.inventory[0].stackSize <= 0) {
+				this.inventory[0] = null;
+			}
+
+			--this.inventory[1].stackSize;
+
+			if (this.inventory[1].stackSize <= 0) {
+				this.inventory[1] = null;
+			}
+		}
+	}
+
+	public static int getItemBurnTime(ItemStack par0ItemStack) {
+		if (par0ItemStack == null) {
+			return 0;
+		} else {
+			int var1 = par0ItemStack.getItem().itemID;
+			Item var2 = par0ItemStack.getItem();
+
+			if (par0ItemStack.getItem() instanceof ItemBlock
+					&& Block.blocksList[var1] != null) {
+				Block var3 = Block.blocksList[var1];
+
+				if (var3 == Block.woodSingleSlab) {
+					return 150;
+				}
+
+				if (var3.blockMaterial == Material.wood) {
+					return 300;
+				}
+			}
+
+			if (var1 == Item.stick.itemID)
+				return 100;
+			if (var1 == Item.coal.itemID)
+				return 1600;
+			if (var1 == Item.bucketLava.itemID)
+				return 20000;
+			if (var1 == Block.sapling.blockID)
+				return 100;
+			if (var1 == Item.blazeRod.itemID)
+				return 2400;
+			return GameRegistry.getFuelValue(par0ItemStack);
+		}
+	}
+
+	public static boolean isItemFuel(ItemStack par0ItemStack) {
+		return getItemBurnTime(par0ItemStack) > 0;
+	}
+
+	public final int MAX_STORAGE = 2000000;
+	private int internalStorage = 0;
+	private boolean addedToEnergyNet = false;
+	boolean needMorePowerTriggerCheck=true;
+
+
+	public int freeSpace() {
+		return MAX_STORAGE - internalStorage;
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int var1) {
-		return inv[var1];
-	}
-
-	@Override
-	public void setInventorySlotContents(int var1, ItemStack var2) {
-		
-        if (var2 != null && var2.stackSize > getInventoryStackLimit()) {
-            var2.stackSize = getInventoryStackLimit(); }
-            else inv[var1] = var2;
-    }    
-
-	@Override
-	public String getInvName() {
-		return "Generator";
-	}
-
-	@Override
-	public int getInventoryStackLimit() {
-		return 64;
-	}
-
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer var1) {
+	public boolean acceptsEnergyFrom(TileEntity emitter, Direction direction) {
 		return true;
 	}
 
 	@Override
-	public void openChest() {
-		
-		
+	public boolean isAddedToEnergyNet() {
+		return addedToEnergyNet;
 	}
 
 	@Override
-	public void closeChest() {
-		
+	public int demandsEnergy() {
+		if (internalStorage > 0 && freeSpace() > 0) {
+			internalStorage = injectEnergy(null, internalStorage);
+		}
+		return freeSpace();
 	}
 
 	@Override
-	public int getStartInventorySide(ForgeDirection side) {
-		if (side == side.UP) { return 0; }
-		if (side == side.DOWN) { return 1; }
-		if (side == side.SOUTH && rotation == 0) { return 3; }
-		if (side == side.NORTH && rotation == 0) { return 4; }
-		if (side == side.WEST && rotation == 1) { return 3; }
-		if (side == side.EAST && rotation == 1) { return 4; }
-		if (side == side.NORTH && rotation == 2) { return 3; }
-		if (side == side.SOUTH && rotation == 2) { return 4; }
-		if (side == side.EAST && rotation == 3) { return 3; }
-		if (side == side.WEST && rotation == 3) { return 4; }
-		else { return -1; }
+	public int injectEnergy(Direction directionFrom, int amount) {
+		int addAmount = Math.min(amount, freeSpace());
+		if (freeSpace() > 0 && addAmount == 0) {
+			addAmount = 1;
+		}
+		addEnergy(addAmount);
+		if (addAmount == 0 && directionFrom != null) {
+			internalStorage += amount;
+			return 0;
+		}
+		return amount - addAmount;
+	}
+
+	public void addEnergy(float amount) {
+		internalStorage += amount;
+		if (internalStorage > MAX_STORAGE) {
+			internalStorage = MAX_STORAGE;
+		}
+		if (internalStorage == MAX_STORAGE)
+			needMorePowerTriggerCheck = false;
 	}
 
 	@Override
-	public int getSizeInventorySide(ForgeDirection side) {
-		if (side == side.UP) { return 2; }
-		if (side == side.DOWN) { return 1; }
-		if (side == side.SOUTH && rotation == 0) { return 1; }
-		if (side == side.NORTH && rotation == 0) { return 1; }
-		if (side == side.WEST && rotation == 1) { return 1; }
-		if (side == side.EAST && rotation == 1) { return 1; }
-		if (side == side.NORTH && rotation == 2) { return 1; }
-		if (side == side.SOUTH && rotation == 2) { return 1; }
-		if (side == side.EAST && rotation == 3) { return 1; }
-		if (side == side.WEST && rotation == 3) { return 1; }
-		else { return -1; }
+	public int getMaxSafeInput() {
+		return Integer.MAX_VALUE;
 	}
-	
-	@Override
-    public void readFromNBT(NBTTagCompound tagCompound) {
-            super.readFromNBT(tagCompound);
-           
-            NBTTagList tagList = tagCompound.getTagList("Inventory");
-            for (int i = 0; i < tagList.tagCount(); i++) {
-                    NBTTagCompound tag = (NBTTagCompound) tagList.tagAt(i);
-                    byte slot = tag.getByte("Slot");
-                    if (slot >= 0 && slot < inv.length) {
-                            inv[slot] = ItemStack.loadItemStackFromNBT(tag);
-                    }
-            }
-    }
-
-    @Override
-    public void writeToNBT(NBTTagCompound tagCompound) {
-            super.writeToNBT(tagCompound);
-                           
-            NBTTagList itemList = new NBTTagList();
-            for (int i = 0; i < inv.length; i++) {
-                    ItemStack stack = inv[i];
-                    if (stack != null) {
-                            NBTTagCompound tag = new NBTTagCompound();
-                            tag.setByte("Slot", (byte) i);
-                            stack.writeToNBT(tag);
-                            itemList.appendTag(tag);
-                    }
-            }
-            tagCompound.setTag("Inventory", itemList);
-    }
-
 
 }

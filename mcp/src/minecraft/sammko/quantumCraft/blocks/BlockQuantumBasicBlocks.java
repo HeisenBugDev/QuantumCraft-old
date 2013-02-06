@@ -24,8 +24,6 @@ public class BlockQuantumBasicBlocks extends Block {
 	
 	@Override
 	public int getBlockTextureFromSideAndMetadata (int side, int metadata) {
-		this.setResistance(5.0F);
-		this.setHardness(2.0F);
 		return BlockTextureMatrix.getIndex(BlockTextureMatrix.Deco[metadata]);
 		
 	}

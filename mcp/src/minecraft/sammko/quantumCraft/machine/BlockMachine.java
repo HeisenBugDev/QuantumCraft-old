@@ -1,20 +1,28 @@
 package sammko.quantumCraft.machine;
 
 import java.util.Random;
+import java.util.ArrayList;
 
+import buildcraft.api.core.Position;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import sammko.quantumCraft.core.Utils;
 import sammko.quantumCraft.core.QuantumCraft;
 import sammko.quantumCraft.core.QuantumCraftSettings;
 import sammko.quantumCraft.items.ItemInitializator;
@@ -41,6 +49,24 @@ public class BlockMachine extends BlockContainer {
 		
 	}
 	
+	@Override
+	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLiving entityliving) {
+		super.onBlockPlacedBy(world, i, j, k, entityliving);
+
+		ForgeDirection orientation = Utils.get2dOrientation(new Position(entityliving.posX, entityliving.posY, entityliving.posZ), new Position(i, j, k));
+		TileEntityMachine t = (TileEntityMachine) world.getBlockTileEntity(i, j, k);
+		t.rotation = orientation.getOpposite();
+	}
+
+	@Override
+	public void breakBlock (World par1World, int x, int y, int z, int par5, int par6)
+	{
+		Utils.preDestroyBlock(par1World, x, y, z);
+		super.breakBlock(par1World, x, y, z, par5, par6);
+	}
+
+
+	
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int idk, float what, float these, float are) {
     	 TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
@@ -66,7 +92,7 @@ public class BlockMachine extends BlockContainer {
 	
 	@Override
 	public TileEntity createNewTileEntity(World var1) {
-		return new TileEntityExtractor(var1,0);
+		return new TileEntityExtractor(ForgeDirection.NORTH);
 		//TODO: change this based on the metadata of this block.
 	}
 	
