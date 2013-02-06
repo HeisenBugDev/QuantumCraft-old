@@ -25,7 +25,7 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ISidedInventory;
 
 public class TileEntityExtractor extends TileEntityMachine implements
-		IInventory, ISidedInventory, IEnergySink {
+		IInventory, ISidedInventory {
 
 	// TODO: finish this
 
@@ -52,11 +52,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 
 		if (!this.worldObj.isRemote) {
 			if (inventory[2] != null
-					&& fuel <= 16000 - getItemBurnTime(this.inventory[2])) // Use
-																			// up
-																			// a
-																			// fuel
-																			// item
+					&& fuel <= 16000 - getItemBurnTime(this.inventory[2]))
 			{
 				this.itemFuel = getItemBurnTime(this.inventory[2]);
 				this.fuel += itemFuel;
@@ -76,7 +72,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 				}
 			}
 
-			if (fuel >= 100 && this.canExtract()) // Smelt stuff
+			if (fuel >= 100 && this.canExtract()) // Do stuff
 			{
 				++this.progress;
 
@@ -221,61 +217,4 @@ public class TileEntityExtractor extends TileEntityMachine implements
 	public static boolean isItemFuel(ItemStack par0ItemStack) {
 		return getItemBurnTime(par0ItemStack) > 0;
 	}
-
-	public final int MAX_STORAGE = 2000000;
-	private int internalStorage = 0;
-	private boolean addedToEnergyNet = false;
-	boolean needMorePowerTriggerCheck=true;
-
-
-	public int freeSpace() {
-		return MAX_STORAGE - internalStorage;
-	}
-
-	@Override
-	public boolean acceptsEnergyFrom(TileEntity emitter, Direction direction) {
-		return true;
-	}
-
-	@Override
-	public boolean isAddedToEnergyNet() {
-		return addedToEnergyNet;
-	}
-
-	@Override
-	public int demandsEnergy() {
-		if (internalStorage > 0 && freeSpace() > 0) {
-			internalStorage = injectEnergy(null, internalStorage);
-		}
-		return freeSpace();
-	}
-
-	@Override
-	public int injectEnergy(Direction directionFrom, int amount) {
-		int addAmount = Math.min(amount, freeSpace());
-		if (freeSpace() > 0 && addAmount == 0) {
-			addAmount = 1;
-		}
-		addEnergy(addAmount);
-		if (addAmount == 0 && directionFrom != null) {
-			internalStorage += amount;
-			return 0;
-		}
-		return amount - addAmount;
-	}
-
-	public void addEnergy(float amount) {
-		internalStorage += amount;
-		if (internalStorage > MAX_STORAGE) {
-			internalStorage = MAX_STORAGE;
-		}
-		if (internalStorage == MAX_STORAGE)
-			needMorePowerTriggerCheck = false;
-	}
-
-	@Override
-	public int getMaxSafeInput() {
-		return Integer.MAX_VALUE;
-	}
-
 }

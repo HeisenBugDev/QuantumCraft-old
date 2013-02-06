@@ -1,5 +1,7 @@
 package sammko.quantumCraft.machine;
 
+import ic2.api.Direction;
+import ic2.api.energy.tile.IEnergySink;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -12,7 +14,7 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ISidedInventory;
 
 
-public class TileEntityMachine extends TileEntity implements ISidedInventory {
+public class TileEntityMachine extends TileEntity implements ISidedInventory, IEnergySink {
 
 	public int mtype = 0;
 	public ForgeDirection rotation;
@@ -161,6 +163,76 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	//IC2 PWR stuffs
 	
+	int IC2PWR_capacitor = 0;
+	int IC2PWR_capacitorSize = 0;
+	int IC2PWR_maxInput = 0;
+	int IC2PWR_free = 0;
+	boolean IC2PWR_wantPwr = false;	
+	boolean IC2PWR_isPwrUser = false;
+	boolean IC2PWR_isInENet = false;
+	
+	public void initIC2power(int capSize, int maxPacketSize)
+	{
+		this.IC2PWR_capacitorSize = capSize;
+		this.IC2PWR_maxInput = maxPacketSize;
+		this.IC2PWR_isPwrUser = true;
+		this.IC2PWR_isInENet = true; //Hmm?
+	}
+	
+	@Override
+	public boolean acceptsEnergyFrom(TileEntity emitter, Direction direction) {
+		return true;
+	}
+
+	@Override
+	public boolean isAddedToEnergyNet() {
+		return this.IC2PWR_isInENet;
+	}
+
+	@Override
+	public int demandsEnergy() {
+		return this.IC2PWR_free;
+	}
+
+	public int freeSpace() {
+		return this.IC2PWR_free;
+	}
+	
+	public void addEnergy(float amount) {
+		IC2PWR_capacitor += amount;
+		if (IC2PWR_capacitor > IC2PWR_capacitorSize) {
+			IC2PWR_capacitor = IC2PWR_capacitorSize;
+		}
+		if (IC2PWR_capacitor == IC2PWR_capacitorSize)
+			IC2PWR_wantPwr = false;
+	}
+	
+	@Override
+	public int injectEnergy(Direction directionFrom, int amount) {
+		int addAmount = Math.min(amount, freeSpace());
+		if (freeSpace() > 0 && addAmount == 0) {
+			addAmount = 1;
+		}
+		addEnergy(addAmount);
+		if (addAmount == 0 && directionFrom != null) {
+			IC2PWR_capacitor += amount;
+			return 0;
+		}
+		return amount - addAmount;
+	}
+
+	@Override
+	public int getMaxSafeInput() {
+		return this.IC2PWR_maxInput;
+	}
+	
+	public int useUpEnergy(int amount) {
+		if (IC2PWR_capacitor >= amount) { IC2PWR_capacitor -= amount; return amount; }
+		if (IC2PWR_capacitor < amount) { IC2PWR_capacitor = 0; return IC2PWR_capacitor; }
+		return 0;
+	}
 
 }

@@ -15,6 +15,13 @@ public class Utils { //Thank you buildcraft :)
 		return val / maxval * pixels;
 	}
 	
+	public static float EU_to_MJ(int EU) {
+		return EU / 6;
+	}
+	public static int MJ_to_EU(float MJ) {
+		return (int) (MJ * 6);
+	}
+	
 	public static ForgeDirection get2dOrientation(Position pos1, Position pos2) {
 			double Dx = pos1.x - pos2.x;
 			double Dz = pos1.z - pos2.z;
