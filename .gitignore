@@ -9,6 +9,8 @@
 *.sh
 *.zip
 *.lnk
+.DS_Store
+
 
 /mcp/BON.jar
 /mcp/CHANGELOG
