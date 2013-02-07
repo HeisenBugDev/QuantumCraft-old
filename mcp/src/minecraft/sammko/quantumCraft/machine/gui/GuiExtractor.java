@@ -31,30 +31,27 @@ public class GuiExtractor extends GuiContainer {
 	}
 	
 	@Override
-    protected void drawGuiContainerForegroundLayer(int param1, int param2) {
+    	protected void drawGuiContainerForegroundLayer(int param1, int param2) {
             //the parameters for drawString are: string, x, y, color
             fontRenderer.drawString("Quantum Extractor", 45, 6, 0x000000);
             fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 0x000000);
 	}
 	
-	
-	
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
-        int texture = mc.renderEngine.getTexture(QuantumCraftSettings.BGextractorGUI);
-        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.mc.renderEngine.bindTexture(texture);
-        int x = (width - xSize) / 2;
-        int y = (height - ySize) / 2;
-        this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+        	int texture = mc.renderEngine.getTexture(QuantumCraftSettings.BGextractorGUI);
+        	GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        	this.mc.renderEngine.bindTexture(texture);
+        	int x = (width - xSize) / 2;
+        	int y = (height - ySize) / 2;
+        	this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 		int t;
         
-        t = Utils.Scale(42, te.fuel, 16000);
-        this.drawTexturedModalRect(x + 49, y + 18, 176, 0, t, 6); //49@18
+        	t = Utils.Scale(42, te.fuel, 16000);
+        	this.drawTexturedModalRect(x + 49, y + 18, 176, 0, t, 6); //49@18
         
-        t = Utils.Scale(24, te.progress, 20);
-        this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t, 15);
-        
+        	t = Utils.Scale(24, te.progress, 20);
+        	this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t, 15);
 	}
 
 }
