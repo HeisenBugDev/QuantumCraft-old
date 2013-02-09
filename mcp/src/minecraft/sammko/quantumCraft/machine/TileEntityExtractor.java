@@ -25,11 +25,10 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ISidedInventory;
 
 public class TileEntityExtractor extends TileEntityMachine implements
-		IInventory, ISidedInventory {
+		IInventory, ISidedInventory, IEnergySink {
 
 	// TODO: finish this
 
-	public int fuel;
 	public int itemFuel;
 	public int progress;
 
@@ -42,22 +41,29 @@ public class TileEntityExtractor extends TileEntityMachine implements
 	}
 
 	private void init() {
-		fuel = 0;
+		internalStorage = 0;
 		progress = 0;
 	}
 
 	public void updateEntity() {
-		boolean gf = this.fuel > 0;
+		boolean gf = this.internalStorage > 0;
 		boolean nu = false;
-
+		if (internalStorage > 0) {
+			System.out.println(internalStorage);
+		}
 		if (!this.worldObj.isRemote) {
 			if (inventory[2] != null
-					&& fuel <= 16000 - getItemBurnTime(this.inventory[2]))
+					&& internalStorage <= 16000 - getItemBurnTime(this.inventory[2])) // Use
+			// up
+			// a
+			// fuel
+			// item
 			{
 				this.itemFuel = getItemBurnTime(this.inventory[2]);
-				this.fuel += itemFuel;
+				this.internalStorage += itemFuel;
 
-				if (this.fuel > 0) // If we got fuel get rid of the item
+				if (this.internalStorage > 0) // If we got fuel get rid of the
+												// item
 				{
 					nu = true;
 
@@ -72,7 +78,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 				}
 			}
 
-			if (fuel >= 100 && this.canExtract()) // Do stuff
+			if (internalStorage >= 100 && this.canExtract()) // Smelt stuff
 			{
 				++this.progress;
 
@@ -85,7 +91,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 				this.progress = 0;
 			}
 
-			if (gf != this.fuel > 0) {
+			if (gf != this.internalStorage > 0) {
 				nu = true;
 			}
 		}
@@ -96,15 +102,19 @@ public class TileEntityExtractor extends TileEntityMachine implements
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound tags) {
-		super.readFromNBT(tags);
-		fuel = tags.getInteger("MFuel");
+	public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
+		super.readFromNBT(par1nbtTagCompound);
+		internalStorage = par1nbtTagCompound.getInteger("powerLevel");
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound tags) {
-		super.writeToNBT(tags);
-		tags.setInteger(NBTTags.MachineFuelLevel, fuel);
+	public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
+		super.writeToNBT(par1nbtTagCompound);
+		par1nbtTagCompound.setInteger("powerLevel", internalStorage);
+	}
+
+	public int getPowerLevel() {
+		return internalStorage;
 	}
 
 	private boolean canExtract() {
@@ -149,7 +159,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 	public void extractItem() {
 		if (this.canExtract()) {
 
-			fuel -= 100;
+			internalStorage -= 100;
 
 			ItemStack var1 = this.getResult(this.inventory[0]);
 
@@ -217,4 +227,58 @@ public class TileEntityExtractor extends TileEntityMachine implements
 	public static boolean isItemFuel(ItemStack par0ItemStack) {
 		return getItemBurnTime(par0ItemStack) > 0;
 	}
+
+	public final int MAX_STORAGE = 200;
+	public int internalStorage = 0;
+	private boolean addedToEnergyNet = false;
+
+	public int freeSpace() {
+		return MAX_STORAGE - internalStorage;
+	}
+
+	@Override
+	public boolean acceptsEnergyFrom(TileEntity emitter, Direction direction) {
+		return true;
+	}
+
+	@Override
+	public boolean isAddedToEnergyNet() {
+		return addedToEnergyNet;
+	}
+
+	@Override
+	public int demandsEnergy() {
+		if (internalStorage > 0 && freeSpace() > 0) {
+			internalStorage = injectEnergy(null, internalStorage);
+		}
+		return freeSpace();
+	}
+
+	@Override
+	public int injectEnergy(Direction directionFrom, int amount) {
+		int addAmount = Math.min(amount, freeSpace());
+		if (freeSpace() > 0 && addAmount == 0) {
+			addAmount = 1;
+		}
+		addEnergy(addAmount);
+		if (addAmount == 0 && directionFrom != null) {
+			internalStorage += amount;
+			return 0;
+		}
+		return addAmount;
+	}
+
+	public void addEnergy(float amount) {
+		internalStorage += amount;
+		if (internalStorage > MAX_STORAGE) {
+			internalStorage = MAX_STORAGE;
+		}
+
+	}
+
+	@Override
+	public int getMaxSafeInput() {
+		return Integer.MAX_VALUE;
+	}
+
 }

@@ -47,7 +47,7 @@ public class GuiExtractor extends GuiContainer {
         	this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 		int t;
         
-        	t = Utils.Scale(42, te.fuel, 16000);
+        	t = Utils.Scale(42, te.internalStorage, 16000);
         	this.drawTexturedModalRect(x + 49, y + 18, 176, 0, t, 6); //49@18
         
         	t = Utils.Scale(24, te.progress, 20);
