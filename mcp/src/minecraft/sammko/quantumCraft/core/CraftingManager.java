@@ -66,6 +66,6 @@ public class CraftingManager {
 	public static void addIC2()
 	{
 		Ic2Recipes.addMaceratorRecipe(new ItemStack(ItemInitializator.ItemDepletedCrystal), new ItemStack(ItemInitializator.ItemDepletedShard));
-				
+		Ic2Recipes.addCompressorRecipe(ic2.api.Items.getItem("uraniumDrop"), ic2.api.Items.getItem("uraniumIngot"));
 	}
 }
