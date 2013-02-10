@@ -166,22 +166,21 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory, IE
 
 	//IC2 PWR stuffs
 	
-	int IC2PWR_capacitor = 0;
-	int IC2PWR_capacitorSize = 0;
-	int IC2PWR_maxInput = 0;
-	int IC2PWR_free = 0;
-	boolean IC2PWR_wantPwr = false;	
-	boolean IC2PWR_isPwrUser = false;
-	boolean IC2PWR_isInENet = false;
 	
-	public void initIC2power(int capSize, int maxPacketSize)
-	{
-		this.IC2PWR_capacitorSize = capSize;
-		this.IC2PWR_maxInput = maxPacketSize;
-		this.IC2PWR_isPwrUser = true;
-		this.IC2PWR_isInENet = true; //Hmm?
+	
+	
+	public int getPowerLevel() {
+		return internalStorage;
 	}
 	
+	public final int MAX_STORAGE = 16000;
+	public int internalStorage = 0;
+	public boolean addedToEnergyNet = false;
+
+	public int freeSpace() {
+		return MAX_STORAGE - internalStorage;
+	}
+
 	@Override
 	public boolean acceptsEnergyFrom(TileEntity emitter, Direction direction) {
 		return true;
@@ -189,50 +188,37 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory, IE
 
 	@Override
 	public boolean isAddedToEnergyNet() {
-		return this.IC2PWR_isInENet;
+		return addedToEnergyNet;
 	}
 
 	@Override
 	public int demandsEnergy() {
-		return this.IC2PWR_free;
+		return freeSpace();
 	}
 
-	public int freeSpace() {
-		return this.IC2PWR_free;
-	}
-	
-	public void addEnergy(float amount) {
-		IC2PWR_capacitor += amount;
-		if (IC2PWR_capacitor > IC2PWR_capacitorSize) {
-			IC2PWR_capacitor = IC2PWR_capacitorSize;
-		}
-		if (IC2PWR_capacitor == IC2PWR_capacitorSize)
-			IC2PWR_wantPwr = false;
-	}
-	
 	@Override
 	public int injectEnergy(Direction directionFrom, int amount) {
 		int addAmount = Math.min(amount, freeSpace());
-		if (freeSpace() > 0 && addAmount == 0) {
-			addAmount = 1;
-		}
 		addEnergy(addAmount);
 		if (addAmount == 0 && directionFrom != null) {
-			IC2PWR_capacitor += amount;
+			internalStorage += amount;
 			return 0;
 		}
-		return amount - addAmount;
+		return 0;
+	}
+
+	public void addEnergy(float amount) {
+		internalStorage += amount;
+		if (internalStorage > MAX_STORAGE) {
+			internalStorage = MAX_STORAGE;
+		}
+
 	}
 
 	@Override
 	public int getMaxSafeInput() {
-		return this.IC2PWR_maxInput;
+		return Integer.MAX_VALUE;
 	}
-	
-	public int useUpEnergy(int amount) {
-		if (IC2PWR_capacitor >= amount) { IC2PWR_capacitor -= amount; return amount; }
-		if (IC2PWR_capacitor < amount) { IC2PWR_capacitor = 0; return IC2PWR_capacitor; }
-		return 0;
-	}
+
 
 }

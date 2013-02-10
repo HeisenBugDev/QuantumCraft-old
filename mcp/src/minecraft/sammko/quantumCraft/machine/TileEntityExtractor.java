@@ -34,6 +34,11 @@ public class TileEntityExtractor extends TileEntityMachine implements
 	public int itemFuel;
 	public int progress;
 
+	public int getChargeState() {
+		return internalStorage * 100 / MAX_STORAGE;
+	}
+
+	
 	public TileEntityExtractor(ForgeDirection rot) {
 		super(rot, 5, "Extractor");
 	}
@@ -121,9 +126,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 		par1nbtTagCompound.setInteger("powerLevel", internalStorage);
 	}
 
-	public int getPowerLevel() {
-		return internalStorage;
-	}
+	
 
 	private boolean canExtract() {
 		if (this.inventory[0] == null) {
@@ -236,51 +239,5 @@ public class TileEntityExtractor extends TileEntityMachine implements
 		return getItemBurnTime(par0ItemStack) > 0;
 	}
 
-	public final int MAX_STORAGE = 16000;
-	public int internalStorage = 0;
-	private boolean addedToEnergyNet = false;
-
-	public int freeSpace() {
-		return MAX_STORAGE - internalStorage;
-	}
-
-	@Override
-	public boolean acceptsEnergyFrom(TileEntity emitter, Direction direction) {
-		return true;
-	}
-
-	@Override
-	public boolean isAddedToEnergyNet() {
-		return addedToEnergyNet;
-	}
-
-	@Override
-	public int demandsEnergy() {
-		return freeSpace();
-	}
-
-	@Override
-	public int injectEnergy(Direction directionFrom, int amount) {
-		int addAmount = Math.min(amount, freeSpace());
-		addEnergy(addAmount);
-		if (addAmount == 0 && directionFrom != null) {
-			internalStorage += amount;
-			return 0;
-		}
-		return 0;
-	}
-
-	public void addEnergy(float amount) {
-		internalStorage += amount;
-		if (internalStorage > MAX_STORAGE) {
-			internalStorage = MAX_STORAGE;
-		}
-
-	}
-
-	@Override
-	public int getMaxSafeInput() {
-		return Integer.MAX_VALUE;
-	}
-
+	
 }
