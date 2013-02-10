@@ -1,6 +1,7 @@
 package sammko.quantumCraft.machine; //Comments are awsome ^^
 
 import ic2.api.Direction;
+import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.tile.IEnergySink;
 import sammko.quantumCraft.items.ItemInitializator;
 import sammko.quantumCraft.resources.NBTTags;
@@ -23,6 +24,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ISidedInventory;
+import net.minecraftforge.common.MinecraftForge;
 
 public class TileEntityExtractor extends TileEntityMachine implements
 		IInventory, ISidedInventory, IEnergySink {
@@ -46,10 +48,16 @@ public class TileEntityExtractor extends TileEntityMachine implements
 	}
 
 	public void updateEntity() {
+		super.updateEntity();
+		if (!this.addedToEnergyNet) {
+			MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
+			this.addedToEnergyNet = true;
+		}
+
 		boolean gf = this.internalStorage > 0;
 		boolean nu = false;
 		if (internalStorage > 0) {
-			System.out.println(internalStorage);
+
 		}
 		if (!this.worldObj.isRemote) {
 			if (inventory[2] != null
@@ -228,7 +236,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 		return getItemBurnTime(par0ItemStack) > 0;
 	}
 
-	public final int MAX_STORAGE = 200;
+	public final int MAX_STORAGE = 16000;
 	public int internalStorage = 0;
 	private boolean addedToEnergyNet = false;
 
@@ -248,24 +256,18 @@ public class TileEntityExtractor extends TileEntityMachine implements
 
 	@Override
 	public int demandsEnergy() {
-		if (internalStorage > 0 && freeSpace() > 0) {
-			internalStorage = injectEnergy(null, internalStorage);
-		}
 		return freeSpace();
 	}
 
 	@Override
 	public int injectEnergy(Direction directionFrom, int amount) {
 		int addAmount = Math.min(amount, freeSpace());
-		if (freeSpace() > 0 && addAmount == 0) {
-			addAmount = 1;
-		}
 		addEnergy(addAmount);
 		if (addAmount == 0 && directionFrom != null) {
 			internalStorage += amount;
 			return 0;
 		}
-		return addAmount;
+		return 0;
 	}
 
 	public void addEnergy(float amount) {
