@@ -39,20 +39,19 @@ public class GuiExtractor extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
-        	int texture = mc.renderEngine.getTexture(QuantumCraftSettings.BGextractorGUI);
-        	GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        	this.mc.renderEngine.bindTexture(texture);
-        	int x = (width - xSize) / 2;
-        	int y = (height - ySize) / 2;
-        	this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-		int t;
-        
-		
-		
-        	t = Utils.Scale(42, 100 - te.getChargeState(), 16000);
-        	this.drawTexturedModalRect(x + 49, y + 18, 176, 0, t, 6); //49@18
-        
-        	t = Utils.Scale(24, te.progress, 20);
-        	this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t, 15);
+        int texture = mc.renderEngine.getTexture(QuantumCraftSettings.BGextractorGUI);
+       	GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+       	this.mc.renderEngine.bindTexture(texture);
+       	int x = (width - xSize) / 2;
+       	int y = (height - ySize) / 2;
+       	this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+       	int t = 0;
+       	int t2 = 0;		
+	
+       	t = Utils.Scale(42, 100 - te.getChargeState(), 16000);
+       	t = Utils.Scale(42, 8000, 16000); //If this doesnt work there is a problem somewhere else -.-
+       	this.drawTexturedModalRect(x + 49, y + 18, 176, 0, t, 6); //49@18       
+        t2 = Utils.Scale(24, te.progress, 20);
+       	this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t2, 15);
 	}
 }

@@ -27,10 +27,7 @@ public class BlockTextureMatrix {
 	
 	public static int EBlockSideSingle = 0x04;
 
-	public static int PositronGenerator = 0x10;
-	public static int NeutrinoGenerator = 0x11;
-	public static int RadonGenerator = 0x12;
-	public static int GammaGenerator = 0x13;
+	public static int QuantumGenerator = 0x10;
 	
 	public static int PositronInput = 0x40;
 	public static int NeutrinoInput = 0x41;

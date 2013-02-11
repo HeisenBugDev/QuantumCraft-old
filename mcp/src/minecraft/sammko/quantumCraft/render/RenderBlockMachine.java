@@ -34,10 +34,10 @@ public class RenderBlockMachine extends RendererBase {
 		tMap[0] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
 		tMap[1] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
 		
-		if (t.rotation == ForgeDirection.NORTH) tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.PositronGenerator); else tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
-		if (t.rotation == ForgeDirection.SOUTH) tMap[3] = BlockTextureMatrix.getIndex(BlockTextureMatrix.PositronGenerator); else tMap[3] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
-		if (t.rotation == ForgeDirection.WEST) tMap[4] = BlockTextureMatrix.getIndex(BlockTextureMatrix.PositronGenerator); else tMap[4] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
-		if (t.rotation == ForgeDirection.EAST) tMap[5] = BlockTextureMatrix.getIndex(BlockTextureMatrix.PositronGenerator); else tMap[5] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+		if (t.rotation == ForgeDirection.NORTH) tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.QuantumGenerator); else tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+		if (t.rotation == ForgeDirection.SOUTH) tMap[3] = BlockTextureMatrix.getIndex(BlockTextureMatrix.QuantumGenerator); else tMap[3] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+		if (t.rotation == ForgeDirection.WEST) tMap[4] = BlockTextureMatrix.getIndex(BlockTextureMatrix.QuantumGenerator); else tMap[4] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+		if (t.rotation == ForgeDirection.EAST) tMap[5] = BlockTextureMatrix.getIndex(BlockTextureMatrix.QuantumGenerator); else tMap[5] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
 		
 		t.tMap = this.tMap;
 	}
