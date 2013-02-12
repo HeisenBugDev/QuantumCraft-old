@@ -28,7 +28,6 @@ public class BlockEmpty extends Block {
 		this.RenderID = rid;
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
 		GameRegistry.registerBlock(this, "emptyBlock");
-		LanguageRegistry.addName(this, "Empty Block");
 	}
 
 	@Override

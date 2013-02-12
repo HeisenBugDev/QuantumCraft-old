@@ -111,9 +111,11 @@ public class ItemInitializator implements IGuiHandler{
 		}
 		public static void initBlocks()
 		{
-			EmptyBlock = new BlockEmpty(QuantumCraftSettings.EmptyBlockID, BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle), BlockEmptyRenderID).setCreativeTab(tabQC);
-			MachineBlock = new BlockMachine(QuantumCraftSettings.MachineBlockID, BlockMachineRenderID).setCreativeTab(tabQC);;
-			DecoBlocks = new BlockQuantumBasicBlocks(QuantumCraftSettings.DecoBlocksID, BlockTextureMatrix.getIndex(BlockTextureMatrix.Err)).setHardness(2.0F).setResistance(10.0F).setCreativeTab(tabQC);;
+			EmptyBlock = new BlockEmpty(QuantumCraftSettings.EmptyBlockID, BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle), BlockEmptyRenderID).setCreativeTab(tabQC).setBlockName("emptyBlock");
+			MachineBlock = new BlockMachine(QuantumCraftSettings.MachineBlockID, BlockMachineRenderID).setCreativeTab(tabQC);
+			DecoBlocks = new BlockQuantumBasicBlocks(QuantumCraftSettings.DecoBlocksID, BlockTextureMatrix.getIndex(BlockTextureMatrix.Err)).setHardness(2.0F).setResistance(10.0F).setCreativeTab(tabQC);
+			
+			LanguageRegistry.addName(EmptyBlock, "Empty Block");
 			
 			for (int ix = 0; ix < 16; ix++) {
 				ItemStack iBlockQBB = new ItemStack(DecoBlocks, 1, ix);
