@@ -29,7 +29,7 @@ public class RenderBlockEmpty extends RendererBase {
 		
 		renderer.aoType = 1;
 		
-		if (tileRules == 0) //based on tileRules, change the texture connection rules. 0 = UP-DOWN
+		if (tileRules == 0) //based on tileRules change the texture connection rules. 0 = UP-DOWN
 		{
 			tMap[0] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
 			tMap[1] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
