@@ -19,11 +19,7 @@ public class RenderBlockEmpty extends RendererBase {
 		tileRules = tRules;
 	}
 
-	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
-		// TODO: do somthing here (no idea what)
-		
-	}
+	
 
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {

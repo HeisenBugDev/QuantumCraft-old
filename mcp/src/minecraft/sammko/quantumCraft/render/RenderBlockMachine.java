@@ -19,11 +19,7 @@ public class RenderBlockMachine extends RendererBase {
 		super(renderID);
 	}
 
-	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelID,
-			RenderBlocks renderer) {
-		
-	}
+	
 
 	void setStuff(RenderBlocks renderer, IBlockAccess world, Block block, int x, int y, int z)
 	{
