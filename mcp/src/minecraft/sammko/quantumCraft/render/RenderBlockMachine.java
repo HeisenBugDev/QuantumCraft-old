@@ -57,4 +57,12 @@ public class RenderBlockMachine extends RendererBase {
 	}
 
 
+
+	@Override
+	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
+		super.renderInventoryBlock(block, metadata, modelID, renderer, new int[] { BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle),
+				BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle),BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle),
+				BlockTextureMatrix.getIndex(BlockTextureMatrix.QuantumGenerator),BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle),
+				BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle) });
+	}
 }
