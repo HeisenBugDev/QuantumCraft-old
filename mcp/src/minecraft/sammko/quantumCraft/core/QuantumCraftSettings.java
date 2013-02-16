@@ -12,7 +12,7 @@ public class QuantumCraftSettings {
 		public static String BLOCK_PNG = "/sammko/qc/block.png";
 		public static String ITEMS_PNG = "/sammko/qc/items.png";
 		public static String BGextractorGUI = "/sammko/qc/gui/Extractor.png";
-		public static String BGreactorGUI = "/samme/qc/gui/Reactor.png";
+		public static String BGreactorGUI = "/sammko/qc/gui/Reactor.png";
 		//wgen
 		public static boolean WGenPlu;
 		public static boolean WGenPos;

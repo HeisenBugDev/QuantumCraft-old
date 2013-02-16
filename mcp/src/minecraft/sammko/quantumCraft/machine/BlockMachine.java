@@ -88,7 +88,12 @@ public class BlockMachine extends BlockContainer {
          if (tileEntity == null || player.isSneaking()) {
                  return false;
          }
-         player.openGui(QuantumCraft.instance, ItemInitializator.GuiExtractorID, world, x, y, z);
+         if(world.getBlockMetadata(x, y, z) == 0){
+             player.openGui(QuantumCraft.instance, ItemInitializator.GuiExtractorID, world, x, y, z);
+         } else if (world.getBlockMetadata(x,y,z) == 1){
+        	 player.openGui(QuantumCraft.instance, ItemInitializator.GuiReactorID, world, x, y, z);
+         }
+ 
          return true;
     }
 	
@@ -107,7 +112,7 @@ public class BlockMachine extends BlockContainer {
 	
 	@Override
 	public TileEntity createNewTileEntity(World var1) {
-		return new TileEntityExtractor(ForgeDirection.NORTH);
+		return new TileEntityReactor(ForgeDirection.NORTH);
 		//TODO: change this based on the metadata of this block.
 	}
 	

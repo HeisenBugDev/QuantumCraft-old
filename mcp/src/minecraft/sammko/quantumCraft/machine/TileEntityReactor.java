@@ -120,10 +120,7 @@ public class TileEntityReactor extends TileEntityMachine implements IInventory,
 		} else {
 			if (inventory[0].itemID != ic2.api.Items.getItem("waterCell").itemID)
 				return false;
-			if (inventory[1].itemID == ItemInitializator.ItemPositroniumCrystal.itemID
-					|| inventory[0].itemID == ItemInitializator.ItemRadiumEnergyPacket.itemID
-					|| inventory[0].itemID == ItemInitializator.ItemGammatroniumEnergyPacket.itemID
-					|| inventory[0].itemID == ItemInitializator.ItemNeutriniumEnergyPacket.itemID) {
+			if (inventory[1].itemID == ItemInitializator.ItemIngotPlutonium.itemID) {
 				return true;
 			}
 			return false;
@@ -147,14 +144,6 @@ public class TileEntityReactor extends TileEntityMachine implements IInventory,
 			} else if (this.inventory[4].isItemEqual(var1)) {
 				inventory[4].stackSize += var1.stackSize;
 			}
-			if (this.inventory[3] == null) {
-				this.inventory[3] = new ItemStack(
-						ItemInitializator.ItemDepletedCrystal, 1);
-			} else if (this.inventory[3].isItemEqual(new ItemStack(
-					ItemInitializator.ItemDepletedCrystal, 1))) {
-				inventory[3].stackSize += var1.stackSize;
-			}
-
 			--this.inventory[0].stackSize;
 
 			if (this.inventory[0].stackSize <= 0) {
