@@ -38,7 +38,6 @@ public class TileEntityExtractor extends TileEntityMachine implements
 		return internalStorage * 100 / MAX_STORAGE;
 	}
 
-	
 	public TileEntityExtractor(ForgeDirection rot) {
 		super(rot, 5, "Extractor");
 	}
@@ -66,11 +65,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 		}
 		if (!this.worldObj.isRemote) {
 			if (inventory[2] != null
-					&& internalStorage <= 16000 - getItemBurnTime(this.inventory[2])) // Use
-			// up
-			// a
-			// fuel
-			// item
+					&& internalStorage <= 16000 - getItemBurnTime(this.inventory[2]))
 			{
 				this.itemFuel = getItemBurnTime(this.inventory[2]);
 				this.internalStorage += itemFuel;
@@ -126,8 +121,6 @@ public class TileEntityExtractor extends TileEntityMachine implements
 		par1nbtTagCompound.setInteger("powerLevel", internalStorage);
 	}
 
-	
-
 	private boolean canExtract() {
 		if (this.inventory[0] == null) {
 			return false;
@@ -160,8 +153,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 					ItemInitializator.ItemGammatroniumEnergyPacket, 1);
 		}
 		if (inp.itemID == ItemInitializator.ItemNeutriniumCrystal.itemID) {
-			return new ItemStack(ItemInitializator.ItemNeutriniumEnergyPacket,
-					1);
+			return new ItemStack(ItemInitializator.ItemNeutriniumEnergyPacket, 1);
 		}
 		return null;
 
@@ -239,5 +231,4 @@ public class TileEntityExtractor extends TileEntityMachine implements
 		return getItemBurnTime(par0ItemStack) > 0;
 	}
 
-	
 }
