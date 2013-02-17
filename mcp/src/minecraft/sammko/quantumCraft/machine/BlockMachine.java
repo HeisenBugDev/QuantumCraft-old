@@ -33,82 +33,97 @@ import sammko.quantumCraft.items.ItemInitializator;
 import sammko.quantumCraft.machine.gui.GuiExtractor;
 import sammko.quantumCraft.resources.BlockTextureMatrix;
 
-public class BlockMachine extends BlockContainer {
+public abstract class BlockMachine extends BlockContainer {
 
 	int RenderID; // renderer id for custom renderer
-	
+
 	public BlockMachine(int par1, int rid) {
 		super(par1, Material.rock);
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
-		GameRegistry.registerBlock(this, ItemBlockMachine.class, "machineBlock");
+		GameRegistry
+				.registerBlock(this, ItemBlockMachine.class, "machineBlock");
 		setCreativeTab(ItemInitializator.tabQC);
 		RenderID = rid;
 	}
 
+	public abstract Integer getGui(World world, int x, int y, int z,
+			EntityPlayer entityplayer);
+
 	@Override
-	public boolean renderAsNormalBlock()
-	{
+	public boolean renderAsNormalBlock() {
 		return false;
-		
+
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs tab, List subItems) {
 		for (int ix = 0; ix < ItemInitializator.GuiExtractorID; ix++) {
 			subItems.add(new ItemStack(this, 1, ix));
 		}
 	}
-	
+
 	@Override
 	public int damageDropped(int metadata) {
 		return metadata;
 	}
-	
+
 	@Override
-	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLiving entityliving) {
+	public void onBlockPlacedBy(World world, int i, int j, int k,
+			EntityLiving entityliving) {
 		super.onBlockPlacedBy(world, i, j, k, entityliving);
 
-		ForgeDirection orientation = Utils.get2dOrientation(new Position(entityliving.posX, entityliving.posY, entityliving.posZ), new Position(i, j, k));
-		TileEntityMachine t = (TileEntityMachine) world.getBlockTileEntity(i, j, k);
+		ForgeDirection orientation = Utils.get2dOrientation(new Position(
+				entityliving.posX, entityliving.posY, entityliving.posZ),
+				new Position(i, j, k));
+		TileEntityMachine t = (TileEntityMachine) world.getBlockTileEntity(i,
+				j, k);
 		t.rotation = orientation.getOpposite();
 	}
 
 	@Override
-	public void breakBlock (World par1World, int x, int y, int z, int par5, int par6)
-	{
+	public void breakBlock(World par1World, int x, int y, int z, int par5,
+			int par6) {
 		Utils.preDestroyBlock(par1World, x, y, z);
 		super.breakBlock(par1World, x, y, z, par5, par6);
 	}
 
+	public Integer integer = null;
 
-	
-    @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int idk, float what, float these, float are) {
-    	 TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-         if (tileEntity == null || player.isSneaking()) {
-                 return false;
-         }
-         player.openGui(QuantumCraft.instance, ItemInitializator.GuiExtractorID, world, x, y, z);
-         return true;
-    }
-	
 	@Override
-	public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-    {
-		return ((TileEntityMachine) par1IBlockAccess.getBlockTileEntity(par2, par3, par4)).tMap[par5];
-       
-    }
-	
+	public boolean onBlockActivated(World world, int x, int y, int z,
+			EntityPlayer player, int idk, float what, float these, float are) {
+		Integer integer = getGui(world, x, y, z, player);
+		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+		if (player.isSneaking()) {
+			return false;
+		}
+
+		if (integer == null || integer == -1) {
+			return false;
+		} else {
+			player.openGui(QuantumCraft.instance, integer, world, x, y, z);
+			return true;
+		}
+
+	}
+
 	@Override
-	public int getRenderType()
-	{
+	public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2,
+			int par3, int par4, int par5) {
+		return ((TileEntityMachine) par1IBlockAccess.getBlockTileEntity(par2,
+				par3, par4)).tMap[par5];
+
+	}
+
+	@Override
+	public int getRenderType() {
 		return RenderID;
 	}
-	
+
 	@Override
 	public TileEntity createNewTileEntity(World var1) {
-		return new TileEntityExtractor(ForgeDirection.NORTH);
-		//TODO: change this based on the metadata of this block.
+		return new TileEntityReactor(ForgeDirection.NORTH);
+		// TODO: change this based on the metadata of this block.
 	}
-	
+
 }
