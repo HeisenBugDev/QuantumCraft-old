@@ -3,6 +3,7 @@ package sammko.quantumCraft.machine;
 import sammko.quantumCraft.items.ItemInitializator;
 import ic2.api.Direction;
 import ic2.api.energy.event.EnergyTileLoadEvent;
+import ic2.api.energy.event.EnergyTileSourceEvent;
 import ic2.api.energy.tile.IEnergySource;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -42,8 +43,8 @@ public class TileEntityReactor extends TileEntityMachine implements IInventory,
 
 	public void updateEntity() {
 		super.updateEntity();
-		if (!this.addedToEnergyNet) {
-			MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
+		if (!this.isAddedToEnergyNet()) {
+			MinecraftForge.EVENT_BUS.post(new EnergyTileSourceEvent(this, internalStorage));
 			this.addedToEnergyNet = true;
 		}
 
@@ -60,7 +61,7 @@ public class TileEntityReactor extends TileEntityMachine implements IInventory,
 			// item
 			{
 
-				if (this.internalStorage > 0) // If we got fuel get rid of the
+				if (this.internalStorage < 0) // If we got fuel get rid of the
 												// item
 				{
 					nu = true;
@@ -76,7 +77,7 @@ public class TileEntityReactor extends TileEntityMachine implements IInventory,
 				}
 			}
 
-			if (internalStorage >= 100 && this.canReact()) // Smelt stuff
+			if (internalStorage <= 16000 && this.canReact()) // Smelt stuff
 			{
 				++this.progress;
 

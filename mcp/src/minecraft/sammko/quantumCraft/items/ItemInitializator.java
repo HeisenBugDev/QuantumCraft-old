@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
@@ -13,17 +12,15 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumHelper;
-import sammko.quantumCraft.core.QuantumCraft;
-import sammko.quantumCraft.core.QuantumCraftSettings;
-import sammko.quantumCraft.core.TabQuantumCraft;
 import sammko.quantumCraft.blocks.BlockEmpty;
 import sammko.quantumCraft.blocks.BlockQuantumBasicBlocks;
 import sammko.quantumCraft.blocks.BlockQuantumOre;
-import sammko.quantumCraft.machine.BlockMachine;
+import sammko.quantumCraft.core.QuantumCraftSettings;
+import sammko.quantumCraft.core.TabQuantumCraft;
+import sammko.quantumCraft.machine.BlockMachineNA;
 import sammko.quantumCraft.machine.ExtractorContainer;
 import sammko.quantumCraft.machine.ReactorContainer;
 import sammko.quantumCraft.machine.TileEntityExtractor;
-import sammko.quantumCraft.machine.TileEntityMachine;
 import sammko.quantumCraft.machine.TileEntityReactor;
 import sammko.quantumCraft.machine.gui.GuiExtractor;
 import sammko.quantumCraft.machine.gui.GuiReactor;
@@ -31,7 +28,6 @@ import sammko.quantumCraft.render.RenderBlockEmpty;
 import sammko.quantumCraft.render.RenderBlockMachine;
 import sammko.quantumCraft.resources.BlockTextureMatrix;
 import sammko.quantumCraft.resources.ItemTextureMatrix;
-import sammko.quantumCraft.resources.OtherResx;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -155,7 +151,7 @@ public class ItemInitializator implements IGuiHandler {
 						.getIndex(BlockTextureMatrix.EBlockBackSingle),
 				BlockEmptyRenderID).setCreativeTab(tabQC).setBlockName(
 				"emptyBlock");
-		MachineBlock = new BlockMachine(QuantumCraftSettings.MachineBlockID,
+		MachineBlock = new BlockMachineNA(QuantumCraftSettings.MachineBlockID,
 				BlockMachineRenderID).setCreativeTab(tabQC);
 		DecoBlocks = new BlockQuantumBasicBlocks(
 				QuantumCraftSettings.DecoBlocksID,
