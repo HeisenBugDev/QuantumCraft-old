@@ -21,23 +21,15 @@ public class CraftingManager {
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalAxe,1)," dd"," sd"," s ",'d', ItemInitializator.ItemDepletedShard, 's', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.ItemCrystalShovel,1), " d "," s "," s ", 'd', new ItemStack(ItemInitializator.ItemDepletedShard), 's', Item.stick);
 		//DecoBlocks
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,0), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemPositroniumCrystal), 'x', new ItemStack(Block.stoneBrick));
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,1), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemRadiumCrystal),'x', new ItemStack(Block.stoneBrick));
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,2), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemGammatroniumCrystal),'x', new ItemStack(Block.stoneBrick));
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,3), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemNeutriniumCrystal),'x', new ItemStack(Block.stoneBrick));
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,9,4), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemDepletedCrystal),'x', new ItemStack(Block.stoneBrick));
-		
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,4,5), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1,0));
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,4,6), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1,1));
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,4,7), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1,2));
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,4,8), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1,3));
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,4,9), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1,4));
-		
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,4,10), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1,5));
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,4,11), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1,6));
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,4,12), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1,7));
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,4,13), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1,8));
-		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,4,14), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1,9));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,8,0), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemPositroniumCrystal), 'x', new ItemStack(Block.stoneBrick));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,8,1), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemRadiumCrystal),'x', new ItemStack(Block.stoneBrick));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,8,2), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemGammatroniumCrystal),'x', new ItemStack(Block.stoneBrick));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,8,3), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemNeutriniumCrystal),'x', new ItemStack(Block.stoneBrick));
+		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,8,4), "xxx", "xyx", "xxx", 'y', new ItemStack(ItemInitializator.ItemDepletedCrystal),'x', new ItemStack(Block.stoneBrick));
+		for(int i = 0; i < 10; i++)
+		{
+			GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,4,i+5), "xx", "xx", 'x', new ItemStack(ItemInitializator.DecoBlocks,1,i));
+		}
 		
 		GameRegistry.addRecipe(new ItemStack(ItemInitializator.DecoBlocks,1,15), "xxx","xxx","xxx", 'x', new ItemStack(ItemInitializator.ItemIngotPlutonium));
 		
