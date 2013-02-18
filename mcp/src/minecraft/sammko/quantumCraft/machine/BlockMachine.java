@@ -33,7 +33,7 @@ import sammko.quantumCraft.items.ItemInitializator;
 import sammko.quantumCraft.machine.gui.GuiExtractor;
 import sammko.quantumCraft.resources.BlockTextureMatrix;
 
-public abstract class BlockMachine extends BlockContainer {
+public class BlockMachine extends BlockContainer {
 
 	int RenderID; // renderer id for custom renderer
 
@@ -45,9 +45,6 @@ public abstract class BlockMachine extends BlockContainer {
 		setCreativeTab(ItemInitializator.tabQC);
 		RenderID = rid;
 	}
-
-	public abstract Integer getGui(World world, int x, int y, int z,
-			EntityPlayer entityplayer);
 
 	@Override
 	public boolean renderAsNormalBlock() {
@@ -107,6 +104,19 @@ public abstract class BlockMachine extends BlockContainer {
 
 	}
 
+	public Integer getGui(World world, int x, int y, int z, EntityPlayer player)
+	{
+		switch (world.getBlockMetadata(x, y, z))
+		{
+		case 0:
+			return ItemInitializator.GuiExtractorID;
+		case 1:
+			return ItemInitializator.GuiReactorID;
+		default:
+			return -1;
+		}
+	}
+
 	@Override
 	public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2,
 			int par3, int par4, int par5) {
@@ -121,9 +131,22 @@ public abstract class BlockMachine extends BlockContainer {
 	}
 
 	@Override
+	public TileEntity createNewTileEntity(World var1, int metadata) {
+		switch (metadata)
+		{
+		case 0:
+			return new TileEntityExtractor(ForgeDirection.NORTH);
+		case 1:
+			return new TileEntityReactor(ForgeDirection.NORTH);
+		default:
+			return null;
+		}
+	}
+
+	@Override
 	public TileEntity createNewTileEntity(World var1) {
-		return new TileEntityReactor(ForgeDirection.NORTH);
-		// TODO: change this based on the metadata of this block.
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

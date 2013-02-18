@@ -17,7 +17,7 @@ import sammko.quantumCraft.blocks.BlockQuantumBasicBlocks;
 import sammko.quantumCraft.blocks.BlockQuantumOre;
 import sammko.quantumCraft.core.QuantumCraftSettings;
 import sammko.quantumCraft.core.TabQuantumCraft;
-import sammko.quantumCraft.machine.BlockMachineNA;
+import sammko.quantumCraft.machine.BlockMachine;
 import sammko.quantumCraft.machine.ExtractorContainer;
 import sammko.quantumCraft.machine.ReactorContainer;
 import sammko.quantumCraft.machine.TileEntityExtractor;
@@ -151,7 +151,7 @@ public class ItemInitializator implements IGuiHandler {
 						.getIndex(BlockTextureMatrix.EBlockBackSingle),
 				BlockEmptyRenderID).setCreativeTab(tabQC).setBlockName(
 				"emptyBlock");
-		MachineBlock = new BlockMachineNA(QuantumCraftSettings.MachineBlockID,
+		MachineBlock = new BlockMachine(QuantumCraftSettings.MachineBlockID,
 				BlockMachineRenderID).setCreativeTab(tabQC);
 		DecoBlocks = new BlockQuantumBasicBlocks(
 				QuantumCraftSettings.DecoBlocksID,
