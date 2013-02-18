@@ -19,9 +19,9 @@ import sammko.quantumCraft.core.QuantumCraftSettings;
 import sammko.quantumCraft.core.TabQuantumCraft;
 import sammko.quantumCraft.machine.BlockMachine;
 import sammko.quantumCraft.machine.ExtractorContainer;
-import sammko.quantumCraft.machine.ReactorContainer;
+import sammko.quantumCraft.machine.InfuserContainer;
 import sammko.quantumCraft.machine.TileEntityExtractor;
-import sammko.quantumCraft.machine.TileEntityReactor;
+import sammko.quantumCraft.machine.TileEntityInfuser;
 import sammko.quantumCraft.machine.gui.GuiExtractor;
 import sammko.quantumCraft.machine.gui.GuiReactor;
 import sammko.quantumCraft.render.RenderBlockEmpty;
@@ -335,7 +335,7 @@ public class ItemInitializator implements IGuiHandler {
 	public static void initTEntities() {
 		GameRegistry.registerTileEntity(TileEntityExtractor.class,
 				"ExtractorTE");
-		GameRegistry.registerTileEntity(TileEntityReactor.class, "ReactorTE");
+		GameRegistry.registerTileEntity(TileEntityInfuser.class, "ReactorTE");
 	}
 
 	public static void initRenderers() {
@@ -366,14 +366,16 @@ public class ItemInitializator implements IGuiHandler {
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world,
 			int x, int y, int z) {
-		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-		if (tileEntity instanceof TileEntityExtractor) {
+		
+		Object o = world.getBlockTileEntity(x, y, z);
+		
+		if (o instanceof TileEntityExtractor) {
 			return new ExtractorContainer(player.inventory,
-					(TileEntityExtractor) tileEntity);
+					(TileEntityExtractor) o);
 		}
-		if (tileEntity instanceof TileEntityReactor) {
-			return new ReactorContainer(player.inventory,
-					(TileEntityReactor) tileEntity);
+		if (o instanceof TileEntityInfuser) {
+			return new InfuserContainer(player.inventory,
+					(TileEntityInfuser) o);
 		}
 		return null;
 	}
@@ -381,13 +383,13 @@ public class ItemInitializator implements IGuiHandler {
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world,
 			int x, int y, int z) {
-		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-		if (tileEntity instanceof TileEntityExtractor) {
+		Object o = world.getBlockTileEntity(x, y, z);
+		if (o instanceof TileEntityExtractor) {
 			return new GuiExtractor(player.inventory,
-					(TileEntityExtractor) tileEntity);
-		} else if (tileEntity instanceof TileEntityReactor) {
+					(TileEntityExtractor) o);
+		} else if (o instanceof TileEntityInfuser) {
 			return new GuiReactor(player.inventory,
-					(TileEntityReactor) tileEntity);
+					(TileEntityInfuser) o);
 		} else
 			return null;
 

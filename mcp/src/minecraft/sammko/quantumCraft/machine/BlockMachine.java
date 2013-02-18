@@ -137,7 +137,7 @@ public class BlockMachine extends BlockContainer {
 		case 0:
 			return new TileEntityExtractor(ForgeDirection.NORTH);
 		case 1:
-			return new TileEntityReactor(ForgeDirection.NORTH);
+			return new TileEntityInfuser(ForgeDirection.NORTH);
 		default:
 			return null;
 		}

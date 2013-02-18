@@ -16,9 +16,11 @@ import net.minecraft.util.StatCollector;
 public class GuiExtractor extends GuiContainer {
 
 	TileEntityExtractor te;
-
+	ExtractorContainer e;
+	
 	public GuiExtractor(InventoryPlayer ip, TileEntityExtractor tee) {
 		super(new ExtractorContainer(ip, tee));
+		e = new ExtractorContainer(ip, tee);
 		this.te = tee;
 	}
 
@@ -48,9 +50,11 @@ public class GuiExtractor extends GuiContainer {
        	int t = 0;
        	int t2 = 0;		
 	
-       	t = Utils.Scale(42, 100 - te.getChargeState(), 16000);
+       	e.detectAndSendChanges();
+       	
+       	t = Utils.Scale(42, e.fuel, 16000);
        	this.drawTexturedModalRect(x + 49, y + 18, 176, 0, t, 6); //49@18       
-        t2 = Utils.Scale(24, te.progress, 20);
+        t2 = Utils.Scale(24, e.progress, 20);
        	this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t2, 15);
 	}
 }

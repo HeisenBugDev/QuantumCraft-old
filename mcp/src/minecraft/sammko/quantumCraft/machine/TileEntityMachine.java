@@ -1,10 +1,15 @@
 package sammko.quantumCraft.machine;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import ic2.api.Direction;
 import ic2.api.energy.tile.IEnergySink;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -218,6 +223,45 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory, IE
 	@Override
 	public int getMaxSafeInput() {
 		return Integer.MAX_VALUE;
+	}
+	
+
+	public static int getItemBurnTime(ItemStack par0ItemStack) {
+		if (par0ItemStack == null) {
+			return 0;
+		} else {
+			int var1 = par0ItemStack.getItem().itemID;
+			Item var2 = par0ItemStack.getItem();
+
+			if (par0ItemStack.getItem() instanceof ItemBlock
+					&& Block.blocksList[var1] != null) {
+				Block var3 = Block.blocksList[var1];
+
+				if (var3 == Block.woodSingleSlab) {
+					return 150;
+				}
+
+				if (var3.blockMaterial == Material.wood) {
+					return 300;
+				}
+			}
+
+			if (var1 == Item.stick.itemID)
+				return 100;
+			if (var1 == Item.coal.itemID)
+				return 1600;
+			if (var1 == Item.bucketLava.itemID)
+				return 20000;
+			if (var1 == Block.sapling.blockID)
+				return 100;
+			if (var1 == Item.blazeRod.itemID)
+				return 2400;
+			return GameRegistry.getFuelValue(par0ItemStack);
+		}
+	}
+
+	public static boolean isItemFuel(ItemStack par0ItemStack) {
+		return getItemBurnTime(par0ItemStack) > 0;
 	}
 
 

@@ -8,15 +8,15 @@ import org.lwjgl.opengl.GL11;
 
 import sammko.quantumCraft.core.QuantumCraftSettings;
 import sammko.quantumCraft.core.Utils;
-import sammko.quantumCraft.machine.ReactorContainer;
+import sammko.quantumCraft.machine.InfuserContainer;
 import sammko.quantumCraft.machine.TileEntityExtractor;
-import sammko.quantumCraft.machine.TileEntityReactor;
+import sammko.quantumCraft.machine.TileEntityInfuser;
 
 public class GuiReactor extends GuiContainer{
-	TileEntityReactor te;
+	TileEntityInfuser te;
 
-	public GuiReactor(InventoryPlayer ip, TileEntityReactor tee) {
-		super(new ReactorContainer(ip, tee));
+	public GuiReactor(InventoryPlayer ip, TileEntityInfuser tee) {
+		super(new InfuserContainer(ip, tee));
 		this.te = tee;
 	}
 

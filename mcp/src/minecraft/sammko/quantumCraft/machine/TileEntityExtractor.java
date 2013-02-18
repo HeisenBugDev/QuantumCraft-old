@@ -65,7 +65,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 		}
 		if (!this.worldObj.isRemote) {
 			if (inventory[2] != null
-					&& internalStorage <= 16000 - getItemBurnTime(this.inventory[2]))
+					&& internalStorage <= 16000 - getItemBurnTime(this.inventory[2]) && getItemBurnTime(this.inventory[2]) != 0)
 			{
 				this.itemFuel = getItemBurnTime(this.inventory[2]);
 				this.internalStorage += itemFuel;
@@ -193,42 +193,5 @@ public class TileEntityExtractor extends TileEntityMachine implements
 		}
 	}
 
-	public static int getItemBurnTime(ItemStack par0ItemStack) {
-		if (par0ItemStack == null) {
-			return 0;
-		} else {
-			int var1 = par0ItemStack.getItem().itemID;
-			Item var2 = par0ItemStack.getItem();
-
-			if (par0ItemStack.getItem() instanceof ItemBlock
-					&& Block.blocksList[var1] != null) {
-				Block var3 = Block.blocksList[var1];
-
-				if (var3 == Block.woodSingleSlab) {
-					return 150;
-				}
-
-				if (var3.blockMaterial == Material.wood) {
-					return 300;
-				}
-			}
-
-			if (var1 == Item.stick.itemID)
-				return 100;
-			if (var1 == Item.coal.itemID)
-				return 1600;
-			if (var1 == Item.bucketLava.itemID)
-				return 20000;
-			if (var1 == Block.sapling.blockID)
-				return 100;
-			if (var1 == Item.blazeRod.itemID)
-				return 2400;
-			return GameRegistry.getFuelValue(par0ItemStack);
-		}
-	}
-
-	public static boolean isItemFuel(ItemStack par0ItemStack) {
-		return getItemBurnTime(par0ItemStack) > 0;
-	}
 
 }
