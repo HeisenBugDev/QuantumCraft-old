@@ -3,7 +3,7 @@ package sammko.quantumCraft.machine.gui;
 import org.lwjgl.opengl.GL11;
 
 import sammko.quantumCraft.core.QuantumCraftSettings;
-import sammko.quantumCraft.core.Utils;
+import sammko.quantumCraft.core.utils.Utils;
 import sammko.quantumCraft.machine.ExtractorContainer;
 import sammko.quantumCraft.machine.TileEntityExtractor;
 

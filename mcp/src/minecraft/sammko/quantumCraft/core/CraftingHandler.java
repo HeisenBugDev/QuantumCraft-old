@@ -4,7 +4,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.ICraftingHandler;
-import sammko.quantumCraft.items.ItemInitializator;
 import sammko.quantumCraft.core.OwnAchievement;
 
 public class CraftingHandler implements ICraftingHandler {

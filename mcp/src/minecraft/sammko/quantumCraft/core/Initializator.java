@@ -1,4 +1,4 @@
-package sammko.quantumCraft.items;
+package sammko.quantumCraft.core;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,8 +15,13 @@ import net.minecraftforge.common.EnumHelper;
 import sammko.quantumCraft.blocks.BlockEmpty;
 import sammko.quantumCraft.blocks.BlockQuantumBasicBlocks;
 import sammko.quantumCraft.blocks.BlockQuantumOre;
-import sammko.quantumCraft.core.QuantumCraftSettings;
-import sammko.quantumCraft.core.TabQuantumCraft;
+import sammko.quantumCraft.items.CrystalAxe;
+import sammko.quantumCraft.items.CrystalPickaxe;
+import sammko.quantumCraft.items.CrystalShovel;
+import sammko.quantumCraft.items.CrystalSword;
+import sammko.quantumCraft.items.ItemCrystal;
+import sammko.quantumCraft.items.ItemEnergyPacket;
+import sammko.quantumCraft.items.ItemPlutoniumIngot;
 import sammko.quantumCraft.machine.BlockMachine;
 import sammko.quantumCraft.machine.ExtractorContainer;
 import sammko.quantumCraft.machine.InfuserContainer;
@@ -33,9 +38,9 @@ import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-public class ItemInitializator implements IGuiHandler {
+public class Initializator implements IGuiHandler {
 
-	public ItemInitializator() {
+	public Initializator() {
 
 	}
 

@@ -4,9 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 import sammko.quantumCraft.blocks.BlockEmpty;
+import sammko.quantumCraft.core.Initializator;
 import sammko.quantumCraft.core.QuantumCraft;
 import sammko.quantumCraft.core.QuantumCraftSettings;
-import sammko.quantumCraft.items.ItemInitializator;
 import sammko.quantumCraft.resources.BlockTextureMatrix;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
@@ -36,10 +36,10 @@ public class RenderBlockEmpty extends RendererBase {
 			
 			int tempt = 0;
 			
-			if (world.getBlockId(x, y+1, z) == ItemInitializator.EmptyBlock.blockID) tempt = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackBot);
-			if (world.getBlockId(x, y-1, z) == ItemInitializator.EmptyBlock.blockID) tempt = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackTop);
-			if (world.getBlockId(x, y+1, z) == ItemInitializator.EmptyBlock.blockID
-			 && world.getBlockId(x, y-1, z) == ItemInitializator.EmptyBlock.blockID) tempt = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackMid);
+			if (world.getBlockId(x, y+1, z) == Initializator.EmptyBlock.blockID) tempt = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackBot);
+			if (world.getBlockId(x, y-1, z) == Initializator.EmptyBlock.blockID) tempt = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackTop);
+			if (world.getBlockId(x, y+1, z) == Initializator.EmptyBlock.blockID
+			 && world.getBlockId(x, y-1, z) == Initializator.EmptyBlock.blockID) tempt = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackMid);
 			for (int i = 2; i < 6; i++)
 			{
 				tMap[i] = tempt;

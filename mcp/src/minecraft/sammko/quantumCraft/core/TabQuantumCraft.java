@@ -1,6 +1,5 @@
 package sammko.quantumCraft.core;
 
-import sammko.quantumCraft.items.ItemInitializator;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -22,7 +21,7 @@ public class TabQuantumCraft extends CreativeTabs {
 	@Override
 	public Item getTabIconItem()
     {
-	    return (Item)ItemInitializator.ItemGammatroniumCrystal;
+	    return (Item)Initializator.ItemGammatroniumCrystal;
     }
 
 }

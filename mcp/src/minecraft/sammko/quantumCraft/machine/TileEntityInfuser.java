@@ -1,6 +1,6 @@
 package sammko.quantumCraft.machine;
 
-import sammko.quantumCraft.items.ItemInitializator;
+import sammko.quantumCraft.core.Initializator;
 import ic2.api.Direction;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileSourceEvent;
@@ -121,7 +121,7 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 		} else {
 			if (inventory[0].itemID != ic2.api.Items.getItem("waterCell").itemID)
 				return false;
-			if (inventory[1].itemID == ItemInitializator.ItemIngotPlutonium.itemID) {
+			if (inventory[1].itemID == Initializator.ItemIngotPlutonium.itemID) {
 				return true;
 			}
 			return false;
@@ -129,7 +129,7 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 	}
 
 	public ItemStack getResult(ItemStack inp) {
-		return new ItemStack(ItemInitializator.ItemEmptyEnergyPacket, 1);
+		return new ItemStack(Initializator.ItemEmptyEnergyPacket, 1);
 
 	}
 

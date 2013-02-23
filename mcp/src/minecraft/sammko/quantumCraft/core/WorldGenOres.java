@@ -2,7 +2,6 @@ package sammko.quantumCraft.core;
 
 import java.util.Random;
 
-import sammko.quantumCraft.items.ItemInitializator;
 
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -25,12 +24,12 @@ public class WorldGenOres implements IWorldGenerator {
 	public void generate(Random random, int xo, int zo, World w,
 			IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		
-		this.PosGen = new QWorldGenMinable(ItemInitializator.OrePositronium.blockID, 6);
-		this.RadGen = new QWorldGenMinable(ItemInitializator.OreRadium.blockID, 6);
-		this.GamGen = new QWorldGenMinable(ItemInitializator.OreGammatronium.blockID, 6);
-		this.NeuGen = new QWorldGenMinable(ItemInitializator.OreNeutrinium.blockID, 6);
-		this.DepGen = new QWorldGenMinable(ItemInitializator.OreDepleted.blockID, 6);
-		this.PluGen = new QWorldGenMinable(ItemInitializator.OrePlutonium.blockID, 6);
+		this.PosGen = new QWorldGenMinable(Initializator.OrePositronium.blockID, 6);
+		this.RadGen = new QWorldGenMinable(Initializator.OreRadium.blockID, 6);
+		this.GamGen = new QWorldGenMinable(Initializator.OreGammatronium.blockID, 6);
+		this.NeuGen = new QWorldGenMinable(Initializator.OreNeutrinium.blockID, 6);
+		this.DepGen = new QWorldGenMinable(Initializator.OreDepleted.blockID, 6);
+		this.PluGen = new QWorldGenMinable(Initializator.OrePlutonium.blockID, 6);
 		
 		xo <<= 4;
 		zo <<= 4;

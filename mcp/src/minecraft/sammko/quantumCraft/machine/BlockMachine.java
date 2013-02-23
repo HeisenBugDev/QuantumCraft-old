@@ -26,10 +26,10 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import sammko.quantumCraft.blocks.ItemBlockMachine;
-import sammko.quantumCraft.core.Utils;
+import sammko.quantumCraft.core.Initializator;
 import sammko.quantumCraft.core.QuantumCraft;
 import sammko.quantumCraft.core.QuantumCraftSettings;
-import sammko.quantumCraft.items.ItemInitializator;
+import sammko.quantumCraft.core.utils.Utils;
 import sammko.quantumCraft.machine.gui.GuiExtractor;
 import sammko.quantumCraft.resources.BlockTextureMatrix;
 
@@ -42,7 +42,7 @@ public class BlockMachine extends BlockContainer {
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
 		GameRegistry
 				.registerBlock(this, ItemBlockMachine.class, "machineBlock");
-		setCreativeTab(ItemInitializator.tabQC);
+		setCreativeTab(Initializator.tabQC);
 		RenderID = rid;
 	}
 
@@ -54,7 +54,7 @@ public class BlockMachine extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs tab, List subItems) {
-		for (int ix = 0; ix < ItemInitializator.GuiExtractorID; ix++) {
+		for (int ix = 0; ix < Initializator.GuiExtractorID; ix++) {
 			subItems.add(new ItemStack(this, 1, ix));
 		}
 	}
@@ -109,9 +109,9 @@ public class BlockMachine extends BlockContainer {
 		switch (world.getBlockMetadata(x, y, z))
 		{
 		case 0:
-			return ItemInitializator.GuiExtractorID;
+			return Initializator.GuiExtractorID;
 		case 1:
-			return ItemInitializator.GuiReactorID;
+			return Initializator.GuiReactorID;
 		default:
 			return -1;
 		}

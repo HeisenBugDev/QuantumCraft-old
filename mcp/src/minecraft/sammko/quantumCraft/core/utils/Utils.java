@@ -1,4 +1,4 @@
-package sammko.quantumCraft.core;
+package sammko.quantumCraft.core.utils;
 
 import buildcraft.api.core.Position;
 import net.minecraft.entity.item.EntityItem;

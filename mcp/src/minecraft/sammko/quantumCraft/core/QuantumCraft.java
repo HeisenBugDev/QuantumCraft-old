@@ -7,7 +7,6 @@ import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import sammko.quantumCraft.CommonProxy;
 import sammko.quantumCraft.client.ClientTickHandler;
-import sammko.quantumCraft.items.ItemInitializator;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -52,17 +51,17 @@ public class QuantumCraft {
 	public void load(FMLInitializationEvent event) {
 		proxy.registerRenderers();
 		GameRegistry.registerWorldGenerator(worldGen);
-		ItemInitializator.initAll();
+		Initializator.initAll();
 		CraftingManager.addCrafting();
 		CraftingManager.addSmelting();
 		CraftingManager.addMod();
-		MinecraftForge.setToolClass(ItemInitializator.ItemCrystalPickaxe, "CrystalPickaxe", 2);// Do we need this here? cause we already set the harvest level in material enum.
+		MinecraftForge.setToolClass(Initializator.ItemCrystalPickaxe, "CrystalPickaxe", 2);// Do we need this here? cause we already set the harvest level in material enum.
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		GameRegistry.registerCraftingHandler(craftHandler);
 		page1 = new AchievementPage("Quantum Craft", OwnAchievement.Danger, OwnAchievement.Hurry); 	//placed here for correct initialization
 		AchievementPage.registerAchievementPage(page1);
 		OwnAchievement.addAchievementLocalization();
-		NetworkRegistry.instance().registerGuiHandler(this, new ItemInitializator());
+		NetworkRegistry.instance().registerGuiHandler(this, new Initializator());
 	}
 
 	@PostInit

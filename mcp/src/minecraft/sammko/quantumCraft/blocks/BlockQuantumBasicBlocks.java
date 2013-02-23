@@ -10,8 +10,8 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import sammko.quantumCraft.core.Initializator;
 import sammko.quantumCraft.core.QuantumCraftSettings;
-import sammko.quantumCraft.items.ItemInitializator;
 import sammko.quantumCraft.resources.BlockTextureMatrix;
 
 public class BlockQuantumBasicBlocks extends Block {
@@ -19,7 +19,7 @@ public class BlockQuantumBasicBlocks extends Block {
 		super(id, texture, Material.rock);
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
 		GameRegistry.registerBlock(this, ItemBlockQuantumBasicBlocks.class, "BlockDecoBlocks");
-		setCreativeTab(ItemInitializator.tabQC);
+		setCreativeTab(Initializator.tabQC);
 	}
 	
 	@Override

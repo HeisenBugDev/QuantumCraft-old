@@ -5,8 +5,8 @@ import java.util.Random;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
+import sammko.quantumCraft.core.Initializator;
 import sammko.quantumCraft.core.QuantumCraftSettings;
-import sammko.quantumCraft.items.ItemInitializator;
 import sammko.quantumCraft.resources.BlockTextureMatrix;
 
 import net.minecraft.block.*;
@@ -24,7 +24,7 @@ public class BlockEmpty extends Block {
 	public BlockEmpty(int par1, int par2, int rid) {
 		
 		super(par1, par2, Material.rock);
-		this.setCreativeTab(ItemInitializator.tabQC);
+		this.setCreativeTab(Initializator.tabQC);
 		this.RenderID = rid;
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
 		GameRegistry.registerBlock(this, "emptyBlock");

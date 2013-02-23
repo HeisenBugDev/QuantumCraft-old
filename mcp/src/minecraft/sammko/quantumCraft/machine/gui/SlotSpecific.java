@@ -3,7 +3,7 @@ package sammko.quantumCraft.machine.gui;
 import java.util.ArrayList;
 import java.util.List;
 
-import sammko.quantumCraft.items.ItemInitializator;
+import sammko.quantumCraft.core.Initializator;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;

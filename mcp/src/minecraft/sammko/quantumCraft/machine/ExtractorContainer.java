@@ -1,7 +1,7 @@
 package sammko.quantumCraft.machine;
 
+import sammko.quantumCraft.core.Initializator;
 import sammko.quantumCraft.core.gui.QuantumContainer;
-import sammko.quantumCraft.items.ItemInitializator;
 import sammko.quantumCraft.machine.gui.SlotSpecific;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -21,7 +21,7 @@ public class ExtractorContainer extends QuantumContainer {
             tileEntity = te;
 
             addSlotToContainer(new Slot(te, 0, 18, 11));
-            addSlotToContainer(new SlotSpecific(te, 1, 18, 55).addItems(ItemInitializator.ItemEmptyEnergyPacket));
+            addSlotToContainer(new SlotSpecific(te, 1, 18, 55).addItems(Initializator.ItemEmptyEnergyPacket));
             addSlotToContainer(new Slot(te, 2, 62, 55));
             addSlotToContainer(new SlotSpecific(te, 3, 124, 52));
             addSlotToContainer(new SlotSpecific(te, 4, 128, 28));

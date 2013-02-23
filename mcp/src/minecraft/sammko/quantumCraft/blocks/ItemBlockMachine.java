@@ -1,6 +1,6 @@
 package sammko.quantumCraft.blocks;
 
-import sammko.quantumCraft.items.ItemInitializator;
+import sammko.quantumCraft.core.Initializator;
 import sammko.quantumCraft.resources.OtherResx;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -10,7 +10,7 @@ public class ItemBlockMachine extends ItemBlock {
 		super(par1);
 		setHasSubtypes(true);
 		setItemName("iBlockMachine");
-		setCreativeTab(ItemInitializator.tabQC);
+		setCreativeTab(Initializator.tabQC);
 	}
 
 	private final static String[] subNames = {

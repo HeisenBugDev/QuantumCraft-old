@@ -7,7 +7,7 @@ import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
 import sammko.quantumCraft.core.QuantumCraftSettings;
-import sammko.quantumCraft.core.Utils;
+import sammko.quantumCraft.core.utils.Utils;
 import sammko.quantumCraft.machine.InfuserContainer;
 import sammko.quantumCraft.machine.TileEntityExtractor;
 import sammko.quantumCraft.machine.TileEntityInfuser;

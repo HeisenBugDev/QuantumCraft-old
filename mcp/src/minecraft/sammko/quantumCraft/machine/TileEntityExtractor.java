@@ -3,7 +3,7 @@ package sammko.quantumCraft.machine; //Comments are awsome ^^
 import ic2.api.Direction;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.tile.IEnergySink;
-import sammko.quantumCraft.items.ItemInitializator;
+import sammko.quantumCraft.core.Initializator;
 import sammko.quantumCraft.resources.NBTTags;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -128,12 +128,12 @@ public class TileEntityExtractor extends TileEntityMachine implements
 		if (this.inventory[1] == null) {
 			return false;
 		} else {
-			if (inventory[1].itemID != ItemInitializator.ItemEmptyEnergyPacket.itemID)
+			if (inventory[1].itemID != Initializator.ItemEmptyEnergyPacket.itemID)
 				return false;
-			if (inventory[0].itemID == ItemInitializator.ItemPositroniumCrystal.itemID
-					|| inventory[0].itemID == ItemInitializator.ItemRadiumCrystal.itemID
-					|| inventory[0].itemID == ItemInitializator.ItemGammatroniumCrystal.itemID
-					|| inventory[0].itemID == ItemInitializator.ItemNeutriniumCrystal.itemID) {
+			if (inventory[0].itemID == Initializator.ItemPositroniumCrystal.itemID
+					|| inventory[0].itemID == Initializator.ItemRadiumCrystal.itemID
+					|| inventory[0].itemID == Initializator.ItemGammatroniumCrystal.itemID
+					|| inventory[0].itemID == Initializator.ItemNeutriniumCrystal.itemID) {
 				return true;
 			}
 			return false;
@@ -141,19 +141,19 @@ public class TileEntityExtractor extends TileEntityMachine implements
 	}
 
 	public ItemStack getResult(ItemStack inp) {
-		if (inp.itemID == ItemInitializator.ItemPositroniumCrystal.itemID) {
-			return new ItemStack(ItemInitializator.ItemPositroniumEnergyPacket,
+		if (inp.itemID == Initializator.ItemPositroniumCrystal.itemID) {
+			return new ItemStack(Initializator.ItemPositroniumEnergyPacket,
 					1);
 		}
-		if (inp.itemID == ItemInitializator.ItemRadiumCrystal.itemID) {
-			return new ItemStack(ItemInitializator.ItemRadiumEnergyPacket, 1);
+		if (inp.itemID == Initializator.ItemRadiumCrystal.itemID) {
+			return new ItemStack(Initializator.ItemRadiumEnergyPacket, 1);
 		}
-		if (inp.itemID == ItemInitializator.ItemGammatroniumCrystal.itemID) {
+		if (inp.itemID == Initializator.ItemGammatroniumCrystal.itemID) {
 			return new ItemStack(
-					ItemInitializator.ItemGammatroniumEnergyPacket, 1);
+					Initializator.ItemGammatroniumEnergyPacket, 1);
 		}
-		if (inp.itemID == ItemInitializator.ItemNeutriniumCrystal.itemID) {
-			return new ItemStack(ItemInitializator.ItemNeutriniumEnergyPacket, 1);
+		if (inp.itemID == Initializator.ItemNeutriniumCrystal.itemID) {
+			return new ItemStack(Initializator.ItemNeutriniumEnergyPacket, 1);
 		}
 		return null;
 
@@ -173,9 +173,9 @@ public class TileEntityExtractor extends TileEntityMachine implements
 			}
 			if (this.inventory[3] == null) {
 				this.inventory[3] = new ItemStack(
-						ItemInitializator.ItemDepletedCrystal, 1);
+						Initializator.ItemDepletedCrystal, 1);
 			} else if (this.inventory[3].isItemEqual(new ItemStack(
-					ItemInitializator.ItemDepletedCrystal, 1))) {
+					Initializator.ItemDepletedCrystal, 1))) {
 				inventory[3].stackSize += var1.stackSize;
 			}
 

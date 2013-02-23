@@ -1,6 +1,6 @@
 package sammko.quantumCraft.blocks;
 
-import sammko.quantumCraft.items.ItemInitializator;
+import sammko.quantumCraft.core.Initializator;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
@@ -10,7 +10,7 @@ public class ItemBlockQuantumBasicBlocks extends ItemBlock {
 		super(par1);
 		setHasSubtypes(true);
 		setItemName("iBlockQuantumBasicBlocks");
-		setCreativeTab(ItemInitializator.tabQC);
+		setCreativeTab(Initializator.tabQC);
 	}
 
 	private final static String[] subNames = {
