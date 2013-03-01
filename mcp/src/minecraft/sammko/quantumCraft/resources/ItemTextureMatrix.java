@@ -30,6 +30,8 @@ public class ItemTextureMatrix {
 	public static int GammAxe = 0x23;
 	public static int GammShovel = 0x33;
 	
+	public static int RadioactiveMeat = 0x04;
+	
 	public static int getIndex(int v)
 	{
 		return ((v >> 4) & 15) | ((v << 4) & 240);

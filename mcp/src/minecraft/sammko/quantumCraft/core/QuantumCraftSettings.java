@@ -48,11 +48,15 @@ public class QuantumCraftSettings {
 		public static int CrystalAxeID;
 		public static int CrystalShovelID;
 		
+		public static int RadioactiveMeatID;
+		
 		public static void getConfig(Configuration config)
 		{
 			//config
 	        config.load();
 
+	        
+	        	
 	        PlutoniumIngotID = config.get("Items", "IngotPlutonium", 4500).getInt();
 	        CrystalPositroniumID = config.get("Items", "CrystalPositronium", 4501).getInt();
 	        CrystalRadiumID = config.get("Items", "CrystalRadium", 4502).getInt();
@@ -70,7 +74,9 @@ public class QuantumCraftSettings {
 	        CrystalAxeID = config.get("Items", "CrystalAxeID", 4513).getInt();
 	        CrystalShovelID = config.get("Items", "CrystalShovelID", 4514).getInt();
 	        DCrystalShardID = config.get("Items", "DepletedShardID", 4515).getInt();
-	      
+	        
+	        RadioactiveMeatID= config.get("Items", "RadioactiveMeat", 4516).getInt();
+	        
 	        OrePositroniumID = config.get("Blocks", "OrePositronium", 2500).getInt();
 	        OrePlutoniumID = config.get("Blocks", "OrePlutonium", 2501).getInt();
 	        OreRadiumID = config.get("Blocks", "OreRadium", 2502).getInt();

@@ -4,11 +4,13 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumHelper;
@@ -91,6 +93,8 @@ public class Initializator implements IGuiHandler {
 	public static ItemSword ItemCrystalSword;
 	public static ItemAxe ItemCrystalAxe;
 	public static ItemSpade ItemCrystalShovel;
+
+	public static Item RadioactiveMeat;
 
 	public static EnumToolMaterial DEPLETEDCRYSTAL = EnumHelper
 			.addToolMaterial("DEPLETEDCRYSTAL", 2, 500, 7.0F, 2, 25);
@@ -312,6 +316,17 @@ public class Initializator implements IGuiHandler {
 								.getIndex(ItemTextureMatrix.NeutriniumEPacket))
 				.setItemName("neutroniumEP");
 
+		RadioactiveMeat = new sammko.quantumCraft.items.RadioactiveMeat(
+				QuantumCraftSettings.RadioactiveMeatID, 6, 1F, false)
+				.setPotionEffect(Potion.poison.id, 20, 2, 0.5F)
+				.setMaxStackSize(64)
+				.setCreativeTab(tabQC)
+				.setItemName("RadioactiveMeat")
+				.setIconIndex(
+						ItemTextureMatrix
+								.getIndex(ItemTextureMatrix.RadioactiveMeat));
+
+		LanguageRegistry.addName(RadioactiveMeat, "Radioactive Meat");
 		LanguageRegistry.addName(ItemIngotPlutonium, "Plutonium Ingot");
 		LanguageRegistry.addName(ItemPositroniumCrystal, "Positronium Crystal");
 		LanguageRegistry.addName(ItemRadiumCrystal, "Radium Crystal");
@@ -371,16 +386,15 @@ public class Initializator implements IGuiHandler {
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world,
 			int x, int y, int z) {
-		
+
 		Object o = world.getBlockTileEntity(x, y, z);
-		
+
 		if (o instanceof TileEntityExtractor) {
 			return new ExtractorContainer(player.inventory,
 					(TileEntityExtractor) o);
 		}
 		if (o instanceof TileEntityInfuser) {
-			return new InfuserContainer(player.inventory,
-					(TileEntityInfuser) o);
+			return new InfuserContainer(player.inventory, (TileEntityInfuser) o);
 		}
 		return null;
 	}
@@ -390,11 +404,9 @@ public class Initializator implements IGuiHandler {
 			int x, int y, int z) {
 		Object o = world.getBlockTileEntity(x, y, z);
 		if (o instanceof TileEntityExtractor) {
-			return new GuiExtractor(player.inventory,
-					(TileEntityExtractor) o);
+			return new GuiExtractor(player.inventory, (TileEntityExtractor) o);
 		} else if (o instanceof TileEntityInfuser) {
-			return new GuiReactor(player.inventory,
-					(TileEntityInfuser) o);
+			return new GuiReactor(player.inventory, (TileEntityInfuser) o);
 		} else
 			return null;
 
