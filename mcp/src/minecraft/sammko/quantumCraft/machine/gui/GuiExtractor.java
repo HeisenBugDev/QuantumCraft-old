@@ -37,6 +37,7 @@ public class GuiExtractor extends GuiContainer {
 		fontRenderer.drawString(
 				StatCollector.translateToLocal("container.inventory"), 8,
 				ySize - 96 + 2, 0x000000);
+		fontRenderer.drawString(e.fuel + "", 45, 20, 0x0000004);
 	}
 
 	@Override
@@ -49,12 +50,16 @@ public class GuiExtractor extends GuiContainer {
        	this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
        	int t = 0;
        	int t2 = 0;		
-	
+       	
+       	
+       	
        	e.detectAndSendChanges();
        	
-       	t = Utils.Scale(42, e.fuel, 16000);
+       	//t = Utils.Scale(42, e.fuel, 16000);
+       	t = te.gaugeFuelScaled(3);
        	this.drawTexturedModalRect(x + 49, y + 18, 176, 0, t, 6); //49@18       
-        t2 = Utils.Scale(24, e.progress, 20);
+        //t2 = Utils.Scale(24, e.progress, 20);
+        t2 = te.gaugeProgressScaled(1);
        	this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t2, 15);
 	}
 }

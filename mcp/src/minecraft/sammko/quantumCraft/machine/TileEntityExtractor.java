@@ -51,6 +51,25 @@ public class TileEntityExtractor extends TileEntityMachine implements
 		progress = 0;
 	}
 
+	public int gaugeProgressScaled (int scale)
+	{
+		return (progress * scale) / 1000;
+	}
+	
+	public int gaugeFuelScaled (int scale)
+	{
+		if (itemFuel == 0)
+		{
+			itemFuel = internalStorage;
+			if (itemFuel == 0)
+			{
+				itemFuel = 1000;
+			}
+		}
+		return (internalStorage * scale) / itemFuel;
+	}
+
+	
 	public void updateEntity() {
 		super.updateEntity();
 		if (!this.addedToEnergyNet) {
