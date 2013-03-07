@@ -14,3 +14,5 @@ http://nvie.com/posts/a-successful-git-branching-model/
 
 Thank you very much, author of that model. i like it.
 <b>READ IT GUYS. NOW.</b>
+
+I reccomend using git flow for that branching model.
