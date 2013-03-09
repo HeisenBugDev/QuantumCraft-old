@@ -31,6 +31,8 @@ public class ExtractorContainer extends QuantumContainer {
 
     
     public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
+    	
+    	// TODO fix so that it works properly
         ItemStack stack = null;
         Slot slotObject = (Slot) inventorySlots.get(slot);
 
