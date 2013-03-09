@@ -7,8 +7,8 @@ public class BlockTextureMatrix {
 	public static TextureIndex OrePositronium = new TextureIndex(0xE0);
 	public static TextureIndex OrePlutonium = new TextureIndex(0xF0);
 	public static TextureIndex OreRadium = new TextureIndex(0xE1);
-	public static TextureIndex OreGammatronium = new TextureIndex(0xF1);
-	public static TextureIndex OreNeutrinium = new TextureIndex(0xF2);
+	public static TextureIndex OreGammatronium = new TextureIndex(0xF2);
+	public static TextureIndex OreNeutrinium = new TextureIndex(0xF1);
 	public static TextureIndex OreDepleted = new TextureIndex(0xE2);
 	
 	public static TextureIndex Err = new TextureIndex(0x14);
