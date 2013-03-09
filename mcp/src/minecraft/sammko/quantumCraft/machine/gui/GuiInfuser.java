@@ -8,16 +8,19 @@ import org.lwjgl.opengl.GL11;
 
 import sammko.quantumCraft.core.QuantumCraftSettings;
 import sammko.quantumCraft.core.utils.Utils;
+import sammko.quantumCraft.machine.ExtractorContainer;
 import sammko.quantumCraft.machine.InfuserContainer;
 import sammko.quantumCraft.machine.TileEntityExtractor;
 import sammko.quantumCraft.machine.TileEntityInfuser;
 
 public class GuiInfuser extends GuiContainer{
 	TileEntityInfuser te;
+	InfuserContainer e;
 
 	public GuiInfuser(InventoryPlayer ip, TileEntityInfuser tee) {
 		super(new InfuserContainer(ip, tee));
 		this.te = tee;
+		e = new InfuserContainer(ip, tee);
 	}
 
 	public void initGui() {
@@ -46,12 +49,13 @@ public class GuiInfuser extends GuiContainer{
        	this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
        	int t = 0;
        	int t2 = 0;		
-	
+       	e.detectAndSendChanges();
+
        	//t = Utils.Scale(42, 100 - te.getChargeState(), 16000);
-    	t = te.gaugeFuelScaled(3);
-    	this.drawTexturedModalRect(x + 49, y + 18, 176, 0, t, 6); //49@18       
+    	t = te.GetScaleSize();
+    	this.drawTexturedModalRect(x + 49, y + 18, 176, 0, t, 6); //49@18     
         //t2 = Utils.Scale(24, te.progress, 20);
-        t2 = te.gaugeProgressScaled(100);
+        t2 = te.gaugeProgressScaled(5);
        	this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t2, 15);
 	}
 }

@@ -19,6 +19,7 @@ public class TileEntityInfuser extends TileEntityMachine {
 
 	public int progress;
 	int itemFuel;
+	public int scaleSize;
 
 	public TileEntityInfuser(ForgeDirection rot) {
 		super(rot, 5, "infuseor");
@@ -32,22 +33,17 @@ public class TileEntityInfuser extends TileEntityMachine {
 		internalStorage = 0;
 		progress = 0;
 		itemFuel = 1600;
+		
 	}
 
 	public int gaugeProgressScaled(int scale) {
 		return (progress * scale) / 16;
 	}
-
-	public int gaugeFuelScaled(int scale) {
-
-		if (itemFuel == 0) {
-			itemFuel = internalStorage;
-			if (itemFuel == 0) {
-				itemFuel = 1000;
-			}
-		}
-		return (internalStorage * scale) / 16000;
+	public int GetScaleSize() {
+		return internalStorage * 3;
 	}
+
+
 
 	public void updateEntity() {
 		super.updateEntity();
@@ -55,7 +51,9 @@ public class TileEntityInfuser extends TileEntityMachine {
 			MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
 			this.addedToEnergyNet = true;
 		}
-
+	
+		
+		
 		boolean gf = this.internalStorage > 0;
 		boolean nu = false;
 		if (internalStorage > 0) {
@@ -66,10 +64,10 @@ public class TileEntityInfuser extends TileEntityMachine {
 			if (inventory[1] != null
 					&& internalStorage <= 16 - 1
 					&& inventory[1].getItem() == Initializator.ItemGammatroniumEnergyPacket) {
-				this.internalStorage++;
+				internalStorage++;
 				this.inventory[1].stackSize--;
 			}
-			if (internalStorage <= 16000 && this.caninfuse()) // Smelt stuff
+			if (internalStorage <= 16 && this.caninfuse()) // Smelt stuff
 			{
 
 				++this.progress;
