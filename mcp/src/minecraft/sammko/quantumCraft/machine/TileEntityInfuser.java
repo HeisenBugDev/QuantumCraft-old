@@ -29,14 +29,12 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 	}
 
 	private void init() {
-		internalStorage = 0;
+		internalStorage = 16000;
 		progress = 0;
 	}
 
-
-
 	public int gaugeProgressScaled(int scale) {
-		return (progress * scale) / 20;
+		return (progress * scale) / 16000;
 	}
 
 	public int gaugeFuelScaled(int scale) {
@@ -90,7 +88,7 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 			{
 				++this.progress;
 
-				if (this.progress == 20) {
+				if (this.progress == 16000) {
 					this.progress = 0;
 					this.InfuseItem();
 					nu = true;
@@ -128,7 +126,10 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 		if (this.inventory[1] == null) {
 			return false;
 		} else {
-			if (inventory[0].itemID != Initializator.ItemCrystalAxe.itemID || inventory[0].itemID != Initializator.ItemCrystalPickaxe.itemID || inventory[0].itemID != Initializator.ItemCrystalSword.itemID || inventory[0].itemID != Initializator.ItemCrystalShovel.itemID)
+			if (inventory[0].itemID != Initializator.ItemCrystalAxe.itemID
+					|| inventory[0].itemID != Initializator.ItemCrystalPickaxe.itemID
+					|| inventory[0].itemID != Initializator.ItemCrystalSword.itemID
+					|| inventory[0].itemID != Initializator.ItemCrystalShovel.itemID)
 				return false;
 			if (inventory[1].itemID == Initializator.ItemGammatroniumCrystal.itemID) {
 				return true;
@@ -139,18 +140,16 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 
 	public ItemStack getResult(ItemStack inp) {
 		if (inp.itemID == Initializator.ItemCrystalAxe.itemID) {
-			return new ItemStack(Initializator.ItemPositroniumEnergyPacket,
-					1);
+			return new ItemStack(Initializator.ItemInfusedCrystalAxe, 1);
 		}
-		if (inp.itemID == Initializator.ItemRadiumCrystal.itemID) {
-			return new ItemStack(Initializator.ItemRadiumEnergyPacket, 1);
+		if (inp.itemID == Initializator.ItemCrystalPickaxe.itemID) {
+			return new ItemStack(Initializator.ItemInfusedCrystalPickaxe, 1);
 		}
-		if (inp.itemID == Initializator.ItemGammatroniumCrystal.itemID) {
-			return new ItemStack(
-					Initializator.ItemGammatroniumEnergyPacket, 1);
+		if (inp.itemID == Initializator.ItemCrystalShovel.itemID) {
+			return new ItemStack(Initializator.ItemInfusedCrystalShovel, 1);
 		}
-		if (inp.itemID == Initializator.ItemNeutriniumCrystal.itemID) {
-			return new ItemStack(Initializator.ItemNeutriniumEnergyPacket, 1);
+		if (inp.itemID == Initializator.ItemCrystalSword.itemID) {
+			return new ItemStack(Initializator.ItemInfusedCrystalSword, 1);
 		}
 		return null;
 
