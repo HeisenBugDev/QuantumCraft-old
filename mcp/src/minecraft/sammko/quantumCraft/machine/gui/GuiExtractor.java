@@ -59,7 +59,7 @@ public class GuiExtractor extends GuiContainer {
        	t = te.gaugeFuelScaled(3);
        	this.drawTexturedModalRect(x + 49, y + 18, 176, 0, t, 6); //49@18       
         //t2 = Utils.Scale(24, e.progress, 20);
-        t2 = te.gaugeProgressScaled(1);
+        t2 = te.gaugeProgressScaled(20);
        	this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t2, 15);
 	}
 }

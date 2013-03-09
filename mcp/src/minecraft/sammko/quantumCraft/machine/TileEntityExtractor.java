@@ -53,7 +53,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 
 	public int gaugeProgressScaled (int scale)
 	{
-		return (progress * scale) / 1000;
+		return (progress * scale) / 20;
 	}
 	
 	public int gaugeFuelScaled (int scale)
