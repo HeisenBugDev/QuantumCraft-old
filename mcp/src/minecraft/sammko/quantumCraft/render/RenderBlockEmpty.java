@@ -31,15 +31,15 @@ public class RenderBlockEmpty extends RendererBase {
 		
 		if (tileRules == 0) //based on tileRules change the texture connection rules. 0 = UP-DOWN
 		{
-			tMap[0] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
-			tMap[1] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
+			tMap[0] = BlockTextureMatrix.EBlockBackSingle.getINT();
+			tMap[1] = BlockTextureMatrix.EBlockBackSingle.getINT();
 			
 			int tempt = 0;
 			
-			if (world.getBlockId(x, y+1, z) == Initializator.EmptyBlock.blockID) tempt = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackBot);
-			if (world.getBlockId(x, y-1, z) == Initializator.EmptyBlock.blockID) tempt = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackTop);
+			if (world.getBlockId(x, y+1, z) == Initializator.EmptyBlock.blockID) tempt = BlockTextureMatrix.EBlockBackBot.getINT();
+			if (world.getBlockId(x, y-1, z) == Initializator.EmptyBlock.blockID) tempt = BlockTextureMatrix.EBlockBackTop.getINT();
 			if (world.getBlockId(x, y+1, z) == Initializator.EmptyBlock.blockID
-			 && world.getBlockId(x, y-1, z) == Initializator.EmptyBlock.blockID) tempt = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackMid);
+			 && world.getBlockId(x, y-1, z) == Initializator.EmptyBlock.blockID) tempt = BlockTextureMatrix.EBlockBackMid.getINT();
 			for (int i = 2; i < 6; i++)
 			{
 				tMap[i] = tempt;
@@ -60,7 +60,7 @@ public class RenderBlockEmpty extends RendererBase {
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID,
 			RenderBlocks renderer) {
-		super.renderInventoryBlock(block, metadata, modelID, renderer, BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle));
+		super.renderInventoryBlock(block, metadata, modelID, renderer, BlockTextureMatrix.EBlockBackSingle.getINT());
 		
 	}
 

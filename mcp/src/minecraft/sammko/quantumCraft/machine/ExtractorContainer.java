@@ -29,6 +29,45 @@ public class ExtractorContainer extends QuantumContainer {
             bindPlayerInventory(inventoryPlayer);
     }
 
+    
+    public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
+    	
+    	// TODO fix so that it works properly
+        /* ItemStack stack = null;
+        Slot slotObject = (Slot) inventorySlots.get(slot);
+
+        //null checks and checks if the item can be stacked (maxStackSize > 1)
+        if (slotObject != null && slotObject.getHasStack()) {
+                ItemStack stackInSlot = slotObject.getStack();
+                stack = stackInSlot.copy();
+
+                //merges the item into player inventory since its in the tileEntity
+                if (slot < 9) {
+                        if (!this.mergeItemStack(stackInSlot, 9, 45, true)) {
+                                return null;
+                        }
+                }
+                //places it into the tileEntity is possible since its in the player inventory
+                else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
+                        return null;
+                }
+
+                if (stackInSlot.stackSize == 0) {
+                        slotObject.putStack(null);
+                } else {
+                        slotObject.onSlotChanged();
+                }
+
+                if (stackInSlot.stackSize == stack.stackSize) {
+                        return null;
+                }
+                slotObject.onPickupFromSlot(player, stackInSlot);
+        }
+        return stack;
+        */
+    	return null;
+    }
+    
     @Override
     public void detectAndSendChanges()
     {

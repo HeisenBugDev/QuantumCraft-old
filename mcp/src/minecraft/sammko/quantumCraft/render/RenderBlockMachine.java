@@ -25,13 +25,13 @@ public class RenderBlockMachine extends RendererBase {
 	{
 		TileEntityMachine t =  (TileEntityMachine) world.getBlockTileEntity(x, y, z);
 		
-		tMap[0] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle);
-		tMap[1] = BlockTextureMatrix.getIndex(BlockTextureMatrix.MachineTop[0]);
+		tMap[0] = BlockTextureMatrix.EBlockBackSingle.getINT();
+		tMap[1] = BlockTextureMatrix.MachineTop[0].getINT();
 		
-		if (t.rotation == ForgeDirection.NORTH) tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.MachineFront[0]); else tMap[2] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
-		if (t.rotation == ForgeDirection.SOUTH) tMap[3] = BlockTextureMatrix.getIndex(BlockTextureMatrix.MachineFront[0]); else tMap[3] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
-		if (t.rotation == ForgeDirection.WEST) tMap[4] = BlockTextureMatrix.getIndex(BlockTextureMatrix.MachineFront[0]); else tMap[4] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
-		if (t.rotation == ForgeDirection.EAST) tMap[5] = BlockTextureMatrix.getIndex(BlockTextureMatrix.MachineFront[0]); else tMap[5] = BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle);
+		if (t.rotation == ForgeDirection.NORTH) tMap[2] = BlockTextureMatrix.MachineFront[0].getINT(); else tMap[2] = BlockTextureMatrix.EBlockSideSingle.getINT();
+		if (t.rotation == ForgeDirection.SOUTH) tMap[3] = BlockTextureMatrix.MachineFront[0].getINT(); else tMap[3] = BlockTextureMatrix.EBlockSideSingle.getINT();
+		if (t.rotation == ForgeDirection.WEST) tMap[4] = BlockTextureMatrix.MachineFront[0].getINT(); else tMap[4] = BlockTextureMatrix.EBlockSideSingle.getINT();
+		if (t.rotation == ForgeDirection.EAST) tMap[5] = BlockTextureMatrix.MachineFront[0].getINT(); else tMap[5] = BlockTextureMatrix.EBlockSideSingle.getINT();
 		
 		t.tMap = this.tMap;
 	}
@@ -58,9 +58,9 @@ public class RenderBlockMachine extends RendererBase {
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
-		super.renderInventoryBlock(block, metadata, modelID, renderer, new int[] { BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockBackSingle),
-				BlockTextureMatrix.getIndex(BlockTextureMatrix.MachineTop[0]),BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle),
-				BlockTextureMatrix.getIndex(BlockTextureMatrix.MachineFront[0]),BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle),
-				BlockTextureMatrix.getIndex(BlockTextureMatrix.EBlockSideSingle) });
+		super.renderInventoryBlock(block, metadata, modelID, renderer, new int[] { BlockTextureMatrix.EBlockBackSingle.getINT(),
+				BlockTextureMatrix.MachineTop[0].getINT(),BlockTextureMatrix.EBlockSideSingle.getINT(),
+				BlockTextureMatrix.MachineFront[0].getINT(),BlockTextureMatrix.EBlockSideSingle.getINT(),
+				BlockTextureMatrix.EBlockSideSingle.getINT() });
 	}
 }

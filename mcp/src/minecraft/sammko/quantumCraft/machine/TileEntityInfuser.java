@@ -1,9 +1,11 @@
 package sammko.quantumCraft.machine;
 
 import sammko.quantumCraft.core.Initializator;
+import sammko.quantumCraft.core.QuantumCraftSettings;
 import ic2.api.Direction;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileSourceEvent;
+import ic2.api.energy.tile.IEnergySink;
 import ic2.api.energy.tile.IEnergySource;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -13,77 +15,65 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ISidedInventory;
 import net.minecraftforge.common.MinecraftForge;
 
-public class TileEntityInfuser extends TileEntityMachine implements IInventory,
-		ISidedInventory, IEnergySource {
+public class TileEntityInfuser extends TileEntityMachine {
 
 	public int progress;
+	int itemFuel;
+	public int scaleSize;
 
 	public TileEntityInfuser(ForgeDirection rot) {
-		super(rot, 5, "Reactor");
+		super(rot, 5, "infuseor");
 	}
 
 	public TileEntityInfuser() {
-		super(ForgeDirection.NORTH, 5, "Reactor");
+		super(ForgeDirection.NORTH, 5, "infuseor");
 	}
 
 	private void init() {
 		internalStorage = 0;
 		progress = 0;
+		itemFuel = 1600;
+		
 	}
 
-	@Override
-	public boolean emitsEnergyTo(TileEntity receiver, Direction direction) {
-		return true;
+	public int gaugeProgressScaled(int scale) {
+		return (progress * scale) / 16;
+	}
+	public int GetScaleSize() {
+		return internalStorage * 3;
 	}
 
-	@Override
-	public int getMaxEnergyOutput() {
-		return Integer.MAX_VALUE;
-	}
+
 
 	public void updateEntity() {
 		super.updateEntity();
 		if (!this.isAddedToEnergyNet()) {
-			MinecraftForge.EVENT_BUS.post(new EnergyTileSourceEvent(this, internalStorage));
+			MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
 			this.addedToEnergyNet = true;
 		}
-
+	
+		
+		
 		boolean gf = this.internalStorage > 0;
 		boolean nu = false;
 		if (internalStorage > 0) {
 
 		}
 		if (!this.worldObj.isRemote) {
-			if (inventory[1] != null && inventory[0] != null) // Use
-			// up
-			// a
-			// fuel
-			// item
-			{
 
-				if (this.internalStorage < 0) // If we got fuel get rid of the
-												// item
-				{
-					nu = true;
-
-					if (this.inventory[2] != null) {
-						--this.inventory[2].stackSize;
-
-						if (this.inventory[2].stackSize == 0) {
-							this.inventory[2] = this.inventory[2].getItem()
-									.getContainerItemStack(inventory[2]);
-						}
-					}
-				}
+			if (inventory[1] != null
+					&& internalStorage <= 16 - 1
+					&& inventory[1].getItem() == Initializator.ItemGammatroniumEnergyPacket) {
+				internalStorage++;
+				this.inventory[1].stackSize--;
 			}
-
-			if (internalStorage <= 16000 && this.canReact()) // Smelt stuff
+			if (internalStorage <= 16 && this.caninfuse()) // Smelt stuff
 			{
-				++this.progress;
 
-				if (this.progress == 20) {
+				++this.progress;
+				if (this.progress == 100) {
 					this.progress = 0;
-					this.ReactItem();
+					this.InfuseItem();
 					nu = true;
 				}
 			} else {
@@ -112,16 +102,15 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 		par1nbtTagCompound.setInteger("powerLevel", internalStorage);
 	}
 
-	private boolean canReact() {
+	private boolean caninfuse() {
 		if (this.inventory[0] == null) {
 			return false;
-		}
-		if (this.inventory[1] == null) {
-			return false;
 		} else {
-			if (inventory[0].itemID != ic2.api.Items.getItem("waterCell").itemID)
-				return false;
-			if (inventory[1].itemID == Initializator.ItemIngotPlutonium.itemID) {
+			if ((inventory[0].itemID == Initializator.ItemCrystalAxe.itemID
+					|| inventory[0].itemID == Initializator.ItemCrystalPickaxe.itemID
+					|| inventory[0].itemID == Initializator.ItemCrystalSword.itemID || inventory[0].itemID == Initializator.ItemCrystalShovel.itemID)
+					&& internalStorage >= 16) {
+
 				return true;
 			}
 			return false;
@@ -129,14 +118,26 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 	}
 
 	public ItemStack getResult(ItemStack inp) {
-		return new ItemStack(Initializator.ItemEmptyEnergyPacket, 1);
+		if (inp.itemID == Initializator.ItemCrystalAxe.itemID) {
+			return new ItemStack(Initializator.ItemInfusedCrystalAxe, 1);
+		}
+		if (inp.itemID == Initializator.ItemCrystalPickaxe.itemID) {
+			return new ItemStack(Initializator.ItemInfusedCrystalPickaxe, 1);
+		}
+		if (inp.itemID == Initializator.ItemCrystalShovel.itemID) {
+			return new ItemStack(Initializator.ItemInfusedCrystalShovel, 1);
+		}
+		if (inp.itemID == Initializator.ItemCrystalSword.itemID) {
+			return new ItemStack(Initializator.ItemInfusedCrystalSword, 1);
+		}
+		return null;
 
 	}
 
-	public void ReactItem() {
-		if (this.canReact()) {
+	public void InfuseItem() {
+		if (this.caninfuse()) {
 
-			internalStorage += 100;
+			internalStorage -= 16;
 
 			ItemStack var1 = this.getResult(this.inventory[0]);
 
@@ -151,15 +152,7 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 				this.inventory[0] = null;
 			}
 
-			--this.inventory[1].stackSize;
-
-			if (this.inventory[1].stackSize <= 0) {
-				this.inventory[1] = null;
-			}
 		}
 	}
 
-	public int getChargeState() {
-		return internalStorage * 100 / MAX_STORAGE;
-	}
 }

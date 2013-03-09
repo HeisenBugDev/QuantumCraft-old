@@ -4,12 +4,13 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumHelper;
 import sammko.quantumCraft.blocks.BlockEmpty;
@@ -28,7 +29,7 @@ import sammko.quantumCraft.machine.InfuserContainer;
 import sammko.quantumCraft.machine.TileEntityExtractor;
 import sammko.quantumCraft.machine.TileEntityInfuser;
 import sammko.quantumCraft.machine.gui.GuiExtractor;
-import sammko.quantumCraft.machine.gui.GuiReactor;
+import sammko.quantumCraft.machine.gui.GuiInfuser;
 import sammko.quantumCraft.render.RenderBlockEmpty;
 import sammko.quantumCraft.render.RenderBlockMachine;
 import sammko.quantumCraft.resources.BlockTextureMatrix;
@@ -91,6 +92,13 @@ public class Initializator implements IGuiHandler {
 	public static ItemSword ItemCrystalSword;
 	public static ItemAxe ItemCrystalAxe;
 	public static ItemSpade ItemCrystalShovel;
+	
+	public static ItemPickaxe ItemInfusedCrystalPickaxe;
+	public static ItemSword ItemInfusedCrystalSword;
+	public static ItemAxe ItemInfusedCrystalAxe;
+	public static ItemSpade ItemInfusedCrystalShovel;
+
+	public static Item ItemRadioactiveMeat;
 
 	public static EnumToolMaterial DEPLETEDCRYSTAL = EnumHelper
 			.addToolMaterial("DEPLETEDCRYSTAL", 2, 500, 7.0F, 2, 25);
@@ -107,37 +115,37 @@ public class Initializator implements IGuiHandler {
 	public static void initOres() {
 		OrePositronium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OrePositroniumID,
-				BlockTextureMatrix.getIndex(BlockTextureMatrix.OrePositronium))
+				BlockTextureMatrix.OrePositronium.getINT())
 				.setBlockName("orePositronium").setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OrePlutonium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OrePlutoniumID,
-				BlockTextureMatrix.getIndex(BlockTextureMatrix.OrePlutonium))
+				BlockTextureMatrix.OrePlutonium.getINT())
 				.setBlockName("orePlutonium").setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OreRadium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OreRadiumID,
-				BlockTextureMatrix.getIndex(BlockTextureMatrix.OreRadium))
+				BlockTextureMatrix.OreRadium.getINT())
 				.setBlockName("oreRadium").setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OreGammatronium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OreGammatroniumID,
-				BlockTextureMatrix.getIndex(BlockTextureMatrix.OreGammatronium))
+				BlockTextureMatrix.OreGammatronium.getINT())
 				.setBlockName("oreGammatronium").setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OreNeutrinium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OreNeutriniumID,
-				BlockTextureMatrix.getIndex(BlockTextureMatrix.OreNeutrinium))
+				BlockTextureMatrix.OreNeutrinium.getINT())
 				.setBlockName("oreNeutrinium").setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OreDepleted = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OreDepletedID,
-				BlockTextureMatrix.getIndex(BlockTextureMatrix.OreDepleted))
+				BlockTextureMatrix.OreDepleted.getINT())
 				.setBlockName("OreDepleted").setHardness(5.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
@@ -152,16 +160,15 @@ public class Initializator implements IGuiHandler {
 
 	public static void initBlocks() {
 		EmptyBlock = new BlockEmpty(QuantumCraftSettings.EmptyBlockID,
-				BlockTextureMatrix
-						.getIndex(BlockTextureMatrix.EBlockBackSingle),
+				BlockTextureMatrix.EBlockBackSingle.getINT(),
 				BlockEmptyRenderID).setCreativeTab(tabQC).setBlockName(
 				"emptyBlock");
 		MachineBlock = new BlockMachine(QuantumCraftSettings.MachineBlockID,
 				BlockMachineRenderID).setCreativeTab(tabQC);
 		DecoBlocks = new BlockQuantumBasicBlocks(
 				QuantumCraftSettings.DecoBlocksID,
-				BlockTextureMatrix.getIndex(BlockTextureMatrix.Err))
-				.setHardness(2.0F).setResistance(10.0F).setCreativeTab(tabQC);
+				BlockTextureMatrix.Err.getINT()).setHardness(2.0F)
+				.setResistance(10.0F).setCreativeTab(tabQC);
 
 		LanguageRegistry.addName(EmptyBlock, "Empty Block");
 
@@ -207,111 +214,84 @@ public class Initializator implements IGuiHandler {
 
 		ItemCrystalPickaxe = (ItemPickaxe) new CrystalPickaxe(
 				QuantumCraftSettings.CrystalPickaxeID, DEPLETEDCRYSTAL)
-				.setIconIndex(
-						ItemTextureMatrix.getIndex(ItemTextureMatrix.CPickaxe))
+				.setIconIndex(ItemTextureMatrix.CPickaxe.getINT())
 				.setItemName("CrystalPickaxe").setCreativeTab(tabQC);
 		ItemCrystalSword = (ItemSword) new CrystalSword(
 				QuantumCraftSettings.CrystalSwordID, DEPLETEDCRYSTAL)
-				.setIconIndex(
-						ItemTextureMatrix.getIndex(ItemTextureMatrix.CSword))
+				.setIconIndex(ItemTextureMatrix.CSword.getINT())
 				.setItemName("CrystalSword").setCreativeTab(tabQC);
 		ItemCrystalAxe = (ItemAxe) new CrystalAxe(
 				QuantumCraftSettings.CrystalAxeID, DEPLETEDCRYSTAL)
-				.setIconIndex(
-						ItemTextureMatrix.getIndex(ItemTextureMatrix.CAxe))
+				.setIconIndex(ItemTextureMatrix.CAxe.getINT())
 				.setItemName("CrystalAxe").setCreativeTab(tabQC);
 		ItemCrystalShovel = (ItemSpade) new CrystalShovel(
 				QuantumCraftSettings.CrystalShovelID, DEPLETEDCRYSTAL)
-				.setIconIndex(
-						ItemTextureMatrix.getIndex(ItemTextureMatrix.CShovel))
+				.setIconIndex(ItemTextureMatrix.CShovel.getINT())
 				.setItemName("CrystalShovel").setCreativeTab(tabQC);
 
-		ItemIngotPlutonium
-				.setMaxStackSize(64)
-				.setCreativeTab(tabQC)
-				.setIconIndex(
-						ItemTextureMatrix
-								.getIndex(ItemTextureMatrix.PlutoniumIngot))
+		ItemInfusedCrystalPickaxe = (ItemPickaxe) new CrystalPickaxe(
+				QuantumCraftSettings.InfusedCrystalPickaxeID, DEPLETEDCRYSTAL)
+				.setIconIndex(ItemTextureMatrix.GammPickaxe.getINT())
+				.setItemName("InfusedCrystalPickaxe").setCreativeTab(tabQC);
+		ItemInfusedCrystalSword = (ItemSword) new CrystalSword(
+				QuantumCraftSettings.InfusedCrystalSwordID, DEPLETEDCRYSTAL)
+				.setIconIndex(ItemTextureMatrix.GammSword.getINT())
+				.setItemName("InfusedCrystalSword").setCreativeTab(tabQC);
+		ItemInfusedCrystalAxe = (ItemAxe) new CrystalAxe(
+				QuantumCraftSettings.InfusedCrystalAxeID, DEPLETEDCRYSTAL)
+				.setIconIndex(ItemTextureMatrix.GammAxe.getINT())
+				.setItemName("InfusedCrystalAxe").setCreativeTab(tabQC);
+		ItemInfusedCrystalShovel = (ItemSpade) new CrystalShovel(
+				QuantumCraftSettings.InfusedCrystalShovelID, DEPLETEDCRYSTAL)
+				.setIconIndex(ItemTextureMatrix.GammShovel.getINT())
+				.setItemName("InfusedCrystalShovel").setCreativeTab(tabQC);
+
+		ItemIngotPlutonium.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.PlutoniumIngot.getINT())
 				.setItemName("plutoniumIngot");
-		ItemPositroniumCrystal
-				.setMaxStackSize(64)
-				.setCreativeTab(tabQC)
-				.setIconIndex(
-						ItemTextureMatrix
-								.getIndex(ItemTextureMatrix.PositroniumCrystal))
+		ItemPositroniumCrystal.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.PositroniumCrystal.getINT())
 				.setItemName("positroniumCrystal");
-		ItemRadiumCrystal
-				.setMaxStackSize(64)
-				.setCreativeTab(tabQC)
-				.setIconIndex(
-						ItemTextureMatrix
-								.getIndex(ItemTextureMatrix.RadiumCrystal))
+		ItemRadiumCrystal.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.RadiumCrystal.getINT())
 				.setItemName("radiumCrystal");
-		ItemGammatroniumCrystal
-				.setMaxStackSize(64)
-				.setCreativeTab(tabQC)
-				.setIconIndex(
-						ItemTextureMatrix
-								.getIndex(ItemTextureMatrix.GammatroniumCrystal))
+		ItemGammatroniumCrystal.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.GammatroniumCrystal.getINT())
 				.setItemName("gammatroniumCrystal");
-		ItemNeutriniumCrystal
-				.setMaxStackSize(64)
-				.setCreativeTab(tabQC)
-				.setIconIndex(
-						ItemTextureMatrix
-								.getIndex(ItemTextureMatrix.NeutriniumCrystal))
+		ItemNeutriniumCrystal.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.NeutriniumCrystal.getINT())
 				.setItemName("neutriniumCrystal");
-		ItemDepletedCrystal
-				.setMaxStackSize(64)
-				.setCreativeTab(tabQC)
-				.setIconIndex(
-						ItemTextureMatrix
-								.getIndex(ItemTextureMatrix.DepletedCrystal))
+		ItemDepletedCrystal.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.DepletedCrystal.getINT())
 				.setItemName("depletedCrystal");
-		ItemDepletedShard
-				.setMaxStackSize(64)
-				.setCreativeTab(tabQC)
-				.setIconIndex(
-						ItemTextureMatrix
-								.getIndex(ItemTextureMatrix.DCrystalShard))
+		ItemDepletedShard.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.DCrystalShard.getINT())
 				.setItemName("depletedCrystalShard");
 
-		ItemEmptyEnergyPacket
-				.setMaxStackSize(64)
-				.setCreativeTab(tabQC)
-				.setIconIndex(
-						ItemTextureMatrix
-								.getIndex(ItemTextureMatrix.EmptyEPacket))
+		ItemEmptyEnergyPacket.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.EmptyEPacket.getINT())
 				.setItemName("emptyEP");
-		ItemPositroniumEnergyPacket
-				.setMaxStackSize(64)
-				.setCreativeTab(tabQC)
-				.setIconIndex(
-						ItemTextureMatrix
-								.getIndex(ItemTextureMatrix.PositroniumEPacket))
+		ItemPositroniumEnergyPacket.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.PositroniumEPacket.getINT())
 				.setItemName("positroniumEP");
-		ItemRadiumEnergyPacket
-				.setMaxStackSize(64)
-				.setCreativeTab(tabQC)
-				.setIconIndex(
-						ItemTextureMatrix
-								.getIndex(ItemTextureMatrix.RadiumEPacket))
+		ItemRadiumEnergyPacket.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.RadiumEPacket.getINT())
 				.setItemName("radiumEP");
-		ItemGammatroniumEnergyPacket
-				.setMaxStackSize(64)
-				.setCreativeTab(tabQC)
-				.setIconIndex(
-						ItemTextureMatrix
-								.getIndex(ItemTextureMatrix.GammatroniumEPacket))
+		ItemGammatroniumEnergyPacket.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.GammatroniumEPacket.getINT())
 				.setItemName("gammatroniumEP");
-		ItemNeutriniumEnergyPacket
-				.setMaxStackSize(64)
-				.setCreativeTab(tabQC)
-				.setIconIndex(
-						ItemTextureMatrix
-								.getIndex(ItemTextureMatrix.NeutriniumEPacket))
+		ItemNeutriniumEnergyPacket.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.NeutriniumEPacket.getINT())
 				.setItemName("neutroniumEP");
 
+		ItemRadioactiveMeat = new sammko.quantumCraft.items.RadioactiveMeat(
+				QuantumCraftSettings.RadioactiveMeatID, 6, 1F, false)
+				.setPotionEffect(Potion.poison.id, 20, 2, 0.5F)
+				.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setItemName("RadioactiveMeat")
+				.setIconIndex(ItemTextureMatrix.RadioactiveMeat.getINT());
+
+		LanguageRegistry.addName(ItemRadioactiveMeat, "Radioactive Meat");
 		LanguageRegistry.addName(ItemIngotPlutonium, "Plutonium Ingot");
 		LanguageRegistry.addName(ItemPositroniumCrystal, "Positronium Crystal");
 		LanguageRegistry.addName(ItemRadiumCrystal, "Radium Crystal");
@@ -335,6 +315,11 @@ public class Initializator implements IGuiHandler {
 		LanguageRegistry.addName(ItemCrystalSword, "Crystal Sword");
 		LanguageRegistry.addName(ItemCrystalAxe, "Crystal Axe");
 		LanguageRegistry.addName(ItemCrystalShovel, "Crystal Shovel");
+		
+		LanguageRegistry.addName(ItemInfusedCrystalPickaxe, "Gamma Infused Crystal Pickaxe");
+		LanguageRegistry.addName(ItemInfusedCrystalSword, "Gamma Infused Crystal Sword");
+		LanguageRegistry.addName(ItemInfusedCrystalAxe, "Gamma Infused Crystal Axe");
+		LanguageRegistry.addName(ItemInfusedCrystalShovel, "Gamma Infused Crystal Shovel");
 	}
 
 	public static void initTEntities() {
@@ -371,16 +356,15 @@ public class Initializator implements IGuiHandler {
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world,
 			int x, int y, int z) {
-		
+
 		Object o = world.getBlockTileEntity(x, y, z);
-		
+
 		if (o instanceof TileEntityExtractor) {
 			return new ExtractorContainer(player.inventory,
 					(TileEntityExtractor) o);
 		}
 		if (o instanceof TileEntityInfuser) {
-			return new InfuserContainer(player.inventory,
-					(TileEntityInfuser) o);
+			return new InfuserContainer(player.inventory, (TileEntityInfuser) o);
 		}
 		return null;
 	}
@@ -390,11 +374,9 @@ public class Initializator implements IGuiHandler {
 			int x, int y, int z) {
 		Object o = world.getBlockTileEntity(x, y, z);
 		if (o instanceof TileEntityExtractor) {
-			return new GuiExtractor(player.inventory,
-					(TileEntityExtractor) o);
+			return new GuiExtractor(player.inventory, (TileEntityExtractor) o);
 		} else if (o instanceof TileEntityInfuser) {
-			return new GuiReactor(player.inventory,
-					(TileEntityInfuser) o);
+			return new GuiInfuser(player.inventory, (TileEntityInfuser) o);
 		} else
 			return null;
 
