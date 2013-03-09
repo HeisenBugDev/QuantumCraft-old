@@ -57,12 +57,10 @@ public class TileEntityExtractor extends TileEntityMachine implements
 	}
 	
 	public int gaugeFuelScaled (int scale)
-	{
-		if (itemFuel == 0)
-		{
+ {
+		if (itemFuel == 0) {
 			itemFuel = internalStorage;
-			if (itemFuel == 0)
-			{
+			if (itemFuel == 0) {
 				itemFuel = 1000;
 			}
 		}

@@ -18,6 +18,7 @@ import net.minecraftforge.common.MinecraftForge;
 public class TileEntityInfuser extends TileEntityMachine {
 
 	public int progress;
+	int itemFuel;
 
 	public TileEntityInfuser(ForgeDirection rot) {
 		super(rot, 5, "infuseor");
@@ -30,6 +31,7 @@ public class TileEntityInfuser extends TileEntityMachine {
 	private void init() {
 		internalStorage = 0;
 		progress = 0;
+		itemFuel = 1600;
 	}
 
 	public int gaugeProgressScaled(int scale) {
@@ -37,14 +39,14 @@ public class TileEntityInfuser extends TileEntityMachine {
 	}
 
 	public int gaugeFuelScaled(int scale) {
-		int itemFuel = internalStorage;
+
 		if (itemFuel == 0) {
 			itemFuel = internalStorage;
 			if (itemFuel == 0) {
 				itemFuel = 1000;
 			}
 		}
-		return (internalStorage * scale) / itemFuel;
+		return (internalStorage * scale) / 16000;
 	}
 
 	public void updateEntity() {
@@ -71,7 +73,7 @@ public class TileEntityInfuser extends TileEntityMachine {
 			{
 
 				++this.progress;
-				if (this.progress == 10) {
+				if (this.progress == 100) {
 					this.progress = 0;
 					this.InfuseItem();
 					nu = true;
