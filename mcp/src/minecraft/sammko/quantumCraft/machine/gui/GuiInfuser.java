@@ -33,7 +33,7 @@ public class GuiInfuser extends GuiContainer{
 		fontRenderer.drawString(
 				StatCollector.translateToLocal("container.inventory"), 8,
 				ySize - 96 + 2, 0x000000);
-		fontRenderer.drawString("Quantum Reactor" + te.internalStorage, 45, 6, 0x000000);
+		fontRenderer.drawString("Quantum Infuser" + te.internalStorage, 45, 6, 0x000000);
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class GuiInfuser extends GuiContainer{
     	t = te.gaugeFuelScaled(3);
        	this.drawTexturedModalRect(x + 49, y + 18, 176, 0, t, 6); //49@18       
         //t2 = Utils.Scale(24, te.progress, 20);
-        t2 = te.gaugeProgressScaled(160);
+        t2 = te.gaugeProgressScaled(100);
        	this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t2, 15);
 	}
 }

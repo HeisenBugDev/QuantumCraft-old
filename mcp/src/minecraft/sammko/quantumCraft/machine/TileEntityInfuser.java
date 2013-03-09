@@ -15,8 +15,7 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ISidedInventory;
 import net.minecraftforge.common.MinecraftForge;
 
-public class TileEntityInfuser extends TileEntityMachine implements IInventory,
-		ISidedInventory, IEnergySink {
+public class TileEntityInfuser extends TileEntityMachine {
 
 	public int progress;
 
@@ -29,12 +28,12 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 	}
 
 	private void init() {
-		internalStorage = 16000;
+		internalStorage = 0;
 		progress = 0;
 	}
 
 	public int gaugeProgressScaled(int scale) {
-		return (progress * scale) / 16000;
+		return (progress * scale) / 16;
 	}
 
 	public int gaugeFuelScaled(int scale) {
@@ -61,34 +60,18 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 
 		}
 		if (!this.worldObj.isRemote) {
-			if (inventory[1] != null && inventory[0] != null) // Use
-			// up
-			// a
-			// fuel
-			// item
-			{
 
-				if (this.internalStorage < 0) // If we got fuel get rid of the
-												// item
-				{
-					nu = true;
-
-					if (this.inventory[2] != null) {
-						--this.inventory[2].stackSize;
-
-						if (this.inventory[2].stackSize == 0) {
-							this.inventory[2] = this.inventory[2].getItem()
-									.getContainerItemStack(inventory[2]);
-						}
-					}
-				}
+			if (inventory[1] != null
+					&& internalStorage <= 16 - 1
+					&& inventory[1].getItem() == Initializator.ItemGammatroniumEnergyPacket) {
+				this.internalStorage++;
+				this.inventory[1].stackSize--;
 			}
-
 			if (internalStorage <= 16000 && this.caninfuse()) // Smelt stuff
 			{
-				++this.progress;
 
-				if (this.progress == 16000) {
+				++this.progress;
+				if (this.progress == 10) {
 					this.progress = 0;
 					this.InfuseItem();
 					nu = true;
@@ -122,16 +105,12 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 	private boolean caninfuse() {
 		if (this.inventory[0] == null) {
 			return false;
-		}
-		if (this.inventory[1] == null) {
-			return false;
 		} else {
-			if (inventory[0].itemID != Initializator.ItemCrystalAxe.itemID
-					|| inventory[0].itemID != Initializator.ItemCrystalPickaxe.itemID
-					|| inventory[0].itemID != Initializator.ItemCrystalSword.itemID
-					|| inventory[0].itemID != Initializator.ItemCrystalShovel.itemID)
-				return false;
-			if (inventory[1].itemID == Initializator.ItemGammatroniumCrystal.itemID) {
+			if ((inventory[0].itemID == Initializator.ItemCrystalAxe.itemID
+					|| inventory[0].itemID == Initializator.ItemCrystalPickaxe.itemID
+					|| inventory[0].itemID == Initializator.ItemCrystalSword.itemID || inventory[0].itemID == Initializator.ItemCrystalShovel.itemID)
+					&& internalStorage >= 16) {
+
 				return true;
 			}
 			return false;
@@ -158,7 +137,7 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 	public void InfuseItem() {
 		if (this.caninfuse()) {
 
-			internalStorage += 16000;
+			internalStorage -= 16;
 
 			ItemStack var1 = this.getResult(this.inventory[0]);
 
@@ -173,15 +152,7 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 				this.inventory[0] = null;
 			}
 
-			--this.inventory[1].stackSize;
-
-			if (this.inventory[1].stackSize <= 0) {
-				this.inventory[1] = null;
-			}
 		}
 	}
 
-	public int getChargeState() {
-		return internalStorage * 100 / MAX_STORAGE;
-	}
 }

@@ -90,13 +90,13 @@ public class QuantumCraftSettings {
 		RadioactiveMeatID = config.get("Items", "RadioactiveMeat", 4516)
 				.getInt();
 
-		CrystalPickaxeID = config.get("Items", "InfusedCrystalPickaxeID", 4517)
+		InfusedCrystalPickaxeID = config.get("Items", "InfusedCrystalPickaxeID", 4517)
 				.getInt();
-		CrystalSwordID = config.get("Items", "InfusedCrystalSwordID", 4518)
+		InfusedCrystalSwordID = config.get("Items", "InfusedCrystalSwordID", 4518)
 				.getInt();
-		CrystalAxeID = config.get("Items", "InfusedCrystalAxeID", 4519)
+		InfusedCrystalAxeID = config.get("Items", "InfusedCrystalAxeID", 4519)
 				.getInt();
-		CrystalShovelID = config.get("Items", "InfusedCrystalShovelID", 4520)
+		InfusedCrystalShovelID = config.get("Items", "InfusedCrystalShovelID", 4520)
 				.getInt();
 
 		OrePositroniumID = config.get("Blocks", "OrePositronium", 2500)
