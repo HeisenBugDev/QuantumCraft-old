@@ -33,7 +33,7 @@ public class ExtractorContainer extends QuantumContainer {
     public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
     	
     	// TODO fix so that it works properly
-        ItemStack stack = null;
+        /* ItemStack stack = null;
         Slot slotObject = (Slot) inventorySlots.get(slot);
 
         //null checks and checks if the item can be stacked (maxStackSize > 1)
@@ -64,6 +64,8 @@ public class ExtractorContainer extends QuantumContainer {
                 slotObject.onPickupFromSlot(player, stackInSlot);
         }
         return stack;
+        */
+    	return null;
     }
     
     @Override
