@@ -1,9 +1,11 @@
 package sammko.quantumCraft.machine;
 
 import sammko.quantumCraft.core.Initializator;
+import sammko.quantumCraft.core.QuantumCraftSettings;
 import ic2.api.Direction;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileSourceEvent;
+import ic2.api.energy.tile.IEnergySink;
 import ic2.api.energy.tile.IEnergySource;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -14,37 +16,42 @@ import net.minecraftforge.common.ISidedInventory;
 import net.minecraftforge.common.MinecraftForge;
 
 public class TileEntityInfuser extends TileEntityMachine implements IInventory,
-		ISidedInventory, IEnergySource {
+		ISidedInventory, IEnergySink {
 
 	public int progress;
 
 	public TileEntityInfuser(ForgeDirection rot) {
-		super(rot, 5, "Reactor");
+		super(rot, 5, "infuseor");
 	}
 
 	public TileEntityInfuser() {
-		super(ForgeDirection.NORTH, 5, "Reactor");
+		super(ForgeDirection.NORTH, 5, "infuseor");
 	}
 
 	private void init() {
-		internalStorage = 0;
+		internalStorage = 16000;
 		progress = 0;
 	}
 
-	@Override
-	public boolean emitsEnergyTo(TileEntity receiver, Direction direction) {
-		return true;
+	public int gaugeProgressScaled(int scale) {
+		return (progress * scale) / 16000;
 	}
 
-	@Override
-	public int getMaxEnergyOutput() {
-		return Integer.MAX_VALUE;
+	public int gaugeFuelScaled(int scale) {
+		int itemFuel = internalStorage;
+		if (itemFuel == 0) {
+			itemFuel = internalStorage;
+			if (itemFuel == 0) {
+				itemFuel = 1000;
+			}
+		}
+		return (internalStorage * scale) / itemFuel;
 	}
 
 	public void updateEntity() {
 		super.updateEntity();
 		if (!this.isAddedToEnergyNet()) {
-			MinecraftForge.EVENT_BUS.post(new EnergyTileSourceEvent(this, internalStorage));
+			MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
 			this.addedToEnergyNet = true;
 		}
 
@@ -77,13 +84,13 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 				}
 			}
 
-			if (internalStorage <= 16000 && this.canReact()) // Smelt stuff
+			if (internalStorage <= 16000 && this.caninfuse()) // Smelt stuff
 			{
 				++this.progress;
 
-				if (this.progress == 20) {
+				if (this.progress == 16000) {
 					this.progress = 0;
-					this.ReactItem();
+					this.InfuseItem();
 					nu = true;
 				}
 			} else {
@@ -112,16 +119,19 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 		par1nbtTagCompound.setInteger("powerLevel", internalStorage);
 	}
 
-	private boolean canReact() {
+	private boolean caninfuse() {
 		if (this.inventory[0] == null) {
 			return false;
 		}
 		if (this.inventory[1] == null) {
 			return false;
 		} else {
-			if (inventory[0].itemID != ic2.api.Items.getItem("waterCell").itemID)
+			if (inventory[0].itemID != Initializator.ItemCrystalAxe.itemID
+					|| inventory[0].itemID != Initializator.ItemCrystalPickaxe.itemID
+					|| inventory[0].itemID != Initializator.ItemCrystalSword.itemID
+					|| inventory[0].itemID != Initializator.ItemCrystalShovel.itemID)
 				return false;
-			if (inventory[1].itemID == Initializator.ItemIngotPlutonium.itemID) {
+			if (inventory[1].itemID == Initializator.ItemGammatroniumCrystal.itemID) {
 				return true;
 			}
 			return false;
@@ -129,14 +139,26 @@ public class TileEntityInfuser extends TileEntityMachine implements IInventory,
 	}
 
 	public ItemStack getResult(ItemStack inp) {
-		return new ItemStack(Initializator.ItemEmptyEnergyPacket, 1);
+		if (inp.itemID == Initializator.ItemCrystalAxe.itemID) {
+			return new ItemStack(Initializator.ItemInfusedCrystalAxe, 1);
+		}
+		if (inp.itemID == Initializator.ItemCrystalPickaxe.itemID) {
+			return new ItemStack(Initializator.ItemInfusedCrystalPickaxe, 1);
+		}
+		if (inp.itemID == Initializator.ItemCrystalShovel.itemID) {
+			return new ItemStack(Initializator.ItemInfusedCrystalShovel, 1);
+		}
+		if (inp.itemID == Initializator.ItemCrystalSword.itemID) {
+			return new ItemStack(Initializator.ItemInfusedCrystalSword, 1);
+		}
+		return null;
 
 	}
 
-	public void ReactItem() {
-		if (this.canReact()) {
+	public void InfuseItem() {
+		if (this.caninfuse()) {
 
-			internalStorage += 100;
+			internalStorage += 16000;
 
 			ItemStack var1 = this.getResult(this.inventory[0]);
 
