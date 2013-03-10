@@ -5,6 +5,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
@@ -23,6 +24,7 @@ import sammko.quantumCraft.items.CrystalSword;
 import sammko.quantumCraft.items.ItemCrystal;
 import sammko.quantumCraft.items.ItemEnergyPacket;
 import sammko.quantumCraft.items.ItemPlutoniumIngot;
+import sammko.quantumCraft.items.armor.Jetpack;
 import sammko.quantumCraft.machine.BlockMachine;
 import sammko.quantumCraft.machine.ExtractorContainer;
 import sammko.quantumCraft.machine.InfuserContainer;
@@ -92,13 +94,15 @@ public class Initializator implements IGuiHandler {
 	public static ItemSword ItemCrystalSword;
 	public static ItemAxe ItemCrystalAxe;
 	public static ItemSpade ItemCrystalShovel;
-	
+
 	public static ItemPickaxe ItemInfusedCrystalPickaxe;
 	public static ItemSword ItemInfusedCrystalSword;
 	public static ItemAxe ItemInfusedCrystalAxe;
 	public static ItemSpade ItemInfusedCrystalShovel;
 
 	public static Item ItemRadioactiveMeat;
+
+	public static ItemStack Jappack;
 
 	public static EnumToolMaterial DEPLETEDCRYSTAL = EnumHelper
 			.addToolMaterial("DEPLETEDCRYSTAL", 2, 500, 7.0F, 2, 25);
@@ -164,7 +168,7 @@ public class Initializator implements IGuiHandler {
 				BlockEmptyRenderID).setCreativeTab(tabQC).setBlockName(
 				"emptyBlock");
 		MachineBlock = new BlockMachine(QuantumCraftSettings.MachineBlockID,
-				BlockMachineRenderID).setCreativeTab(tabQC);
+				BlockMachineRenderID).setCreativeTab(tabQC).setHardness(2.0F).setResistance(10.0F);
 		DecoBlocks = new BlockQuantumBasicBlocks(
 				QuantumCraftSettings.DecoBlocksID,
 				BlockTextureMatrix.Err.getINT()).setHardness(2.0F)
@@ -291,6 +295,8 @@ public class Initializator implements IGuiHandler {
 				.setItemName("RadioactiveMeat")
 				.setIconIndex(ItemTextureMatrix.RadioactiveMeat.getINT());
 
+		Jappack = new ItemStack(new sammko.quantumCraft.items.armor.Jappack(QuantumCraftSettings.Jappack, 1, 1));
+
 		LanguageRegistry.addName(ItemRadioactiveMeat, "Radioactive Meat");
 		LanguageRegistry.addName(ItemIngotPlutonium, "Plutonium Ingot");
 		LanguageRegistry.addName(ItemPositroniumCrystal, "Positronium Crystal");
@@ -315,11 +321,15 @@ public class Initializator implements IGuiHandler {
 		LanguageRegistry.addName(ItemCrystalSword, "Crystal Sword");
 		LanguageRegistry.addName(ItemCrystalAxe, "Crystal Axe");
 		LanguageRegistry.addName(ItemCrystalShovel, "Crystal Shovel");
-		
-		LanguageRegistry.addName(ItemInfusedCrystalPickaxe, "Gamma Infused Crystal Pickaxe");
-		LanguageRegistry.addName(ItemInfusedCrystalSword, "Gamma Infused Crystal Sword");
-		LanguageRegistry.addName(ItemInfusedCrystalAxe, "Gamma Infused Crystal Axe");
-		LanguageRegistry.addName(ItemInfusedCrystalShovel, "Gamma Infused Crystal Shovel");
+
+		LanguageRegistry.addName(ItemInfusedCrystalPickaxe,
+				"Gamma Infused Crystal Pickaxe");
+		LanguageRegistry.addName(ItemInfusedCrystalSword,
+				"Gamma Infused Crystal Sword");
+		LanguageRegistry.addName(ItemInfusedCrystalAxe,
+				"Gamma Infused Crystal Axe");
+		LanguageRegistry.addName(ItemInfusedCrystalShovel,
+				"Gamma Infused Crystal Shovel");
 	}
 
 	public static void initTEntities() {

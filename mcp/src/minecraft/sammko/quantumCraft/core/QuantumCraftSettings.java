@@ -54,6 +54,8 @@ public class QuantumCraftSettings {
 	public static int InfusedCrystalShovelID;
 
 	public static int RadioactiveMeatID;
+	
+	public static int Jappack;
 
 	public static void getConfig(Configuration config) {
 		// config
@@ -99,6 +101,8 @@ public class QuantumCraftSettings {
 		InfusedCrystalShovelID = config.get("Items", "InfusedCrystalShovelID", 4520)
 				.getInt();
 
+		Jappack = config.get("Items", "Jappack", 4521).getInt();
+		
 		OrePositroniumID = config.get("Blocks", "OrePositronium", 2500)
 				.getInt();
 		OrePlutoniumID = config.get("Blocks", "OrePlutonium", 2501).getInt();
