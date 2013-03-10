@@ -86,12 +86,6 @@ public class Utils { // Thank you buildcraft :)
 		return world.getHeight();
 	}
 
-	@SidedProxy(clientSide = "sammko.quantumCraft.core.utils.KeyboardClient", serverSide = "sammko.quantumCraft.core.utils.Keyboard")
-	public static Keyboard keyboard;
-
-	@SidedProxy(clientSide = "sammko.quantumCraft.core.utils.Platform", serverSide = "sammko.quantumCraft.core.utils.Platform")
-	public static Platform platform;
-	
 	 public static NBTTagCompound getOrCreateNbtData(ItemStack itemStack) {
 		    NBTTagCompound ret = itemStack.getTagCompound();
 
