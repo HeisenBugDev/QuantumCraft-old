@@ -111,6 +111,7 @@
 		
 		<!-- Fix executable permissions -->
 		<chmod dir="${forge.dir}" perm="ugo+rx" includes="**.sh"/>
+		
 
 		<!-- Install forge -->
 		<exec dir="${forge.dir}" executable="cmd" osfamily="windows">
@@ -120,6 +121,11 @@
 		<exec dir="${forge.dir}" executable="sh" osfamily="unix">
 			<arg value="install.sh"/>
 		</exec>
+		
+		<chmod file="${mcp.dir}/updatemd5.sh" perm="+x"/>
+		<chmod file="${mcp.dir}/updatemcp.sh" perm="+x"/>
+		<chmod file="${mcp.dir}/recompile.sh" perm="+x"/>
+		<chmod file="${mcp.dir}/reobfuscate.sh" perm="+x"/>
 
 	</target>
 
