@@ -31,6 +31,7 @@ public class CrystalShovel extends ItemSpade {
 	@Override
 	public boolean hitEntity(ItemStack item, EntityLiving target,
 			EntityLiving player) {
+		super.hitEntity(item, target, player);
 		if (Utils.isGamma(item.itemID)) {
 			target.addPotionEffect(new PotionEffect(Potion.wither.id, 20));
 		}
