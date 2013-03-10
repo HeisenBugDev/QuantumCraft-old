@@ -23,13 +23,18 @@ public class CrystalPickaxe extends ItemPickaxe{
 	@Override
     public EnumRarity getRarity(ItemStack is)
     {
-        if ( Utils.isGamma(is.itemID) ) { return EnumRarity.common; } else { return EnumRarity.epic; }
+        if ( !Utils.isGamma(is.itemID) ) { return EnumRarity.common; } else { return EnumRarity.epic; }
     }
+	
+	@Override
+	public boolean hasEffect(ItemStack itemStack) {
+		return Utils.isGamma(itemStack.itemID);
+	}
 	
 	@Override
 	public boolean hitEntity(ItemStack item, EntityLiving target,
 			EntityLiving player) {
-		if (item.itemID == QuantumCraftSettings.InfusedCrystalPickaxeID + 256) {
+		if (Utils.isGamma(item.itemID)) {
 			target.addPotionEffect(new PotionEffect(Potion.wither.id, 100));
 		}
 		return true;

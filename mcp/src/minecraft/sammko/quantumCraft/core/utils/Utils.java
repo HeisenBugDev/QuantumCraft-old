@@ -43,10 +43,10 @@ public class Utils { // Thank you buildcraft :)
 
 	public static boolean isGamma(int id)
 	{
-		if (id == QuantumCraftSettings.InfusedCrystalPickaxeID
-		  ||id == QuantumCraftSettings.InfusedCrystalAxeID
-		  ||id == QuantumCraftSettings.InfusedCrystalSwordID
-		  ||id == QuantumCraftSettings.InfusedCrystalShovelID) { return true; } else { return false; }
+		if (id == QuantumCraftSettings.InfusedCrystalPickaxeID+256
+		  ||id == QuantumCraftSettings.InfusedCrystalAxeID+256
+		  ||id == QuantumCraftSettings.InfusedCrystalSwordID+256
+		  ||id == QuantumCraftSettings.InfusedCrystalShovelID+256) { return true; } else { return false; }
 	}
 	
 	public static void preDestroyBlock(World world, int i, int j, int k) {
