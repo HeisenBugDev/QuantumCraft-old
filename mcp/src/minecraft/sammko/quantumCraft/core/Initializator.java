@@ -24,7 +24,6 @@ import sammko.quantumCraft.items.CrystalSword;
 import sammko.quantumCraft.items.ItemCrystal;
 import sammko.quantumCraft.items.ItemEnergyPacket;
 import sammko.quantumCraft.items.ItemPlutoniumIngot;
-import sammko.quantumCraft.items.armor.Jetpack;
 import sammko.quantumCraft.machine.BlockMachine;
 import sammko.quantumCraft.machine.ExtractorContainer;
 import sammko.quantumCraft.machine.InfuserContainer;
@@ -294,8 +293,6 @@ public class Initializator implements IGuiHandler {
 				.setMaxStackSize(64).setCreativeTab(tabQC)
 				.setItemName("RadioactiveMeat")
 				.setIconIndex(ItemTextureMatrix.RadioactiveMeat.getINT());
-
-		Jappack = new ItemStack(new sammko.quantumCraft.items.armor.Jappack(QuantumCraftSettings.Jappack, 1, 1));
 
 		LanguageRegistry.addName(ItemRadioactiveMeat, "Radioactive Meat");
 		LanguageRegistry.addName(ItemIngotPlutonium, "Plutonium Ingot");
