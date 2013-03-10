@@ -111,7 +111,7 @@ public class BlockMachine extends BlockContainer {
 		case 0:
 			return Initializator.GuiExtractorID;
 		case 1:
-			return Initializator.GuiReactorID;
+			return Initializator.GuiInfuserID;
 		default:
 			return -1;
 		}
