@@ -66,6 +66,7 @@ public class TileEntityInfuser extends TileEntityMachine {
 					&& inventory[1].getItem() == Initializator.ItemGammatroniumEnergyPacket) {
 				internalStorage++;
 				this.inventory[1].stackSize--;
+				if (this.inventory[1].stackSize == 0) { this.inventory[1] = null; }
 			}
 			if (internalStorage <= 16 && this.caninfuse()) // Smelt stuff
 			{
