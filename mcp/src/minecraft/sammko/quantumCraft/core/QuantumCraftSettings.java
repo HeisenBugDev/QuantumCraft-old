@@ -128,7 +128,7 @@ public class QuantumCraftSettings {
 
 		gotIC2 = exists("ic2.core.IC2");
 	}
-
+	
 	public static boolean exists(String className) {
 		try {
 			Class.forName(className);

@@ -1,5 +1,6 @@
 package sammko.quantumCraft.core.utils;
 
+import sammko.quantumCraft.core.QuantumCraftSettings;
 import cpw.mods.fml.common.SidedProxy;
 import buildcraft.api.core.Position;
 import net.minecraft.entity.item.EntityItem;
@@ -39,6 +40,15 @@ public class Utils { // Thank you buildcraft :)
 			return ForgeDirection.NORTH;
 	}
 
+
+	public static boolean isGamma(int id)
+	{
+		if (id == QuantumCraftSettings.InfusedCrystalPickaxeID
+		  ||id == QuantumCraftSettings.InfusedCrystalAxeID
+		  ||id == QuantumCraftSettings.InfusedCrystalSwordID
+		  ||id == QuantumCraftSettings.InfusedCrystalShovelID) { return true; } else { return false; }
+	}
+	
 	public static void preDestroyBlock(World world, int i, int j, int k) {
 		TileEntity tile = world.getBlockTileEntity(i, j, k);
 		if (tile instanceof IInventory)
