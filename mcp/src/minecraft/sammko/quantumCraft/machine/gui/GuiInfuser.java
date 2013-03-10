@@ -36,7 +36,7 @@ public class GuiInfuser extends GuiContainer{
 		fontRenderer.drawString(
 				StatCollector.translateToLocal("container.inventory"), 8,
 				ySize - 96 + 2, 0x000000);
-		fontRenderer.drawString("Quantum Infuser", 45, 6, 0x000000);
+		fontRenderer.drawString("Quantum Gamma Infuser", 45, 6, 0x000000);
 	}
 
 	@Override
