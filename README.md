@@ -20,5 +20,8 @@ I reccomend using git flow for that branching model.
 The Team:
 
 Sammko: Graphics and Math
+
 hunterboerner: Logic and fun
+
 DJRaffa: He really hasn't done much
+
