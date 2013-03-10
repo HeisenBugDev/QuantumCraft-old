@@ -6,6 +6,8 @@ public class QuantumCraftSettings {
 
 	// other
 	public static boolean debug;
+	// tool stuff
+	public static int witheringTimeout;
 	// mods
 	public static boolean gotIC2 = false;
 	// files
@@ -117,6 +119,8 @@ public class QuantumCraftSettings {
 
 		debug = config.get("Other", "Debug", false).getBoolean(false);
 
+		witheringTimeout = config.get("ToolStuff", "WitheringTimeout", 300).getInt();
+		
 		WGenPlu = config.get("WorldGen", "Plutonium", true).getBoolean(true);
 		WGenPos = config.get("WorldGen", "Positronium", true).getBoolean(true);
 		WGenRad = config.get("WorldGen", "Radium", true).getBoolean(true);

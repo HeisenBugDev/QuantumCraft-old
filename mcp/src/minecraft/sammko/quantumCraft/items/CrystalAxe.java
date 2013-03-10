@@ -34,7 +34,7 @@ public class CrystalAxe extends ItemAxe {
 			EntityLiving player) {
 		super.hitEntity(item, target, player);
 		if (Utils.isGamma(item.itemID)) {
-			target.addPotionEffect(new PotionEffect(Potion.wither.id, 20));
+			target.addPotionEffect(new PotionEffect(Potion.wither.id, QuantumCraftSettings.witheringTimeout));
 		}
 		return true;
 	}

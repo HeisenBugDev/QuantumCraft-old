@@ -19,7 +19,8 @@ public class CrystalSword extends ItemSword{
 	public CrystalSword(int i, EnumToolMaterial enumToolMaterial){
 		super(i, enumToolMaterial);
 		this.setTextureFile(QuantumCraftSettings.ITEMS_PNG);
-		this.weaponDamage = 4 + enumToolMaterial.getDamageVsEntity();
+		if (Utils.isGamma(i)) { this.weaponDamage = 2 + enumToolMaterial.getDamageVsEntity(); }
+		else { this.weaponDamage = 1 + enumToolMaterial.getDamageVsEntity(); }
 	}
 	
 	@Override
@@ -38,7 +39,7 @@ public class CrystalSword extends ItemSword{
 			EntityLiving player) {
 		super.hitEntity(item, target, player);
 		if (Utils.isGamma(item.itemID)) {
-			target.addPotionEffect(new PotionEffect(Potion.wither.id, 20));
+			target.addPotionEffect(new PotionEffect(Potion.wither.id, QuantumCraftSettings.witheringTimeout));
 		}
 		return true;
 	}
