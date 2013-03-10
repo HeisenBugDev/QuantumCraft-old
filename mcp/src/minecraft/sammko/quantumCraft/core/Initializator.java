@@ -55,14 +55,14 @@ public class Initializator implements IGuiHandler {
 			"Neutrinium Small Brick", "Depleted Small Brick", "Plutonium Block" };
 
 	private static final String[] machineBlockNames = { "Quantum Extractor",
-			"Quantum Reactor" };
+			"Quantum Infuser" };
 	public static int MachineCount = machineBlockNames.length;
 
 	// Creative tabs
 	public static CreativeTabs tabQC;
 	// GUI IDs
 	public static int GuiExtractorID = 0;
-	public static int GuiReactorID = 1;
+	public static int GuiInfuserID = 1;
 	// Render IDs
 	public static int BlockEmptyRenderID;
 	public static int BlockMachineRenderID;
@@ -325,7 +325,7 @@ public class Initializator implements IGuiHandler {
 	public static void initTEntities() {
 		GameRegistry.registerTileEntity(TileEntityExtractor.class,
 				"ExtractorTE");
-		GameRegistry.registerTileEntity(TileEntityInfuser.class, "ReactorTE");
+		GameRegistry.registerTileEntity(TileEntityInfuser.class, "InfuserTE");
 	}
 
 	public static void initRenderers() {
