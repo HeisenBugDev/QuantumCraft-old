@@ -28,10 +28,10 @@ public class BlockTextureMatrix {
 	};
 	
 	public static TextureIndex[] MachineTop = {
-		new TextureIndex(0x79), new TextureIndex(0x7A), new TextureIndex(0x7B), new TextureIndex(0x7C),
-		new TextureIndex(0x89), new TextureIndex(0x8A), new TextureIndex(0x8B), new TextureIndex(0x8C),
-		new TextureIndex(0x99), new TextureIndex(0x9A), new TextureIndex(0x9B), new TextureIndex(0x9C),
-		new TextureIndex(0xA9), new TextureIndex(0xAA), new TextureIndex(0xAB), new TextureIndex(0xAC)
+		new TextureIndex(0x79), new TextureIndex(0x89), new TextureIndex(0x99), new TextureIndex(0xA9),
+		new TextureIndex(0x7A), new TextureIndex(0x8A), new TextureIndex(0x9A), new TextureIndex(0xAA),
+		new TextureIndex(0x7B), new TextureIndex(0x8B), new TextureIndex(0x9B), new TextureIndex(0xAB),
+		new TextureIndex(0x7C), new TextureIndex(0x8C), new TextureIndex(0x9C), new TextureIndex(0xAC)
 	};
 	
 	public static TextureIndex EBlockBackSingle = new TextureIndex(0x00);

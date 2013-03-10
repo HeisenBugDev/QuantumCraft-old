@@ -25,13 +25,15 @@ public class RenderBlockMachine extends RendererBase {
 	{
 		TileEntityMachine t =  (TileEntityMachine) world.getBlockTileEntity(x, y, z);
 		
-		tMap[0] = BlockTextureMatrix.EBlockBackSingle.getINT();
-		tMap[1] = BlockTextureMatrix.MachineTop[0].getINT();
+		int meta = world.getBlockMetadata(x, y, z);
 		
-		if (t.rotation == ForgeDirection.NORTH) tMap[2] = BlockTextureMatrix.MachineFront[0].getINT(); else tMap[2] = BlockTextureMatrix.EBlockSideSingle.getINT();
-		if (t.rotation == ForgeDirection.SOUTH) tMap[3] = BlockTextureMatrix.MachineFront[0].getINT(); else tMap[3] = BlockTextureMatrix.EBlockSideSingle.getINT();
-		if (t.rotation == ForgeDirection.WEST) tMap[4] = BlockTextureMatrix.MachineFront[0].getINT(); else tMap[4] = BlockTextureMatrix.EBlockSideSingle.getINT();
-		if (t.rotation == ForgeDirection.EAST) tMap[5] = BlockTextureMatrix.MachineFront[0].getINT(); else tMap[5] = BlockTextureMatrix.EBlockSideSingle.getINT();
+		tMap[0] = BlockTextureMatrix.EBlockBackSingle.getINT();
+		tMap[1] = BlockTextureMatrix.MachineTop[meta].getINT();
+		
+		if (t.rotation == ForgeDirection.NORTH) tMap[2] = BlockTextureMatrix.MachineFront[meta].getINT(); else tMap[2] = BlockTextureMatrix.EBlockSideSingle.getINT();
+		if (t.rotation == ForgeDirection.SOUTH) tMap[3] = BlockTextureMatrix.MachineFront[meta].getINT(); else tMap[3] = BlockTextureMatrix.EBlockSideSingle.getINT();
+		if (t.rotation == ForgeDirection.WEST) tMap[4] = BlockTextureMatrix.MachineFront[meta].getINT(); else tMap[4] = BlockTextureMatrix.EBlockSideSingle.getINT();
+		if (t.rotation == ForgeDirection.EAST) tMap[5] = BlockTextureMatrix.MachineFront[meta].getINT(); else tMap[5] = BlockTextureMatrix.EBlockSideSingle.getINT();
 		
 		t.tMap = this.tMap;
 	}
