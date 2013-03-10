@@ -32,8 +32,8 @@ public class CraftingManager {
 		
 		GameRegistry.addRecipe(new ItemStack(Initializator.DecoBlocks,1,15), "xxx","xxx","xxx", 'x', new ItemStack(Initializator.ItemIngotPlutonium));
 		
-		GameRegistry.addRecipe(new ItemStack(Initializator.MachineBlock,1,0), " D ","DBD","CAC", 'A', new ItemStack(Initializator.EmptyBlock), 'B', new ItemStack(Initializator.ItemDepletedCrystal), 'C', new ItemStack(Block.stoneOvenIdle), 'D', new ItemStack(Item.ingotIron));
-		GameRegistry.addRecipe(new ItemStack(Initializator.MachineBlock, 1, 1), " D ", "DGD","CAC", 'A', new ItemStack(Initializator.EmptyBlock), 'B', new ItemStack(Initializator.ItemGammatroniumCrystal), 'C', new ItemStack(Block.stoneOvenIdle), 'D', new ItemStack(Item.ingotIron));
+		GameRegistry.addRecipe(new ItemStack(Initializator.MachineBlock, 1, 0), " D ", "DBD", "CAC", 'A', new ItemStack(Initializator.EmptyBlock), 'B', new ItemStack(Initializator.ItemDepletedCrystal), 'C', new ItemStack(Block.stoneOvenIdle), 'D', new ItemStack(Item.ingotIron));
+		GameRegistry.addRecipe(new ItemStack(Initializator.MachineBlock, 1, 1), " D ", "DBD", "CAC", 'A', new ItemStack(Initializator.EmptyBlock), 'B', new ItemStack(Initializator.ItemGammatroniumCrystal), 'C', new ItemStack(Block.stoneOvenIdle), 'D', new ItemStack(Item.ingotIron));
 		//new ItemStack(ItemInitializator.EmptyBlock, 4) means the result are 4 EMpty Blocks
 		//" x ", "xyx", " x " is the crafting matrix
 		//'y', new ItemStack(ItemInitializator.ItemIngotPlutonium) means that y, in the crafting matrix should be Plutonium ingot
