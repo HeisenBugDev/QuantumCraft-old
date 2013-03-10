@@ -62,6 +62,7 @@ public class QuantumCraft {
 		AchievementPage.registerAchievementPage(page1);
 		OwnAchievement.addAchievementLocalization();
 		NetworkRegistry.instance().registerGuiHandler(this, new Initializator());
+		//MinecraftForge.EVENT_BUS.register(new EventListener());
 	}
 
 	@PostInit

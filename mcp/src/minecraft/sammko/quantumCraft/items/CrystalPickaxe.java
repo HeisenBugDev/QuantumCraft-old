@@ -1,12 +1,15 @@
 package sammko.quantumCraft.items;
 
 import sammko.quantumCraft.core.QuantumCraftSettings;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 
 public class CrystalPickaxe extends ItemPickaxe{
 
@@ -15,6 +18,13 @@ public class CrystalPickaxe extends ItemPickaxe{
 		this.setTextureFile(QuantumCraftSettings.ITEMS_PNG);
 	}
 	
-	
+	@Override
+	public boolean hitEntity(ItemStack item, EntityLiving target,
+			EntityLiving player) {
+		if (item.itemID == QuantumCraftSettings.InfusedCrystalPickaxeID + 256) {
+			target.addPotionEffect(new PotionEffect(Potion.wither.id, 100));
+		}
+		return true;
+	}
 	
 }
