@@ -51,13 +51,18 @@ public class TileEntityExtractor extends TileEntityMachine implements
 		progress = 0;
 	}
 
-	public int gaugeProgressScaled (int scale)
+	public int gaugeProgressScaled (int maxO, int maxS)
 	{
-		return (progress * scale) / 20;
+		return (progress * maxS) / maxO;
 	}
 	
-	public int gaugeFuelScaled (int scale)
- {
+	public int gaugeFuelScaled (int maxO, int maxS)
+	{
+		return (internalStorage * maxS) / maxO;
+	}
+	
+	/*public int gaugeFuelScaled (int scale)
+    {
 		if (itemFuel == 0) {
 			itemFuel = internalStorage;
 			if (itemFuel == 0) {
@@ -65,7 +70,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 			}
 		}
 		return (internalStorage * scale) / itemFuel;
-	}
+	}*/
 
 	
 	public void updateEntity() {
@@ -179,7 +184,7 @@ public class TileEntityExtractor extends TileEntityMachine implements
 	public void extractItem() {
 		if (this.canExtract()) {
 
-			internalStorage -= 100;
+			internalStorage -= 200;
 
 			ItemStack var1 = this.getResult(this.inventory[0]);
 
