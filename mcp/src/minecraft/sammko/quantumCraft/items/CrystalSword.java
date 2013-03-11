@@ -39,7 +39,7 @@ public class CrystalSword extends ItemSword{
 			EntityLiving player) {
 		super.hitEntity(item, target, player);
 		if (Utils.isGamma(item.itemID)) {
-			target.addPotionEffect(new PotionEffect(Potion.wither.id, QuantumCraftSettings.witheringTimeout));
+			target.addPotionEffect(new PotionEffect(Potion.wither.id, QuantumCraftSettings.witheringTimeout, 1));
 		}
 		return true;
 	}

@@ -120,7 +120,7 @@ public class QuantumCraftSettings {
 
 		debug = config.get("Other", "Debug", false).getBoolean(false);
 
-		witheringTimeout = config.get("ToolStuff", "WitheringTimeout", 300).getInt();
+		witheringTimeout = config.get("ToolStuff", "WitheringTimeout", 100).getInt();
 		
 		WGenPlu = config.get("WorldGen", "Plutonium", true).getBoolean(true);
 		WGenPos = config.get("WorldGen", "Positronium", true).getBoolean(true);
