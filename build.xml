@@ -20,6 +20,7 @@
 	<property name="buildcraft.dir" value="${src.dir}/buildcraft"/>
 	<property name="forestry.dir" value="${src.dir}/forestry"/>
 	<property name="ic2.dir" value="${src.dir}/ic2"/>
+	<property name="apis.dir" value="${src.dir}/apis"/>
 	
 	<property name="mcpsrc.dir" value="${mcp.dir}/src"/>
 	<property name="mcpmc.dir" value="${mcpsrc.dir}/minecraft"/>
@@ -28,6 +29,7 @@
 	<property name="forge.version" value="6.6.0.515"/>
 	<property name="project.version" value="0.5"/>
 
+	<property name="apis" value="https://dl.dropbox.com/s/fncm6bhd1jr4kqz/APIs.zip"/>
 	<property name="downloadserver" value="http://www.theZorro266.com"/>
 	<property name="downloadserver.dir" value="rs485/"/>
 	<property name="downloadserver.full" value="${downloadserver}/${downloadserver.dir}"/>
@@ -75,9 +77,7 @@
 
 	<!-- Download necessary files -->
 	<target name="download-files" depends="download-forge">
-		<get src="https://github.com/BuildCraft/BuildCraft/archive/master.zip" dest="${download.dir}" usetimestamp="True"/>
-		<get src="https://dl.dropbox.com/u/44760587/forestry/releases/2.0.0.0/forestry-api-2.0.0.0.zip" dest="${download.dir}" usetimestamp="True"/>
-		<get src="https://dl.dropbox.com/u/861751/IC2/1.113/industrialcraft-2-api_1.113.205-lf.zip" dest="${download.dir}" usetimestamp="True"/>
+		<get src="${apis}" dest="${download.dir}" usetimestamp="True"/>
 	</target>
 	<!-- Download forge (if it doesn't exist) -->
 	<target name="download-forge" unless="forge-exists">
@@ -91,21 +91,9 @@
 
 		<unzip dest="${forge.dir}/.." src="${download.dir}/${forge.name}"/>
 
-		<unzip dest="${buildcraft.dir}" failOnEmptyArchive="true">
+		<unzip dest="${apis.dir}" failOnEmptyArchive="true">
 			<fileset dir="${download.dir}">
-				<include name="buildcraft-src-${bc.version}.zip"/>
-			</fileset>
-		</unzip>
-
-		<unzip dest="${forestry.dir}" failOnEmptyArchive="true">
-			<fileset dir="${download.dir}">
-			<include name="forestry-api-${forestry.version}.zip"/>
-			</fileset>
-		</unzip>
-
-		<unzip dest="${ic2.dir}" failOnEmptyArchive="true">
-			<fileset dir="${download.dir}">
-			<include name="industrialcraft-2-api_${ic2.version}.zip"/>
+			<include name="APIs.zip"/>
 			</fileset>
 		</unzip>
 		
@@ -137,25 +125,6 @@
 		<delete dir="${mcpmc.dir}/ic2"/>
 		<delete dir="${mcpmc.dir}/forestry"/>
 		
-		
-		<unzip dest="${buildcraft.dir}" failOnEmptyArchive="true">
-			<fileset dir="${download.dir}">
-				<include name="master.zip"/>
-			</fileset>
-		</unzip>
-
-		<unzip dest="${forestry.dir}" failOnEmptyArchive="true">
-			<fileset dir="${download.dir}">
-				<include name="forestry-api-${forestry.version}.zip"/>
-			</fileset>
-		</unzip>
-
-		<unzip dest="${ic2.dir}" failOnEmptyArchive="true">
-			<fileset dir="${download.dir}">
-				<include name="industrialcraft-2-api_${ic2.version}.zip"/>
-			</fileset>
-		</unzip>
-		
 		<!-- Copy sources -->
 		<copy todir="${mcpmc.dir}">
 			<fileset dir="${src.dir}/sammko"/>
@@ -164,25 +133,12 @@
 				<filter token="BUILD_NUMBER" value="${build.number}" />
 			</filterset>
 		</copy>
-		<!-- Copy BC API -->
-		<copy todir="${mcpmc.dir}/buildcraft">
-			<fileset dir="${buildcraft.dir}/BuildCraft-master/common/buildcraft/api"/>
-		</copy>
-		<echo message="Copied BC files"/>
-
-		<!-- Copy Forestry API source -->
+		<!-- Copy APIs -->
 		<copy todir="${mcpmc.dir}">
-			<fileset dir="${forestry.dir}"/>
+			<fileset dir="${apis.dir}"/>
 		</copy>
 
-		<echo message="Copied Forestry API"/>
-
-		<!-- Copy IC2 API source -->
-		<copy todir="${mcpmc.dir}">
-			<fileset dir="${ic2.dir}"/>
-		</copy>
-
-		<echo message="Copied IC2 API"/>
+		<echo message="Copied APIs"/>
 		<!-- Recompile -->
 		<exec dir="${mcp.dir}" executable="cmd" osfamily="windows">
 			<arg line="/c recompile.bat"/>
