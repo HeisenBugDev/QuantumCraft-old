@@ -1,5 +1,6 @@
 package sammko.quantumCraft.core;
 
+import thermalexpansion.api.crafting.CraftingManagers;
 import ic2.api.Ic2Recipes;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -47,19 +48,25 @@ public class CraftingManager {
 		GameRegistry.addSmelting(QuantumCraftSettings.OreRadiumID, new ItemStack(Initializator.ItemRadiumCrystal), 4F);
 		GameRegistry.addSmelting(QuantumCraftSettings.OreGammatroniumID, new ItemStack(Initializator.ItemGammatroniumCrystal), 4F);
 		GameRegistry.addSmelting(QuantumCraftSettings.OreNeutriniumID, new ItemStack(Initializator.ItemNeutriniumCrystal), 4F);
-			
+		GameRegistry.addSmelting(QuantumCraftSettings.PlutoniumDustID+256,  new ItemStack(Initializator.ItemIngotPlutonium), 4F);
 		//QuantumCraftSettings.OrePlutoniumID is the input item
 		//new ItemStack(ItemInitializator.ItemIngotPlutonium) is output
 	}
 	
 	public static void addMod()
 	{
-		if (QuantumCraftSettings.gotIC2) addIC2();
+		addIC2();
+		//addTEX();
 	}
 	
 	public static void addIC2()
 	{
+		Ic2Recipes.addMaceratorRecipe(new ItemStack(Initializator.OrePlutonium), new ItemStack(Initializator.ItemPlutoniumDust, 2));
 		Ic2Recipes.addMaceratorRecipe(new ItemStack(Initializator.ItemDepletedCrystal), new ItemStack(Initializator.ItemDepletedShard));
-		Ic2Recipes.addCompressorRecipe(ic2.api.Items.getItem("uraniumDrop"), ic2.api.Items.getItem("uraniumIngot"));
+	}
+	
+	public static void addTEX()
+	{
+		CraftingManagers.pulverizerManager.addRecipe(20,new ItemStack(Initializator.ItemDepletedCrystal), new ItemStack(Initializator.ItemDepletedShard), false);
 	}
 }

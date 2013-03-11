@@ -9,7 +9,7 @@ public class QuantumCraftSettings {
 	// tool stuff
 	public static int witheringTimeout;
 	// mods
-	public static boolean gotIC2 = false;
+	public static boolean gotTEX = false;
 	// files
 	public static String BLOCK_PNG = "/sammko/qc/block.png";
 	public static String ITEMS_PNG = "/sammko/qc/items.png";
@@ -55,9 +55,9 @@ public class QuantumCraftSettings {
 	public static int InfusedCrystalAxeID;
 	public static int InfusedCrystalShovelID;
 
-	public static int RadioactiveMeatID;
+	public static int PlutoniumDustID;
 	
-	public static int Jappack;
+	public static int RadioactiveMeatID;
 
 	public static void getConfig(Configuration config) {
 		// config
@@ -103,7 +103,8 @@ public class QuantumCraftSettings {
 		InfusedCrystalShovelID = config.get("Items", "InfusedCrystalShovelID", 4520)
 				.getInt();
 
-		Jappack = config.get("Items", "Jappack", 4521).getInt();
+		PlutoniumDustID = config.get("Items", "PlutoniumDustID", 4521)
+				.getInt();
 		
 		OrePositroniumID = config.get("Blocks", "OrePositronium", 2500)
 				.getInt();
@@ -129,16 +130,5 @@ public class QuantumCraftSettings {
 		WGenDep = config.get("WorldGen", "DepletedOre", true).getBoolean(true);
 
 		config.save();
-
-		gotIC2 = exists("ic2.core.IC2");
-	}
-	
-	public static boolean exists(String className) {
-		try {
-			Class.forName(className);
-			return true;
-		} catch (ClassNotFoundException exception) {
-			return false;
-		}
 	}
 }

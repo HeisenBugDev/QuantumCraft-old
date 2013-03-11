@@ -24,6 +24,7 @@ import sammko.quantumCraft.items.CrystalSword;
 import sammko.quantumCraft.items.ItemCrystal;
 import sammko.quantumCraft.items.ItemEnergyPacket;
 import sammko.quantumCraft.items.ItemPlutoniumIngot;
+import sammko.quantumCraft.items.ItemQDust;
 import sammko.quantumCraft.machine.BlockMachine;
 import sammko.quantumCraft.machine.ExtractorContainer;
 import sammko.quantumCraft.machine.InfuserContainer;
@@ -89,6 +90,8 @@ public class Initializator implements IGuiHandler {
 	public static ItemCrystal ItemDepletedCrystal;
 	public static ItemCrystal ItemDepletedShard;
 
+	public static Item ItemPlutoniumDust;
+
 	public static ItemPickaxe ItemCrystalPickaxe;
 	public static ItemSword ItemCrystalSword;
 	public static ItemAxe ItemCrystalAxe;
@@ -100,8 +103,6 @@ public class Initializator implements IGuiHandler {
 	public static ItemSpade ItemInfusedCrystalShovel;
 
 	public static Item ItemRadioactiveMeat;
-
-	public static ItemStack Jappack;
 
 	public static EnumToolMaterial DEPLETEDCRYSTAL = EnumHelper
 			.addToolMaterial("DEPLETEDCRYSTAL", 2, 500, 7.0F, 1, 25);
@@ -167,7 +168,8 @@ public class Initializator implements IGuiHandler {
 				BlockEmptyRenderID).setCreativeTab(tabQC).setBlockName(
 				"emptyBlock");
 		MachineBlock = new BlockMachine(QuantumCraftSettings.MachineBlockID,
-				BlockMachineRenderID).setCreativeTab(tabQC).setHardness(2.0F).setResistance(10.0F);
+				BlockMachineRenderID).setCreativeTab(tabQC).setHardness(2.0F)
+				.setResistance(10.0F);
 		DecoBlocks = new BlockQuantumBasicBlocks(
 				QuantumCraftSettings.DecoBlocksID,
 				BlockTextureMatrix.Err.getINT()).setHardness(2.0F)
@@ -203,6 +205,8 @@ public class Initializator implements IGuiHandler {
 				QuantumCraftSettings.CrystalDepletedID);
 		ItemDepletedShard = new ItemCrystal(
 				QuantumCraftSettings.DCrystalShardID);
+
+		ItemPlutoniumDust = new ItemQDust(QuantumCraftSettings.PlutoniumDustID);
 
 		ItemEmptyEnergyPacket = new ItemEnergyPacket(
 				QuantumCraftSettings.EmptyEnergyPacketID);
@@ -271,6 +275,10 @@ public class Initializator implements IGuiHandler {
 				.setIconIndex(ItemTextureMatrix.DCrystalShard.getINT())
 				.setItemName("depletedCrystalShard");
 
+		ItemPlutoniumDust.setMaxStackSize(64).setCreativeTab(tabQC)
+				.setIconIndex(ItemTextureMatrix.PlutoniumDust.getINT())
+				.setItemName("plutoniumDust");
+
 		ItemEmptyEnergyPacket.setMaxStackSize(64).setCreativeTab(tabQC)
 				.setIconIndex(ItemTextureMatrix.EmptyEPacket.getINT())
 				.setItemName("emptyEP");
@@ -313,7 +321,8 @@ public class Initializator implements IGuiHandler {
 				"Neutrinium EPacket");
 
 		LanguageRegistry.addName(ItemDepletedShard, "Depleted Crystal Shard");
-
+		LanguageRegistry.addName(ItemPlutoniumDust, "Plutonium Dust");
+		
 		LanguageRegistry.addName(ItemCrystalPickaxe, "Crystal Pickaxe");
 		LanguageRegistry.addName(ItemCrystalSword, "Crystal Sword");
 		LanguageRegistry.addName(ItemCrystalAxe, "Crystal Axe");

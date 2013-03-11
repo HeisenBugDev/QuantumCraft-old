@@ -11,6 +11,7 @@ public class ItemTextureMatrix {
 	public static TextureIndex NeutriniumCrystal = new TextureIndex(0x30);
 	public static TextureIndex GammatroniumCrystal = new TextureIndex(0x40);
 	public static TextureIndex DepletedCrystal = new TextureIndex(0x50);
+	public static TextureIndex PlutoniumDust = new TextureIndex(0x60);
 	
 	public static TextureIndex EmptyEPacket = new TextureIndex(0x01);
 	public static TextureIndex PositroniumEPacket = new TextureIndex(0x11);
