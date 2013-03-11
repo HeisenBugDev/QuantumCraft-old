@@ -125,6 +125,12 @@
 		<delete dir="${mcpmc.dir}/ic2"/>
 		<delete dir="${mcpmc.dir}/forestry"/>
 		
+		<unzip dest="${apis.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+			<include name="APIs.zip"/>
+			</fileset>
+		</unzip>
+		
 		<!-- Copy sources -->
 		<copy todir="${mcpmc.dir}">
 			<fileset dir="${src.dir}/sammko"/>
