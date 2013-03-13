@@ -29,16 +29,13 @@
 	<property name="forge.version" value="7.7.0.578"/>
 	<property name="project.version" value="0.5"/>
 
-	<property name="apis" value="https://dl.dropbox.com/s/fncm6bhd1jr4kqz/APIs.zip"/>
+	<!-- <property name="apis" value="https://dl.dropbox.com/s/fncm6bhd1jr4kqz/APIs.zip"/> -->
 	<property name="downloadserver" value="http://www.theZorro266.com"/>
 	<property name="downloadserver.dir" value="rs485/"/>
 	<property name="downloadserver.full" value="${downloadserver}/${downloadserver.dir}"/>
 	
 	<property name="forge.name" value="minecraftforge-src-${mc.version}-${forge.version}.zip"/>
 
-	<property name="bc.version" value="3.4.1"/>
-	<property name="forestry.version" value="2.0.0.0"/>
-	<property name="ic2.version" value="1.113.205-lf"/>	
 	
 	<available property="forge-exists" file="${download.dir}/${forge.name}"/>
 
