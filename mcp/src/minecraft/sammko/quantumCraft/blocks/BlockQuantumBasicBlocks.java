@@ -16,7 +16,7 @@ import sammko.quantumCraft.resources.BlockTextureMatrix;
 
 public class BlockQuantumBasicBlocks extends Block {
 	public BlockQuantumBasicBlocks(int id, int texture) {
-		super(id, texture, Material.rock);
+		super(id, Material.rock);
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
 		GameRegistry.registerBlock(this, ItemBlockQuantumBasicBlocks.class, "BlockDecoBlocks");
 		setCreativeTab(Initializator.tabQC);

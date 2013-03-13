@@ -26,8 +26,6 @@ public class GuiExtractor extends GuiContainer {
 
 	public void initGui() {
 		super.initGui();
-		this.controlList.clear();
-
 	}
 
 	@Override

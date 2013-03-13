@@ -1,6 +1,7 @@
 package sammko.quantumCraft.core.utils;
 
-import buildcraft.api.core.Position;
+
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -22,9 +23,9 @@ public class Utils { //Thank you buildcraft :)
 		return (int) (MJ * 6);
 	}
 	
-	public static ForgeDirection get2dOrientation(Position pos1, Position pos2) {
-			double Dx = pos1.x - pos2.x;
-			double Dz = pos1.z - pos2.z;
+	public static ForgeDirection get2dOrientation(EntityLiving pos1) {
+			double Dx = pos1.rotationYaw;
+			double Dz = pos1.rotationPitch;
 			double angle = Math.atan2(Dz, Dx) / Math.PI * 180 + 180;
 
 			if (angle < 45 || angle > 315)
