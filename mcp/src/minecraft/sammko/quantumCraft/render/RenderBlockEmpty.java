@@ -60,9 +60,18 @@ public class RenderBlockEmpty extends RendererBase {
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID,
 			RenderBlocks renderer) {
-		super.renderInventoryBlock(block, metadata, modelID, renderer, BlockTextureMatrix.EBlockBackSingle.getINT());
+		// TODO Auto-generated method stub
 		
 	}
+
+
+
+//	@Override
+//	public void renderInventoryBlock(Block block, int metadata, int modelID,
+//			RenderBlocks renderer) {
+//		super.renderInventoryBlock(block, metadata, modelID, renderer, BlockTextureMatrix.EBlockBackSingle.getINT());
+//		
+//	}
 
 
 }

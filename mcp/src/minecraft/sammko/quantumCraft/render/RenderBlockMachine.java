@@ -59,10 +59,19 @@ public class RenderBlockMachine extends RendererBase {
 
 
 	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
-		super.renderInventoryBlock(block, metadata, modelID, renderer, new int[] { BlockTextureMatrix.EBlockBackSingle.getINT(),
-				BlockTextureMatrix.MachineTop[metadata].getINT(),BlockTextureMatrix.EBlockSideSingle.getINT(),
-				BlockTextureMatrix.MachineFront[metadata].getINT(),BlockTextureMatrix.EBlockSideSingle.getINT(),
-				BlockTextureMatrix.EBlockSideSingle.getINT() });
+	public void renderInventoryBlock(Block block, int metadata, int modelID,
+			RenderBlocks renderer) {
+		// TODO Auto-generated method stub
+		
 	}
+
+
+
+//	@Override
+//	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
+//		super.renderInventoryBlock(block, metadata, modelID, renderer, new int[] { BlockTextureMatrix.EBlockBackSingle.getINT(),
+//				BlockTextureMatrix.MachineTop[metadata].getINT(),BlockTextureMatrix.EBlockSideSingle.getINT(),
+//				BlockTextureMatrix.MachineFront[metadata].getINT(),BlockTextureMatrix.EBlockSideSingle.getINT(),
+//				BlockTextureMatrix.EBlockSideSingle.getINT() });
+//	}
 }

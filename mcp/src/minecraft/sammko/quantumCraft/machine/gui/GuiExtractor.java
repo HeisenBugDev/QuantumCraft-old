@@ -35,13 +35,15 @@ public class GuiExtractor extends GuiContainer {
 		fontRenderer.drawString(
 				StatCollector.translateToLocal("container.inventory"), 8,
 				ySize - 96 + 2, 0x000000);
+
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
         int texture = mc.renderEngine.getTexture(QuantumCraftSettings.BGextractorGUI);
        	GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-       	this.mc.renderEngine.bindTexture(texture);
+       	//this.mc.renderEngine.bindTexture(texture);
+        this.mc.renderEngine.func_98187_b("/gui/Extractor.png");
        	int x = (width - xSize) / 2;
        	int y = (height - ySize) / 2;
        	this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);

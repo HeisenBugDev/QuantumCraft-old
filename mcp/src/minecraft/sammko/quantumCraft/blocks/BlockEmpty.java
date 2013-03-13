@@ -26,7 +26,6 @@ public class BlockEmpty extends Block {
 		super(par1, Material.rock);
 		this.setCreativeTab(Initializator.tabQC);
 		this.RenderID = rid;
-		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
 		GameRegistry.registerBlock(this, "emptyBlock");
 	}
 
@@ -37,11 +36,11 @@ public class BlockEmpty extends Block {
 		
 	}
 	
-	@Override
-    public int getBlockTextureFromSide(int par1)
-    {
-        return tMap[par1]; // return values from the tMap
-    }
+//	@Override
+//    public int getBlockTextureFromSide(int par1)
+//    {
+//        return tMap[par1]; // return values from the tMap
+//    }
 	
 	@Override
 	public int getRenderType()

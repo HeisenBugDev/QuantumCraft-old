@@ -14,7 +14,7 @@ public class CrystalShovel extends ItemSpade {
 
 	public CrystalShovel(int i, EnumToolMaterial enumToolMaterial) {
 		super(i, enumToolMaterial);
-		this.setTextureFile(QuantumCraftSettings.ITEMS_PNG);
+
 	}
 	
 	@Override

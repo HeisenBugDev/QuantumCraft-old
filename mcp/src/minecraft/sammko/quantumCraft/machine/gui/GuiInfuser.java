@@ -42,7 +42,9 @@ public class GuiInfuser extends GuiContainer{
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
         int texture = mc.renderEngine.getTexture(QuantumCraftSettings.BGinfuserGUI);
        	GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-       	this.mc.renderEngine.bindTexture(texture);
+       	//this.mc.renderEngine.bindTexture(texture);
+       	
+        this.mc.renderEngine.func_98187_b("/gui/Infuser.png");
        	int x = (width - xSize) / 2;
        	int y = (height - ySize) / 2;
        	this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);

@@ -7,7 +7,6 @@ public class ItemPlutoniumIngot extends Item {
 
 	public ItemPlutoniumIngot(int par1) {
 		super(par1);
-		this.setTextureFile(QuantumCraftSettings.ITEMS_PNG);
 	}
 
 }

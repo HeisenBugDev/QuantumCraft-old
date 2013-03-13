@@ -9,7 +9,7 @@ public class ItemBlockQuantumBasicBlocks extends ItemBlock {
 	public ItemBlockQuantumBasicBlocks(int par1) {
 		super(par1);
 		setHasSubtypes(true);
-		setItemName("iBlockQuantumBasicBlocks");
+		setUnlocalizedName("iBlockQuantumBasicBlocks");
 		setCreativeTab(Initializator.tabQC);
 	}
 
@@ -24,9 +24,5 @@ public class ItemBlockQuantumBasicBlocks extends ItemBlock {
 		return damageValue;
 	}
 	
-	@Override
-	public String getItemNameIS(ItemStack itemstack) {
-		return getItemName() + "." + subNames[itemstack.getItemDamage()];
-	}
 	
 }

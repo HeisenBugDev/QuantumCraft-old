@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
@@ -27,7 +28,7 @@ public class BlockMachine extends BlockContainer {
 
 	public BlockMachine(int par1, int rid) {
 		super(par1, Material.rock);
-		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
+		//this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
 		GameRegistry
 				.registerBlock(this, ItemBlockMachine.class, "machineBlock");
 		setCreativeTab(Initializator.tabQC);
@@ -102,13 +103,13 @@ public class BlockMachine extends BlockContainer {
 		}
 	}
 
-	@Override
-	public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2,
-			int par3, int par4, int par5) {
-		return ((TileEntityMachine) par1IBlockAccess.getBlockTileEntity(par2,
-				par3, par4)).tMap[par5];
-
-	}
+//	@Override
+//	public Icon getBlockTexture(IBlockAccess par1IBlockAccess, int par2,
+//			int par3, int par4, int par5) {
+//		return ((TileEntityMachine) par1IBlockAccess.getBlockTileEntity(par2,
+//				par3, par4)).tMap[par5];
+//
+//	}
 
 	@Override
 	public int getRenderType() {
@@ -116,8 +117,8 @@ public class BlockMachine extends BlockContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World var1, int metadata) {
-		switch (metadata)
+	public TileEntity createNewTileEntity(World var1) {
+		switch (blockID)
 		{
 		case 0:
 			return new TileEntityExtractor(ForgeDirection.NORTH);
@@ -128,10 +129,6 @@ public class BlockMachine extends BlockContainer {
 		}
 	}
 
-	@Override
-	public TileEntity createNewTileEntity(World var1) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

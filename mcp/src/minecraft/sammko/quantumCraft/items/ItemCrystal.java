@@ -7,7 +7,6 @@ public class ItemCrystal extends Item {
 
 	public ItemCrystal(int par1) {
 		super(par1);
-		this.setTextureFile(QuantumCraftSettings.ITEMS_PNG);
 	}
 
 }

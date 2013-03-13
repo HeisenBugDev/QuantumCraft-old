@@ -12,7 +12,7 @@ public class ItemBlockMachine extends ItemBlock {
 	public ItemBlockMachine(int par1) {
 		super(par1);
 		setHasSubtypes(true);
-		setItemName("iBlockMachine");
+		setUnlocalizedName("iBlockMachine");
 		setCreativeTab(Initializator.tabQC);
 	}
 
@@ -25,11 +25,7 @@ public class ItemBlockMachine extends ItemBlock {
 		return damageValue;
 	}
 	
-	@Override
-	public String getItemNameIS(ItemStack itemstack) {
-		if (itemstack.getItemDamage() > subNames.length-1) return OtherResx.ERROR[0];
-		return getItemName() + "." + subNames[itemstack.getItemDamage()];
-	}
+	
 	
     public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List)
     {

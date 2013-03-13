@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -17,16 +18,15 @@ import sammko.quantumCraft.resources.BlockTextureMatrix;
 public class BlockQuantumBasicBlocks extends Block {
 	public BlockQuantumBasicBlocks(int id, int texture) {
 		super(id, Material.rock);
-		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
 		GameRegistry.registerBlock(this, ItemBlockQuantumBasicBlocks.class, "BlockDecoBlocks");
 		setCreativeTab(Initializator.tabQC);
 	}
 	
-	@Override
-	public int getBlockTextureFromSideAndMetadata (int side, int metadata) {
-		return BlockTextureMatrix.Deco[metadata].getINT();
-		
-	}
+//	@Override
+//	public Icon getBlockTextureFromSideAndMetadata (int side, int metadata) {
+//		return BlockTextureMatrix.Deco[metadata].getINT();
+//		
+//	}
 
 	@Override
 	public int damageDropped(int metadata) {

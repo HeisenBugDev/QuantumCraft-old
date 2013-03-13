@@ -17,7 +17,7 @@ public class CrystalPickaxe extends ItemPickaxe{
 
 	public CrystalPickaxe(int i, EnumToolMaterial enumToolMaterial){
 		super(i, enumToolMaterial);
-		this.setTextureFile(QuantumCraftSettings.ITEMS_PNG);
+
 	}
 	
 	@Override

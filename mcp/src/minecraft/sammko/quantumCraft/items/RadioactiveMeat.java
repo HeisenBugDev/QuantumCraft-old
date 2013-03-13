@@ -14,7 +14,6 @@ public class RadioactiveMeat extends ItemFood {
 	public RadioactiveMeat(int id, int hunger, float saturation,
 			boolean wolfFavorite) {
 		super(id, hunger, saturation, wolfFavorite);
-		this.setTextureFile(QuantumCraftSettings.ITEMS_PNG);
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

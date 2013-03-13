@@ -15,7 +15,7 @@ public class CrystalAxe extends ItemAxe {
 
 	public CrystalAxe(int i, EnumToolMaterial EnumToolMaterial) {
 		super(i, EnumToolMaterial);
-		this.setTextureFile(QuantumCraftSettings.ITEMS_PNG);
+
 	}
 	
 	@Override
