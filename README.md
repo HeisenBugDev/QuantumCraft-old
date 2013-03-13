@@ -16,3 +16,12 @@ Thank you very much, author of that model. i like it.
 <b>READ IT GUYS. NOW.</b>
 
 I reccomend using git flow for that branching model.
+
+The Team:
+
+Sammko: Graphics and Math
+
+hunterboerner: Logic and fun
+
+DJRaffa: He really hasn't done much
+

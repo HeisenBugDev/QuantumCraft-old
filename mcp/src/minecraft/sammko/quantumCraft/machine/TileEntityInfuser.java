@@ -22,11 +22,11 @@ public class TileEntityInfuser extends TileEntityMachine {
 	public int scaleSize;
 
 	public TileEntityInfuser(ForgeDirection rot) {
-		super(rot, 5, "infuseor");
+		super(rot, 5, "infuser");
 	}
 
 	public TileEntityInfuser() {
-		super(ForgeDirection.NORTH, 5, "infuseor");
+		super(ForgeDirection.NORTH, 5, "infuser");
 	}
 
 	private void init() {
@@ -36,11 +36,11 @@ public class TileEntityInfuser extends TileEntityMachine {
 		
 	}
 
-	public int gaugeProgressScaled(int scale) {
-		return (progress * scale) / 16;
+	public int gaugeProgressScaled(int maxO, int maxS) {
+		return (progress * maxS ) / maxO;
 	}
-	public int GetScaleSize() {
-		return internalStorage * 3;
+	public int gaugeFuelScaled(int maxO, int maxS) {
+		return (internalStorage * maxS) / maxO;
 	}
 
 
@@ -66,6 +66,7 @@ public class TileEntityInfuser extends TileEntityMachine {
 					&& inventory[1].getItem() == Initializator.ItemGammatroniumEnergyPacket) {
 				internalStorage++;
 				this.inventory[1].stackSize--;
+				if (this.inventory[1].stackSize == 0) { this.inventory[1] = null; }
 			}
 			if (internalStorage <= 16 && this.caninfuse()) // Smelt stuff
 			{

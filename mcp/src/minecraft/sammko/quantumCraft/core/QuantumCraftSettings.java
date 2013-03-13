@@ -6,8 +6,10 @@ public class QuantumCraftSettings {
 
 	// other
 	public static boolean debug;
+	// tool stuff
+	public static int witheringTimeout;
 	// mods
-	public static boolean gotIC2 = false;
+	public static boolean gotTEX = false;
 	// files
 	public static String BLOCK_PNG = "/sammko/qc/block.png";
 	public static String ITEMS_PNG = "/sammko/qc/items.png";
@@ -53,6 +55,8 @@ public class QuantumCraftSettings {
 	public static int InfusedCrystalAxeID;
 	public static int InfusedCrystalShovelID;
 
+	public static int PlutoniumDustID;
+	
 	public static int RadioactiveMeatID;
 
 	public static void getConfig(Configuration config) {
@@ -99,6 +103,9 @@ public class QuantumCraftSettings {
 		InfusedCrystalShovelID = config.get("Items", "InfusedCrystalShovelID", 4520)
 				.getInt();
 
+		PlutoniumDustID = config.get("Items", "PlutoniumDustID", 4521)
+				.getInt();
+		
 		OrePositroniumID = config.get("Blocks", "OrePositronium", 2500)
 				.getInt();
 		OrePlutoniumID = config.get("Blocks", "OrePlutonium", 2501).getInt();
@@ -113,6 +120,8 @@ public class QuantumCraftSettings {
 
 		debug = config.get("Other", "Debug", false).getBoolean(false);
 
+		witheringTimeout = config.get("ToolStuff", "WitheringTimeout", 100).getInt();
+		
 		WGenPlu = config.get("WorldGen", "Plutonium", true).getBoolean(true);
 		WGenPos = config.get("WorldGen", "Positronium", true).getBoolean(true);
 		WGenRad = config.get("WorldGen", "Radium", true).getBoolean(true);
@@ -121,16 +130,5 @@ public class QuantumCraftSettings {
 		WGenDep = config.get("WorldGen", "DepletedOre", true).getBoolean(true);
 
 		config.save();
-
-		gotIC2 = exists("ic2.core.IC2");
-	}
-
-	public static boolean exists(String className) {
-		try {
-			Class.forName(className);
-			return true;
-		} catch (ClassNotFoundException exception) {
-			return false;
-		}
 	}
 }

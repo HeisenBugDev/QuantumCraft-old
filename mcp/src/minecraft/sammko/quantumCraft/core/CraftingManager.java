@@ -1,5 +1,6 @@
 package sammko.quantumCraft.core;
 
+import thermalexpansion.api.crafting.CraftingManagers;
 import ic2.api.Ic2Recipes;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -32,10 +33,12 @@ public class CraftingManager {
 		
 		GameRegistry.addRecipe(new ItemStack(Initializator.DecoBlocks,1,15), "xxx","xxx","xxx", 'x', new ItemStack(Initializator.ItemIngotPlutonium));
 		
-		GameRegistry.addRecipe(new ItemStack(Initializator.MachineBlock,1,0), " D ","DBD","CAC", 'A', new ItemStack(Initializator.EmptyBlock), 'B', new ItemStack(Initializator.ItemDepletedCrystal), 'C', new ItemStack(Block.stoneOvenIdle), 'D', new ItemStack(Item.ingotIron));
+		GameRegistry.addRecipe(new ItemStack(Initializator.MachineBlock, 1, 0), " D ", "DBD", "CAC", 'A', new ItemStack(Initializator.EmptyBlock), 'B', new ItemStack(Initializator.ItemDepletedCrystal), 'C', new ItemStack(Block.stoneOvenIdle), 'D', new ItemStack(Item.ingotIron));
+		GameRegistry.addRecipe(new ItemStack(Initializator.MachineBlock, 1, 1), " D ", "DBD", "CAC", 'A', new ItemStack(Initializator.EmptyBlock), 'B', new ItemStack(Initializator.ItemGammatroniumCrystal), 'C', new ItemStack(Block.stoneOvenIdle), 'D', new ItemStack(Item.ingotIron));
 		//new ItemStack(ItemInitializator.EmptyBlock, 4) means the result are 4 EMpty Blocks
 		//" x ", "xyx", " x " is the crafting matrix
 		//'y', new ItemStack(ItemInitializator.ItemIngotPlutonium) means that y, in the crafting matrix should be Plutonium ingot
+		
 	}
 
 	public static void addSmelting()
@@ -45,19 +48,25 @@ public class CraftingManager {
 		GameRegistry.addSmelting(QuantumCraftSettings.OreRadiumID, new ItemStack(Initializator.ItemRadiumCrystal), 4F);
 		GameRegistry.addSmelting(QuantumCraftSettings.OreGammatroniumID, new ItemStack(Initializator.ItemGammatroniumCrystal), 4F);
 		GameRegistry.addSmelting(QuantumCraftSettings.OreNeutriniumID, new ItemStack(Initializator.ItemNeutriniumCrystal), 4F);
-			
+		GameRegistry.addSmelting(QuantumCraftSettings.PlutoniumDustID+256,  new ItemStack(Initializator.ItemIngotPlutonium), 4F);
 		//QuantumCraftSettings.OrePlutoniumID is the input item
 		//new ItemStack(ItemInitializator.ItemIngotPlutonium) is output
 	}
 	
 	public static void addMod()
 	{
-		if (QuantumCraftSettings.gotIC2) addIC2();
+		addIC2();
+		//addTEX();
 	}
 	
 	public static void addIC2()
 	{
+		Ic2Recipes.addMaceratorRecipe(new ItemStack(Initializator.OrePlutonium), new ItemStack(Initializator.ItemPlutoniumDust, 2));
 		Ic2Recipes.addMaceratorRecipe(new ItemStack(Initializator.ItemDepletedCrystal), new ItemStack(Initializator.ItemDepletedShard));
-		Ic2Recipes.addCompressorRecipe(ic2.api.Items.getItem("uraniumDrop"), ic2.api.Items.getItem("uraniumIngot"));
+	}
+	
+	public static void addTEX()
+	{
+		CraftingManagers.pulverizerManager.addRecipe(20,new ItemStack(Initializator.ItemDepletedCrystal), new ItemStack(Initializator.ItemDepletedShard), false);
 	}
 }
