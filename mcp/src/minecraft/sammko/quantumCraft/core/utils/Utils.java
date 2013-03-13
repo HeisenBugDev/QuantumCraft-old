@@ -1,13 +1,8 @@
 package sammko.quantumCraft.core.utils;
 
-<<<<<<< HEAD
 import sammko.quantumCraft.core.QuantumCraftSettings;
 import cpw.mods.fml.common.SidedProxy;
-import buildcraft.api.core.Position;
-=======
-
 import net.minecraft.entity.EntityLiving;
->>>>>>> develop15
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -29,11 +24,21 @@ public class Utils { // Thank you buildcraft :)
 	public static int MJ_to_EU(float MJ) {
 		return (int) (MJ * 6);
 	}
-<<<<<<< HEAD
 
-	public static ForgeDirection get2dOrientation(Position pos1, Position pos2) {
-		double Dx = pos1.x - pos2.x;
-		double Dz = pos1.z - pos2.z;
+	public static boolean isGamma(int id) {
+		if (id == QuantumCraftSettings.InfusedCrystalPickaxeID + 256
+				|| id == QuantumCraftSettings.InfusedCrystalAxeID + 256
+				|| id == QuantumCraftSettings.InfusedCrystalSwordID + 256
+				|| id == QuantumCraftSettings.InfusedCrystalShovelID + 256) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static ForgeDirection get2dOrientation(EntityLiving pos1) {
+		double Dx = pos1.rotationYaw;
+		double Dz = pos1.rotationPitch;
 		double angle = Math.atan2(Dz, Dx) / Math.PI * 180 + 180;
 
 		if (angle < 45 || angle > 315)
@@ -46,31 +51,6 @@ public class Utils { // Thank you buildcraft :)
 			return ForgeDirection.NORTH;
 	}
 
-
-	public static boolean isGamma(int id)
-	{
-		if (id == QuantumCraftSettings.InfusedCrystalPickaxeID+256
-		  ||id == QuantumCraftSettings.InfusedCrystalAxeID+256
-		  ||id == QuantumCraftSettings.InfusedCrystalSwordID+256
-		  ||id == QuantumCraftSettings.InfusedCrystalShovelID+256) { return true; } else { return false; }
-=======
-	
-	public static ForgeDirection get2dOrientation(EntityLiving pos1) {
-			double Dx = pos1.rotationYaw;
-			double Dz = pos1.rotationPitch;
-			double angle = Math.atan2(Dz, Dx) / Math.PI * 180 + 180;
-
-			if (angle < 45 || angle > 315)
-				return ForgeDirection.EAST;
-			else if (angle < 135)
-				return ForgeDirection.SOUTH;
-			else if (angle < 225)
-				return ForgeDirection.WEST;
-			else
-				return ForgeDirection.NORTH;
->>>>>>> develop15
-	}
-	
 	public static void preDestroyBlock(World world, int i, int j, int k) {
 		TileEntity tile = world.getBlockTileEntity(i, j, k);
 		if (tile instanceof IInventory)
@@ -108,16 +88,16 @@ public class Utils { // Thank you buildcraft :)
 		return world.getHeight();
 	}
 
-	 public static NBTTagCompound getOrCreateNbtData(ItemStack itemStack) {
-		    NBTTagCompound ret = itemStack.getTagCompound();
+	public static NBTTagCompound getOrCreateNbtData(ItemStack itemStack) {
+		NBTTagCompound ret = itemStack.getTagCompound();
 
-		    if (ret == null) {
-		      ret = new NBTTagCompound();
+		if (ret == null) {
+			ret = new NBTTagCompound();
 
-		      itemStack.setTagCompound(ret);
-		    }
+			itemStack.setTagCompound(ret);
+		}
 
-		    return ret;
-		  }
+		return ret;
+	}
 
 }
