@@ -58,14 +58,14 @@ public class CraftingManager {
 	
 	public static void addMod()
 	{
-		addIC2();
+		//addIC2();
 		//addTEX();
 	}
 	
 	public static void addIC2()
 	{
-		Ic2Recipes.addMaceratorRecipe(new ItemStack(Initializator.OrePlutonium), new ItemStack(Initializator.ItemPlutoniumDust, 2));
-		Ic2Recipes.addMaceratorRecipe(new ItemStack(Initializator.ItemDepletedCrystal), new ItemStack(Initializator.ItemDepletedShard));
+		//Ic2Recipes.addMaceratorRecipe(new ItemStack(Initializator.OrePlutonium), new ItemStack(Initializator.ItemPlutoniumDust, 2));
+		//Ic2Recipes.addMaceratorRecipe(new ItemStack(Initializator.ItemDepletedCrystal), new ItemStack(Initializator.ItemDepletedShard));
 	}
 	
 //	public static void addTEX()

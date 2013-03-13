@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.Side;
 /*FORGE IMPORTS*/
 /*SAMMKO IMPORTS*/
 
-@Mod(modid = "QuantumCraft", name = "Quantum Craft", version = "ALPHA", dependencies = "required-after:IC2")
+@Mod(modid = "QuantumCraft", name = "Quantum Craft", version = "ALPHA", dependencies = "")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class QuantumCraft {
 
