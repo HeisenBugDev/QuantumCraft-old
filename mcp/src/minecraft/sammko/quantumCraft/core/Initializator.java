@@ -120,37 +120,37 @@ public class Initializator implements IGuiHandler {
 		OrePositronium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OrePositroniumID,
 				BlockTextureMatrix.OrePositronium.getINT())
-				.setBlockName("orePositronium").setHardness(3.0F)
+				.setUnlocalizedName("orePositronium").setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OrePlutonium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OrePlutoniumID,
 				BlockTextureMatrix.OrePlutonium.getINT())
-				.setBlockName("orePlutonium").setHardness(3.0F)
+				.setUnlocalizedName("orePlutonium").setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OreRadium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OreRadiumID,
 				BlockTextureMatrix.OreRadium.getINT())
-				.setBlockName("oreRadium").setHardness(3.0F)
+				.setUnlocalizedName("oreRadium").setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OreGammatronium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OreGammatroniumID,
 				BlockTextureMatrix.OreGammatronium.getINT())
-				.setBlockName("oreGammatronium").setHardness(3.0F)
+				.setUnlocalizedName("oreGammatronium").setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OreNeutrinium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OreNeutriniumID,
 				BlockTextureMatrix.OreNeutrinium.getINT())
-				.setBlockName("oreNeutrinium").setHardness(3.0F)
+				.setUnlocalizedName("oreNeutrinium").setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OreDepleted = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OreDepletedID,
 				BlockTextureMatrix.OreDepleted.getINT())
-				.setBlockName("OreDepleted").setHardness(5.0F)
+				.setUnlocalizedName("OreDepleted").setHardness(5.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 
@@ -165,7 +165,7 @@ public class Initializator implements IGuiHandler {
 	public static void initBlocks() {
 		EmptyBlock = new BlockEmpty(QuantumCraftSettings.EmptyBlockID,
 				BlockTextureMatrix.EBlockBackSingle.getINT(),
-				BlockEmptyRenderID).setCreativeTab(tabQC).setBlockName(
+				BlockEmptyRenderID).setCreativeTab(tabQC).setUnlocalizedName(
 				"emptyBlock");
 		MachineBlock = new BlockMachine(QuantumCraftSettings.MachineBlockID,
 				BlockMachineRenderID).setCreativeTab(tabQC).setHardness(2.0F)

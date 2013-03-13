@@ -10,7 +10,7 @@ import sammko.quantumCraft.core.QuantumCraftSettings;
 public class BlockQuantumOre extends BlockOre {
 
 	public BlockQuantumOre(int par1, int par2) {
-		super(par1, par2);
+		super(par1);
 		this.setTextureFile(QuantumCraftSettings.BLOCK_PNG);
 		GameRegistry.registerBlock(this);
 	}

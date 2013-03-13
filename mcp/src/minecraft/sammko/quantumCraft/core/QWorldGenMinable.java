@@ -67,7 +67,7 @@ public class QWorldGenMinable extends WorldGenerator
               for (int targetZ = zStart; targetZ <= zEnd; targetZ++) {
                 double d14 = (targetZ + 0.5D - d8) / (d10 / 2.0D);
                 if ((d12 * d12 + d13 * d13 + d14 * d14 < 1.0D) && (world.getBlockId(targetX, targetY, targetZ) == replace)) {
-                  world.setBlockAndMetadata(targetX, targetY, targetZ, this.mineableBlockId, this.mineableBlockMeta);
+                  world.setBlockAndMetadataWithNotify(targetX, targetY, targetZ, this.mineableBlockId, this.mineableBlockMeta, 0);
                   hasGenerated = true;
                 }
               }

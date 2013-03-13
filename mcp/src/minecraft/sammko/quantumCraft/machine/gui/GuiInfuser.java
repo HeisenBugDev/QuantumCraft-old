@@ -25,7 +25,6 @@ public class GuiInfuser extends GuiContainer{
 
 	public void initGui() {
 		super.initGui();
-		this.controlList.clear();
 
 	}
 

@@ -1,37 +1,25 @@
 package sammko.quantumCraft.machine;
 
 import java.util.List;
-import java.util.Random;
-import java.util.ArrayList;
 
-import buildcraft.api.core.Position;
-
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import sammko.quantumCraft.blocks.ItemBlockMachine;
 import sammko.quantumCraft.core.Initializator;
 import sammko.quantumCraft.core.QuantumCraft;
 import sammko.quantumCraft.core.QuantumCraftSettings;
 import sammko.quantumCraft.core.utils.Utils;
-import sammko.quantumCraft.machine.gui.GuiExtractor;
-import sammko.quantumCraft.resources.BlockTextureMatrix;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMachine extends BlockContainer {
 
@@ -64,14 +52,11 @@ public class BlockMachine extends BlockContainer {
 		return metadata;
 	}
 
-	@Override
-	public void onBlockPlacedBy(World world, int i, int j, int k,
-			EntityLiving entityliving) {
-		super.onBlockPlacedBy(world, i, j, k, entityliving);
+	
+	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLiving entityliving, ItemStack itemstack) {
+		super.onBlockPlacedBy(world, i, j, k, entityliving, itemstack);
 
-		ForgeDirection orientation = Utils.get2dOrientation(new Position(
-				entityliving.posX, entityliving.posY, entityliving.posZ),
-				new Position(i, j, k));
+		ForgeDirection orientation = Utils.get2dOrientation(entityliving);
 		TileEntityMachine t = (TileEntityMachine) world.getBlockTileEntity(i,
 				j, k);
 		t.rotation = orientation.getOpposite();

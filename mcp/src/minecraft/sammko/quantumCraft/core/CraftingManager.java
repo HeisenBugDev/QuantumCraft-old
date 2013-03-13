@@ -3,6 +3,7 @@ package sammko.quantumCraft.core;
 import thermalexpansion.api.crafting.CraftingManagers;
 import ic2.api.Ic2Recipes;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFurnace;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -33,8 +34,12 @@ public class CraftingManager {
 		
 		GameRegistry.addRecipe(new ItemStack(Initializator.DecoBlocks,1,15), "xxx","xxx","xxx", 'x', new ItemStack(Initializator.ItemIngotPlutonium));
 		
+<<<<<<< HEAD
 		GameRegistry.addRecipe(new ItemStack(Initializator.MachineBlock, 1, 0), " D ", "DBD", "CAC", 'A', new ItemStack(Initializator.EmptyBlock), 'B', new ItemStack(Initializator.ItemDepletedCrystal), 'C', new ItemStack(Block.stoneOvenIdle), 'D', new ItemStack(Item.ingotIron));
 		GameRegistry.addRecipe(new ItemStack(Initializator.MachineBlock, 1, 1), " D ", "DBD", "CAC", 'A', new ItemStack(Initializator.EmptyBlock), 'B', new ItemStack(Initializator.ItemGammatroniumCrystal), 'C', new ItemStack(Block.stoneOvenIdle), 'D', new ItemStack(Item.ingotIron));
+=======
+		GameRegistry.addRecipe(new ItemStack(Initializator.MachineBlock,1,0), " D ","DBD","CAC", 'A', new ItemStack(Initializator.EmptyBlock), 'B', new ItemStack(Initializator.ItemDepletedCrystal), 'C', new ItemStack(Block.furnaceIdle), 'D', new ItemStack(Item.ingotIron));
+>>>>>>> develop15
 		//new ItemStack(ItemInitializator.EmptyBlock, 4) means the result are 4 EMpty Blocks
 		//" x ", "xyx", " x " is the crafting matrix
 		//'y', new ItemStack(ItemInitializator.ItemIngotPlutonium) means that y, in the crafting matrix should be Plutonium ingot
