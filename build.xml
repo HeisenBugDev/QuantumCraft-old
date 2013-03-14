@@ -130,7 +130,7 @@
 		
 		<!-- Copy sources -->
 		<copy todir="${mcpmc.dir}">
-			<fileset dir="${src.dir}/sammko"/>
+			<fileset dir="${src.dir}/mods/sammko"/>
 			<filterset>
 				<filter token="VERSION" value="${project.version.full}" />
 				<filter token="BUILD_NUMBER" value="${build.number}" />
@@ -168,12 +168,12 @@
 		</exec>
 
 		<!-- Copy classes -->
-		<copy todir="${classes.dir}/sammko">
+		<copy todir="${classes.dir}/mods/sammko">
 			<fileset dir="${mcp.dir}/reobf/minecraft/mods/sammko"/>
 		</copy>
 
 		<!-- Copy resources -->
-		<copy todir="${classes.dir}/sammko/qc/">
+		<copy todir="${classes.dir}/sammko/textures/">
 			<fileset dir="${resources.dir}">
 				<exclude name="build.xml"/>
 			</fileset>
