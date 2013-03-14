@@ -27,7 +27,7 @@
 
 	<property name="mc.version" value="1.5"/>
 	<property name="forge.version" value="7.7.0.578"/>
-	<property name="project.version" value="0.5"/>
+	<property name="project.version" value="0.8.4-pre1"/>
 
 	<property name="apis" value="https://dl.dropbox.com/s/fncm6bhd1jr4kqz/APIs.zip"/>
 	<property name="downloadserver" value="http://www.theZorro266.com"/>
