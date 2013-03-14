@@ -169,11 +169,12 @@ public class Initializator implements IGuiHandler {
 				"emptyBlock");
 		MachineBlock = new BlockMachine(QuantumCraftSettings.MachineBlockID,
 				BlockMachineRenderID).setCreativeTab(tabQC).setHardness(2.0F)
-				.setResistance(10.0F);
+				.setResistance(10.0F).setUnlocalizedName("MachineBlock");
 		DecoBlocks = new BlockQuantumBasicBlocks(
 				QuantumCraftSettings.DecoBlocksID,
 				BlockTextureMatrix.Err.getINT()).setHardness(2.0F)
-				.setResistance(10.0F).setCreativeTab(tabQC);
+				.setResistance(10.0F).setCreativeTab(tabQC)
+				.setUnlocalizedName("DecoBlocks");
 
 		LanguageRegistry.addName(EmptyBlock, "Empty Block");
 
@@ -268,10 +269,10 @@ public class Initializator implements IGuiHandler {
 
 		ItemEmptyEnergyPacket.setMaxStackSize(64).setCreativeTab(tabQC)
 
-				.setUnlocalizedName("emptyEP");
+		.setUnlocalizedName("emptyEP");
 		ItemPositroniumEnergyPacket.setMaxStackSize(64).setCreativeTab(tabQC)
 
-				.setUnlocalizedName("positroniumEP");
+		.setUnlocalizedName("positroniumEP");
 		ItemRadiumEnergyPacket.setMaxStackSize(64).setCreativeTab(tabQC)
 				.setUnlocalizedName("radiumEP");
 		ItemGammatroniumEnergyPacket.setMaxStackSize(64).setCreativeTab(tabQC)
