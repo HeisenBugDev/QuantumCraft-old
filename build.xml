@@ -4,7 +4,7 @@
 
 	<property name="build.dir" value="build"/>
 	<property name="src.dir" value="./mcp/src/minecraft"/>
-	<property name="resources.dir" value="mcp/src/minecraft/sammko/qc"/>
+	<property name="resources.dir" value="mcp/src/minecraft/mods/sammko/qc"/>
 
 	<property name="download.dir" value="download"/>
 
@@ -169,7 +169,7 @@
 
 		<!-- Copy classes -->
 		<copy todir="${classes.dir}/sammko">
-			<fileset dir="${mcp.dir}/reobf/minecraft/sammko"/>
+			<fileset dir="${mcp.dir}/reobf/minecraft/mods/sammko"/>
 		</copy>
 
 		<!-- Copy resources -->
