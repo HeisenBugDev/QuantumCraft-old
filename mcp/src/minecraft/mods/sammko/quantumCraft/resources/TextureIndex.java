@@ -11,6 +11,10 @@ public class TextureIndex {
 	public int getINT() {
 		return ((this.hex >> 4) & 15) | ((this.hex << 4) & 240);
 	}
+	
+	public String getString() {
+		return Integer.toHexString(hex);
+	}
 
 	public TextureIndex(int hexindex) {
 		this.hex = hexindex;
