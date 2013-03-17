@@ -8,9 +8,7 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRenderers() {
-		MinecraftForgeClient.preloadTexture(QuantumCraftSettings.ITEMS_PNG); // Texture
-																				// loading
-		MinecraftForgeClient.preloadTexture(QuantumCraftSettings.BLOCK_PNG);
+	
 
 	}
 

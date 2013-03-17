@@ -32,6 +32,7 @@ import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumHelper;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -115,10 +116,11 @@ public class Initializator implements IGuiHandler {
 
 	// InitCode
 	public static void initOres() {
+		Icon field_94336_cN;
 		OrePositronium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OrePositroniumID,
 				BlockTextureMatrix.OrePositronium.getINT())
-				.setUnlocalizedName("orePositronium").setHardness(3.0F)
+				.setUnlocalizedName("sammko/quantumcraft:orePositronium").setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OrePlutonium = (BlockQuantumOre) new BlockQuantumOre(

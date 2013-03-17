@@ -4,6 +4,7 @@ import java.util.Random;
 
 import mods.sammko.quantumCraft.core.QuantumCraftSettings;
 import net.minecraft.block.BlockOre;
+import net.minecraft.client.renderer.texture.IconRegister;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockQuantumOre extends BlockOre {
@@ -38,4 +39,6 @@ public class BlockQuantumOre extends BlockOre {
 	public int quantityDropped(Random par1Random) {
 		return 1;
 	}
+
+	
 }
