@@ -4,7 +4,7 @@
 
 	<property name="build.dir" value="build"/>
 	<property name="src.dir" value="./mcp/src/minecraft"/>
-	<property name="resources.dir" value="mcp/src/minecraft/mods/sammko/qc"/>
+	<property name="resources.dir" value="mcp/src/minecraft/mods/sammko/quantumCraft/textures"/>
 
 	<property name="download.dir" value="download"/>
 
