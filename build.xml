@@ -130,7 +130,7 @@
 		
 		<!-- Copy sources -->
 		<copy todir="${mcpmc.dir}">
-			<fileset dir="${src.dir}/mods/quantumCraft/"/>
+			<fileset dir="${src.dir}/mods/quantumCraft"/>
 			<filterset>
 				<filter token="VERSION" value="${project.version.full}" />
 				<filter token="BUILD_NUMBER" value="${build.number}" />
@@ -168,7 +168,7 @@
 		</exec>
 
 		<!-- Copy classes -->
-		<copy todir="${classes.dir}/mods/quantumCraft>
+		<copy todir="${classes.dir}/mods/quantumCraft">
 			<fileset dir="${mcp.dir}/reobf/minecraft/mods/quantumCraft"/>
 		</copy>
 
