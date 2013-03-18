@@ -9,13 +9,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockQuantumOre extends BlockOre {
 
-	public BlockQuantumOre(int par1, int par2) {
+	public BlockQuantumOre(int par1, String name) {
 		super(par1);
-		GameRegistry.registerBlock(this);
+		GameRegistry.registerBlock(this, name);
+		this.setUnlocalizedName(name);
 	}
-
-	// Yay, crystal now drop 3 - 6 crystals of the type
-
+	
 	@Override
 	public int idDropped(int par1, Random par2Random, int par3) {
 		if (this.blockID == QuantumCraftSettings.OrePositroniumID)

@@ -119,38 +119,38 @@ public class Initializator implements IGuiHandler {
 		Icon field_94336_cN;
 		OrePositronium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OrePositroniumID,
-				BlockTextureMatrix.OrePositronium.getINT())
-				.setUnlocalizedName("sammko/quantumcraft:orePositronium").setHardness(3.0F)
+				BlockTextureMatrix.OrePositronium.getString())
+				.setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OrePlutonium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OrePlutoniumID,
-				BlockTextureMatrix.OrePlutonium.getINT())
-				.setUnlocalizedName("orePlutonium").setHardness(3.0F)
+				BlockTextureMatrix.OrePlutonium.getString())
+				.setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OreRadium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OreRadiumID,
-				BlockTextureMatrix.OreRadium.getINT())
-				.setUnlocalizedName("oreRadium").setHardness(3.0F)
+				BlockTextureMatrix.OreRadium.getString())
+				.setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OreGammatronium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OreGammatroniumID,
-				BlockTextureMatrix.OreGammatronium.getINT())
-				.setUnlocalizedName("oreGammatronium").setHardness(3.0F)
+				BlockTextureMatrix.OreGammatronium.getString())
+				.setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OreNeutrinium = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OreNeutriniumID,
-				BlockTextureMatrix.OreNeutrinium.getINT())
-				.setUnlocalizedName("oreNeutrinium").setHardness(3.0F)
+				BlockTextureMatrix.OreNeutrinium.getString())
+				.setHardness(3.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 		OreDepleted = (BlockQuantumOre) new BlockQuantumOre(
 				QuantumCraftSettings.OreDepletedID,
-				BlockTextureMatrix.OreDepleted.getINT())
-				.setUnlocalizedName("OreDepleted").setHardness(5.0F)
+				BlockTextureMatrix.OreDepleted.getString())
+				.setHardness(5.0F)
 				.setResistance(5.0F).setStepSound(Block.soundStoneFootstep)
 				.setCreativeTab(tabQC);
 

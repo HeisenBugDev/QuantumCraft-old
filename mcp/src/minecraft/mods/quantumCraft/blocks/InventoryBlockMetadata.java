@@ -22,8 +22,7 @@ public abstract class InventoryBlockMetadata extends BlockContainer {
 		this.icons = new Icon[textureNames.length];
 
 		for (int i = 0; i < this.icons.length; ++i) {
-			this.icons[i] = iconRegister.func_94245_a("quantumcraft:"
-					+ textureNames[i]);
+			this.icons[i] = iconRegister.func_94245_a(textureNames[i]);
 		}
 	}
 }

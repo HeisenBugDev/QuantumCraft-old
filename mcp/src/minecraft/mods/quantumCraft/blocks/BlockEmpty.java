@@ -20,16 +20,6 @@ public class BlockEmpty extends Block {
 		this.RenderID = rid;
 		GameRegistry.registerBlock(this, "emptyBlock");
 	}
-
-	
-	@Override
-	public void func_94332_a(IconRegister par1IconRegister)
-	{
-	         this.field_94336_cN = par1IconRegister.func_94245_a("sammko:0x" + BlockTextureMatrix.EBlockBackSingle.getString());
-	         //THIS SHOULD WORK. my mod folder is sammko. (/mods/sammko/textures/blocks/). I am trying to adress blocks/0x00.png.
-	         //doesnt work
-	}
-
 	
 	@Override
 	public boolean renderAsNormalBlock() {

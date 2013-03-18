@@ -1,11 +1,6 @@
 package mods.quantumCraft.core;
 
 /*CPW IMPORTS*/
-import mods.quantumCraft.CommonProxy;
-import mods.quantumCraft.client.ClientTickHandler;
-import net.minecraftforge.common.AchievementPage;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -20,9 +15,13 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
-
 /*FORGE IMPORTS*/
-/*SAMMKO IMPORTS*/
+import net.minecraftforge.common.AchievementPage;
+import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.MinecraftForge;
+/*QC IMPORTS*/
+import mods.quantumCraft.CommonProxy;
+import mods.quantumCraft.client.ClientTickHandler;
 
 @Mod(modid = "QuantumCraft", name = "Quantum Craft", version = "0.8.4-pre1", dependencies = "")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
@@ -36,7 +35,7 @@ public class QuantumCraft {
 
 	@Instance("QuantumCraft")
 	public static QuantumCraft instance;
-	@SidedProxy(clientSide = "mods.sammko.quantumCraft.client.ClientProxy", serverSide = "mods.sammko.quantumCraft.CommonProxy")
+	@SidedProxy(clientSide = "mods.quantumCraft.client.ClientProxy", serverSide = "mods.quantumCraft.CommonProxy")
 	public static CommonProxy proxy;
 
 	@PreInit
