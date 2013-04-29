@@ -1,7 +1,7 @@
 package mods.quantumCraft.machine;
 
-import ic2.api.Direction;
-import ic2.api.energy.tile.IEnergySink;
+//import ic2.api.Direction;
+//import ic2.api.energy.tile.IEnergySink;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,8 +15,7 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ISidedInventory;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class TileEntityMachine extends TileEntity implements ISidedInventory,
-		IEnergySink {
+public class TileEntityMachine extends TileEntity {
 
 	public int mtype = 0;
 	public ForgeDirection rotation;
@@ -35,7 +34,6 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory,
 				this.zCoord);
 	}
 
-	@Override
 	public ItemStack getStackInSlot(int slot) {
 		return inventory[slot];
 	}
@@ -43,7 +41,7 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory,
 	public boolean isStackInSlot(int slot) {
 		return inventory[slot] != null;
 	}
-
+/*
 	@Override
 	public int getSizeInventory() {
 		return inventory.length;
@@ -84,7 +82,7 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory,
 		}
 	}
 
-	/* Supporting methods */
+	
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
 		if (worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this)
@@ -94,13 +92,13 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory,
 			return entityplayer.getDistance(xCoord + 0.5D, yCoord + 0.5D,
 					zCoord + 0.5D) <= 64D;
 	}
-
+*/
 	/* NBT */
 	@Override
 	public void readFromNBT(NBTTagCompound tags) {
 		super.readFromNBT(tags);
 		NBTTagList nbttaglist = tags.getTagList("Items");
-		inventory = new ItemStack[getSizeInventory()];
+		inventory = new ItemStack[this.inventory.length];
 		for (int iter = 0; iter < nbttaglist.tagCount(); iter++) {
 			NBTTagCompound tagList = (NBTTagCompound) nbttaglist.tagAt(iter);
 			byte slotID = tagList.getByte("Slot");
@@ -126,37 +124,8 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory,
 		tags.setTag("Items", nbttaglist);
 	}
 
-	/* I dont think i will ever use this */
-	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
-		return null;
-	}
-
-	@Override
-	public void openChest() {
-	}
-
-	@Override
-	public void closeChest() {
-	}
-
-	@Override
-	public String getInvName() {
-		return name;
-	}
-
-	@Override
-	public int getStartInventorySide(ForgeDirection side) {
-		return 0;
-	}
-
-	@Override
-	public int getSizeInventorySide(ForgeDirection side) {
-		return 0;
-	}
-
 	// IC2 PWR stuffs
-
+/*
 	public int getPowerLevel() {
 		return internalStorage;
 	}
@@ -257,5 +226,5 @@ public class TileEntityMachine extends TileEntity implements ISidedInventory,
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+*/
 }

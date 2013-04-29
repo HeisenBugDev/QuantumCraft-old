@@ -38,7 +38,7 @@ public class GuiInfuser extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2,
 			int var3) {
-		int texture = mc.renderEngine
+		/*int texture = mc.renderEngine
 				.getTexture(QuantumCraftSettings.BGinfuserGUI);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		// this.mc.renderEngine.bindTexture(texture);
@@ -56,6 +56,6 @@ public class GuiInfuser extends GuiContainer {
 		this.drawTexturedModalRect(x + 49, y + 18, 176, 0, t, 6); // 49@18
 		// t2 = Utils.Scale(24, te.progress, 20);
 		t2 = te.gaugeProgressScaled(100, 24);
-		this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t2, 15);
+		this.drawTexturedModalRect(x + 58, y + 30, 176, 14, t2, 15);*/
 	}
 }

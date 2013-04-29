@@ -34,7 +34,7 @@ public class CraftingManager {
 				new ItemStack(Initializator.ItemCrystalShovel, 1), " d ",
 				" s ", " s ", 'd', new ItemStack(
 						Initializator.ItemDepletedShard), 's', Item.stick);
-		// DecoBlocks
+		/*// DecoBlocks
 		GameRegistry.addRecipe(new ItemStack(Initializator.DecoBlocks, 8, 0),
 				"xxx", "xyx", "xxx", 'y', new ItemStack(
 						Initializator.ItemPositroniumCrystal), 'x',
@@ -63,7 +63,7 @@ public class CraftingManager {
 
 		GameRegistry.addRecipe(new ItemStack(Initializator.DecoBlocks, 1, 15),
 				"xxx", "xxx", "xxx", 'x', new ItemStack(
-						Initializator.ItemIngotPlutonium));
+						Initializator.ItemIngotPlutonium));*/
 
 		GameRegistry.addRecipe(new ItemStack(Initializator.MachineBlock, 1, 0),
 				" D ", "DBD", "CAC", 'A', new ItemStack(

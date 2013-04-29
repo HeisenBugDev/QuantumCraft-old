@@ -16,19 +16,19 @@ public class InfuserContainer extends QuantumContainer {
 
 	public InfuserContainer(InventoryPlayer inventoryPlayer,
 			TileEntityInfuser te) {
-		super(te.getSizeInventory());
-		tileEntity = te;
+		super(te.inventory.length);
+		/*tileEntity = te;
 
 		addSlotToContainer(new Slot(te, 0, 18, 11));
 		addSlotToContainer(new Slot(te, 1, 18, 55));
 		addSlotToContainer(new SlotSpecific(te, 4, 128, 28));
 
-		bindPlayerInventory(inventoryPlayer);
+		bindPlayerInventory(inventoryPlayer);*/
 	}
 
 	@Override
 	public void detectAndSendChanges() {
-		super.detectAndSendChanges();
+		/*super.detectAndSendChanges();
 		for (int i = 0; i < crafters.size(); i++) {
 			ICrafting icrafting = (ICrafting) crafters.get(i);
 			if (progress != tileEntity.progress) {
@@ -41,22 +41,22 @@ public class InfuserContainer extends QuantumContainer {
 		}
 
 		progress = (short) tileEntity.progress;
-		fuel = (short) tileEntity.internalStorage;
+		fuel = (short) tileEntity.internalStorage;*/
 	}
 
 	@Override
 	public void updateProgressBar(int i, int j) {
-		if (i == 0) {
+		/*if (i == 0) {
 			tileEntity.progress = (short) j;
 		}
 		if (i == 1) {
 			tileEntity.internalStorage = (short) j;
-		}
+		}*/
 	}
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return tileEntity.isUseableByPlayer(player);
+		return true;
 	}
 
 	@Override

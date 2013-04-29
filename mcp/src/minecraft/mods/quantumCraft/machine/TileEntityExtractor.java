@@ -1,27 +1,29 @@
 package mods.quantumCraft.machine; //Comments are awsome ^^
 
-import ic2.api.energy.event.EnergyTileLoadEvent;
-import ic2.api.energy.tile.IEnergySink;
+//import ic2.api.energy.event.EnergyTileLoadEvent;
+//import ic2.api.energy.tile.IEnergySink;
 import mods.quantumCraft.core.Initializator;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.common.ISidedInventory;
+//import net.minecraftforge.common.ISidedInventory;
 import net.minecraftforge.common.MinecraftForge;
 
-public class TileEntityExtractor extends TileEntityMachine implements
-		IInventory, ISidedInventory, IEnergySink {
+public class TileEntityExtractor extends TileEntityMachine// implements
+		//IInventory, ISidedInventory, IEnergySink
+	{
 
 	// TODO: finish this
 
 	public int itemFuel;
 	public int progress;
-
+/*
 	public int getChargeState() {
 		return internalStorage * 100 / MAX_STORAGE;
 	}
-
+*/
 	public TileEntityExtractor(ForgeDirection rot) {
 		super(rot, 5, "Extractor");
 	}
@@ -29,26 +31,26 @@ public class TileEntityExtractor extends TileEntityMachine implements
 	public TileEntityExtractor() {
 		super(ForgeDirection.NORTH, 5, "Extractor");
 	}
-
+/*
 	private void init() {
 		internalStorage = 0;
 		progress = 0;
 	}
-
+*/
 	public int gaugeProgressScaled(int maxO, int maxS) {
 		return (progress * maxS) / maxO;
 	}
-
+/*
 	public int gaugeFuelScaled(int maxO, int maxS) {
 		return (internalStorage * maxS) / maxO;
 	}
-
+*/
 	/*
 	 * public int gaugeFuelScaled (int scale) { if (itemFuel == 0) { itemFuel =
 	 * internalStorage; if (itemFuel == 0) { itemFuel = 1000; } } return
 	 * (internalStorage * scale) / itemFuel; }
 	 */
-
+/*
 	@Override
 	public void updateEntity() {
 		super.updateEntity();
@@ -189,5 +191,5 @@ public class TileEntityExtractor extends TileEntityMachine implements
 			}
 		}
 	}
-
+*/
 }

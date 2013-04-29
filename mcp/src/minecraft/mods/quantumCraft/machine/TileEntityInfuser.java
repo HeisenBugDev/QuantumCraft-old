@@ -1,6 +1,6 @@
 package mods.quantumCraft.machine;
 
-import ic2.api.energy.event.EnergyTileLoadEvent;
+//import ic2.api.energy.event.EnergyTileLoadEvent;
 import mods.quantumCraft.core.Initializator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -20,7 +20,7 @@ public class TileEntityInfuser extends TileEntityMachine {
 	public TileEntityInfuser() {
 		super(ForgeDirection.NORTH, 5, "infuser");
 	}
-
+/* DUUUUUDE
 	private void init() {
 		internalStorage = 0;
 		progress = 0;
@@ -146,6 +146,6 @@ public class TileEntityInfuser extends TileEntityMachine {
 			}
 
 		}
-	}
+	}*/
 
 }

@@ -1,7 +1,6 @@
 package mods.quantumCraft.core;
 
 import mods.quantumCraft.blocks.BlockEmpty;
-import mods.quantumCraft.blocks.BlockQuantumBasicBlocks;
 import mods.quantumCraft.blocks.BlockQuantumOre;
 import mods.quantumCraft.items.CrystalAxe;
 import mods.quantumCraft.items.CrystalPickaxe;
@@ -18,7 +17,6 @@ import mods.quantumCraft.machine.TileEntityExtractor;
 import mods.quantumCraft.machine.TileEntityInfuser;
 import mods.quantumCraft.machine.gui.GuiExtractor;
 import mods.quantumCraft.machine.gui.GuiInfuser;
-import mods.quantumCraft.render.RenderBlockEmpty;
 import mods.quantumCraft.render.RenderBlockMachine;
 import mods.quantumCraft.resources.BlockTextureMatrix;
 import net.minecraft.block.Block;
@@ -77,7 +75,6 @@ public class Initializator implements IGuiHandler {
 
 	// Blocks
 	public static Block EmptyBlock;
-	public static Block DecoBlocks;
 	// Machines
 	public static Block MachineBlock;
 	// Items
@@ -163,26 +160,11 @@ public class Initializator implements IGuiHandler {
 	}
 
 	public static void initBlocks() {
-		EmptyBlock = new BlockEmpty(QuantumCraftSettings.EmptyBlockID,
-				BlockTextureMatrix.EBlockBackSingle.getINT(),
-				BlockEmptyRenderID).setCreativeTab(tabQC).setUnlocalizedName(
-				"emptyBlock");
+		EmptyBlock = new BlockEmpty(QuantumCraftSettings.EmptyBlockID, BlockTextureMatrix.EBlockBackSingle.getString()).setCreativeTab(tabQC);
 		MachineBlock = new BlockMachine(QuantumCraftSettings.MachineBlockID,
 				BlockMachineRenderID).setCreativeTab(tabQC).setHardness(2.0F)
 				.setResistance(10.0F).setUnlocalizedName("MachineBlock");
-		DecoBlocks = new BlockQuantumBasicBlocks(
-				QuantumCraftSettings.DecoBlocksID,
-				BlockTextureMatrix.Err.getINT()).setHardness(2.0F)
-				.setResistance(10.0F).setCreativeTab(tabQC)
-				.setUnlocalizedName("DecoBlocks");
-
 		LanguageRegistry.addName(EmptyBlock, "Empty Block");
-
-		for (int ix = 0; ix < 16; ix++) {
-			ItemStack iBlockQBB = new ItemStack(DecoBlocks, 1, ix);
-			LanguageRegistry.addName(iBlockQBB,
-					decoBlockNames[iBlockQBB.getItemDamage()]);
-		}
 		for (int ix = 0; ix < MachineCount; ix++) {
 			ItemStack iBlockM = new ItemStack(MachineBlock, 1, ix);
 			LanguageRegistry.addName(iBlockM,
@@ -330,8 +312,6 @@ public class Initializator implements IGuiHandler {
 	public static void initRenderers() {
 		BlockEmptyRenderID = RenderingRegistry.getNextAvailableRenderId();
 		BlockMachineRenderID = RenderingRegistry.getNextAvailableRenderId();
-		RenderingRegistry.registerBlockHandler(new RenderBlockEmpty(
-				BlockEmptyRenderID, 0));
 		RenderingRegistry.registerBlockHandler(new RenderBlockMachine(
 				BlockMachineRenderID));
 	}
